@@ -1,13 +1,13 @@
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class SharedPrefHelper {
-  static late SharedPreferences sharedPreferences;
+@injectable
+class SharedPrefHelper {
+  final  SharedPreferences sharedPreferences;
 
-  static init() async {
-    sharedPreferences = await SharedPreferences.getInstance();
-  }
+  SharedPrefHelper(this.sharedPreferences);
 
-  static Future<bool> saveData({required String key, required dynamic val}) {
+  Future<bool> saveData({required String key, required dynamic val}) {
     if (val is int) {
       return sharedPreferences.setInt(key, val);
     } else if (val is double) {
@@ -19,11 +19,11 @@ abstract class SharedPrefHelper {
     }
   }
 
-  static Object? getData({required String key}) {
+  Object? getData({required String key}) {
     return sharedPreferences.get(key);
   }
 
-  static Future<bool> removeData({required String key}) async {
+  Future<bool> removeData({required String key}) async {
     return await sharedPreferences.remove(key);
   }
 }
