@@ -1,7 +1,4 @@
-abstract class Constants {
-  static const String token = 'token';
-  static const String isTokenSaved = 'isTokenSaved';
-
+abstract class JsonSerializableConstants {
   //register
   static const String firstName = 'firstName';
   static const String lastName = 'lastName';
@@ -10,6 +7,8 @@ abstract class Constants {
   static const String rePassword = 'rePassword';
   static const String phone = 'phone';
   static const String gender = 'gender';
+  static const String message = 'message';
+  static const String user = 'user';
+  static const String token = 'token';
 
-  static const String noInternet = 'No Internet Connection';
 }
