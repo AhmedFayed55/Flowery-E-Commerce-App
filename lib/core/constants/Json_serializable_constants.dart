@@ -1,5 +1,4 @@
 abstract class JsonSerializableConstants {
-  //register
   static const String firstName = 'firstName';
   static const String lastName = 'lastName';
   static const String email = 'email';

@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enter_first_name => 'Enter first name';
 
   @override
+  String get register => 'Register';
+
+  @override
   String get first_name => 'First name';
 
   @override
