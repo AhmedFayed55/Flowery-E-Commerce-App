@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.d
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/widgets/custom_form_field_button.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/registr_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,7 +43,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void _submit() {
     if (formKey.currentState!.validate()) {
-      widget.viewModel.register(
+      widget.viewModel.doIntent(
+        RegisterSubmitEvent(),
         RegisterBody(
           firstName: firstNameController.text,
           lastName: lastNameController.text,
@@ -212,11 +214,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onPressed: _submit,
                     child: BlocBuilder<RegisterCubit, RegisterState>(
                       builder: (context, state) {
-                        if (state is RegisterLoading) {
+                        if (state.isLoading ) {
                           return const CircularProgressIndicator(
                             color: AppColors.white,
                           );
-                        } else if (state is RegisterSuccess) {
+                        } else if (state.isSuccess) {
                           ToastMessage.toastMsg(
                             t.register_successfully,
                             backgroundColor: AppColors.green,
@@ -224,9 +226,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           );
                           //naivigate to login screen
                           return Text(t.register);
-                        } else if (state is RegisterFailure) {
+                        } else if (state.isFailure) {
                           ToastMessage.toastMsg(
-                            state.errorMessage,
+                            state.errorMessage!,
                             backgroundColor: AppColors.red,
                             textColor: AppColors.white,
                           );
