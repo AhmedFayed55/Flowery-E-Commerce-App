@@ -83,7 +83,7 @@ abstract class AppTheme {
       ),
       textTheme: TextTheme(
         displaySmall: TextStyle(
-          fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
+            fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
         ),
         displayMedium: TextStyle(color: AppColors.pink,fontSize: 16.sp,fontWeight: AppFontWeight.regular),
         bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
@@ -94,17 +94,18 @@ abstract class AppTheme {
   }
 
   static ThemeData lightTheme = getTheme(
-    const ColorScheme(
-      brightness: Brightness.light,
-      primary: AppColors.pink,
-      onPrimary: AppColors.white,
-      secondary: AppColors.black,
-      onSecondary: AppColors.white,
-      error: AppColors.red,
-      onError: AppColors.white,
-      surface: AppColors.white,
+    ColorScheme(
+        brightness: Brightness.light,
+        primary: AppColors.pink,
+        onPrimary: AppColors.white,
+        secondary: AppColors.black,
+        onSecondary: AppColors.white,
+        error: AppColors.red,
+        onError: AppColors.white,
+        surface: AppColors.white,
         shadow: AppColors.black,
-        onSurface: AppColors.darkGrey
+        onSurface: AppColors.darkGrey,
+        onPrimaryFixed: AppColors.white[80]
     ),
   );
 }

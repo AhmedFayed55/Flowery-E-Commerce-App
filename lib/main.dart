@@ -29,7 +29,7 @@ class FlowersEcommerce extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: AppRoutes.login,
+        initialRoute: AppRoutes.mainLayout,
         theme: AppTheme.lightTheme,
       ),
     );
