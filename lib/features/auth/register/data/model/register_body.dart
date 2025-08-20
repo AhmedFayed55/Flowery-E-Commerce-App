@@ -1,4 +1,4 @@
-import 'package:flowers_ecommerce_app/core/constants/Json_serializable_constants.dart';
+import 'package:flowers_ecommerce_app/core/utils/json_serializable_constants.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()

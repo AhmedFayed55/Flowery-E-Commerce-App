@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/errors/failures.dart';
 import 'package:flowers_ecommerce_app/core/network/api_services.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/source/auth_remote_data_sourse.dart';
@@ -21,7 +21,7 @@ class AuthRemoteDataSourseImlp implements AuthRemoteDataSource {
 
     if (!isConnected) {
       return ApiErrorResult(
-        failure: Failure(errorMessage: Constants.noInternet),
+        failure: Failure(errorMessage: AppConstants.noInternet),
       );
     }
 
