@@ -1,5 +1,6 @@
 part of 'register_cubit.dart';
 
+
 @immutable
 // sealed class RegisterState {}
 
@@ -11,24 +12,37 @@ part of 'register_cubit.dart';
 // }
 // final class RegisterLoading extends RegisterState {}
 
-class RegisterState {
+class RegisterState extends Equatable {
   bool isLoading = false;
   bool isSuccess = false;
   bool isFailure = false;
 
   String? errorMessage = ''; 
 
-  RegisterState copyWith({
-    bool? isLoading,
-    bool? isSuccess,
-    bool? isFailure,
-    String? errorMessage
-  }) {
-    return RegisterState()
-      ..isLoading = isLoading ?? this.isLoading
-      ..isSuccess = isSuccess ?? this.isSuccess
-      ..isFailure = isFailure ?? this.isFailure
-      ..errorMessage = errorMessage ?? this.errorMessage;
-  }
+  RegisterState({
+    this.isLoading = false,
+    this.isSuccess = false,
+    this.isFailure = false,
+    this.errorMessage = '',
+  });
+
+ RegisterState copyWith({
+   bool? isLoading,
+   bool? isSuccess,
+   bool? isFailure,
+   String? errorMessage,
+ }){
+   return RegisterState(
+     isLoading: isLoading ?? this.isLoading,
+     isSuccess: isSuccess ?? this.isSuccess,
+     isFailure: isFailure ?? this.isFailure,
+     errorMessage: errorMessage ?? this.errorMessage,
+   );
+ }
+ 
+
+  @override
+  List<Object?> get props => [isLoading, isSuccess, isFailure, errorMessage];
+
    
 }
