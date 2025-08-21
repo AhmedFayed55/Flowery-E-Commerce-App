@@ -31,6 +31,7 @@ class FlowersEcommerce extends StatelessWidget {
         onGenerateRoute: RouteGenerator.getRoute,
         initialRoute: AppRoutes.login,
         theme: AppTheme.lightTheme,
+        
       ),
     );
   }

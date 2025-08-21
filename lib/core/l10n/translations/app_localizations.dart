@@ -285,6 +285,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register Successfully'**
   String get register_successfully;
+
+  /// No description provided for @email_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'This Email is not valid'**
+  String get email_not_valid;
+
+  /// No description provided for @email_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get email_required;
+
+  /// No description provided for @password_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid password'**
+  String get password_not_valid;
+
+  /// No description provided for @password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_empty;
 }
 
 class _AppLocalizationsDelegate
