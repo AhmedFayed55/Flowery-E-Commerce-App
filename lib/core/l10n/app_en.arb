@@ -30,5 +30,14 @@
   "loading": "Loading...",
   "error": "Error",
   "login_successfully": "Login successfully",
-  "register_successfully": "Register Successfully"
+  "register_successfully": "Register Successfully",
+  "please_enter_your_email_associated_to_your_account": "Please enter your email associated to\n your account",
+  "confirm": "Confirm",
+  "email_verification": "Email verification",
+  "please_enter_your_code_that_send_to_your_email_address": "Please enter your code that send to your\n email address",
+  "didnot_receive_code": "Didn't receive code? ",
+  "resend": "Resend",
+  "reset_password": "Reset password",
+  "new_password": "New password",
+  "password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least": "Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least"
 }
