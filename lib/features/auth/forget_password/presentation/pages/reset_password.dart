@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  String email;
-   ResetPasswordScreen({super.key,required this.email});
+  final String email;
+   const ResetPasswordScreen({super.key,required this.email});
 
   @override
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();

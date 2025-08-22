@@ -1,5 +1,3 @@
-import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart';
-
 class ForgetPasswordState {
   final bool isLoadingState;
   final bool isSuccessState;
