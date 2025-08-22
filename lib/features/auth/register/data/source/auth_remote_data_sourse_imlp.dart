@@ -15,28 +15,7 @@ class AuthRemoteDataSourseImlp implements AuthRemoteDataSource {
 
   AuthRemoteDataSourseImlp(this._apiServices);
   @override
-  Future<ApiResult<RegisterRespone>> register(RegisterBody request) async {
-    final bool isConnected =
-        await InternetConnectionChecker.instance.hasConnection;
-
-    if (!isConnected) {
-      return ApiErrorResult(
-        failure: Failure(errorMessage: AppConstants.noInternet),
-      );
-    }
-
-    try {
-      final response = await _apiServices.register(request);
-      return ApiSuccessResult<RegisterRespone>(data: response);
-    } on DioException catch (e) {
-      return ApiErrorResult(
-        failure: Failure(
-          errorMessage: e.response!.data['error'],
-         
-        ),
-      );
-    } catch (e) {
-      return ApiErrorResult(failure: Failure(errorMessage: e.toString()));
-    }
+  Future<RegisterRespone> register(RegisterBody request) async {
+  return await _apiServices.register(request);    
   }
 }

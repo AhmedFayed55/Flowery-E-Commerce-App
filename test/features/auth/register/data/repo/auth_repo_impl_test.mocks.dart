@@ -3,17 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:flowers_ecommerce_app/core/errors/api_results.dart' as _i4;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart'
-    as _i6;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart'
     as _i5;
-import 'package:flowers_ecommerce_app/features/auth/register/data/source/auth_remote_data_sourse.dart'
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart'
     as _i2;
+import 'package:flowers_ecommerce_app/features/auth/register/data/source/auth_remote_data_sourse.dart'
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -29,27 +27,31 @@ import 'package:mockito/src/dummies.dart' as _i7;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeRegisterRespone_0 extends _i1.SmartFake
+    implements _i2.RegisterRespone {
+  _FakeRegisterRespone_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [AuthRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i2.AuthRemoteDataSource {
+    implements _i3.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.RegisterRespone>> register(
-    _i6.RegisterBody? request,
-  ) =>
+  _i4.Future<_i2.RegisterRespone> register(_i5.RegisterBody? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i3.Future<_i4.ApiResult<_i5.RegisterRespone>>.value(
-              _i7.dummyValue<_i4.ApiResult<_i5.RegisterRespone>>(
+            returnValue: _i4.Future<_i2.RegisterRespone>.value(
+              _FakeRegisterRespone_0(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i3.Future<_i4.ApiResult<_i5.RegisterRespone>>);
+          as _i4.Future<_i2.RegisterRespone>);
 }

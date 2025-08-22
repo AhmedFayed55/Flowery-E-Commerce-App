@@ -29,7 +29,7 @@ void main() {
         gender: 'male',
       );
 
-      RegisterRespone registerRespone = RegisterRespone(
+      RegisterRespone expected = RegisterRespone(
         message: 'message',
         token: 'token',
         user: User(
@@ -42,9 +42,9 @@ void main() {
           gender: 'male',
         ),
       );
-      var expected = ApiSuccessResult<RegisterRespone>(data: registerRespone);
+     // var expected = ApiSuccessResult<RegisterRespone>(data: registerRespone);
 
-      provideDummy<ApiResult<RegisterRespone>>(expected);
+      provideDummy<RegisterRespone>(expected);
 
       when(
         mockAuthRemoteDataSource.register(registerBody),
@@ -56,7 +56,7 @@ void main() {
       //assert
       verify(mockAuthRemoteDataSource.register(registerBody)).called(1);
       expect(result, isA<ApiSuccessResult<RegisterRespone>>());
-      expect(result.data.user, equals(registerRespone.user));
+      expect(result.data.user, equals(expected.user));
     },
   );
 }

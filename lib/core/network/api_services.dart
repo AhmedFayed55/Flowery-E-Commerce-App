@@ -8,7 +8,7 @@ import 'package:retrofit/http.dart';
 
 part 'api_services.g.dart';
 
-@RestApi(baseUrl: ApiConstants.baseUrl)
+@RestApi()
 @injectable
 abstract class ApiServices {
   @factoryMethod

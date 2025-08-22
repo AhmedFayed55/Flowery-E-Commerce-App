@@ -51,34 +51,10 @@ void main() {
 
         var result = await authRemoteDataSourseImlp.register(registerBody);
         verify(mockApiServices.register(registerBody)).called(1);
-        result as ApiSuccessResult<RegisterRespone>;
-        expect(result, isA<ApiSuccessResult<RegisterRespone>>());
-        expect(result.data, equals(registerRespone));
+        expect(result, isA<RegisterRespone>());
+        expect(result, equals(registerRespone));
       },
     );
 
-    test(
-      'when i call register method with Wrong RegisterBody data should return ApiFailure<RegisterRespone>',
-      () async {
-        when(mockApiServices.register(registerBody)).thenThrow(
-          DioException(
-            requestOptions: RequestOptions(path: '/signup'),
-            response: Response(
-              requestOptions: RequestOptions(path: '/signup'),
-              data: {'error': 'Invalid data'},
-              statusCode: 400,
-            ),
-          ),
-        );
-
-        var result = await authRemoteDataSourseImlp.register(registerBody);
-        verify(mockApiServices.register(registerBody)).called(1);
-        expect(result, isA<ApiErrorResult>());
-        expect(
-          (result as ApiErrorResult).failure.errorMessage,
-          equals("Invalid data"),
-        );
-      },
-    );
   });
 }

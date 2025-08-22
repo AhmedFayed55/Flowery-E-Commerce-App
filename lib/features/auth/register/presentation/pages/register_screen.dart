@@ -12,8 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({super.key});
-  final viewModel = getIt.get<RegisterCubit>();
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -29,6 +28,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String _gender = 'male';
+  final viewModel = getIt.get<RegisterCubit>();
+
 
   @override
   void dispose() {
@@ -43,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void _submit() {
     if (formKey.currentState!.validate()) {
-      widget.viewModel.doIntent(
+      viewModel.doIntent(
         RegisterSubmitEvent(),
         RegisterBody(
           firstName: firstNameController.text,
@@ -66,16 +67,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
+    final trans = AppLocalizations.of(context)!;
     return BlocProvider(
-      create: (context) => widget.viewModel,
+      create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new, size: 26),
             onPressed: () {},
           ),
-          title: Text(t.register),
+          title: Text(trans.register),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -91,8 +92,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Expanded(
                         child: CustomTextFormField(
                           controller: firstNameController,
-                          label: t.first_name,
-                          hint: t.enter_first_name,
+                          label: trans.first_name,
+                          hint: trans.enter_first_name,
                           validator: Validations.validateName,
                         ),
                       ),
@@ -100,8 +101,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Expanded(
                         child: CustomTextFormField(
                           controller: lastNameController,
-                          label: t.last_name,
-                          hint: t.enter_last_name,
+                          label: trans.last_name,
+                          hint: trans.enter_last_name,
                           validator: Validations.validateName,
                         ),
                       ),
@@ -110,8 +111,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   verticalSpace(24),
                   CustomTextFormField(
                     controller: emailController,
-                    label: t.email,
-                    hint: t.enter_your_email,
+                    label: trans.email,
+                    hint: trans.enter_your_email,
                     validator: Validations.validateEmail,
                   ),
                   verticalSpace(24),
@@ -120,8 +121,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Expanded(
                         child: CustomTextFormField(
                           controller: passwordController,
-                          label: t.password,
-                          hint: t.enter_your_password,
+                          label: trans.password,
+                          hint: trans.enter_your_password,
                           obsecureTxt: true,
                           validator: Validations.validatePassword,
                         ),
@@ -130,8 +131,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Expanded(
                         child: CustomTextFormField(
                           controller: confirmPasswordController,
-                          label: t.confirm_password,
-                          hint: t.confirm_password,
+                          label: trans.confirm_password,
+                          hint: trans.confirm_password,
                           validator: (value) =>
                               Validations.validateConfirmPassword(
                                 value,
@@ -146,15 +147,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   CustomTextFormField(
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
-                    label: t.phone_number,
-                    hint: t.enter_phone_number,
+                    label: trans.phone_number,
+                    hint: trans.enter_phone_number,
                     validator: Validations.validatePhoneNumber,
                   ),
                   verticalSpace(24),
                   Row(
                     children: [
                       Text(
-                        t.gender,
+                        trans.gender,
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                       horizontalSpace(5),
@@ -194,12 +195,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Row(
                     children: [
                       Text(
-                        t.agree_to_our,
+                        trans.agree_to_our,
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                       horizontalSpace(5),
                       Text(
-                        t.terms_conditions,
+                        trans.terms_conditions,
                         style: Theme.of(context).textTheme.displaySmall
                             ?.copyWith(
                               decoration: TextDecoration.underline,
@@ -220,21 +221,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           );
                         } else if (state.isSuccess) {
                           ToastMessage.toastMsg(
-                            t.register_successfully,
+                            trans.register_successfully,
                             backgroundColor: AppColors.green,
                             textColor: AppColors.white,
                           );
                           //naivigate to login screen
-                          return Text(t.register);
+                          return Text(trans.register);
                         } else if (state.isFailure) {
                           ToastMessage.toastMsg(
                             state.errorMessage!,
                             backgroundColor: AppColors.red,
                             textColor: AppColors.white,
                           );
-                          return Text(t.register);
+                          return Text(trans.register);
                         } else {
-                          return Text(t.register);
+                          return Text(trans.register);
                         }
                       },
                     ),
