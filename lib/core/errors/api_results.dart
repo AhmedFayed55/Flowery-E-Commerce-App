@@ -9,5 +9,5 @@ class ApiSuccessResult<T> extends ApiResult<T> {
 
 class ApiErrorResult<T> extends ApiResult<T> {
   final Failure failure;
-  ApiErrorResult({required this.failure, });
+  ApiErrorResult({required this.failure});
 }

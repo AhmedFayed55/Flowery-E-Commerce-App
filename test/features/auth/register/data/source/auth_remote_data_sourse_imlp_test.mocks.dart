@@ -6,9 +6,9 @@
 import 'dart:async' as _i4;
 
 import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i3;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart'
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
     as _i5;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart'
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -26,9 +26,9 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeRegisterRespone_0 extends _i1.SmartFake
-    implements _i2.RegisterRespone {
-  _FakeRegisterRespone_0(Object parent, Invocation parentInvocation)
+class _FakeRegisterResponeDto_0 extends _i1.SmartFake
+    implements _i2.RegisterResponeDto {
+  _FakeRegisterResponeDto_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -41,15 +41,15 @@ class MockApiServices extends _i1.Mock implements _i3.ApiServices {
   }
 
   @override
-  _i4.Future<_i2.RegisterRespone> register(_i5.RegisterBody? request) =>
+  _i4.Future<_i2.RegisterResponeDto> register(_i5.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i4.Future<_i2.RegisterRespone>.value(
-              _FakeRegisterRespone_0(
+            returnValue: _i4.Future<_i2.RegisterResponeDto>.value(
+              _FakeRegisterResponeDto_0(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i4.Future<_i2.RegisterRespone>);
+          as _i4.Future<_i2.RegisterResponeDto>);
 }

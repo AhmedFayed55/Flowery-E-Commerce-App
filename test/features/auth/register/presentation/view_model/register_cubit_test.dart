@@ -1,9 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/errors/failures.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/user.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/usecase/register_usecase.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/registr_event.dart';
@@ -32,17 +34,7 @@ void main() {
       gender: 'male',
     );
     registerRespone = RegisterRespone(
-      message: 'message',
-      token: 'token',
-      user: User(
-        id: '1',
-        firstName: 'name',
-        lastName: 'lastName',
-        email: 'emailTest@gmail.com',
-        role: 'customer',
-        phone: '+20123456789',
-        gender: 'male',
-      ),
+      'message',
     );
     successResult = ApiSuccessResult<RegisterRespone>(data: registerRespone);
 
@@ -59,7 +51,7 @@ void main() {
         ).thenAnswer((_) async => successResult);
         return RegisterCubit(registerUsecase);
       },
-      act: (cubit) => cubit.doIntent(RegisterSubmitEvent(), registerBody),
+      act: (cubit) => cubit.doIntent(RegisterSubmitEvent(registerBody)),
       verify: (_) {
         verify(registerUsecase.invok(registerBody)).called(1);
       },
@@ -90,7 +82,7 @@ void main() {
         ).thenAnswer((_) async => failureResult);
         return RegisterCubit(registerUsecase);
       },
-      act: (cubit) => cubit.doIntent(RegisterSubmitEvent(), registerBody),
+      act: (cubit) => cubit.doIntent(RegisterSubmitEvent(registerBody)),
       verify: (_) {
         verify(registerUsecase.invok(registerBody)).called(1);
       },

@@ -6,9 +6,9 @@
 import 'dart:async' as _i3;
 
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart' as _i4;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart'
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart'
     as _i6;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart'
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart'
     as _i5;
 import 'package:flowers_ecommerce_app/features/auth/register/domin/repo/auth_repo.dart'
     as _i2;

@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/network/api_services.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/mapper/to_register_body_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/user.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/source/auth_remote_data_sourse_imlp.dart';
 import 'package:mockito/annotations.dart';
@@ -29,6 +32,10 @@ void main() {
     );
 
     RegisterRespone registerRespone = RegisterRespone(
+      'message',
+      
+    );
+    RegisterResponeDto registerResponeDto = RegisterResponeDto(
       message: 'message',
       token: 'token',
       user: User(
@@ -46,13 +53,13 @@ void main() {
       'when i call register method with Right RegisterBody data should return ApiResult<RegisterRespone>',
       () async {
         when(
-          mockApiServices.register(registerBody),
-        ).thenAnswer((_) async => registerRespone);
+          mockApiServices.register(any),
+        ).thenAnswer((_) async => registerResponeDto);
 
-        var result = await authRemoteDataSourseImlp.register(registerBody);
-        verify(mockApiServices.register(registerBody)).called(1);
-        expect(result, isA<RegisterRespone>());
-        expect(result, equals(registerRespone));
+        var result = await authRemoteDataSourseImlp.register(toRegisterBodyDTo(registerBody));
+        verify(mockApiServices.register(any)).called(1);
+        expect(result, isA<RegisterResponeDto>());
+        expect(result.message, equals(registerRespone.message));
       },
     );
 

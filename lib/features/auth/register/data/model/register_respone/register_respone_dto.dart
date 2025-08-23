@@ -1,21 +1,18 @@
-import 'package:flowers_ecommerce_app/core/utils/json_serializable_constants.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'user.dart';
 
 @JsonSerializable()
-class RegisterRespone {
-  @JsonKey(name: JsonSerializableConstants.message)
+class RegisterResponeDto {
   String? message;
-  @JsonKey(name: JsonSerializableConstants.user)
   User? user;
-  @JsonKey(name: JsonSerializableConstants.token)
   String? token;
 
-  RegisterRespone({this.message, this.user, this.token});
+  RegisterResponeDto({this.message, this.user, this.token});
 
-  factory RegisterRespone.fromJson(Map<String, dynamic> json) {
-    return RegisterRespone(
+  factory RegisterResponeDto.fromJson(Map<String, dynamic> json) {
+    return RegisterResponeDto(
       message: json['message'] as String?,
       user: json['user'] == null
           ? null
@@ -29,4 +26,8 @@ class RegisterRespone {
     'user': user?.toJson(),
     'token': token,
   };
+
+  RegisterRespone toEntity() => RegisterRespone(
+   message!
+  );
 }

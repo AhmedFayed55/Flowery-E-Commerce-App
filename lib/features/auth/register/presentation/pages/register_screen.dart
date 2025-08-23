@@ -4,8 +4,8 @@ import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/helpers/validators.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/widgets/custom_form_field_button.dart';
+import 'package:flowers_ecommerce_app/core/utils/enums.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/registr_event.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +27,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String _gender = 'male';
+  Genders _gender = Genders.male;
   final viewModel = getIt.get<RegisterCubit>();
-
 
   @override
   void dispose() {
@@ -45,17 +44,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void _submit() {
     if (formKey.currentState!.validate()) {
       viewModel.doIntent(
-        RegisterSubmitEvent(),
-        RegisterBody(
-          firstName: firstNameController.text,
-          lastName: lastNameController.text,
-          email: emailController.text,
-          password: passwordController.text,
-          rePassword: confirmPasswordController.text,
-          phone: phoneController.text.contains('+20')
-              ? phoneController.text
-              : '+20${phoneController.text}',
-          gender: _gender,
+        RegisterSubmitEvent(
+          RegisterBody(
+            firstName: firstNameController.text,
+            lastName: lastNameController.text,
+            email: emailController.text,
+            password: passwordController.text,
+            rePassword: confirmPasswordController.text,
+            phone: phoneController.text.contains('+20')
+                ? phoneController.text
+                : '+20${phoneController.text}',
+            gender: _gender == Genders.male ? "male" : "female",
+          ),
         ),
       );
     } else {
@@ -90,65 +90,84 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: CustomTextFormField(
+                        child: TextFormField(
                           controller: firstNameController,
-                          label: trans.first_name,
-                          hint: trans.enter_first_name,
+                          decoration: InputDecoration(
+                          label: Text(trans.first_name),
+                          hint: Text(trans.enter_first_name),
+
+                          ),
                           validator: Validations.validateName,
                         ),
                       ),
                       horizontalSpace(17),
                       Expanded(
-                        child: CustomTextFormField(
+                        child: TextFormField(
                           controller: lastNameController,
-                          label: trans.last_name,
-                          hint: trans.enter_last_name,
+                          decoration: InputDecoration(
+
+                          label: Text(trans.last_name),
+                          hint: Text(trans.enter_last_name),
+                          ),
                           validator: Validations.validateName,
                         ),
                       ),
                     ],
                   ),
                   verticalSpace(24),
-                  CustomTextFormField(
+                  TextFormField(
                     controller: emailController,
-                    label: trans.email,
-                    hint: trans.enter_your_email,
+                    decoration: InputDecoration(
+                    label: Text(trans.email),
+                    hint: Text(trans.enter_your_email),
+
+                    ),
                     validator: Validations.validateEmail,
                   ),
                   verticalSpace(24),
                   Row(
                     children: [
                       Expanded(
-                        child: CustomTextFormField(
+                        child: TextFormField(
                           controller: passwordController,
-                          label: trans.password,
-                          hint: trans.enter_your_password,
-                          obsecureTxt: true,
+                          decoration: InputDecoration(
+                          label: Text(trans.password),
+                          hint: Text(trans.enter_your_password),
+
+                          ),
+                          obscureText: true,
                           validator: Validations.validatePassword,
                         ),
                       ),
                       horizontalSpace(17),
                       Expanded(
-                        child: CustomTextFormField(
+                        child: TextFormField(
+                          
+                          obscureText:true ,
                           controller: confirmPasswordController,
-                          label: trans.confirm_password,
-                          hint: trans.confirm_password,
+                          decoration: InputDecoration(
+                          label: Text(trans.confirm_password),
+                          hint: Text(trans.confirm_password),
+
+                          ),
                           validator: (value) =>
                               Validations.validateConfirmPassword(
                                 value,
                                 passwordController.text,
                               ),
-                          obsecureTxt: true,
                         ),
                       ),
                     ],
                   ),
                   verticalSpace(24),
-                  CustomTextFormField(
+                  TextFormField(
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
-                    label: trans.phone_number,
-                    hint: trans.enter_phone_number,
+                    decoration: InputDecoration(
+                    label: Text(trans.phone_number),
+                    hint: Text(trans.enter_phone_number),
+
+                     ),
                     validator: Validations.validatePhoneNumber,
                   ),
                   verticalSpace(24),
@@ -160,7 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       horizontalSpace(5),
                       Expanded(
-                        child: RadioGroup<String>(
+                        child: RadioGroup<Genders>(
                           groupValue: _gender,
                           onChanged: (value) {
                             setState(() {
@@ -170,7 +189,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Radio(value: 'male'),
+                              Radio<Genders>(
+                                value: Genders.male,
+                                // groupValue: _gender,
+                                // onChanged: (value) {
+                                //   setState(() {
+                                //     _gender = value!;
+                                //   });
+                                // },
+                              ),
                               Text(
                                 "Male",
                                 style: TextStyle(color: Colors.black),
@@ -178,8 +205,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                               SizedBox(width: 16),
 
-                              // Female
-                              Radio(value: 'female'),
+                              Radio<Genders>(
+                                value: Genders.female,
+                                // groupValue: _gender,
+                                // onChanged: (value) {
+                                //   setState(() {
+                                //     _gender = value!;
+                                //   });
+                                // },
+                              ),
                               Text(
                                 "Female",
                                 style: TextStyle(color: Colors.black),
@@ -215,7 +249,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onPressed: _submit,
                     child: BlocBuilder<RegisterCubit, RegisterState>(
                       builder: (context, state) {
-                        if (state.isLoading ) {
+                        if (state.isLoading) {
                           return const CircularProgressIndicator(
                             color: AppColors.white,
                           );
