@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/forget_password/presentation/pages/forget_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -19,6 +20,10 @@ class RouteGenerator {
 
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());
+      case AppRoutes.home:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        );
 
       default:
         return unDefinedRoute();

@@ -49,8 +49,8 @@ flutter:
   generate: true
 
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+   - lib/core/utils/images/
 
 
   # fonts:
