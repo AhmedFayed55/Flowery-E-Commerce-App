@@ -10,6 +10,7 @@
   "sign_up": "Sign up",
   "continue_as_guest" : "Continue as guest",
   "enter_first_name": "Enter first name",
+  "register": "Register",
   "first_name": "First name",
   "enter_last_name": "Enter last name",
   "last_name": "Last name",
