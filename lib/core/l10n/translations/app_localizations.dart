@@ -160,6 +160,12 @@ abstract class AppLocalizations {
   /// **'Enter first name'**
   String get enter_first_name;
 
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
   /// No description provided for @first_name.
   ///
   /// In en, this message translates to:

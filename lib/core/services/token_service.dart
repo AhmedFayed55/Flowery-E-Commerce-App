@@ -1,5 +1,5 @@
 
-import 'package:flowers_ecommerce_app/core/constants/constants.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:injectable/injectable.dart';
@@ -17,20 +17,20 @@ class TokenService {
       _sharedPreferences = sharedPreferences;
 
   bool get isTokenSaved =>
-      _sharedPreferences.getBool(Constants.isTokenSaved) ?? false;
+      _sharedPreferences.getBool(AppConstants.isTokenSaved) ?? false;
 
   Future<void> deleteToken() async {
-    await _sharedPreferences.setBool(Constants.isTokenSaved, false);
-    await _prefs.delete(key: Constants.token);
+    await _sharedPreferences.setBool(AppConstants.isTokenSaved, false);
+    await _prefs.delete(key: AppConstants.token);
   }
 
   Future<String?> getToken() async {
     if (!isTokenSaved) return null;
-    return _prefs.read(key: Constants.token);
+    return _prefs.read(key: AppConstants.token);
   }
 
   Future<void> saveToken(String token) async {
-    await _sharedPreferences.setBool(Constants.isTokenSaved, true);
-    await _prefs.write(key: Constants.token, value: token);
+    await _sharedPreferences.setBool(AppConstants.isTokenSaved, true);
+    await _prefs.write(key: AppConstants.token, value: token);
   }
 }
