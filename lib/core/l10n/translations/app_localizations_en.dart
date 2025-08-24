@@ -106,4 +106,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_successfully => 'Register Successfully';
+
+  @override
+  String get product_details => 'Product Details';
 }

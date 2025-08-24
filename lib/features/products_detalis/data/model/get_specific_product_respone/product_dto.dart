@@ -21,7 +21,7 @@ class ProductDto {
   int? v;
   bool? isSuperAdmin;
   int? sold;
-  List<dynamic>? reviews;
+  
 
   ProductDto({
     this.rateAvg,
@@ -42,7 +42,7 @@ class ProductDto {
     this.v,
     this.isSuperAdmin,
     this.sold,
-    this.reviews,
+   
   });
 
   factory ProductDto.fromJson(Map<String, dynamic> json) => ProductDto(
@@ -53,7 +53,9 @@ class ProductDto {
     slug: json['slug'] as String?,
     description: json['description'] as String?,
     imgCover: json['imgCover'] as String?,
-    images: json['images'] as List<String>?,
+   images: (json['images'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     price: json['price'] as int?,
     priceAfterDiscount: json['priceAfterDiscount'] as int?,
     quantity: json['quantity'] as int?,
@@ -68,7 +70,6 @@ class ProductDto {
     v: json['__v'] as int?,
     isSuperAdmin: json['isSuperAdmin'] as bool?,
     sold: json['sold'] as int?,
-    reviews: json['reviews'] as List<dynamic>?,
   );
 
   Map<String, dynamic> toJson() => {
@@ -90,7 +91,7 @@ class ProductDto {
     '__v': v,
     'isSuperAdmin': isSuperAdmin,
     'sold': sold,
-    'reviews': reviews,
+
   };
 
   ProductEntity toEntity() => ProductEntity(

@@ -291,6 +291,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register Successfully'**
   String get register_successfully;
+
+  /// No description provided for @product_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Details'**
+  String get product_details;
 }
 
 class _AppLocalizationsDelegate

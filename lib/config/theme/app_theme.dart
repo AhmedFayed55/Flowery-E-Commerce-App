@@ -85,7 +85,8 @@ abstract class AppTheme {
         displaySmall: TextStyle(
           fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
         ),
-        displayMedium: TextStyle(color: AppColors.darkGrey,fontSize: 16.sp,fontWeight: AppFontWeight.medium),
+        displayMedium: TextStyle(color: AppColors.black,fontSize: 16.sp,fontWeight: AppFontWeight.medium),
+        displayLarge: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 20.sp,color: AppColors.black),
         bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
         labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
         labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),

@@ -26,6 +26,18 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
+import '../../features/products_detalis/data/repo/products_detalis_repo_impl.dart'
+    as _i505;
+import '../../features/products_detalis/data/source/products_detalis_ds.dart'
+    as _i25;
+import '../../features/products_detalis/data/source/products_detalis_ds_impl.dart'
+    as _i247;
+import '../../features/products_detalis/domin/repo/products_detalis_repo.dart'
+    as _i329;
+import '../../features/products_detalis/domin/usecase/get_specific_product_usecase.dart'
+    as _i838;
+import '../../features/products_detalis/presentation/view_model/cubit/product_details_cubit.dart'
+    as _i680;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
 import '../network/dio_module.dart' as _i614;
@@ -70,11 +82,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i975.AuthRepo>(
       () => _i990.AuthRepoImpl(gh<_i637.AuthRemoteDataSource>()),
     );
+    gh.factory<_i25.ProductsDetalisDs>(
+      () => _i247.ProductsDetalisDsImpl(gh<_i804.ApiServices>()),
+    );
+    gh.factory<_i329.ProductsDetalisRepo>(
+      () => _i505.ProductsDetalisRepoImpl(gh<_i25.ProductsDetalisDs>()),
+    );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
     gh.factory<_i444.RegisterCubit>(
       () => _i444.RegisterCubit(gh<_i752.RegisterUsecase>()),
+    );
+    gh.factory<_i838.GetSpecificProductUsecase>(
+      () => _i838.GetSpecificProductUsecase(gh<_i329.ProductsDetalisRepo>()),
+    );
+    gh.factory<_i680.ProductsDetalis>(
+      () => _i680.ProductsDetalis(gh<_i838.GetSpecificProductUsecase>()),
     );
     return this;
   }

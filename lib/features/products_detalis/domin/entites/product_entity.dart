@@ -1,4 +1,5 @@
 
+
 class ProductEntity {
 
   String? id;
