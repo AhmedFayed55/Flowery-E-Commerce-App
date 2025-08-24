@@ -1,4 +1,4 @@
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart' show RegisterBody, RegisterBodyDTo;
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart' ;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 
 abstract interface class AuthRemoteDataSource {
