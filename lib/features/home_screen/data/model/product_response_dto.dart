@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/product_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'product_response_dto.g.dart';
 
 @JsonSerializable()
-class ProductResponseDto {
+class ProductResponseDto extends Equatable {
   final int? rateAvg;
   final int? rateCount;
   @JsonKey(name: '_id')
@@ -24,7 +25,7 @@ class ProductResponseDto {
   final String? updatedAt;
   final int? sold;
   final bool? isSuperAdmin;
-  ProductResponseDto({
+  const ProductResponseDto({
     this.rateAvg,
     this.rateCount,
     this.idMongo,
@@ -63,4 +64,18 @@ class ProductResponseDto {
       sold ?? 0,
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+    id,
+    title,
+    description,
+    imgCover,
+    images,
+    price,
+    priceAfterDiscount,
+    quantity,
+    sold,
+  ];
 }

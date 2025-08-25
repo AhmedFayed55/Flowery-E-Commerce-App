@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/data/model/best_saller_response_dto.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/data/model/category_response_dto.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/data/model/occasion_response_dto.dart';
@@ -8,7 +9,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'home_response_dto.g.dart';
 
 @JsonSerializable()
-class HomeResponseDto {
+class HomeResponseDto extends Equatable {
   final String message;
   @JsonKey(defaultValue: [])
   final List<ProductResponseDto> products;
@@ -19,7 +20,7 @@ class HomeResponseDto {
   @JsonKey(defaultValue: [])
   final List<OccasionResponseDto> occasions;
 
-  HomeResponseDto({
+const  HomeResponseDto({
     required this.message,
     required this.products,
     required this.categories,
@@ -40,4 +41,7 @@ class HomeResponseDto {
       categoryEntity: categories.map((e) => e.toDomain()).toList(),
     );
   }
+  
+  @override
+  List<Object?> get props => [bestSeller,products,occasions,categories];
 }

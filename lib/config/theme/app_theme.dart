@@ -1,5 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/utils/font_weight.dart';
 import 'colors.dart';
@@ -41,6 +44,7 @@ abstract class AppTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: AppColors.darkGrey.withOpacity(.5),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
@@ -83,12 +87,35 @@ abstract class AppTheme {
       ),
       textTheme: TextTheme(
         displaySmall: TextStyle(
-          fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
+          fontSize: 13.sp,
+          fontWeight: AppFontWeight.regular,
+          color: AppColors.black,
         ),
-        displayMedium: TextStyle(color: AppColors.pink,fontSize: 16.sp,fontWeight: AppFontWeight.regular),
-        bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
-        labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
-        labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
+        displayMedium: TextStyle(
+          color: AppColors.darkGrey,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.medium,
+        ),
+        bodySmall: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.black,
+        ),
+        labelSmall: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 14.sp,
+          color: AppColors.darkGrey,
+        ),
+        labelMedium: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 18.sp,
+          color: AppColors.black,
+        ),
+        headlineMedium: GoogleFonts.imFellEnglish(
+          fontSize: 20.sp,
+          fontWeight: AppFontWeight.medium,
+          color: AppColors.pink,
+        ),
       ),
     );
   }
@@ -103,8 +130,8 @@ abstract class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       surface: AppColors.white,
-        shadow: AppColors.black,
-        onSurface: AppColors.darkGrey
+      shadow: AppColors.black,
+      onSurface: AppColors.darkGrey,
     ),
   );
 }

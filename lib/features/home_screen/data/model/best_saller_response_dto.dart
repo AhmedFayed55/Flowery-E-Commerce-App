@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'best_saller_response_dto.g.dart';
 
 @JsonSerializable()
-class BestSellerResponseDto {
+class BestSellerResponseDto extends Equatable {
   final double? rateAvg;
   final int? rateCount;
   @JsonKey(name: '_id')
@@ -26,7 +27,7 @@ class BestSellerResponseDto {
   final bool? isSuperAdmin;
   final int? sold;
 
-  BestSellerResponseDto({
+  const BestSellerResponseDto({
     this.rateAvg,
     this.rateCount,
     this.id,
@@ -34,7 +35,7 @@ class BestSellerResponseDto {
     this.slug,
     this.description,
     this.imgCover,
-    this.images=const [],
+    this.images = const [],
     this.price,
     this.priceAfterDiscount,
     this.quantity,
@@ -57,7 +58,7 @@ class BestSellerResponseDto {
       title ?? '',
       description ?? '',
       imgCover ?? '',
-      images ,
+      images,
       price ?? 0,
       priceAfterDiscount ?? 0,
       quantity ?? 0,
@@ -65,4 +66,17 @@ class BestSellerResponseDto {
       id ?? '',
     );
   }
+
+  @override
+  List<Object?> get props => [
+    title,
+    description,
+    imgCover,
+    images,
+    price,
+    priceAfterDiscount,
+    quantity,
+    sold,
+    id,
+  ];
 }

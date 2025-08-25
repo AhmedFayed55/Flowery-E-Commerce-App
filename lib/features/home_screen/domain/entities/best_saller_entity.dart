@@ -1,4 +1,6 @@
-class BestSallerEntity {
+import 'package:equatable/equatable.dart';
+
+class BestSallerEntity extends Equatable {
   final String title;
   final String description;
   final String imgCover;
@@ -9,8 +11,8 @@ class BestSallerEntity {
   final int sold;
   final String id;
 
-  BestSallerEntity(
-    this.title,
+  const BestSallerEntity(
+ this.title,
     this.description,
     this.imgCover,
     this.images,
@@ -20,4 +22,17 @@ class BestSallerEntity {
     this.sold,
     this.id,
   );
+
+  @override
+  List<Object?> get props => [
+    title,
+    description,
+    imgCover,
+    images,
+    price,
+    priceAfterDiscount,
+    quantity,
+    sold,
+    id,
+  ];
 }
