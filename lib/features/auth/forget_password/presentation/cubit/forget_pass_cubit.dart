@@ -18,57 +18,48 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   EmailVerifyUseCase emailVerifyUseCase;
   ResetPasswordUseCase resetPasswordUseCase;
 
-
   ForgetPasswordCubit({
     required this.forgetPasswordUseCase,
     required this.emailVerifyUseCase,
     required this.resetPasswordUseCase,
   }) : super(ForgetPasswordState.initial());
 
-  void doIntent(ForgetPasswordEvent event) {
+  Future<void> doIntent(ForgetPasswordEvent event) async {
     switch (event) {
       case GetForgetPasswordEvent():
-        _forgetPassword(event.email);
+        await _forgetPassword(event.email);
         break;
       case GetEmailVerificationEvent():
-        _emailVerify(event.code);
+        await _emailVerify(event.code);
         break;
       case GetResetPasswordEvent():
-        _resetPassword(event.email,event.newPassword);
+        await _resetPassword(event.email, event.newPassword);
         break;
       case GetIsResendOtpEvent():
-        _isResend(event.email);
+        await _isResend(event.email);
         break;
     }
   }
 
-
   Future<void> _resetPassword(String email, String newPassword) async {
-    emit(
-      state.copyWith(
-        isLoadingState: true,
-      ),
+    emit(state.copyWith(isLoadingState: true));
+    ApiResult<ResetPasswordModel> result = await resetPasswordUseCase.call(
+      email,
+      newPassword,
     );
-    ApiResult<ResetPasswordModel> result = await resetPasswordUseCase.call(email,newPassword);
-    switch (result) {
-      case ApiSuccessResult<ResetPasswordModel>():
-        emit(
-          state.copyWith(
-            isLoadingState: false,
-            isSuccessState: true,
-          ),
-        );
-      case ApiErrorResult<ResetPasswordModel>():
-        emit(
-          state.copyWith(
-            isLoadingState: false,
-            isErrorState: true,
-            errorMessage: result.failure.errorMessage,
-          ),
-        );
+    if (result is ApiSuccessResult<ResetPasswordModel>) {
+      emit(state.copyWith(isLoadingState: false, isSuccessState: true));
+    } else if (result is ApiErrorResult<ResetPasswordModel>) {
+      emit(
+        state.copyWith(
+          isLoadingState: false,
+          isErrorState: true,
+          errorMessage: result.failure.errorMessage,
+        ),
+      );
     }
-  }
 
+  }
 
   Future<void> _emailVerify(String code) async {
     emit(
@@ -130,10 +121,9 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
         );
     }
   }
+
   Future<void> _isResend(String email) async {
-    await forgetPasswordUseCase.call(email,);
+    await forgetPasswordUseCase.call(email);
     emit(state.copyWith(isErrorState: false));
   }
-
-
 }
