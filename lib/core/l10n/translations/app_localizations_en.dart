@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enter_first_name => 'Enter first name';
 
   @override
+  String get register => 'Register';
+
+  @override
   String get first_name => 'First name';
 
   @override
@@ -103,4 +106,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_successfully => 'Register Successfully';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get view_all => 'View All';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get best_seller => 'Best seller';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get search => 'search';
+
+  @override
+  String get flower => 'Flower';
 }
