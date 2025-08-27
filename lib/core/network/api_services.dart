@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
@@ -14,4 +16,7 @@ abstract class ApiServices {
  factory ApiServices(Dio dio) = _ApiServices;
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
+
+  @POST(ApiConstants.registerEndpoint)
+  Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
 }
