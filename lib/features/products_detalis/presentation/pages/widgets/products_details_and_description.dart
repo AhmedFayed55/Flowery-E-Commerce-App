@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/domin/entites/product_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class ProductsDetailsAndDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var trans = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -40,7 +42,7 @@ class ProductsDetailsAndDescription extends StatelessWidget {
                   ),
                   verticalSpace(4),
                   Text(
-                    'All prices include tax',
+                    trans.all_products_include_tax ,
                     style: Theme.of(
                       context,
                     ).textTheme.titleSmall!.copyWith(color: Colors.grey.shade500),
@@ -49,9 +51,9 @@ class ProductsDetailsAndDescription extends StatelessWidget {
               ),
               const Spacer(),
           
-              Text("Status: ", style: Theme.of(context).textTheme.displayMedium!),
+              Text( "${trans.status}: ", style: Theme.of(context).textTheme.displayMedium!),
               Text(
-                product.quantity! <= 0 ? "out of stock" : "In stock",
+                product.quantity! <= 0 ?  trans.out_of_stock : trans.in_stock,
                 style: Theme.of(context).textTheme.displaySmall!.copyWith(),
               ),
             ],
@@ -63,7 +65,7 @@ class ProductsDetailsAndDescription extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           verticalSpace(24),
-          Text('Description\n', style: Theme.of(context).textTheme.displayMedium),
+          Text('${trans.description} \n', style: Theme.of(context).textTheme.displayMedium),
           Text(
             product.description!,
             style: Theme.of(context).textTheme.displaySmall!,

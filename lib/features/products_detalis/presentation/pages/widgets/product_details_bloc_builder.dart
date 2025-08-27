@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/widgets/product_details_body.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/view_model/cubit/product_details_cubit.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class ProductDetailsBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var trans = AppLocalizations.of(context)!;
     return Stack(
       children: [
         BlocBuilder<ProductsDetalis, ProductDetailsState>(
@@ -20,9 +22,9 @@ class ProductDetailsBlocBuilder extends StatelessWidget {
             } else {
               return Center(
                 child: Shimmer(
-                  child: const Text(
-                    'Loading....',
-                    style: TextStyle(fontSize: 40, color: Colors.grey),
+                  child:  Text(
+                    trans.loading ,
+                    style: const TextStyle(fontSize: 40, color: Colors.grey),
                   ),
                 ),
               );

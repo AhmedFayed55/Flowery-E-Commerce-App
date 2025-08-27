@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsPage extends StatelessWidget {
-  ProductDetailsPage({super.key});
-  final  String productId = "6745129a90ab40a068540353";
+   ProductDetailsPage({super.key ,required this.productId});
+  final String productId ;
   final viewModel = getIt<ProductsDetalis>();
 
   @override

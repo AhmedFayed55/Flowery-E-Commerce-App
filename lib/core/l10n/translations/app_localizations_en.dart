@@ -109,4 +109,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get product_details => 'Product Details';
+
+  @override
+  String get add_to_cart => 'Add to Cart';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get loding => 'Loding...';
+
+  @override
+  String get all_products_include_tax => 'All prices include tax';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get out_of_stock => 'out of stock';
+
+  @override
+  String get in_stock => 'in stock';
+
+  @override
+  String get description => 'Description';
 }

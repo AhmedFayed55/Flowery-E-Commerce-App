@@ -13,7 +13,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case AppRoutes.register:
-        return MaterialPageRoute(builder: (_) =>  RegisterScreen());
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
@@ -22,7 +22,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const MainLayout());
 
       case AppRoutes.productDetails:
-        return MaterialPageRoute(builder: (_) =>  ProductDetailsPage());
+        return MaterialPageRoute(
+          builder: (_) =>
+              ProductDetailsPage(productId: settings.arguments as String),
+        );
 
       default:
         return unDefinedRoute();

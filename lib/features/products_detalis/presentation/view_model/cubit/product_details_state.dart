@@ -1,6 +1,6 @@
 part of 'product_details_cubit.dart';
 
-class ProductDetailsState {
+class ProductDetailsState extends Equatable {
   bool isLoading = false;
   bool isSuccess = false;
   bool isFailure = false;
@@ -30,4 +30,8 @@ class ProductDetailsState {
       product: product ?? this.product
     );
   }
+  
+  @override
+  // TODO: implement props
+  List<Object?> get props => [isLoading, isSuccess, isFailure, errorMessage, product];
 }
