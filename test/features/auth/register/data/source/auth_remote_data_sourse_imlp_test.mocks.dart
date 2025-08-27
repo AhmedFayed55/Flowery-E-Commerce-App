@@ -3,13 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i3;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
-    as _i5;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i4;
+import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
+    as _i6;
+import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
     as _i2;
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
+    as _i7;
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -26,30 +30,51 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeRegisterResponeDto_0 extends _i1.SmartFake
-    implements _i2.RegisterResponeDto {
-  _FakeRegisterResponeDto_0(Object parent, Invocation parentInvocation)
+class _FakeLoginResponceDto_0 extends _i1.SmartFake
+    implements _i2.LoginResponceDto {
+  _FakeLoginResponceDto_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeRegisterResponeDto_1 extends _i1.SmartFake
+    implements _i3.RegisterResponeDto {
+  _FakeRegisterResponeDto_1(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i3.ApiServices {
+class MockApiServices extends _i1.Mock implements _i4.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.RegisterResponeDto> register(_i5.RegisterBodyDTo? request) =>
+  _i5.Future<_i2.LoginResponceDto> login(
+    _i6.LoginRequestDto? loginRequestDto,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#login, [loginRequestDto]),
+            returnValue: _i5.Future<_i2.LoginResponceDto>.value(
+              _FakeLoginResponceDto_0(
+                this,
+                Invocation.method(#login, [loginRequestDto]),
+              ),
+            ),
+          )
+          as _i5.Future<_i2.LoginResponceDto>);
+
+  @override
+  _i5.Future<_i3.RegisterResponeDto> register(_i7.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i4.Future<_i2.RegisterResponeDto>.value(
-              _FakeRegisterResponeDto_0(
+            returnValue: _i5.Future<_i3.RegisterResponeDto>.value(
+              _FakeRegisterResponeDto_1(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i4.Future<_i2.RegisterResponeDto>);
+          as _i5.Future<_i3.RegisterResponeDto>);
 }
