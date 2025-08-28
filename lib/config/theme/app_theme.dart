@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -55,6 +56,7 @@ abstract class AppTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: AppColors.darkGrey.withOpacity(.5),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
@@ -102,6 +104,14 @@ abstract class AppTheme {
           color: AppColors.black,
         ),
         displayMedium: TextStyle(
+          color: AppColors.darkGrey,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.medium,
+          fontSize: 13.sp,
+          fontWeight: AppFontWeight.regular,
+          color: AppColors.black,
+        ),
+        displayMedium: TextStyle(
           color: AppColors.pink,
           fontSize: 16.sp,
           fontWeight: AppFontWeight.regular,
@@ -115,6 +125,26 @@ abstract class AppTheme {
           fontWeight: AppFontWeight.regular,
           fontSize: 14.sp,
           color: AppColors.darkGrey,
+        ),
+        bodySmall: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.black,
+        ),
+        labelSmall: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 14.sp,
+          color: AppColors.darkGrey,
+        ),
+        labelMedium: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 18.sp,
+          color: AppColors.black,
+        ),
+        headlineMedium: GoogleFonts.imFellEnglish(
+          fontSize: 20.sp,
+          fontWeight: AppFontWeight.medium,
+          color: AppColors.pink,
         ),
         labelMedium: TextStyle(
           fontWeight: AppFontWeight.medium,
@@ -137,7 +167,7 @@ abstract class AppTheme {
       surface: AppColors.white,
       shadow: AppColors.black,
       onSurface: AppColors.darkGrey,
-      onPrimaryFixed: AppColors.white[80],
+      onPrimaryFixed: AppColors.white[80]!,
     ),
   );
 }
