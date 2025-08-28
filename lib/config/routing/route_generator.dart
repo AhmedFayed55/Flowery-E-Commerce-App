@@ -3,6 +3,7 @@ import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/
 import 'package:flowers_ecommerce_app/features/occasions/domain/entities/occasions_tabs_entity.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
+import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/forget_password/presentation/pages/forget_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -15,6 +16,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>  LoginScreen());
 
       case AppRoutes.register:
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
         return MaterialPageRoute(builder: (_) =>  const RegisterScreen());
 
       case AppRoutes.forgetPassword:
@@ -30,6 +32,12 @@ class RouteGenerator {
       case AppRoutes.occasions:
         final args = settings.arguments as List<OccasionsTabsEntity>;
         return MaterialPageRoute(builder: (context) => OccasionsScreen(occasionsList:args));
+
+      case AppRoutes.productDetails:
+        return MaterialPageRoute(
+          builder: (_) =>
+              ProductDetailsPage(productId: settings.arguments as String),
+        );
 
       default:
         return unDefinedRoute();

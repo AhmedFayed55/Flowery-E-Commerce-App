@@ -8,4 +8,5 @@ abstract class ApiConstants {
   static const String ocassion = "Ocassion";
   static const String getSpecificOccasion = "products";
   static const String homeEndpoint='home';
+  static const String products = "products/{productId}";
 }
