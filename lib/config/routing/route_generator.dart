@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/forget_password/presentation/pages/forget_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -16,6 +17,9 @@ class RouteGenerator {
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+
+      case AppRoutes.categories:
+        return MaterialPageRoute(builder: (_) => CategoriesScreen());
 
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());

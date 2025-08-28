@@ -291,6 +291,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register Successfully'**
   String get register_successfully;
+
+  /// No description provided for @filer.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filer;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @sort_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get sort_by;
 }
 
 class _AppLocalizationsDelegate

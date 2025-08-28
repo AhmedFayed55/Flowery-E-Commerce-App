@@ -106,4 +106,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_successfully => 'Register Successfully';
+
+  @override
+  String get filer => 'Filter';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get sort_by => 'Sort by';
 }

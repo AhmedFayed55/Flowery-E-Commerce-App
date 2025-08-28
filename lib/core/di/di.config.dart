@@ -26,6 +26,18 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
+import '../../features/categories/data/datasources/remote/get_all_category_remote_datasource.dart'
+    as _i328;
+import '../../features/categories/data/datasources/remote/get_all_category_remote_datasource_impl.dart'
+    as _i647;
+import '../../features/categories/data/repository_impl/get_all-category_impl.dart'
+    as _i921;
+import '../../features/categories/domain/repository/get_all_category.dart'
+    as _i200;
+import '../../features/categories/domain/usecases/get_all_category_usecase.dart'
+    as _i753;
+import '../../features/categories/presentation/cubit/category_cubit.dart'
+    as _i93;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
 import '../network/dio_module.dart' as _i614;
@@ -55,6 +67,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => dioModule.providePrettyDioLogger(),
     );
     gh.factory<_i804.ApiServices>(() => _i804.ApiServices(gh<_i361.Dio>()));
+    gh.factory<_i328.GetAllCategoryRemoteDatasource>(
+      () => _i647.GetAllCategoryRemoteDatasourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
     gh.factory<_i227.TokenService>(
       () => _i227.TokenService(
         prefs: gh<_i558.FlutterSecureStorage>(),
@@ -64,11 +81,29 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i42.SharedPrefHelper>(
       () => _i42.SharedPrefHelper(gh<_i460.SharedPreferences>()),
     );
+    gh.factory<_i200.GetAllCategoryRepositoryContract>(
+      () => _i921.GetAllCategoryRepositoryImpl(
+        getAllCategoryRemoteDatasource:
+            gh<_i328.GetAllCategoryRemoteDatasource>(),
+      ),
+    );
     gh.factory<_i637.AuthRemoteDataSource>(
       () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
     );
     gh.factory<_i975.AuthRepo>(
       () => _i990.AuthRepoImpl(gh<_i637.AuthRemoteDataSource>()),
+    );
+    gh.factory<_i753.GetAllCategoryUseCase>(
+      () => _i753.GetAllCategoryUseCase(
+        getAllCategoryRepositoryContract:
+            gh<_i200.GetAllCategoryRepositoryContract>(),
+      ),
+    );
+    gh.factory<_i93.CategoryCubit>(
+      () => _i93.CategoryCubit(
+        getAllCategoryRepositoryContract:
+            gh<_i200.GetAllCategoryRepositoryContract>(),
+      ),
     );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
