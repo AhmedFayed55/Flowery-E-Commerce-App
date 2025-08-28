@@ -3,7 +3,6 @@ import 'package:flowers_ecommerce_app/features/categories/domain/entity/category
 
 class CategoryState {
   bool isLoading;
-  bool skeletonizerLoading;
   bool isSuccess;
   bool isError;
   Failure? errorMessage;
@@ -11,7 +10,6 @@ class CategoryState {
 
   CategoryState({
     required this.isLoading,
-    required this.skeletonizerLoading,
     required this.isSuccess,
     required this.isError,
     required this.errorMessage,
@@ -22,7 +20,6 @@ class CategoryState {
     return CategoryState(
       isLoading: false,
       isSuccess: false,
-      skeletonizerLoading: false,
       isError: false,
       listCategoryModel: [],
       errorMessage: Failure(errorMessage: ''),
@@ -31,7 +28,6 @@ class CategoryState {
 
   CategoryState copyWith({
     bool? isLoading,
-    bool? skeletonizerLoading,
     bool? isSuccess,
     bool? isError,
     List<CategoryModel>? listCategoryModel,
@@ -39,7 +35,6 @@ class CategoryState {
   }) {
     return CategoryState(
       isLoading: isLoading ?? this.isLoading,
-      skeletonizerLoading: skeletonizerLoading ?? this.skeletonizerLoading,
       listCategoryModel: listCategoryModel ?? this.listCategoryModel,
       isSuccess: isSuccess ?? this.isSuccess,
       isError: isError ?? this.isError,

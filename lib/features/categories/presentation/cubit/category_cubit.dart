@@ -24,17 +24,17 @@ class CategoryCubit extends Cubit<CategoryState> {
   }
 
   Future<void> _getAllCategory() async {
-    emit(state.copyWith(skeletonizerLoading: true));
+    emit(state.copyWith(isLoading: true));
     ApiResult<List<CategoryModel>> result =
         await getAllCategoryUseCase.call();
     switch (result) {
       case ApiSuccessResult<List<CategoryModel>>():
-        emit(state.copyWith(isSuccess: true,skeletonizerLoading: false,isLoading: false,listCategoryModel: result.data));
+        emit(state.copyWith(isSuccess: true,isLoading: false,listCategoryModel: result.data));
       case ApiErrorResult<List<CategoryModel>>():
         emit(
           state.copyWith(
             isError: true,
-            skeletonizerLoading: false,
+            isLoading: false,
             errorMessage: Failure(
               errorMessage: result.failure.errorMessage,
               code: result.failure.code,
