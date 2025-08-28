@@ -339,6 +339,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'add to cart'**
   String get add_to_cart;
+
+  /// No description provided for @no_products.
+  ///
+  /// In en, this message translates to:
+  /// **'No Products founded'**
+  String get no_products;
 }
 
 class _AppLocalizationsDelegate

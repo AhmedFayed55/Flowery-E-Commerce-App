@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/forget_password/presentation/pages/forget_password_screen.dart';
@@ -10,10 +11,10 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) =>  LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
 
       case AppRoutes.register:
-        return MaterialPageRoute(builder: (_) =>  RegisterScreen());
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
@@ -22,7 +23,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const MainLayout());
 
       case AppRoutes.mostSelling:
-        return MaterialPageRoute(builder: (context) => const MostSellingPage());
+        var args = settings.arguments as List<ProductsEntity>;
+        return MaterialPageRoute(
+          builder: (context) => MostSellingPage(products: args),
+        );
 
       default:
         return unDefinedRoute();

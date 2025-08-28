@@ -20,7 +20,12 @@ class MostSellingProductsGridView extends StatelessWidget {
         ),
         itemCount: products.length,
         itemBuilder: (context, index) {
-          return ProductCart(product: products[index]);
+          return GestureDetector(
+            onTap: () {
+              // Navigator.pushNamed(context, AppRoutes.productDetails,
+              //     arguments: products[index].id);
+            },
+            child: ProductCart(product: products[index]));
         },
       ),
     );

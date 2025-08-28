@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MostSellingPage extends StatelessWidget {
-  const MostSellingPage({super.key ,required this.products});
-  final List<ProductsEntity> products ;
+  const MostSellingPage({super.key , required this.products});
+  final List<ProductsEntity> products;
 
   @override
   Widget build(BuildContext context) {
-    var trans = AppLocalizations.of(context)!; 
+    var trans = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -36,7 +36,6 @@ class MostSellingPage extends StatelessWidget {
                       trans.bloom_with_our_exquisite_best_sellers,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    
                   ],
                 ),
               ],
@@ -45,16 +44,24 @@ class MostSellingPage extends StatelessWidget {
           ],
         ),
       ),
-      body: ListView(
-        children: [
-          verticalSpace(11.h),
-          MostSellingProductsGridView(products: products),
-        ],
-      ),
+      body: products.isEmpty
+          ? Center(
+              child: Text(
+                trans.no_products,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            )
+          : ListView(
+              children: [
+                verticalSpace(11.h),
+                MostSellingProductsGridView(products: products),
+              ],
+            ),
     );
   }
 }
 
+// final List<ProductsEntity> empty = [];
 // final List<ProductsEntity> products = [
 //   ProductsEntity(
 //     id: "673e1cd711599201718280fb",
@@ -438,4 +445,3 @@ class MostSellingPage extends StatelessWidget {
 //   ),
 //   // 🔽 كمل بنفس الشكل لباقي البرودكتس (لحد 15) بنفس الداتا من الريسبونس
 // ];
- 

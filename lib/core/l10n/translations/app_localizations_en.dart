@@ -131,4 +131,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get add_to_cart => 'add to cart';
+
+  @override
+  String get no_products => 'No Products founded';
 }
