@@ -118,4 +118,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get best_seller => 'Best Seller';
+
+  @override
+  String get bloom_with_our_exquisite_best_sellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get add_to_cart => 'add to cart';
 }
