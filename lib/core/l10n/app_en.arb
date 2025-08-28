@@ -30,6 +30,11 @@
   "loading": "Loading...",
   "error": "Error",
   "login_successfully": "Login successfully",
+  "register_successfully": "Register Successfully",
+  "bloom_with" : "Bloom with our exquisite best sellers",
+  "occasion": "Occasion",
+  "add_to_cart": "Add to cart",
+  "egp": "EGP"
   "home": "Home",
   "categories": "Categories",
   "cart": "Cart",
