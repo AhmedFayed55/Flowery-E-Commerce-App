@@ -35,6 +35,19 @@ abstract class AppTheme {
           ),
         ),
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.white[80],
+        ),
+        selectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.pink,
+        ),
+      ),
       checkboxTheme: const CheckboxThemeData(
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
@@ -83,29 +96,47 @@ abstract class AppTheme {
       ),
       textTheme: TextTheme(
         displaySmall: TextStyle(
-            fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
+          fontSize: 13.sp,
+          fontWeight: AppFontWeight.regular,
+          color: AppColors.black,
         ),
-        displayMedium: TextStyle(color: AppColors.pink,fontSize: 16.sp,fontWeight: AppFontWeight.regular),
-        bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
-        labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
-        labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
+        displayMedium: TextStyle(
+          color: AppColors.pink,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.regular,
+        ),
+        bodySmall: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.black,
+        ),
+        labelSmall: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 14.sp,
+          color: AppColors.darkGrey,
+        ),
+        labelMedium: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 18.sp,
+          color: AppColors.black,
+        ),
       ),
     );
   }
 
   static ThemeData lightTheme = getTheme(
     ColorScheme(
-        brightness: Brightness.light,
-        primary: AppColors.pink,
-        onPrimary: AppColors.white,
-        secondary: AppColors.black,
-        onSecondary: AppColors.white,
-        error: AppColors.red,
-        onError: AppColors.white,
-        surface: AppColors.white,
-        shadow: AppColors.black,
-        onSurface: AppColors.darkGrey,
-        onPrimaryFixed: AppColors.white[80]
+      brightness: Brightness.light,
+      primary: AppColors.pink,
+      onPrimary: AppColors.white,
+      secondary: AppColors.black,
+      onSecondary: AppColors.white,
+      error: AppColors.red,
+      onError: AppColors.white,
+      surface: AppColors.white,
+      shadow: AppColors.black,
+      onSurface: AppColors.darkGrey,
+      onPrimaryFixed: AppColors.white[80],
     ),
   );
 }

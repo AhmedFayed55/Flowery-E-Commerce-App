@@ -1,6 +1,9 @@
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/main_layout/widgets/custom_bottom_navigation_bar.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -22,12 +25,45 @@ class _MainLayoutState extends State<MainLayout> {
       Center(child: Text(locale.profile)),
     ];
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(currentIndex: _currentIndex, onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          _buildBottomNavigationBarItem(AppImages.homeIcon, locale.home, 0),
+          _buildBottomNavigationBarItem(AppImages.categoriesIcon, locale.categories, 1),
+          _buildBottomNavigationBarItem(AppImages.cartIcon, locale.cart, 2),
+          _buildBottomNavigationBarItem(AppImages.profileIcon, locale.profile, 3),
+        ],
+      ),
       body: IndexedStack(index: _currentIndex, children: pages),
+    );
+  }
+
+  BottomNavigationBarItem _buildBottomNavigationBarItem(
+    String icon,
+    String label,
+      int index
+  ) {
+    return BottomNavigationBarItem(
+      icon: Column(
+        children: [
+          SvgPicture.asset(
+            icon,
+            width: 24,
+            height: 24,
+            colorFilter: ColorFilter.mode(
+              _currentIndex == index ? AppColors.pink : AppColors.white[80]!,
+              BlendMode.srcIn,
+            ),
+          ),
+          verticalSpace(7)
+        ],
+      ),
+      label: label
     );
   }
 }
