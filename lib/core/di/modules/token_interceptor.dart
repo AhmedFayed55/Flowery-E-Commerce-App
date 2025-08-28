@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flowers_ecommerce_app/core/constants/constants.dart';
-
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/services/token_service.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -15,7 +14,7 @@ class TokenInterceptor extends Interceptor {
   ) async {
     final String? token = await tokenService.getToken();
     if (token != null) {
-      options.headers[Constants.token] = token;
+      options.headers[AppConstants.token] = token;
     }
     return super.onRequest(options, handler);
   }

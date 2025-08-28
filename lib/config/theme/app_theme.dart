@@ -48,7 +48,8 @@ abstract class AppTheme {
           color: AppColors.pink,
         ),
       ),
-      checkboxTheme: const CheckboxThemeData(
+      checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(),
+        fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
       ),
