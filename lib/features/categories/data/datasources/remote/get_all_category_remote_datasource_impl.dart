@@ -22,13 +22,13 @@ class GetAllCategoryRemoteDatasourceImpl
       List<CategoryModel>? categoryModel = response.categories
           ?.map((categoriesDTO) => categoriesDTO.toCategoryModel())
           .toList();
-      return ApiSuccessResult(data: categoryModel ?? []);
+      return ApiSuccessResult<List<CategoryModel>>(data: categoryModel ?? []);
     } on DioException catch (dioError) {
-      return ApiErrorResult(
+      return ApiErrorResult<List<CategoryModel>>(
         failure: Failure(errorMessage: dioError.message ?? ""),
       );
     } catch (error) {
-      return ApiErrorResult(failure: Failure(errorMessage: error.toString()));
+      return ApiErrorResult<List<CategoryModel>>(failure: Failure(errorMessage: error.toString()));
     }
   }
 }

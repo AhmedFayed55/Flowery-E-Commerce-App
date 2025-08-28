@@ -101,8 +101,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i93.CategoryCubit>(
       () => _i93.CategoryCubit(
-        getAllCategoryRepositoryContract:
-            gh<_i200.GetAllCategoryRepositoryContract>(),
+        getAllCategoryUseCase: gh<_i753.GetAllCategoryUseCase>(),
       ),
     );
     gh.factory<_i752.RegisterUsecase>(
