@@ -39,7 +39,17 @@ abstract class AppTheme {
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
       ),
-
+      tabBarTheme: TabBarThemeData(
+        dividerHeight: 0,
+        indicatorColor: AppColors.pink,
+        tabAlignment: TabAlignment.start,
+        labelStyle: TextStyle(
+            color: AppColors.pink,fontSize: 16.sp,fontWeight: AppFontWeight.regular
+        ),
+        unselectedLabelStyle:TextStyle(
+            color: AppColors.darkGrey,fontSize: 16.sp,fontWeight: AppFontWeight.regular
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
@@ -89,6 +99,9 @@ abstract class AppTheme {
         bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
         labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
         labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
+        bodyLarge: TextStyle(fontWeight: AppFontWeight.medium, fontSize: 20.sp,color: AppColors.black),
+        bodyMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 14.sp,color: AppColors.white),
+        titleSmall: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 14.sp,color: AppColors.black)
       ),
     );
   }
