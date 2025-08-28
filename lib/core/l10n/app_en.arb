@@ -31,6 +31,15 @@
   "error": "Error",
   "login_successfully": "Login successfully",
   "register_successfully": "Register Successfully",
+  "please_enter_your_email_associated_to_your_account": "Please enter your email associated to\n your account",
+  "confirm": "Confirm",
+  "email_verification": "Email verification",
+  "please_enter_your_code_that_send_to_your_email_address": "Please enter your code that send to your\n email address",
+  "didnot_receive_code": "Didn't receive code? ",
+  "resend": "Resend",
+  "reset_password": "Reset password",
+  "new_password": "New password",
+  "password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least": "Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least"
   "product_details": "Product Details",
   "add_to_cart": "Add to Cart",
   "cart": "Cart",
@@ -44,27 +53,19 @@
   "out_of_stock" : "out of stock",
   "in_stock" : "in stock",
   "description" : "Description"
-
-
-  "register_successfully": "Register Successfully",
   "bloom_with" : "Bloom with our exquisite best sellers",
   "occasion": "Occasion",
-  "add_to_cart": "Add to cart",
   "egp": "EGP"
   "home": "Home",
   "categories": "Categories",
-  "cart": "Cart",
   "profile": "Profile",
   "continue_as_guest":"Continue as guest",
   "email_not_valid":"This Email is not valid",
   "email_required":"Email is required",
   "password_not_valid":"Invalid password",
-  "password_empty":"Password is required"
-  "register_successfully": "Register Successfully",
-  "egp":"EGP",
+  "password_empty":"Password is required",
   "view_all":"View All",
   "best_seller":"Best seller",
-  "occasion":"Occasion",
   "search":"search",
   "flower":"Flower"
 }

@@ -28,6 +28,17 @@ abstract class Validations {
     return null;
   }
 
+  static String? confirmPassword(String? newPassword, [String? confirmPassword]) {
+    if (newPassword == null || newPassword.isEmpty) {
+      return "Password is required";
+    } else if (newPassword.length < 6) {
+      return "Password must be at least 6 characters";
+    } else if (confirmPassword != null && newPassword != confirmPassword) {
+      return "Passwords do not match";
+    }
+    return null;
+  }
+
   static String? validateConfirmPassword(
     String? password,
     String? confirmPassword,
