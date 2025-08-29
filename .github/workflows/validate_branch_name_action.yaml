@@ -1,0 +1,20 @@
+name: Validate Branch Name Action
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  Validate_Branch:
+    name: Validator Branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Validate Branch
+        uses: KinsonDigital/BranchValidator@v1.0.0-preview.4
+        with:
+          branch-name: "${{ github.ref }}"
+          validation-logic: "regexMatch('^(feature|fix)/ECOM-[0-9]+(-[A-Za-z]+)+$')"
+          trim-from-start: "refs/heads/"
+          fail-when-not-valid: true
