@@ -15,6 +15,6 @@ jobs:
         uses: KinsonDigital/BranchValidator@v1.0.0-preview.4
         with:
           branch-name: ${{ github.head_ref || github.ref_name }}
-          validation-logic: "regexMatch(^(feature|fix)/ECOM-[0-9]+(-[A-Za-z]+)+$)"
+          validation-logic: "regexMatch(^feature/ECOM-[0-9]+(-[A-Za-z]+)+$)"
           trim-from-start: "refs/heads/"
           fail-when-not-valid: true
