@@ -1,13 +1,14 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../main_layout/tabs/home_screen/domain/entities/best_saller_entity.dart';
+
 class ProductCart extends StatelessWidget {
   const ProductCart({super.key, required this.product});
-  final ProductsEntity product;
+  final BestSallerEntity product;
 
   String editTitle(String title) {
     List<String> words = title.split(' ');
@@ -64,22 +65,23 @@ class ProductCart extends StatelessWidget {
                         style: theme.textTheme.titleSmall,
                       ),
                       Text(
-                        product.price.toString(),
+                        product.price.toInt().toString(),
                         style: theme.textTheme.titleSmall,
                       ),
                       verticalSpace(5),
                       Text(
-                        product.priceAfterDiscount.toString(),
+                        product.priceAfterDiscount.toInt().toString(),
                         style: theme.textTheme.bodySmall!.copyWith(
                           color: AppColors.darkGrey,
                           decoration: TextDecoration.lineThrough,
+                          fontSize: 11.sp
                         ),
                       ),
                       verticalSpace(5),
                       Text(
                         calculateDiscount(
-                          product.price!.toInt(),
-                          product.priceAfterDiscount!.toInt(),
+                          product.price.toInt(),
+                          product.priceAfterDiscount.toInt(),
                         ),
                         style: theme.textTheme.bodySmall!.copyWith(
                           color: AppColors.green,

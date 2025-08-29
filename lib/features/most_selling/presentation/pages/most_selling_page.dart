@@ -1,16 +1,19 @@
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/widgets/most_selling_products_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../main_layout/tabs/home_screen/domain/entities/best_saller_entity.dart';
+
+
 class MostSellingPage extends StatelessWidget {
   const MostSellingPage({super.key , required this.products});
-  final List<ProductsEntity> products;
+  final List<BestSallerEntity> products;
 
   @override
   Widget build(BuildContext context) {
+    print("===========================${products.length}==================");
     var trans = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(

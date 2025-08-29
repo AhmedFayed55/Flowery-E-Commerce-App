@@ -2,7 +2,6 @@ import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'config/routing/route_generator.dart';
 import 'config/theme/app_theme.dart';
 import 'core/l10n/translations/app_localizations.dart';

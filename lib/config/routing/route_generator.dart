@@ -4,34 +4,32 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
-import 'package:flowers_ecommerce_app/features/occasions/domain/entities/occasions_tabs_entity.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/main_layout/main_layout.dart';
+import '../../features/main_layout/tabs/home_screen/domain/entities/best_saller_entity.dart';
+import '../../features/main_layout/tabs/home_screen/domain/entities/product_entity.dart';
+import '../../features/main_layout/tabs/home_screen/presentaion/pages/home_screen.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case AppRoutes.register:
-        return MaterialPageRoute(builder: (_) => RegisterScreen());
-        return MaterialPageRoute(builder: (_) => RegisterScreen());
-        return MaterialPageRoute(builder: (_) =>  const RegisterScreen());
+        return MaterialPageRoute(builder: (_) => const RegisterScreen());
 
       case AppRoutes.forgetPassword:
-        return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
       case AppRoutes.categories:
-        return MaterialPageRoute(builder: (_) => CategoriesScreen());
+        return MaterialPageRoute(builder: (_) => const CategoriesScreen());
 
       case AppRoutes.emailVerification:
         final args = settings.arguments as EmailVerifyArgs;
@@ -58,8 +56,10 @@ class RouteGenerator {
         );
 
       case AppRoutes.occasions:
-        final args = settings.arguments as List<OccasionsTabsEntity>;
-        return MaterialPageRoute(builder: (context) => OccasionsScreen(occasionsList:args));
+        final args = settings.arguments as Map<String,dynamic>;
+        return MaterialPageRoute(builder: (context) => OccasionsScreen(occasionsList:
+        args["occasions"],
+          startedIndex: args["index"],));
 
       case AppRoutes.productDetails:
         return MaterialPageRoute(
@@ -68,7 +68,7 @@ class RouteGenerator {
         );
 
       case AppRoutes.mostSelling:
-        var args = settings.arguments as List<ProductsEntity>;
+        var args = settings.arguments as List<BestSallerEntity>;
         return MaterialPageRoute(
           builder: (context) => MostSellingPage(products: args),
         );

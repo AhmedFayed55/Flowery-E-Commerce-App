@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
+import 'package:flowers_ecommerce_app/features/main_layout/tabs/home_screen/domain/entities/occasion_entity.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/manager/occasions_cubit.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/manager/occasions_event.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/widgets/occasions_appbar.dart';
@@ -7,11 +8,11 @@ import 'package:flowers_ecommerce_app/features/occasions/presentation/widgets/ta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../domain/entities/occasions_tabs_entity.dart';
 
 class OccasionsScreen extends StatefulWidget {
-  const OccasionsScreen({super.key, required this.occasionsList});
-  final List<OccasionsTabsEntity> occasionsList;
+  const OccasionsScreen({super.key, required this.occasionsList, required this.startedIndex});
+  final List<OccasionEntity> occasionsList;
+  final int startedIndex ;
 
   @override
   State<OccasionsScreen> createState() => _OccasionsScreenState();
@@ -23,7 +24,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderSt
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: widget.occasionsList.length, vsync: this);
+    _tabController = TabController(length: widget.occasionsList.length, vsync: this,initialIndex: widget.startedIndex);
   }
 
   @override
@@ -34,10 +35,11 @@ class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    List<String> tabs = widget.occasionsList.map((e) => e.name!).toList();
-    List<String> ids = widget.occasionsList.map((e) => e.id!).toList();
+    List<String> tabs = widget.occasionsList.map((e) => e.name).toList();
+    List<String> ids = widget.occasionsList.map((e) => e.id).toList();
+    final viewModel = getIt<OccasionsCubit>();
     return BlocProvider(
-      create: (context) => getIt<OccasionsCubit>(),
+      create: (context) => viewModel..doIntent(LoadOccasionsEvent(), widget.occasionsList[widget.startedIndex].id),
       child: Scaffold(
         body: SafeArea(
           child: Padding(
@@ -53,7 +55,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderSt
                       TabBar(
                         controller: _tabController,
                         onTap: (index){
-                          context.read<OccasionsCubit>().doIntent(LoadOccasionsEvent(), ids[index]);
+                          getIt<OccasionsCubit>().doIntent(LoadOccasionsEvent(), ids[index]);
                         },
                         isScrollable: true,
                         tabs: tabs.map((tab) => Tab(text: tab)).toList(),
@@ -62,7 +64,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderSt
                       TabBarViewBlocBuilder(
                         ids: ids,
                         tabs: tabs,
-                        controller: _tabController,
+                        controller: _tabController, startedIndex: widget.startedIndex,
                       ),
                     ],
                   ),

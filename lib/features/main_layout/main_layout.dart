@@ -2,8 +2,10 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/features/main_layout/tabs/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../categories/presentation/pages/categories_screen.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -19,10 +21,10 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
-      Center(child: Text(locale.home)),
-      Center(child: Text(locale.categories)),
-      Center(child: Text(locale.cart)),
-      Center(child: Text(locale.profile)),
+      const Center(child: HomeScreen()),
+      const Center(child: CategoriesScreen()),
+      Center(child: Text(locale.cart,style: const TextStyle(color: AppColors.pink),)),
+      Center(child: Text(locale.profile,style: const TextStyle(color: AppColors.pink),)),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(

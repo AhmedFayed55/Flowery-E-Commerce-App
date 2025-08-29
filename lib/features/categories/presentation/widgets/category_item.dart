@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_cubit.dart';
@@ -18,84 +20,88 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
-        return Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            border: Border.all(width: 1),
-            borderRadius: BorderRadiusGeometry.circular(8),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Image.network(
-                  product.imgCover ?? "",
-                  width: 147.w,
-                  height: 131.h,
-                  fit: BoxFit.fill,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return SizedBox(
-                      height: 131.h,
-                      child: const Center(child: CircularProgressIndicator()),
-                    );
-                  },
-                  errorBuilder: (context, error, stackTrace) {
-                    return SizedBox(
-                      height: 131.h,
-                      child: const Icon(Icons.error, size: 50, color: Colors.red),
-                    );
-                  },
+        return InkWell(
+          onTap: () => context.pushNamed(AppRoutes.productDetails, arguments: product.id),
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(width: 1),
+              borderRadius: BorderRadiusGeometry.circular(8),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Image.network(
+                    product.imgCover ?? "",
+                    width: 147.w,
+                    height: 131.h,
+                    fit: BoxFit.fill,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return SizedBox(
+                        height: 131.h,
+                        child: const Center(child: CircularProgressIndicator()),
+                      );
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return SizedBox(
+                        height: 131.h,
+                        child: const Icon(Icons.error, size: 50, color: Colors.red),
+                      );
+                    },
+                  ),
                 ),
-              ),
-              verticalSpace(8),
-              Text(
-                product.title ?? "",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-              ),
-              verticalSpace(4),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text:
-                          "EGP ${product.priceAfterDiscount ?? ""}  ",
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    TextSpan(
-                      text:
-                          "${product.price ?? ""}",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "  20%",
-                      style: Theme.of(
-                        context,
-                      ).textTheme.labelSmall?.copyWith(color: AppColors.green),
-                    ),
-                  ],
+                verticalSpace(8),
+                Text(
+                  product.title ?? "",
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  maxLines: 1,
                 ),
-              ),
-              const Spacer(),
-              SizedBox(
-                height: 30.h,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add to Cart
-                  },
-                  child: Row(
+                verticalSpace(4),
+                RichText(
+                  text: TextSpan(
                     children: [
-                      const Icon(Icons.shopping_cart_outlined),
-                      horizontalSpace(8),
-                      const Text("Add to cart"),
+                      TextSpan(
+                        text:
+                            "EGP ${product.priceAfterDiscount ?? ""}  ",
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
+                      TextSpan(
+                        text:
+                            "${product.price ?? ""}",
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "  20%",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelSmall?.copyWith(color: AppColors.green),
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                const Spacer(),
+                SizedBox(
+                  height: 30.h,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Add to Cart
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.shopping_cart_outlined),
+                        horizontalSpace(8),
+                        const Text("Add to cart"),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

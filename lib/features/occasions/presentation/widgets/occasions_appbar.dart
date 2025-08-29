@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class OccasionsAppbar extends StatelessWidget {
         Row(
           spacing: 10.w,
           children: [
-            const Icon(Icons.arrow_back_ios_new),
+            IconButton(onPressed: () => context.pop(), icon: const Icon(Icons.arrow_back_ios_new)),
             Text(locale.occasion, style: theme.textTheme.bodyLarge,),
           ],
         ),

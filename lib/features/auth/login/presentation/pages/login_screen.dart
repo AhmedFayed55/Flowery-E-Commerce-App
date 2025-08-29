@@ -1,9 +1,11 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/dialogue_utils.dart';
 import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
 import 'package:flowers_ecommerce_app/core/helpers/regex.dart';
+import 'package:flowers_ecommerce_app/core/helpers/validators.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_bloc.dart';
@@ -13,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// ignore: must_be_immutable
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -24,8 +25,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   ValueNotifier<bool> ischeck = ValueNotifier(false);
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController(text: "ahmedfaid491@gmail.com");
+  TextEditingController passwordController = TextEditingController(text: "A7medfaid@55");
   @override
   void dispose() {
     emailController.dispose();
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppLocalizations.of(context)!.login_successfully,
                 );
 
-                Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
+                context.pushReplacementNamed(AppRoutes.mainLayout);
               }
             },
             builder: (BuildContext context, LoginState state) {
@@ -78,14 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     spacing: 25.sp,
                     children: [
                       TextFormField(
-                        validator: (value) {
-                          if (AppRegExp.isEmailValid(emailController.text)==false) {
-                            return AppLocalizations.of(
-                              context,
-                            )!.email_not_valid;
-                          }
-                          return null;
-                        },
+                        validator: Validations.validateEmail,
                         controller: emailController,
                         decoration: InputDecoration(
                           labelText: AppLocalizations.of(context)!.email,
@@ -133,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const Spacer(),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () => context.pushNamed(AppRoutes.forgetPassword),
                             child: Text(
                               '${AppLocalizations.of(context)!.forget_password}?',
                               style: Theme.of(context).textTheme.labelSmall!
@@ -162,8 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                            context,
+                          context.pushReplacementNamed(
                             AppRoutes.mainLayout,
                           );
                         },

@@ -148,12 +148,6 @@ abstract class AppLocalizations {
   /// **'Sign up'**
   String get sign_up;
 
-  /// No description provided for @continue_as_guest.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue as guest'**
-  String get continue_as_guest;
-
   /// No description provided for @enter_first_name.
   ///
   /// In en, this message translates to:
@@ -286,11 +280,169 @@ abstract class AppLocalizations {
   /// **'Login successfully'**
   String get login_successfully;
 
+  /// No description provided for @filer.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filer;
+
+  /// No description provided for @sort_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get sort_by;
+
+  /// No description provided for @no_products_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No products found'**
+  String get no_products_found;
+
   /// No description provided for @register_successfully.
   ///
   /// In en, this message translates to:
   /// **'Register Successfully'**
   String get register_successfully;
+
+  /// No description provided for @please_enter_your_email_associated_to_your_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email associated to\n your account'**
+  String get please_enter_your_email_associated_to_your_account;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @email_verification.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verification'**
+  String get email_verification;
+
+  /// No description provided for @please_enter_your_code_that_send_to_your_email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your code that send to your\n email address'**
+  String get please_enter_your_code_that_send_to_your_email_address;
+
+  /// No description provided for @didnot_receive_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code? '**
+  String get didnot_receive_code;
+
+  /// No description provided for @resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get resend;
+
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get reset_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get new_password;
+
+  /// No description provided for @password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least'**
+  String
+  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least;
+
+  /// No description provided for @product_details.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Details'**
+  String get product_details;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @quantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get quantity;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @loding.
+  ///
+  /// In en, this message translates to:
+  /// **'Loding...'**
+  String get loding;
+
+  /// No description provided for @all_products_include_tax.
+  ///
+  /// In en, this message translates to:
+  /// **'All prices include tax'**
+  String get all_products_include_tax;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @out_of_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'out of stock'**
+  String get out_of_stock;
+
+  /// No description provided for @in_stock.
+  ///
+  /// In en, this message translates to:
+  /// **'in stock'**
+  String get in_stock;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @bloom_with.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloom_with;
+
+  /// No description provided for @add_to_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get add_to_cart;
+
+  /// No description provided for @occasion.
+  ///
+  /// In en, this message translates to:
+  /// **'Occasion'**
+  String get occasion;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:
@@ -303,17 +455,18 @@ abstract class AppLocalizations {
   /// **'Categories'**
   String get categories;
 
-  /// No description provided for @cart.
-  ///
-  /// In en, this message translates to:
-  /// **'Cart'**
-  String get cart;
-
   /// No description provided for @profile.
   ///
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @continue_as_guest.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continue_as_guest;
+
   /// No description provided for @email_not_valid.
   ///
   /// In en, this message translates to:
@@ -332,35 +485,59 @@ abstract class AppLocalizations {
   /// **'Invalid password'**
   String get password_not_valid;
 
-  /// No description provided for @password_empty.
-  ///
-  /// In en, this message translates to:
-  /// **'Password is required'**
-  String get password_empty;
-
-  /// No description provided for @bloom_with.
+  /// No description provided for @bloom_with_our_exquisite_best_sellers.
   ///
   /// In en, this message translates to:
   /// **'Bloom with our exquisite best sellers'**
-  String get bloom_with;
-
-  /// No description provided for @occasion.
-  ///
-  /// In en, this message translates to:
-  /// **'Occasion'**
-  String get occasion;
-
-  /// No description provided for @add_to_cart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
-  String get add_to_cart;
+  String get bloom_with_our_exquisite_best_sellers;
 
   /// No description provided for @egp.
   ///
   /// In en, this message translates to:
   /// **'EGP'**
   String get egp;
+
+  /// No description provided for @no_products.
+  ///
+  /// In en, this message translates to:
+  /// **'No Products founded'**
+  String get no_products;
+
+  /// No description provided for @password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_empty;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get view_all;
+
+  /// No description provided for @best_seller.
+  ///
+  /// In en, this message translates to:
+  /// **'Best seller'**
+  String get best_seller;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'search'**
+  String get search;
+
+  /// No description provided for @flower.
+  ///
+  /// In en, this message translates to:
+  /// **'Flower'**
+  String get flower;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
 }
 
 class _AppLocalizationsDelegate

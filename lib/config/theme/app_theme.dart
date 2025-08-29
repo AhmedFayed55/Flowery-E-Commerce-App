@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/utils/font_weight.dart';
 import 'colors.dart';
 
@@ -20,6 +19,19 @@ abstract class AppTheme {
           color: AppColors.black,
         ),
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.white[80],
+        ),
+        selectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.pink,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.pink,
@@ -36,21 +48,7 @@ abstract class AppTheme {
           ),
         ),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
-        unselectedLabelStyle: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.white[80],
-        ),
-        selectedLabelStyle: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.pink,
-        ),
-      ),
-      checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(),
-        fillColor: WidgetStatePropertyAll(Colors.transparent),
+      checkboxTheme: const CheckboxThemeData(
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
       ),
@@ -109,63 +107,23 @@ abstract class AppTheme {
       ),
       textTheme: TextTheme(
         displaySmall: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: AppFontWeight.regular,
-          color: AppColors.black,
+          fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
         ),
         displayMedium: TextStyle(
-          color: AppColors.darkGrey,
-          fontSize: 16.sp,
-          fontWeight: AppFontWeight.medium,
-          fontSize: 13.sp,
-          fontWeight: AppFontWeight.regular,
-          color: AppColors.black,
-        ),
-        displayMedium: TextStyle(
-          color: AppColors.pink,
-          fontSize: 16.sp,
-          fontWeight: AppFontWeight.regular,
-        ),
-        bodySmall: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.black,
-        ),
-        labelSmall: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 14.sp,
-          color: AppColors.darkGrey,
-        ),
-        bodySmall: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.black,
-        ),
-        labelSmall: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 14.sp,
-          color: AppColors.darkGrey,
-        ),
-        labelMedium: TextStyle(
-          fontWeight: AppFontWeight.medium,
-          fontSize: 18.sp,
-          color: AppColors.black,
-        ),
+            color: AppColors.darkGrey,
+                    fontSize: 16.sp,
+                    fontWeight: AppFontWeight.medium,),
+          //   color: AppColors.pink,fontSize: 16.sp,fontWeight: AppFontWeight.regular),
+        bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
+        labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
+        labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
         headlineMedium: GoogleFonts.imFellEnglish(
           fontSize: 20.sp,
           fontWeight: AppFontWeight.medium,
           color: AppColors.pink,
         ),
-        labelMedium: TextStyle(
-          fontWeight: AppFontWeight.medium,
-          fontSize: 18.sp,
-          color: AppColors.black,
-        ),
-        displayMedium: TextStyle(color: AppColors.black,fontSize: 16.sp,fontWeight: AppFontWeight.medium),
+
         displayLarge: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 20.sp,color: AppColors.black),
-        bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
-        labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
-        labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
         bodyLarge: TextStyle(fontWeight: AppFontWeight.medium, fontSize: 20.sp,color: AppColors.black),
         bodyMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 14.sp,color: AppColors.white),
         titleSmall: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 14.sp,color: AppColors.black)
@@ -174,7 +132,7 @@ abstract class AppTheme {
   }
 
   static ThemeData lightTheme = getTheme(
-    ColorScheme(
+    const ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.pink,
       onPrimary: AppColors.white,
@@ -183,9 +141,8 @@ abstract class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       surface: AppColors.white,
-      shadow: AppColors.black,
-      onSurface: AppColors.darkGrey,
-      onPrimaryFixed: AppColors.white[80]!,
+        shadow: AppColors.black,
+        onSurface: AppColors.darkGrey
     ),
   );
 }

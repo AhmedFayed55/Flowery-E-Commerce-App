@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  CategoriesScreen({super.key});
+  const CategoriesScreen({super.key});
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -142,6 +142,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                           AppLocalizations.of(
                                             context,
                                           )!.no_products_found,
+                                          style: Theme.of(context).textTheme.bodySmall,
                                         ),
                                       )
                                     : GridView.builder(

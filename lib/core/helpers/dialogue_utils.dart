@@ -89,7 +89,11 @@ abstract class DialogueUtils {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Text(message),
+          content: Text(message,style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+            color: AppColors.black,
+          ),),
           title: Text(title ?? "", style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,

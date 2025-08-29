@@ -36,9 +36,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sign_up => 'Sign up';
 
   @override
-  String get continue_as_guest => 'Continue as guest';
-
-  @override
   String get enter_first_name => 'Enter first name';
 
   @override
@@ -105,19 +102,89 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login_successfully => 'Login successfully';
 
   @override
+  String get filer => 'Filter';
+
+  @override
+  String get sort_by => 'Sort by';
+
+  @override
+  String get no_products_found => 'No products found';
+
+  @override
   String get register_successfully => 'Register Successfully';
+
+  @override
+  String get please_enter_your_email_associated_to_your_account =>
+      'Please enter your email associated to\n your account';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get email_verification => 'Email verification';
+
+  @override
+  String get please_enter_your_code_that_send_to_your_email_address =>
+      'Please enter your code that send to your\n email address';
+
+  @override
+  String get didnot_receive_code => 'Didn\'t receive code? ';
+
+  @override
+  String get resend => 'Resend';
+
+  @override
+  String get reset_password => 'Reset password';
+
+  @override
+  String get new_password => 'New password';
+
+  @override
+  String
+  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least =>
+      'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
+
+  @override
+  String get product_details => 'Product Details';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get loding => 'Loding...';
+
+  @override
+  String get all_products_include_tax => 'All prices include tax';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get out_of_stock => 'out of stock';
+
+  @override
+  String get in_stock => 'in stock';
+
+  @override
+  String get description => 'Description';
 
   @override
   String get bloom_with => 'Bloom with our exquisite best sellers';
 
   @override
-  String get occasion => 'Occasion';
-
-  @override
   String get add_to_cart => 'Add to cart';
 
   @override
-  String get egp => 'EGP';
+  String get occasion => 'Occasion';
 
   @override
   String get home => 'Home';
@@ -126,10 +193,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categories => 'Categories';
 
   @override
-  String get cart => 'Cart';
+  String get profile => 'Profile';
 
   @override
-  String get profile => 'Profile';
+  String get continue_as_guest => 'Continue as guest';
+
+  @override
   String get email_not_valid => 'This Email is not valid';
 
   @override
@@ -139,12 +208,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password_not_valid => 'Invalid password';
 
   @override
-  String get password_empty => 'Password is required';
-
-  @override
-  String get best_seller => 'Best Seller';
-
-  @override
   String get bloom_with_our_exquisite_best_sellers =>
       'Bloom with our exquisite best sellers';
 
@@ -152,8 +215,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get egp => 'EGP';
 
   @override
-  String get add_to_cart => 'add to cart';
+  String get no_products => 'No Products founded';
 
   @override
-  String get no_products => 'No Products founded';
+  String get password_empty => 'Password is required';
+
+  @override
+  String get view_all => 'View All';
+
+  @override
+  String get best_seller => 'Best seller';
+
+  @override
+  String get search => 'search';
+
+  @override
+  String get flower => 'Flower';
+
+  @override
+  String get cart => 'Cart';
 }

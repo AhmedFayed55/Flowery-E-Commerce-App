@@ -1,10 +1,10 @@
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/widgets/product_cart.dart';
 import 'package:flutter/widgets.dart';
+import '../../../../main_layout/tabs/home_screen/domain/entities/best_saller_entity.dart';
 
 class MostSellingProductsGridView extends StatelessWidget {
   const MostSellingProductsGridView({super.key , required this.products});
-  final List<ProductsEntity> products ;
+  final List<BestSallerEntity> products ;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +25,7 @@ class MostSellingProductsGridView extends StatelessWidget {
               // Navigator.pushNamed(context, AppRoutes.productDetails,
               //     arguments: products[index].id);
             },
-            child: ProductCart(product: products[index]));
+            child: ProductCart(product: products[index]),);
         },
       ),
     );
