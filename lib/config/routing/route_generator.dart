@@ -8,6 +8,7 @@ import 'package:flowers_ecommerce_app/features/occasions/domain/entities/occasio
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -25,6 +26,9 @@ class RouteGenerator {
 
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
+
+      case AppRoutes.categories:
+        return MaterialPageRoute(builder: (_) => CategoriesScreen());
 
       case AppRoutes.emailVerification:
         final args = settings.arguments as EmailVerifyArgs;
