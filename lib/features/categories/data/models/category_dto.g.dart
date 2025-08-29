@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'categories_dto.dart';
+part of 'category_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,7 +8,7 @@ part of 'categories_dto.dart';
 
 CategoriesDTO _$CategoriesDTOFromJson(Map<String, dynamic> json) =>
     CategoriesDTO(
-      id: json['_id'] as String?,
+      Id: json['_id'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       image: json['image'] as String?,
@@ -20,7 +20,7 @@ CategoriesDTO _$CategoriesDTOFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CategoriesDTOToJson(CategoriesDTO instance) =>
     <String, dynamic>{
-      '_id': instance.id,
+      '_id': instance.Id,
       'name': instance.name,
       'slug': instance.slug,
       'image': instance.image,

@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_state.dart';
@@ -5,10 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CategoryItem extends StatelessWidget {
-  final int index;
+import '../../domain/entity/products_entity.dart';
 
-  const CategoryItem({super.key, required this.index});
+class ProductItem extends StatelessWidget {
+  // final int index;
+  final ProductsEntity product;
+
+  const ProductItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +29,63 @@ class CategoryItem extends StatelessWidget {
             children: [
               Center(
                 child: Image.network(
-                  state.listCategoryModel[index].image,
+                  product.imgCover ?? "",
                   width: 147.w,
                   height: 131.h,
                   fit: BoxFit.fill,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return SizedBox(
+                      height: 131.h,
+                      child: const Center(child: CircularProgressIndicator()),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return SizedBox(
+                      height: 131.h,
+                      child: const Icon(Icons.error, size: 50, color: Colors.red),
+                    );
+                  },
                 ),
               ),
               verticalSpace(8),
-              Text(state.listCategoryModel[index].name),
+              Text(
+                product.title ?? "",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
               verticalSpace(4),
-              Text("EGP 600"),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                          "EGP ${product.priceAfterDiscount ?? ""}  ",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    TextSpan(
+                      text:
+                          "${product.price ?? ""}",
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "  20%",
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelSmall?.copyWith(color: AppColors.green),
+                    ),
+                  ],
+                ),
+              ),
               const Spacer(),
               SizedBox(
                 height: 30.h,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Add to Cart
+                  },
                   child: Row(
                     children: [
                       const Icon(Icons.shopping_cart_outlined),

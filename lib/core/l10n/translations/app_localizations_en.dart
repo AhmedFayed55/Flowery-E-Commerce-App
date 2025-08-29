@@ -115,4 +115,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sort_by => 'Sort by';
+
+  @override
+  String get no_products_found => 'No products found';
 }

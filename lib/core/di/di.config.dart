@@ -26,16 +26,25 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
-import '../../features/categories/data/datasources/remote/get_all_category_remote_datasource.dart'
-    as _i328;
-import '../../features/categories/data/datasources/remote/get_all_category_remote_datasource_impl.dart'
-    as _i647;
-import '../../features/categories/data/repository_impl/get_all-category_impl.dart'
-    as _i921;
-import '../../features/categories/domain/repository/get_all_category.dart'
-    as _i200;
-import '../../features/categories/domain/usecases/get_all_category_usecase.dart'
-    as _i753;
+import '../../features/categories/data/datasources/remote/category_remote_datasource.dart'
+    as _i747;
+import '../../features/categories/data/datasources/remote/category_remote_datasource_impl.dart'
+    as _i337;
+import '../../features/categories/data/datasources/remote/product_remote_datasource.dart'
+    as _i295;
+import '../../features/categories/data/datasources/remote/product_remote_datasource_impl.dart'
+    as _i250;
+import '../../features/categories/data/repository_impl/category_repo_impl.dart'
+    as _i6;
+import '../../features/categories/data/repository_impl/product_repo_impl.dart'
+    as _i574;
+import '../../features/categories/domain/repository/category_repo.dart'
+    as _i124;
+import '../../features/categories/domain/repository/product_repo.dart' as _i573;
+import '../../features/categories/domain/usecases/category_usecase.dart'
+    as _i710;
+import '../../features/categories/domain/usecases/product_usecase.dart'
+    as _i1006;
 import '../../features/categories/presentation/cubit/category_cubit.dart'
     as _i93;
 import '../helpers/shared_pref.dart' as _i42;
@@ -67,8 +76,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => dioModule.providePrettyDioLogger(),
     );
     gh.factory<_i804.ApiServices>(() => _i804.ApiServices(gh<_i361.Dio>()));
-    gh.factory<_i328.GetAllCategoryRemoteDatasource>(
-      () => _i647.GetAllCategoryRemoteDatasourceImpl(
+    gh.factory<_i747.GetAllCategoryRemoteDatasource>(
+      () => _i337.GetAllCategoryRemoteDatasourceImpl(
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
@@ -78,14 +87,14 @@ extension GetItInjectableX on _i174.GetIt {
         sharedPreferences: gh<_i460.SharedPreferences>(),
       ),
     );
+    gh.factory<_i124.GetAllCategoryRepositoryContract>(
+      () => _i6.GetAllCategoryRepositoryImpl(
+        getAllCategoryRemoteDatasource:
+            gh<_i747.GetAllCategoryRemoteDatasource>(),
+      ),
+    );
     gh.factory<_i42.SharedPrefHelper>(
       () => _i42.SharedPrefHelper(gh<_i460.SharedPreferences>()),
-    );
-    gh.factory<_i200.GetAllCategoryRepositoryContract>(
-      () => _i921.GetAllCategoryRepositoryImpl(
-        getAllCategoryRemoteDatasource:
-            gh<_i328.GetAllCategoryRemoteDatasource>(),
-      ),
     );
     gh.factory<_i637.AuthRemoteDataSource>(
       () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
@@ -93,22 +102,40 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i975.AuthRepo>(
       () => _i990.AuthRepoImpl(gh<_i637.AuthRemoteDataSource>()),
     );
-    gh.factory<_i753.GetAllCategoryUseCase>(
-      () => _i753.GetAllCategoryUseCase(
-        getAllCategoryRepositoryContract:
-            gh<_i200.GetAllCategoryRepositoryContract>(),
+    gh.factory<_i295.GetAllProductsRemoteDatasource>(
+      () => _i250.GetAllProductsRemoteDatasourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
       ),
     );
-    gh.factory<_i93.CategoryCubit>(
-      () => _i93.CategoryCubit(
-        getAllCategoryUseCase: gh<_i753.GetAllCategoryUseCase>(),
+    gh.factory<_i573.GetAllProductsRepositoryContract>(
+      () => _i574.GetAllProductsRepositoryImpl(
+        getAllProductsRemoteDatasource:
+            gh<_i295.GetAllProductsRemoteDatasource>(),
+      ),
+    );
+    gh.factory<_i710.GetAllCategoryUseCase>(
+      () => _i710.GetAllCategoryUseCase(
+        getAllCategoryRepositoryContract:
+            gh<_i124.GetAllCategoryRepositoryContract>(),
       ),
     );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
+    gh.factory<_i1006.GetAllProductsUseCase>(
+      () => _i1006.GetAllProductsUseCase(
+        getAllProductsRepositoryContract:
+            gh<_i573.GetAllProductsRepositoryContract>(),
+      ),
+    );
     gh.factory<_i444.RegisterCubit>(
       () => _i444.RegisterCubit(gh<_i752.RegisterUsecase>()),
+    );
+    gh.factory<_i93.CategoryCubit>(
+      () => _i93.CategoryCubit(
+        getAllCategoryUseCase: gh<_i710.GetAllCategoryUseCase>(),
+        getAllProductsUseCase: gh<_i1006.GetAllProductsUseCase>(),
+      ),
     );
     return this;
   }

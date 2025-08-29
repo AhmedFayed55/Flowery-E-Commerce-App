@@ -3,17 +3,23 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
-import 'package:flowers_ecommerce_app/core/errors/api_results.dart' as _i5;
+import 'package:flowers_ecommerce_app/core/errors/api_results.dart' as _i6;
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/category_model.dart'
-    as _i6;
-import 'package:flowers_ecommerce_app/features/categories/domain/repository/get_all_category.dart'
+    as _i7;
+import 'package:flowers_ecommerce_app/features/categories/domain/entity/product_response_entity.dart'
+    as _i10;
+import 'package:flowers_ecommerce_app/features/categories/domain/repository/category_repo.dart'
     as _i2;
-import 'package:flowers_ecommerce_app/features/categories/domain/usecases/get_all_category_usecase.dart'
+import 'package:flowers_ecommerce_app/features/categories/domain/repository/product_repo.dart'
     as _i3;
+import 'package:flowers_ecommerce_app/features/categories/domain/usecases/category_usecase.dart'
+    as _i4;
+import 'package:flowers_ecommerce_app/features/categories/domain/usecases/product_usecase.dart'
+    as _i9;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i7;
+import 'package:mockito/src/dummies.dart' as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -37,11 +43,19 @@ class _FakeGetAllCategoryRepositoryContract_0 extends _i1.SmartFake
   ) : super(parent, parentInvocation);
 }
 
+class _FakeGetAllProductsRepositoryContract_1 extends _i1.SmartFake
+    implements _i3.GetAllProductsRepositoryContract {
+  _FakeGetAllProductsRepositoryContract_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(parent, parentInvocation);
+}
+
 /// A class which mocks [GetAllCategoryUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetAllCategoryUseCase extends _i1.Mock
-    implements _i3.GetAllCategoryUseCase {
+    implements _i4.GetAllCategoryUseCase {
   MockGetAllCategoryUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -69,16 +83,62 @@ class MockGetAllCategoryUseCase extends _i1.Mock
   );
 
   @override
-  _i4.Future<_i5.ApiResult<List<_i6.CategoryModel>>> call() =>
+  _i5.Future<_i6.ApiResult<List<_i7.CategoryModel>>> call() =>
       (super.noSuchMethod(
             Invocation.method(#call, []),
             returnValue:
-                _i4.Future<_i5.ApiResult<List<_i6.CategoryModel>>>.value(
-                  _i7.dummyValue<_i5.ApiResult<List<_i6.CategoryModel>>>(
+                _i5.Future<_i6.ApiResult<List<_i7.CategoryModel>>>.value(
+                  _i8.dummyValue<_i6.ApiResult<List<_i7.CategoryModel>>>(
                     this,
                     Invocation.method(#call, []),
                   ),
                 ),
           )
-          as _i4.Future<_i5.ApiResult<List<_i6.CategoryModel>>>);
+          as _i5.Future<_i6.ApiResult<List<_i7.CategoryModel>>>);
+}
+
+/// A class which mocks [GetAllProductsUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetAllProductsUseCase extends _i1.Mock
+    implements _i9.GetAllProductsUseCase {
+  MockGetAllProductsUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.GetAllProductsRepositoryContract get getAllProductsRepositoryContract =>
+      (super.noSuchMethod(
+            Invocation.getter(#getAllProductsRepositoryContract),
+            returnValue: _FakeGetAllProductsRepositoryContract_1(
+              this,
+              Invocation.getter(#getAllProductsRepositoryContract),
+            ),
+          )
+          as _i3.GetAllProductsRepositoryContract);
+
+  @override
+  set getAllProductsRepositoryContract(
+    _i3.GetAllProductsRepositoryContract? _getAllProductsRepositoryContract,
+  ) => super.noSuchMethod(
+    Invocation.setter(
+      #getAllProductsRepositoryContract,
+      _getAllProductsRepositoryContract,
+    ),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i5.Future<_i6.ApiResult<_i10.ProductResponseEntity>> call() =>
+      (super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue:
+                _i5.Future<_i6.ApiResult<_i10.ProductResponseEntity>>.value(
+                  _i8.dummyValue<_i6.ApiResult<_i10.ProductResponseEntity>>(
+                    this,
+                    Invocation.method(#call, []),
+                  ),
+                ),
+          )
+          as _i5.Future<_i6.ApiResult<_i10.ProductResponseEntity>>);
 }

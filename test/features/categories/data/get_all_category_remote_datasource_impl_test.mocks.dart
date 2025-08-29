@@ -3,14 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i4;
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i5;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
-    as _i6;
+    as _i7;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
     as _i2;
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart'
+    as _i4;
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -34,43 +36,62 @@ class _FakeRegisterResponeDto_0 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeCategoryResponse_1 extends _i1.SmartFake
-    implements _i3.CategoryResponse {
-  _FakeCategoryResponse_1(Object parent, Invocation parentInvocation)
+class _FakeProductResponse_1 extends _i1.SmartFake
+    implements _i3.ProductResponse {
+  _FakeProductResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeCategoryResponse_2 extends _i1.SmartFake
+    implements _i4.CategoryResponse {
+  _FakeCategoryResponse_2(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i4.ApiServices {
+class MockApiServices extends _i1.Mock implements _i5.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.RegisterResponeDto> register(_i6.RegisterBodyDTo? request) =>
+  _i6.Future<_i2.RegisterResponeDto> register(_i7.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i5.Future<_i2.RegisterResponeDto>.value(
+            returnValue: _i6.Future<_i2.RegisterResponeDto>.value(
               _FakeRegisterResponeDto_0(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i5.Future<_i2.RegisterResponeDto>);
+          as _i6.Future<_i2.RegisterResponeDto>);
 
   @override
-  _i5.Future<_i3.CategoryResponse> getAllCategory() =>
+  _i6.Future<_i3.ProductResponse> getAllProducts() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllProducts, []),
+            returnValue: _i6.Future<_i3.ProductResponse>.value(
+              _FakeProductResponse_1(
+                this,
+                Invocation.method(#getAllProducts, []),
+              ),
+            ),
+          )
+          as _i6.Future<_i3.ProductResponse>);
+
+  @override
+  _i6.Future<_i4.CategoryResponse> getAllCategory() =>
       (super.noSuchMethod(
             Invocation.method(#getAllCategory, []),
-            returnValue: _i5.Future<_i3.CategoryResponse>.value(
-              _FakeCategoryResponse_1(
+            returnValue: _i6.Future<_i4.CategoryResponse>.value(
+              _FakeCategoryResponse_2(
                 this,
                 Invocation.method(#getAllCategory, []),
               ),
             ),
           )
-          as _i5.Future<_i3.CategoryResponse>);
+          as _i6.Future<_i4.CategoryResponse>);
 }

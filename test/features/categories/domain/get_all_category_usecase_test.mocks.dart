@@ -8,7 +8,7 @@ import 'dart:async' as _i3;
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart' as _i4;
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/category_model.dart'
     as _i5;
-import 'package:flowers_ecommerce_app/features/categories/domain/repository/get_all_category.dart'
+import 'package:flowers_ecommerce_app/features/categories/domain/repository/category_repo.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;

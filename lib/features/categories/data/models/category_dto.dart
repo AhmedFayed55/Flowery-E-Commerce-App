@@ -1,12 +1,12 @@
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/category_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'categories_dto.g.dart';
+part 'category_dto.g.dart';
 
 @JsonSerializable()
 class CategoriesDTO {
   @JsonKey(name: "_id")
-  final String? id;
+  final String? Id;
   @JsonKey(name: "name")
   final String? name;
   @JsonKey(name: "slug")
@@ -22,8 +22,8 @@ class CategoriesDTO {
   @JsonKey(name: "productsCount")
   final int? productsCount;
 
-  CategoriesDTO({
-    this.id,
+  CategoriesDTO ({
+    this.Id,
     this.name,
     this.slug,
     this.image,
@@ -42,7 +42,7 @@ class CategoriesDTO {
   }
 
   CategoryModel toCategoryModel() => CategoryModel(
-    id: id ?? "",
+    id: Id ?? "",
     image: image ?? "",
     name: name ?? "",
     slug: slug ?? "",

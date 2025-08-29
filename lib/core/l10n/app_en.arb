@@ -34,5 +34,6 @@
   "register_successfully": "Register Successfully",
   "filer": "Filter",
   "search": "Search",
-  "sort_by": "Sort by"
+  "sort_by": "Sort by",
+  "no_products_found": "No products found"
 }

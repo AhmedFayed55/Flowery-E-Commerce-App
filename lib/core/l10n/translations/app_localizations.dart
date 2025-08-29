@@ -309,6 +309,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sort by'**
   String get sort_by;
+
+  /// No description provided for @no_products_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No products found'**
+  String get no_products_found;
 }
 
 class _AppLocalizationsDelegate

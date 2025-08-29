@@ -6,7 +6,8 @@ import 'package:flowers_ecommerce_app/features/categories/data/models/response/c
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/category_model.dart';
 import 'package:injectable/injectable.dart';
 
-import 'get_all_category_remote_datasource.dart';
+import 'category_remote_datasource.dart';
+
 
 @Injectable(as: GetAllCategoryRemoteDatasource)
 class GetAllCategoryRemoteDatasourceImpl

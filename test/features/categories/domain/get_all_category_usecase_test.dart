@@ -1,13 +1,16 @@
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/errors/failures.dart';
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/category_model.dart';
-import 'package:flowers_ecommerce_app/features/categories/domain/repository/get_all_category.dart';
-import 'package:flowers_ecommerce_app/features/categories/domain/usecases/get_all_category_usecase.dart';
+import 'package:flowers_ecommerce_app/features/categories/domain/repository/category_repo.dart';
+import 'package:flowers_ecommerce_app/features/categories/domain/repository/product_repo.dart';
+import 'package:flowers_ecommerce_app/features/categories/domain/usecases/category_usecase.dart';
+import 'package:flowers_ecommerce_app/features/categories/domain/usecases/product_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'get_all_category_usecase_test.mocks.dart';
+
 
 @GenerateMocks([GetAllCategoryRepositoryContract])
 void main() {
