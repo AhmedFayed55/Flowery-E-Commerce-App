@@ -69,6 +69,12 @@
   "email_required":"Email is required",
   "password_not_valid":"Invalid password",
   "password_empty":"Password is required",
+  "best_seller" : "Best Seller",
+  "bloom_with_our_exquisite_best_sellers" : "Bloom with our exquisite best sellers",
+  "egp" : "EGP",
+  "add_to_cart" : "add to cart",
+  "no_products" : "No Products founded"
+  "password_empty":"Password is required",
   "view_all":"View All",
   "best_seller":"Best seller",
   "search":"search",

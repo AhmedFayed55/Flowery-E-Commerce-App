@@ -16,6 +16,7 @@ import 'package:flowers_ecommerce_app/features/products_detalis/data/model/get_s
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart';
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart';
 import 'package:injectable/injectable.dart';
+import 'package:retrofit/retrofit.dart' ;
 import 'package:retrofit/http.dart';
 
 import '../../features/auth/register/data/model/register_body_dto.dart';

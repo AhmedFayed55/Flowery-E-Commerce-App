@@ -9,6 +9,8 @@ import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occa
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
+import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
+import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -18,9 +20,10 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) =>  LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
 
       case AppRoutes.register:
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
         return MaterialPageRoute(builder: (_) => RegisterScreen());
         return MaterialPageRoute(builder: (_) =>  const RegisterScreen());
 
@@ -62,6 +65,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) =>
               ProductDetailsPage(productId: settings.arguments as String),
+        );
+
+      case AppRoutes.mostSelling:
+        var args = settings.arguments as List<ProductsEntity>;
+        return MaterialPageRoute(
+          builder: (context) => MostSellingPage(products: args),
         );
 
       default:
