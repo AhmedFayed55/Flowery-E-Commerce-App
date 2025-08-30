@@ -18,3 +18,4 @@ jobs:
           validation-logic: "regexMatch(^(feature|fix)\/ECOM-[0-9]+(-[A-Za-z]+)+$)"
           trim-from-start: "refs/heads/"
           fail-when-not-valid: true
+
