@@ -79,7 +79,7 @@ void main() {
 
       var result = await loginRepoImp.loginRepo(loginRequestEntity);
       verify(mockLoginDataSource.login(dto)).called(1);
-      expect(result, isA<ApiResult<UserEntity>>());
+      expect(result, isA<ApiErrorResult<UserEntity>>());
     });
   });
 }
