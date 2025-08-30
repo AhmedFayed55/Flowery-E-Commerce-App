@@ -108,6 +108,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
+  String get home => 'Home';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get profile => 'Profile';
   String get email_not_valid => 'This Email is not valid';
 
   @override

@@ -35,6 +35,19 @@ abstract class AppTheme {
           ),
         ),
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.white[80],
+        ),
+        selectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.pink,
+        ),
+      ),
       checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(),
         fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
@@ -113,7 +126,7 @@ abstract class AppTheme {
   }
 
   static ThemeData lightTheme = getTheme(
-    const ColorScheme(
+    ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.pink,
       onPrimary: AppColors.white,
@@ -124,6 +137,7 @@ abstract class AppTheme {
       surface: AppColors.white,
       shadow: AppColors.black,
       onSurface: AppColors.darkGrey,
+      onPrimaryFixed: AppColors.white[80],
     ),
   );
 }
