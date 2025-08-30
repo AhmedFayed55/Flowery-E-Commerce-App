@@ -1,21 +1,18 @@
-name: Validate Branch Name Action
-
+name: Validate Branch Name
 on:
-  push:
   pull_request:
 
 jobs:
-  Validate_Branch:
-    name: Validator Branch
+  validate-branch-name:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v5
-
-      - name: Validate Branch
-        uses: KinsonDigital/BranchValidator@v1.0.0-preview.4
-        with:
-          branch-name: ${{ github.head_ref || github.ref_name }}
-          validation-logic: "regexMatch(^(feature|fix)\/ECOM-[0-9]+(-[A-Za-z]+)+$)"
-          trim-from-start: "refs/heads/"
-          fail-when-not-valid: true
-
+      - name: Check Branch Name
+        run: |
+          BRANCH_NAME=${{ github.head_ref || github.ref_name }}
+          if [[ ! $BRANCH_NAME =~ ^(feature|fix)\/ECOM-[0-9]+(-[A-Za-z]+)+$ ]]; then
+            echo "Error: Branch name '$BRANCH_NAME' does not match pattern '^(feature|fix)/ECOM-[0-9]+(-[A-Za-z]+)+$'"
+            exit 1
+          else
+            echo "Branch name '$BRANCH_NAME' is valid"
+          fi
