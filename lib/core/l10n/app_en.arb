@@ -35,8 +35,7 @@
   "home": "Home",
   "categories": "Categories",
   "cart": "Cart",
-  "profile": "Profile"
-  "continue_as_guest":"Continue as guest",
+  "profile": "Profile",
   "email_not_valid":"This Email is not valid",
   "email_required":"Email is required",
   "password_not_valid":"Invalid password",
