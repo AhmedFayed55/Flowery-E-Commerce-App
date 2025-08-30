@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
+import 'package:flowers_ecommerce_app/core/errors/failures.dart';
 import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/data/data_sources/login_ds.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/data/mappers/login_mapper.dart';
@@ -76,9 +77,9 @@ void main() {
         mockLoginDataSource.login(dto),
       ).thenThrow(Exception('something wrong'));
 
-      var result=await loginRepoImp.loginRepo(loginRequestEntity);
+      var result = await loginRepoImp.loginRepo(loginRequestEntity);
       verify(mockLoginDataSource.login(dto)).called(1);
-      expect(result, equals(ApiSuccessResult(data: UserEntity)));
+      expect(result, isA<ApiErrorResult<UserEntity>>());
     });
   });
 }
