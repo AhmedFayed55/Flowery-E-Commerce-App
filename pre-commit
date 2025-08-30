@@ -1,0 +1,14 @@
+#!/bin/bash
+
+    # Run Flutter unit tests
+    echo "Running Flutter unit tests..."
+    flutter test
+
+    # Check the exit status of the previous command (flutter test)
+    if [ $? -ne 0 ]; then
+        echo "Unit tests failed! Aborting commit."
+        exit 1 # Exit with a non-zero status to prevent the commit
+    fi
+
+    echo "Unit tests passed. Proceeding with commit."
+    exit 0 # Exit with a zero status to allow the commit
