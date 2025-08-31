@@ -340,6 +340,24 @@ abstract class AppLocalizations {
   /// **'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least'**
   String
   get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least;
+
+  /// No description provided for @password_is_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_is_required;
+
+  /// No description provided for @password_must_be_at_least_6_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get password_must_be_at_least_6_characters;
+
+  /// No description provided for @passwords_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwords_do_not_match;
 }
 
 class _AppLocalizationsDelegate

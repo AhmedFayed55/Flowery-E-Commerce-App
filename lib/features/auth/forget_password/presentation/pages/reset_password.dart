@@ -61,7 +61,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     TextFormField(
                       controller: newPasswordController,
                       validator: (newPassword) {
-                        return Validations.confirmPassword(newPassword);
+                        return Validations.confirmPassword(context,newPassword);
                       },
                       decoration: InputDecoration(
                         label: Text(AppLocalizations.of(context)!.new_password),
@@ -73,6 +73,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       controller: confirmPasswordController,
                       validator: (confirmPassword) {
                         return Validations.confirmPassword(
+                          context,
                           confirmPassword,
                           newPasswordController.text,
                         );

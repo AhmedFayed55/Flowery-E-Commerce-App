@@ -77,7 +77,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
             isLoadingState: false,
             isSuccessState: true,
             isErrorState: false,
-            // forgetPasswordModelState: result.data,
           ),
         );
       case ApiErrorResult<EmailVerifyModel>():

@@ -134,4 +134,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String
   get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least =>
       'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
+
+  @override
+  String get password_is_required => 'Password is required';
+
+  @override
+  String get password_must_be_at_least_6_characters =>
+      'Password must be at least 6 characters';
+
+  @override
+  String get passwords_do_not_match => 'Passwords do not match';
 }

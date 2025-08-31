@@ -1,4 +1,6 @@
 import 'package:flowers_ecommerce_app/core/helpers/regex.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flutter/material.dart';
 
 abstract class Validations {
   static String? validateName(String? name) {
@@ -28,13 +30,14 @@ abstract class Validations {
     return null;
   }
 
-  static String? confirmPassword(String? newPassword, [String? confirmPassword]) {
+  static String? confirmPassword(BuildContext context,String? newPassword, [String? confirmPassword]) {
     if (newPassword == null || newPassword.isEmpty) {
-      return "Password is required";
+      return AppLocalizations.of(context)!.password_is_required;
     } else if (newPassword.length < 6) {
-      return "Password must be at least 6 characters";
+      return AppLocalizations.of(context)!.password_must_be_at_least_6_characters;
     } else if (confirmPassword != null && newPassword != confirmPassword) {
-      return "Passwords do not match";
+      return AppLocalizations.of(context)!.passwords_do_not_match;
+
     }
     return null;
   }
