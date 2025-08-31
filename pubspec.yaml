@@ -52,8 +52,8 @@ flutter:
   generate: true
 
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/svgs/
 
 
   # fonts:

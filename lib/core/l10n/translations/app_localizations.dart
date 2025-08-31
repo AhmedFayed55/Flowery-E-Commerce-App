@@ -291,6 +291,52 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register Successfully'**
   String get register_successfully;
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+  /// No description provided for @email_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'This Email is not valid'**
+  String get email_not_valid;
+
+  /// No description provided for @email_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get email_required;
+
+  /// No description provided for @password_not_valid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid password'**
+  String get password_not_valid;
+
+  /// No description provided for @password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_empty;
 }
 
 class _AppLocalizationsDelegate
