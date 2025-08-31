@@ -2,40 +2,43 @@ name: SonarQube Analysis
 
 on:
   push:
-   branches:
-     - development
-     - master
+    branches:
+      - development
+      - master
   pull_request:
     branches:
-    - development
-    - master
+      - development
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v3
         with:
-            fetch-depth: 0 # Required for SonarQube analysi
+          fetch-depth: 0 # Required for SonarQube analysis
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.29.2
+          flutter-version: 3.35.2
+
       - run: flutter --version
+
       - name: Install packages
         run: flutter pub get
-      # Add Flutter to PATH
+
       - name: Add Flutter to PATH
         run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-      # Run Flutter analyze
+
       - name: Analyze code
         run: flutter analyze
-      # Run tests and generate coverage
+
       - name: Run tests
         run: flutter test --coverage
-      # Run SonarQube scan
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@master
         env:
@@ -43,10 +46,13 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.projectKey=john-safwat_Online-Exam-App-c3
+            -Dsonar.organization=yahyaeltayeeb
+            -Dsonar.projectKey=yahyaeltayeeb_e-commerce-app
             -Dsonar.sources=lib,pubspec.yaml
             -Dsonar.tests=test
+            -Dsonar.coverageReportPaths=coverage/lcov.info
             -Dsonar.dart.analyzer.mode=FLUTTER
+
       - name: SonarQube Quality Gate check
         id: sonarqube-quality-gate-check
         uses: sonarsource/sonarqube-quality-gate-action@master
