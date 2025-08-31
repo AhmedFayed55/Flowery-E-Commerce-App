@@ -1,6 +1,5 @@
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
-import 'package:flowers_ecommerce_app/core/errors/failures.dart';
 import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/data/data_sources/login_ds.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/data/mappers/login_mapper.dart';
@@ -31,7 +30,7 @@ void main() {
 
       loginRepoImp = LoginRepoImp(mockLoginDataSource);
     });
-    LoginRequestEntity loginRequestEntity = LoginRequestEntity(
+    LoginRequestEntity loginRequestEntity = const LoginRequestEntity(
       email: 'yahya22@',
       password: 'yahya22!',
     );
@@ -43,7 +42,7 @@ void main() {
         final mockResponse = LoginResponceDto(
           message: '',
           token: 'token',
-          user: UserModelDto(
+          user: const UserModelDto(
             'sss',
             'yahya',
             'mohamed',
@@ -52,8 +51,8 @@ void main() {
             '',
             '',
             '',
-            const [],
-            const [],
+            [],
+            [],
             '',
           ),
         );
