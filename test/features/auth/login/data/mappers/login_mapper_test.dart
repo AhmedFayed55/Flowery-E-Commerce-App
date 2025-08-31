@@ -5,12 +5,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('when use toDto should return LoginRequestDto', () {
-    LoginRequestEntity loginRequestEntity = LoginRequestEntity(
+    LoginRequestEntity loginRequestEntity = const LoginRequestEntity(
       email: 'yahya22@',
       password: 'yahya22!',
     );
 
-    LoginRequestDto loginRequestDto =LoginRequestDto(email: 'yahya22@', password: 'yahya22!');
+    LoginRequestDto loginRequestDto =const LoginRequestDto(email: 'yahya22@', password: 'yahya22!');
 
    var result= toDto(loginRequestEntity);
    expect(result, equals(loginRequestDto));

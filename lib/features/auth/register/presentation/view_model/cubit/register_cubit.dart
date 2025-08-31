@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/usecase/register_usecase.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/view_model/cubit/registr_event.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'register_state.dart';
 

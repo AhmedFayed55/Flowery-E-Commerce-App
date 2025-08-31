@@ -291,6 +291,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register Successfully'**
   String get register_successfully;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:
@@ -314,6 +315,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
   /// No description provided for @email_not_valid.
   ///
   /// In en, this message translates to:
