@@ -11,7 +11,7 @@ part 'register_state.dart';
 @injectable
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterUsecase registerUsecase;
-  RegisterCubit(this.registerUsecase) : super(RegisterState());
+  RegisterCubit(this.registerUsecase) : super(const RegisterState());
 
   void doIntent(RegisterEvent event) {
     switch (event) {
