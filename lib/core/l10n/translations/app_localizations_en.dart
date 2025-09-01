@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enter_first_name => 'Enter first name';
 
   @override
+  String get register => 'Register';
+
+  @override
   String get first_name => 'First name';
 
   @override
@@ -103,6 +106,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_successfully => 'Register Successfully';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get email_not_valid => 'This Email is not valid';
+
+  @override
+  String get email_required => 'Email is required';
+
+  @override
+  String get password_not_valid => 'Invalid password';
+
+  @override
+  String get password_empty => 'Password is required';
 
   @override
   String get please_enter_your_email_associated_to_your_account =>

@@ -60,7 +60,7 @@ class ServerFailure extends Failure {
         );
       default:
         return ServerFailure(
-          errorMessage: response.data["message"],
+          errorMessage: response.data["error"],
           code: response.data["code"].toString(),
         );
     }
