@@ -118,6 +118,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
   String get email_not_valid => 'This Email is not valid';
 
   @override

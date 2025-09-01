@@ -1,7 +1,4 @@
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/user.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/repo/auth_repo.dart';
@@ -10,7 +7,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../data/repo/auth_repo_impl_test.mocks.dart';
 import 'register_usecase_test.mocks.dart';
 
 @GenerateMocks([AuthRepo])

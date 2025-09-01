@@ -14,7 +14,7 @@ void main() {
   test('when call login is should call login from apiServices', () async {
     MockApiServices mockApiServices = MockApiServices();
 
-    UserModelDto userModelDto = UserModelDto(
+    UserModelDto userModelDto = const UserModelDto(
       'sss',
       'yahya',
       'mohamed',
@@ -35,7 +35,7 @@ void main() {
     );
 
     LoginDataSourceImp loginDataSourceImp = LoginDataSourceImp(mockApiServices);
-    LoginRequestDto loginRequestDto = LoginRequestDto(
+    LoginRequestDto loginRequestDto = const LoginRequestDto(
       email: 'yahya22@gmail.com',
       password: 'Yahya22!',
     );
