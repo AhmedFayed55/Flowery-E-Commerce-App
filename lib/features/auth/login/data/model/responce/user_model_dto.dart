@@ -22,7 +22,7 @@ class UserModelDto extends Equatable {
   factory UserModelDto.fromJson(Map<String, dynamic> json) =>
       _$UserModelDtoFromJson(json);
 
-  UserModelDto(
+  const UserModelDto(
     this.id,
     this.firstName,
     this.lastName,
@@ -53,5 +53,14 @@ class UserModelDto extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [firstName, lastName, email, gender, phone,wishlist,addresses,photo];
+  List<Object?> get props => [
+    firstName,
+    lastName,
+    email,
+    gender,
+    phone,
+    wishlist,
+    addresses,
+    photo,
+  ];
 }

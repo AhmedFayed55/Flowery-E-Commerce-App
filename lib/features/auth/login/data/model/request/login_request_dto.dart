@@ -8,17 +8,14 @@ class LoginRequestDto extends Equatable {
   final String email;
   final String password;
 
-  LoginRequestDto({
-    required this.email,
-    required this.password,
-  });
+  const LoginRequestDto({required this.email, required this.password});
 
   factory LoginRequestDto.fromJson(Map<String, dynamic> json) =>
       _$LoginRequestDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginRequestDtoToJson(this);
-  
+
   @override
   // TODO: implement props
-  List<Object?> get props => [email,password];
+  List<Object?> get props => [email, password];
 }

@@ -30,7 +30,7 @@ void main() {
 
       loginRepoImp = LoginRepoImp(mockLoginDataSource);
     });
-    LoginRequestEntity loginRequestEntity = LoginRequestEntity(
+    LoginRequestEntity loginRequestEntity = const LoginRequestEntity(
       email: 'yahya22@',
       password: 'yahya22!',
     );
@@ -42,7 +42,7 @@ void main() {
         final mockResponse = LoginResponceDto(
           message: '',
           token: 'token',
-          user: UserModelDto(
+          user: const UserModelDto(
             'sss',
             'yahya',
             'mohamed',
@@ -51,8 +51,8 @@ void main() {
             '',
             '',
             '',
-            const [],
-            const [],
+            [],
+            [],
             '',
           ),
         );
@@ -69,16 +69,14 @@ void main() {
       },
     );
 
-    test('verify loginRepo calls loginDataSource on error', ()async {
-
-      
+    test('verify loginRepo calls loginDataSource on error', () async {
       when(
         mockLoginDataSource.login(dto),
       ).thenThrow(Exception('something wrong'));
 
-      var result=await loginRepoImp.loginRepo(loginRequestEntity);
+      var result = await loginRepoImp.loginRepo(loginRequestEntity);
       verify(mockLoginDataSource.login(dto)).called(1);
-      expect(result, equals(ApiSuccessResult(data: UserEntity)));
+      expect(result, isA<ApiErrorResult<UserEntity>>());
     });
   });
 }
