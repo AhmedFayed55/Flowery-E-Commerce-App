@@ -11,9 +11,12 @@ class ResetPasswordRepoImpl implements ResetPasswordRepoContract {
   ResetPasswordRepoImpl({required this.resetPasswordRemoteDataSource});
 
   @override
-  Future<ApiResult<ResetPasswordModel>> resetPassword(String email, String newPassword) async {
+  Future<ApiResult<ResetPasswordModel>> resetPassword(
+    String email,
+    String newPassword,
+  ) async {
     ApiResult<ResetPasswordModel> resetPasswordModel =
-        await resetPasswordRemoteDataSource.resetPassword(email,newPassword);
+        await resetPasswordRemoteDataSource.resetPassword(email, newPassword);
     return resetPasswordModel;
   }
 }

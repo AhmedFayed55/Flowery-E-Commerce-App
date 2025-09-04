@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   final String email;
-   const ResetPasswordScreen({super.key,required this.email});
+  const ResetPasswordScreen({super.key, required this.email});
 
   @override
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
@@ -22,14 +22,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     final forgetPasswordCubit = context.read<ForgetPasswordCubit>();
     return BlocListener<ForgetPasswordCubit, ForgetPasswordState>(
       listener: (context, state) {
-        if(state.isSuccessState == true){
-          Navigator.pushNamedAndRemoveUntil(context, AppRoutes.login, (route) => false,
+        if (state.isSuccessState == true) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoutes.login,
+            (route) => false,
           );
         }
       },
@@ -61,11 +63,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     TextFormField(
                       controller: newPasswordController,
                       validator: (newPassword) {
-                        return Validations.confirmPassword(context,newPassword);
+                        return Validations.confirmPassword(
+                          context,
+                          newPassword,
+                        );
                       },
                       decoration: InputDecoration(
                         label: Text(AppLocalizations.of(context)!.new_password),
-                        hintText: AppLocalizations.of(context)!.enter_your_password,
+                        hintText: AppLocalizations.of(
+                          context,
+                        )!.enter_your_password,
                       ),
                     ),
                     verticalSpace(24),
@@ -79,8 +86,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         );
                       },
                       decoration: InputDecoration(
-                        label: Text(AppLocalizations.of(context)!.confirm_password),
-                        hintText: AppLocalizations.of(context)!.confirm_password,
+                        label: Text(
+                          AppLocalizations.of(context)!.confirm_password,
+                        ),
+                        hintText: AppLocalizations.of(
+                          context,
+                        )!.confirm_password,
                       ),
                     ),
                     verticalSpace(48),
@@ -89,13 +100,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         return ElevatedButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              forgetPasswordCubit.doIntent(GetResetPasswordEvent(email: widget.email,newPassword: newPasswordController.text));
+                              forgetPasswordCubit.doIntent(
+                                GetResetPasswordEvent(
+                                  email: widget.email,
+                                  newPassword: newPasswordController.text,
+                                ),
+                              );
                             }
                           },
                           child: state.isLoadingState == true
                               ? const CircularProgressIndicator(
-                            color: AppColors.white,
-                          ) : Text(AppLocalizations.of(context)!.confirm),
+                                  color: AppColors.white,
+                                )
+                              : Text(AppLocalizations.of(context)!.confirm),
                         );
                       },
                     ),

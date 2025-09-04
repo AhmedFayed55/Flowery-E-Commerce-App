@@ -34,9 +34,17 @@ class _MainLayoutState extends State<MainLayout> {
         },
         items: [
           _buildBottomNavigationBarItem(AppImages.homeIcon, locale.home, 0),
-          _buildBottomNavigationBarItem(AppImages.categoriesIcon, locale.categories, 1),
+          _buildBottomNavigationBarItem(
+            AppImages.categoriesIcon,
+            locale.categories,
+            1,
+          ),
           _buildBottomNavigationBarItem(AppImages.cartIcon, locale.cart, 2),
-          _buildBottomNavigationBarItem(AppImages.profileIcon, locale.profile, 3),
+          _buildBottomNavigationBarItem(
+            AppImages.profileIcon,
+            locale.profile,
+            3,
+          ),
         ],
       ),
       body: IndexedStack(index: _currentIndex, children: pages),
@@ -46,7 +54,7 @@ class _MainLayoutState extends State<MainLayout> {
   BottomNavigationBarItem _buildBottomNavigationBarItem(
     String icon,
     String label,
-      int index
+    int index,
   ) {
     return BottomNavigationBarItem(
       icon: Column(
@@ -60,10 +68,10 @@ class _MainLayoutState extends State<MainLayout> {
               BlendMode.srcIn,
             ),
           ),
-          verticalSpace(7)
+          verticalSpace(7),
         ],
       ),
-      label: label
+      label: label,
     );
   }
 }

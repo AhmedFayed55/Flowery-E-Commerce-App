@@ -10,9 +10,12 @@ void main() {
       password: 'yahya22!',
     );
 
-    LoginRequestDto loginRequestDto =const LoginRequestDto(email: 'yahya22@', password: 'yahya22!');
+    LoginRequestDto loginRequestDto = const LoginRequestDto(
+      email: 'yahya22@',
+      password: 'yahya22!',
+    );
 
-   var result= toDto(loginRequestEntity);
-   expect(result, equals(loginRequestDto));
+    var result = toDto(loginRequestEntity);
+    expect(result, equals(loginRequestDto));
   });
 }

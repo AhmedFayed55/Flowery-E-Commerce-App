@@ -28,10 +28,7 @@ void main() {
       gender: 'male',
     );
 
-    RegisterRespone registerRespone = RegisterRespone(
-      'message',
-      
-    );
+    RegisterRespone registerRespone = RegisterRespone('message');
     RegisterResponeDto registerResponeDto = RegisterResponeDto(
       message: 'message',
       token: 'token',
@@ -53,12 +50,13 @@ void main() {
           mockApiServices.register(any),
         ).thenAnswer((_) async => registerResponeDto);
 
-        var result = await authRemoteDataSourseImlp.register(toRegisterBodyDTo(registerBody));
+        var result = await authRemoteDataSourseImlp.register(
+          toRegisterBodyDTo(registerBody),
+        );
         verify(mockApiServices.register(any)).called(1);
         expect(result, isA<RegisterResponeDto>());
         expect(result.message, equals(registerRespone.message));
       },
     );
-
   });
 }

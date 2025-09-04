@@ -52,8 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   context: context,
                   message: AppLocalizations.of(context)!.loading,
                 );
-              }
-            else  if (state.errorMessage.isNotEmpty) {
+              } else if (state.errorMessage.isNotEmpty) {
                 DialogueUtils.hideLoading(context);
                 DialogueUtils.showMessage(
                   context: context,
@@ -66,7 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppLocalizations.of(context)!.login_successfully,
                 );
 
-                Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
+                Navigator.pushReplacementNamed(
+                  context,
+                  AppRoutes.resetPassword,
+                );
               }
             },
             builder: (BuildContext context, LoginState state) {
@@ -79,7 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextFormField(
                         validator: (value) {
-                          if (AppRegExp.isEmailValid(emailController.text)==false) {
+                          if (AppRegExp.isEmailValid(emailController.text) ==
+                              false) {
                             return AppLocalizations.of(
                               context,
                             )!.email_not_valid;

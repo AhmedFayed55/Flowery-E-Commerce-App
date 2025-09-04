@@ -22,6 +22,7 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.pink,
+          disabledBackgroundColor: AppColors.black[30],
           foregroundColor: AppColors.white,
           minimumSize: Size(double.infinity, 50.h),
           shape: RoundedRectangleBorder(
@@ -48,7 +49,8 @@ abstract class AppTheme {
           color: AppColors.pink,
         ),
       ),
-      checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(),
+      checkboxTheme: const CheckboxThemeData(
+        shape: RoundedRectangleBorder(),
         fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),

@@ -16,6 +16,18 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../features/auth/change_password/data/data_sources/change_password_ds.dart'
+    as _i481;
+import '../../features/auth/change_password/data/data_sources/change_password_ds_impl.dart'
+    as _i964;
+import '../../features/auth/change_password/data/repositories/change_password_repo_impl.dart'
+    as _i960;
+import '../../features/auth/change_password/domain/repositories/change_password_repo.dart'
+    as _i784;
+import '../../features/auth/change_password/domain/use_cases/change_password_use_case.dart'
+    as _i792;
+import '../../features/auth/change_password/presentation/manager/change_password_cubit.dart'
+    as _i1035;
 import '../../features/auth/forget_password/datasource/datasources/remote/email_verify_remote_datasource.dart'
     as _i45;
 import '../../features/auth/forget_password/datasource/datasources/remote/email_verify_remote_datasource_impl.dart'
@@ -103,8 +115,17 @@ extension GetItInjectableX on _i174.GetIt {
         sharedPreferences: gh<_i460.SharedPreferences>(),
       ),
     );
+    gh.factory<_i481.ChangePasswordDataSource>(
+      () => _i964.ChangePasswordDataSourceImpl(
+        gh<_i804.ApiServices>(),
+        gh<_i227.TokenService>(),
+      ),
+    );
     gh.factory<_i42.SharedPrefHelper>(
       () => _i42.SharedPrefHelper(gh<_i460.SharedPreferences>()),
+    );
+    gh.factory<_i784.ChangePasswordRepo>(
+      () => _i960.ChangePasswordRepoImpl(gh<_i481.ChangePasswordDataSource>()),
     );
     gh.factory<_i172.LoginRepo>(
       () => _i408.LoginRepoImp(gh<_i773.LoginDataSource>()),
@@ -146,6 +167,9 @@ extension GetItInjectableX on _i174.GetIt {
         emailVerifyRepoContract: gh<_i209.EmailVerifyRepoContract>(),
       ),
     );
+    gh.factory<_i792.ChangePasswordUseCase>(
+      () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
+    );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
     );
@@ -154,6 +178,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
+    );
+    gh.factory<_i1035.ChangePasswordCubit>(
+      () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
     );
     gh.factory<_i107.ForgetPasswordUseCase>(
       () => _i107.ForgetPasswordUseCase(

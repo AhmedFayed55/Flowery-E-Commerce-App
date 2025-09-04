@@ -13,7 +13,11 @@ class OtpCodeTextField extends StatefulWidget {
   final ForgetPasswordCubit forgetPasswordCubit;
   final String email;
 
-  const OtpCodeTextField({super.key, required this.forgetPasswordCubit,required this.email});
+  const OtpCodeTextField({
+    super.key,
+    required this.forgetPasswordCubit,
+    required this.email,
+  });
 
   @override
   State<OtpCodeTextField> createState() => _OtpCodeTextFieldState();
@@ -27,7 +31,14 @@ class _OtpCodeTextFieldState extends State<OtpCodeTextField> {
     return BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
       listener: (context, state) {
         if (state.isSuccessState) {
-          Navigator.pushNamed(context, AppRoutes.resetPassword,arguments: EmailVerifyArgs(widget.forgetPasswordCubit, widget.email));
+          Navigator.pushNamed(
+            context,
+            AppRoutes.resetPassword,
+            arguments: EmailVerifyArgs(
+              widget.forgetPasswordCubit,
+              widget.email,
+            ),
+          );
         }
       },
       builder: (context, state) {

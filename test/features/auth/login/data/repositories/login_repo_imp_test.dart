@@ -69,9 +69,7 @@ void main() {
       },
     );
 
-    test('verify loginRepo calls loginDataSource on error', ()async {
-
-      
+    test('verify loginRepo calls loginDataSource on error', () async {
       when(
         mockLoginDataSource.login(dto),
       ).thenThrow(Exception('something wrong'));

@@ -6,6 +6,7 @@ import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/log
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
 import 'app_routes.dart';
 
@@ -13,33 +14,36 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) =>const  LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case AppRoutes.register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
-
       case AppRoutes.forgetPassword:
-        return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
       case AppRoutes.emailVerification:
         final args = settings.arguments as EmailVerifyArgs;
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: args.cubit,
-            child:   EmailVerificationScreen(email: args.email),
+            child: EmailVerificationScreen(email: args.email),
           ),
         );
 
       case AppRoutes.resetPassword:
         final args = settings.arguments as EmailVerifyArgs;
-        return MaterialPageRoute(builder: (_) =>   BlocProvider.value(
-          value: args.cubit,
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: args.cubit,
             child: ResetPasswordScreen(email: args.email),
           ),
         );
 
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());
+
+      case AppRoutes.changePassword:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
 
       default:
         return unDefinedRoute();

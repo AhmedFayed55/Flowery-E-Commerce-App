@@ -9,10 +9,7 @@ class ForgetPasswordModel {
   @JsonKey(name: "info")
   final String? info;
 
-  ForgetPasswordModel ({
-    this.message,
-    this.info,
-  });
+  ForgetPasswordModel({this.message, this.info});
 
   factory ForgetPasswordModel.fromJson(Map<String, dynamic> json) {
     return _$ForgetPasswordModelFromJson(json);
@@ -22,5 +19,3 @@ class ForgetPasswordModel {
     return _$ForgetPasswordModelToJson(this);
   }
 }
-
-

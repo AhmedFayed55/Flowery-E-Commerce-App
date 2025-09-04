@@ -25,7 +25,7 @@ void main() {
     );
   });
 
-  group("Test EmailVerifyUseCase in Domain Layer", (){
+  group("Test EmailVerifyUseCase in Domain Layer", () {
     /// Success
     test("Success Case for EmailVerifyUseCase with ApiSuccessResult", () async {
       var mockSuccessResult = ApiSuccessResult<EmailVerifyModel>(
@@ -44,7 +44,7 @@ void main() {
       /// Assert
       expect(result, isA<ApiSuccessResult<EmailVerifyModel>>());
       ApiSuccessResult<EmailVerifyModel> successResult =
-      result as ApiSuccessResult<EmailVerifyModel>;
+          result as ApiSuccessResult<EmailVerifyModel>;
       expect(successResult.data, equals(mockSuccessResult.data));
 
       verify(mockEmailVerifyRepoContract.emailVerify(mockCode)).called(1);
@@ -52,15 +52,16 @@ void main() {
 
     /// Error
     test("Error Case for EmailVerifyUseCase with ApiErrorResult", () async {
-
       var mockFailure = Failure(errorMessage: mockErrorMessage);
-      var mockErrorResult = ApiErrorResult<EmailVerifyModel>(failure: mockFailure,);
+      var mockErrorResult = ApiErrorResult<EmailVerifyModel>(
+        failure: mockFailure,
+      );
       provideDummy<ApiResult<EmailVerifyModel>>(mockErrorResult);
 
       /// Arrange
-      when(
-        mockEmailVerifyRepoContract.emailVerify(mockCode),
-      ).thenAnswer((_) async => ApiErrorResult<EmailVerifyModel>(failure: mockFailure));
+      when(mockEmailVerifyRepoContract.emailVerify(mockCode)).thenAnswer(
+        (_) async => ApiErrorResult<EmailVerifyModel>(failure: mockFailure),
+      );
 
       /// Act
       var result = await emailVerifyUseCase.call(mockCode);
@@ -68,11 +69,13 @@ void main() {
       /// Assert
       expect(result, isA<ApiErrorResult<EmailVerifyModel>>());
       ApiErrorResult<EmailVerifyModel> errorResult =
-      result as ApiErrorResult<EmailVerifyModel>;
-      expect(errorResult.failure.errorMessage, equals(mockErrorResult.failure.errorMessage));
+          result as ApiErrorResult<EmailVerifyModel>;
+      expect(
+        errorResult.failure.errorMessage,
+        equals(mockErrorResult.failure.errorMessage),
+      );
 
       verify(mockEmailVerifyRepoContract.emailVerify(mockCode)).called(1);
     });
-
   });
 }
