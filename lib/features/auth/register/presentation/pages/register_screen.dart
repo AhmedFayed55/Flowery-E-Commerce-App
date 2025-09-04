@@ -93,9 +93,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: TextFormField(
                           controller: firstNameController,
                           decoration: InputDecoration(
-                          label: Text(trans.first_name),
-                          hint: Text(trans.enter_first_name),
-
+                            label: Text(trans.first_name),
+                            hint: Text(trans.enter_first_name),
                           ),
                           validator: Validations.validateName,
                         ),
@@ -105,9 +104,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: TextFormField(
                           controller: lastNameController,
                           decoration: InputDecoration(
-
-                          label: Text(trans.last_name),
-                          hint: Text(trans.enter_last_name),
+                            label: Text(trans.last_name),
+                            hint: Text(trans.enter_last_name),
                           ),
                           validator: Validations.validateName,
                         ),
@@ -118,9 +116,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
-                    label: Text(trans.email),
-                    hint: Text(trans.enter_your_email),
-
+                      label: Text(trans.email),
+                      hint: Text(trans.enter_your_email),
                     ),
                     validator: Validations.validateEmail,
                   ),
@@ -131,9 +128,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: TextFormField(
                           controller: passwordController,
                           decoration: InputDecoration(
-                          label: Text(trans.password),
-                          hint: Text(trans.enter_your_password),
-
+                            label: Text(trans.password),
+                            hint: Text(trans.enter_your_password),
                           ),
                           obscureText: true,
                           validator: Validations.validatePassword,
@@ -142,13 +138,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       horizontalSpace(17),
                       Expanded(
                         child: TextFormField(
-                          
-                          obscureText:true ,
+                          obscureText: true,
                           controller: confirmPasswordController,
                           decoration: InputDecoration(
-                          label: Text(trans.confirm_password),
-                          hint: Text(trans.confirm_password),
-
+                            label: Text(trans.confirm_password),
+                            hint: Text(trans.confirm_password),
                           ),
                           validator: (value) =>
                               Validations.validateConfirmPassword(
@@ -164,10 +158,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
-                    label: Text(trans.phone_number),
-                    hint: Text(trans.enter_phone_number),
-
-                     ),
+                      label: Text(trans.phone_number),
+                      hint: Text(trans.enter_phone_number),
+                    ),
                     validator: Validations.validatePhoneNumber,
                   ),
                   verticalSpace(24),

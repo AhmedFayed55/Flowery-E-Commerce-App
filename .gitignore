@@ -45,4 +45,3 @@ app.*.map.json
 /android/app/release
 lib/core/network/api_services.g.dart
 lib/core/di/di.config.dart
-lib/core/di/di.config.dart

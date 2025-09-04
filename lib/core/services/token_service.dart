@@ -1,4 +1,3 @@
-
 import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -14,7 +13,7 @@ class TokenService {
     required FlutterSecureStorage prefs,
     required SharedPreferences sharedPreferences,
   }) : _prefs = prefs,
-      _sharedPreferences = sharedPreferences;
+       _sharedPreferences = sharedPreferences;
 
   bool get isTokenSaved =>
       _sharedPreferences.getBool(AppConstants.isTokenSaved) ?? false;
