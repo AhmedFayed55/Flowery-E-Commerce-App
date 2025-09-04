@@ -52,7 +52,7 @@ void main() {
       },
       act: (cubit) => cubit.getSpecificProduct(tProductId),
       expect: () => [
-        ProductDetailsState(isLoading: true),
+        const ProductDetailsState(isLoading: true),
         ProductDetailsState(
           isLoading: false,
           isSuccess: true,
@@ -73,8 +73,8 @@ void main() {
       },
       act: (cubit) => cubit.getSpecificProduct(tProductId),
       expect: () => [
-        ProductDetailsState(isLoading: true),
-        ProductDetailsState(
+        const ProductDetailsState(isLoading: true),
+        const ProductDetailsState(
           isLoading: false,
           isFailure: true,
           isSuccess: false,
