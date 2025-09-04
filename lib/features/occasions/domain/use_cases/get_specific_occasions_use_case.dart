@@ -4,9 +4,10 @@ import 'package:flowers_ecommerce_app/features/occasions/domain/repositories/occ
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetSpecificOccasionsUseCase{
+class GetSpecificOccasionsUseCase {
   final OccasionsRepository _repository;
   GetSpecificOccasionsUseCase(this._repository);
 
-  Future<ApiResult<OccasionsResponseEntity>> invoke() => _repository.getOccasions();
+  Future<ApiResult<OccasionsResponseEntity>> invoke() =>
+      _repository.getOccasions();
 }
