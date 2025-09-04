@@ -4,7 +4,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:async' as _i8;
 
 import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i7;
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart'
@@ -13,26 +12,14 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/m
     as _i3;
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart'
     as _i5;
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i7;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
-    as _i9;
     as _i9;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
     as _i2;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
     as _i10;
-    as _i10;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
     as _i6;
-    as _i3;
-import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item_respone/delete_cart_item_respone.dart'
-    as _i6;
-import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart'
-    as _i11;
-import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart'
-    as _i5;
-import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart'
-    as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -79,29 +66,9 @@ class _FakeRegisterResponeDto_4 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeUserCartDto_2 extends _i1.SmartFake implements _i4.UserCartDto {
-  _FakeUserCartDto_2(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
-class _FakeUpdeateProudactQuantityRespone_3 extends _i1.SmartFake
-    implements _i5.UpdeateProudactQuantityRespone {
-  _FakeUpdeateProudactQuantityRespone_3(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(parent, parentInvocation);
-}
-
-class _FakeDeleteCartItemRespone_4 extends _i1.SmartFake
-    implements _i6.DeleteCartItemRespone {
-  _FakeDeleteCartItemRespone_4(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i7.ApiServices {
 class MockApiServices extends _i1.Mock implements _i7.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
@@ -110,12 +77,9 @@ class MockApiServices extends _i1.Mock implements _i7.ApiServices {
   @override
   _i8.Future<_i2.LoginResponceDto> login(
     _i9.LoginRequestDto? loginRequestDto,
-  _i8.Future<_i2.LoginResponceDto> login(
-    _i9.LoginRequestDto? loginRequestDto,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#login, [loginRequestDto]),
-            returnValue: _i8.Future<_i2.LoginResponceDto>.value(
             returnValue: _i8.Future<_i2.LoginResponceDto>.value(
               _FakeLoginResponceDto_0(
                 this,
@@ -169,61 +133,17 @@ class MockApiServices extends _i1.Mock implements _i7.ApiServices {
             ),
           )
           as _i8.Future<_i5.ResetPasswordModel>);
-          as _i8.Future<_i2.LoginResponceDto>);
 
   @override
   _i8.Future<_i6.RegisterResponeDto> register(_i10.RegisterBodyDTo? request) =>
-  _i8.Future<_i3.RegisterResponeDto> register(_i10.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
             returnValue: _i8.Future<_i6.RegisterResponeDto>.value(
               _FakeRegisterResponeDto_4(
-            returnValue: _i8.Future<_i3.RegisterResponeDto>.value(
-              _FakeRegisterResponeDto_1(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
           as _i8.Future<_i6.RegisterResponeDto>);
-          as _i8.Future<_i3.RegisterResponeDto>);
-
-  @override
-  _i8.Future<_i4.UserCartDto> getUserCart() =>
-      (super.noSuchMethod(
-            Invocation.method(#getUserCart, []),
-            returnValue: _i8.Future<_i4.UserCartDto>.value(
-              _FakeUserCartDto_2(this, Invocation.method(#getUserCart, [])),
-            ),
-          )
-          as _i8.Future<_i4.UserCartDto>);
-
-  @override
-  _i8.Future<_i5.UpdeateProudactQuantityRespone> updeateCartProudctQuantity(
-    String? id,
-    _i11.UpdeateCartProuductQuantityBody? body,
-  ) =>
-      (super.noSuchMethod(
-            Invocation.method(#updeateCartProudctQuantity, [id, body]),
-            returnValue: _i8.Future<_i5.UpdeateProudactQuantityRespone>.value(
-              _FakeUpdeateProudactQuantityRespone_3(
-                this,
-                Invocation.method(#updeateCartProudctQuantity, [id, body]),
-              ),
-            ),
-          )
-          as _i8.Future<_i5.UpdeateProudactQuantityRespone>);
-
-  @override
-  _i8.Future<_i6.DeleteCartItemRespone> deleteCartProudct(String? id) =>
-      (super.noSuchMethod(
-            Invocation.method(#deleteCartProudct, [id]),
-            returnValue: _i8.Future<_i6.DeleteCartItemRespone>.value(
-              _FakeDeleteCartItemRespone_4(
-                this,
-                Invocation.method(#deleteCartProudct, [id]),
-              ),
-            ),
-          )
-          as _i8.Future<_i6.DeleteCartItemRespone>);
 }
