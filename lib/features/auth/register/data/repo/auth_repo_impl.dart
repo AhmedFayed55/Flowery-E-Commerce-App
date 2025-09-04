@@ -26,7 +26,9 @@ class AuthRepoImpl implements AuthRepo {
       );
     }
     try {
-      var respone = await _authRemoteDataSource.register(toRegisterBodyDTo(request));
+      var respone = await _authRemoteDataSource.register(
+        toRegisterBodyDTo(request),
+      );
       return ApiSuccessResult(data: respone.toEntity());
     } on DioException catch (e) {
       return ApiErrorResult(

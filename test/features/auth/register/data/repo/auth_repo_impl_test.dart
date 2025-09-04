@@ -1,5 +1,4 @@
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/user.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/source/auth_remote_data_sourse.dart';
@@ -21,15 +20,6 @@ void main() {
       MockAuthRemoteDataSource mockAuthRemoteDataSource =
           MockAuthRemoteDataSource();
       AuthRepoImpl authRepoImpl = AuthRepoImpl(mockAuthRemoteDataSource);
-      RegisterBodyDTo registerBodyDto = RegisterBodyDTo(
-        firstName: 'name',
-        lastName: 'lastName',
-        email: 'emailTest@gmail.com',
-        password: 'password@123',
-        rePassword: 'Password@123',
-        phone: '+20123456789',
-        gender: 'male',
-      );
       RegisterBody registerBody = RegisterBody(
         firstName: 'name',
         lastName: 'lastName',
@@ -66,7 +56,7 @@ void main() {
       result as ApiSuccessResult<RegisterRespone>;
 
       //assert
-    verify(mockAuthRemoteDataSource.register(any)).called(1);
+      verify(mockAuthRemoteDataSource.register(any)).called(1);
       expect(result, isA<ApiSuccessResult<RegisterRespone>>());
       expect(result.data.message, equals(expected.message));
     },

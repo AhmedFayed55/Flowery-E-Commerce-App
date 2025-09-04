@@ -4,3 +4,4 @@ import 'package:flowers_ecommerce_app/features/auth/register/data/model/register
 abstract interface class AuthRemoteDataSource {
   Future<RegisterResponeDto> register(RegisterBodyDTo request);
 }
+

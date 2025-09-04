@@ -51,6 +51,8 @@ class ServerFailure extends Failure {
     switch (response.statusCode) {
       case 404:
         return ServerFailure(errorMessage: "Resource not found", code: '404');
+      case 400:
+        return ServerFailure(errorMessage: "Resource not found", code: '400');
       case 500:
         return ServerFailure(
           errorMessage: "Server error. Please try again later.",
@@ -58,7 +60,7 @@ class ServerFailure extends Failure {
         );
       default:
         return ServerFailure(
-          errorMessage: response.data["message"],
+          errorMessage: response.data["error"],
           code: response.data["code"].toString(),
         );
     }
