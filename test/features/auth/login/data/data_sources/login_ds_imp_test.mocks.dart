@@ -4,15 +4,26 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
+import 'dart:async' as _i8;
 
 import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i7;
+import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart'
+    as _i4;
+import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart'
+    as _i3;
+import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart'
+    as _i5;
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i7;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
+    as _i9;
     as _i9;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
     as _i2;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
     as _i10;
+    as _i10;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
+    as _i6;
     as _i3;
 import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item_respone/delete_cart_item_respone.dart'
     as _i6;
@@ -44,9 +55,27 @@ class _FakeLoginResponceDto_0 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeRegisterResponeDto_1 extends _i1.SmartFake
-    implements _i3.RegisterResponeDto {
-  _FakeRegisterResponeDto_1(Object parent, Invocation parentInvocation)
+class _FakeForgetPasswordModel_1 extends _i1.SmartFake
+    implements _i3.ForgetPasswordModel {
+  _FakeForgetPasswordModel_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeEmailVerifyModel_2 extends _i1.SmartFake
+    implements _i4.EmailVerifyModel {
+  _FakeEmailVerifyModel_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeResetPasswordModel_3 extends _i1.SmartFake
+    implements _i5.ResetPasswordModel {
+  _FakeResetPasswordModel_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeRegisterResponeDto_4 extends _i1.SmartFake
+    implements _i6.RegisterResponeDto {
+  _FakeRegisterResponeDto_4(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -73,6 +102,7 @@ class _FakeDeleteCartItemRespone_4 extends _i1.SmartFake
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockApiServices extends _i1.Mock implements _i7.ApiServices {
+class MockApiServices extends _i1.Mock implements _i7.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
@@ -80,9 +110,12 @@ class MockApiServices extends _i1.Mock implements _i7.ApiServices {
   @override
   _i8.Future<_i2.LoginResponceDto> login(
     _i9.LoginRequestDto? loginRequestDto,
+  _i8.Future<_i2.LoginResponceDto> login(
+    _i9.LoginRequestDto? loginRequestDto,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#login, [loginRequestDto]),
+            returnValue: _i8.Future<_i2.LoginResponceDto>.value(
             returnValue: _i8.Future<_i2.LoginResponceDto>.value(
               _FakeLoginResponceDto_0(
                 this,
@@ -93,9 +126,58 @@ class MockApiServices extends _i1.Mock implements _i7.ApiServices {
           as _i8.Future<_i2.LoginResponceDto>);
 
   @override
+  _i8.Future<_i3.ForgetPasswordModel> forgetPassword(
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#forgetPassword, [body]),
+            returnValue: _i8.Future<_i3.ForgetPasswordModel>.value(
+              _FakeForgetPasswordModel_1(
+                this,
+                Invocation.method(#forgetPassword, [body]),
+              ),
+            ),
+          )
+          as _i8.Future<_i3.ForgetPasswordModel>);
+
+  @override
+  _i8.Future<_i4.EmailVerifyModel> verifyResetCode(
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#verifyResetCode, [body]),
+            returnValue: _i8.Future<_i4.EmailVerifyModel>.value(
+              _FakeEmailVerifyModel_2(
+                this,
+                Invocation.method(#verifyResetCode, [body]),
+              ),
+            ),
+          )
+          as _i8.Future<_i4.EmailVerifyModel>);
+
+  @override
+  _i8.Future<_i5.ResetPasswordModel> resetPassword(
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [body]),
+            returnValue: _i8.Future<_i5.ResetPasswordModel>.value(
+              _FakeResetPasswordModel_3(
+                this,
+                Invocation.method(#resetPassword, [body]),
+              ),
+            ),
+          )
+          as _i8.Future<_i5.ResetPasswordModel>);
+          as _i8.Future<_i2.LoginResponceDto>);
+
+  @override
+  _i8.Future<_i6.RegisterResponeDto> register(_i10.RegisterBodyDTo? request) =>
   _i8.Future<_i3.RegisterResponeDto> register(_i10.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
+            returnValue: _i8.Future<_i6.RegisterResponeDto>.value(
+              _FakeRegisterResponeDto_4(
             returnValue: _i8.Future<_i3.RegisterResponeDto>.value(
               _FakeRegisterResponeDto_1(
                 this,
@@ -103,6 +185,7 @@ class MockApiServices extends _i1.Mock implements _i7.ApiServices {
               ),
             ),
           )
+          as _i8.Future<_i6.RegisterResponeDto>);
           as _i8.Future<_i3.RegisterResponeDto>);
 
   @override

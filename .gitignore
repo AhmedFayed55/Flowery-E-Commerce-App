@@ -45,7 +45,6 @@ app.*.map.json
 /android/app/release
 lib/core/network/api_services.g.dart
 lib/core/di/di.config.dart
-lib/core/di/di.config.dart
 lib/core/l10n/translations/app_localizations_en.dart
 lib/core/l10n/translations/app_localizations.dart
 test/features/auth/register/data/source/auth_remote_data_sourse_imlp_test.mocks.dart
