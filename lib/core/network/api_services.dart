@@ -12,11 +12,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
-
-import '../../features/auth/register/data/model/register_body_dto.dart';
-import '../../features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import '../../features/occasions/data/models/occasions_response_dto.dart';
-import 'api_constants.dart';
 
 part 'api_services.g.dart';
 

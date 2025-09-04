@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/features/occasions/presentation/widgets/ta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../domain/entities/occasions_tabs_entity.dart';
 
 class OccasionsScreen extends StatefulWidget {
@@ -17,13 +18,17 @@ class OccasionsScreen extends StatefulWidget {
   State<OccasionsScreen> createState() => _OccasionsScreenState();
 }
 
-class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderStateMixin {
+class _OccasionsScreenState extends State<OccasionsScreen>
+    with TickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: widget.occasionsList.length, vsync: this);
+    _tabController = TabController(
+      length: widget.occasionsList.length,
+      vsync: this,
+    );
   }
 
   @override
@@ -52,8 +57,11 @@ class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderSt
                     children: [
                       TabBar(
                         controller: _tabController,
-                        onTap: (index){
-                          context.read<OccasionsCubit>().doIntent(LoadOccasionsEvent(), ids[index]);
+                        onTap: (index) {
+                          context.read<OccasionsCubit>().doIntent(
+                            LoadOccasionsEvent(),
+                            ids[index],
+                          );
                         },
                         isScrollable: true,
                         tabs: tabs.map((tab) => Tab(text: tab)).toList(),
@@ -75,4 +83,3 @@ class _OccasionsScreenState extends State<OccasionsScreen> with TickerProviderSt
     );
   }
 }
-

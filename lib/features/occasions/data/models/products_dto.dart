@@ -42,7 +42,7 @@ class ProductsDto {
   @JsonKey(name: "sold")
   final int? sold;
 
-  ProductsDto ({
+  ProductsDto({
     this.rateAvg,
     this.rateCount,
     this.id,

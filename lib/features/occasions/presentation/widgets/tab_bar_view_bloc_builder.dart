@@ -3,6 +3,7 @@ import 'package:flowers_ecommerce_app/features/occasions/presentation/manager/oc
 import 'package:flowers_ecommerce_app/features/occasions/presentation/widgets/products_gridview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../manager/occasions_event.dart';
 
 class TabBarViewBlocBuilder extends StatefulWidget {
@@ -23,14 +24,16 @@ class TabBarViewBlocBuilder extends StatefulWidget {
 
 class _TabBarViewBlocBuilderState extends State<TabBarViewBlocBuilder>
     with AutomaticKeepAliveClientMixin {
-
   @override
   bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    context.read<OccasionsCubit>().doIntent(LoadOccasionsEvent(), widget.ids[0]);
+    context.read<OccasionsCubit>().doIntent(
+      LoadOccasionsEvent(),
+      widget.ids[0],
+    );
 
     widget.controller.addListener(() {
       final id = widget.ids[widget.controller.index];
@@ -62,9 +65,11 @@ class _TabBarViewBlocBuilderState extends State<TabBarViewBlocBuilder>
             child: TabBarView(
               controller: widget.controller,
               children: List.generate(widget.tabs.length, (index) {
-                final products = context
-                    .read<OccasionsCubit>()
-                    .cachedOccasions[widget.ids[index]] ?? [];
+                final products =
+                    context
+                        .read<OccasionsCubit>()
+                        .cachedOccasions[widget.ids[index]] ??
+                    [];
                 return ProductsGridview(products: products);
               }),
             ),
@@ -74,8 +79,3 @@ class _TabBarViewBlocBuilderState extends State<TabBarViewBlocBuilder>
     );
   }
 }
-
-
-
-
-

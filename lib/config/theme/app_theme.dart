@@ -60,10 +60,14 @@ abstract class AppTheme {
         indicatorColor: AppColors.pink,
         tabAlignment: TabAlignment.start,
         labelStyle: TextStyle(
-            color: AppColors.pink,fontSize: 16.sp,fontWeight: AppFontWeight.regular
+          color: AppColors.pink,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.regular,
         ),
-        unselectedLabelStyle:TextStyle(
-            color: AppColors.darkGrey,fontSize: 16.sp,fontWeight: AppFontWeight.regular
+        unselectedLabelStyle: TextStyle(
+          color: AppColors.darkGrey,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.regular,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -114,9 +118,9 @@ abstract class AppTheme {
           color: AppColors.black,
         ),
         displayMedium: TextStyle(
-          color: AppColors.pink,
+          color: AppColors.darkGrey,
           fontSize: 16.sp,
-          fontWeight: AppFontWeight.regular,
+          fontWeight: AppFontWeight.medium,
         ),
         bodySmall: TextStyle(
           fontWeight: AppFontWeight.regular,
@@ -128,16 +132,24 @@ abstract class AppTheme {
           fontSize: 14.sp,
           color: AppColors.darkGrey,
         ),
-        displayMedium: TextStyle(color: AppColors.darkGrey,fontSize: 16.sp,fontWeight: AppFontWeight.medium),
-        bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
-        labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
-        labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
-        bodyLarge: TextStyle(fontWeight: AppFontWeight.medium, fontSize: 20.sp,color: AppColors.black),
-        bodyMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 14.sp,color: AppColors.white),
-        titleSmall: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 14.sp,color: AppColors.black)
         labelMedium: TextStyle(
           fontWeight: AppFontWeight.medium,
           fontSize: 18.sp,
+          color: AppColors.black,
+        ),
+        bodyLarge: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 20.sp,
+          color: AppColors.black,
+        ),
+        bodyMedium: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 14.sp,
+          color: AppColors.white,
+        ),
+        titleSmall: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 14.sp,
           color: AppColors.black,
         ),
       ),

@@ -17,12 +17,15 @@ class OccasionsAppbar extends StatelessWidget {
           spacing: 10.w,
           children: [
             const Icon(Icons.arrow_back_ios_new),
-            Text(locale.occasion, style: theme.textTheme.bodyLarge,),
+            Text(locale.occasion, style: theme.textTheme.bodyLarge),
           ],
         ),
-        Text("         ${locale.bloom_with}",style: theme.textTheme.labelSmall?.copyWith(
-          fontWeight: AppFontWeight.medium
-        ),)
+        Text(
+          "         ${locale.bloom_with}",
+          style: theme.textTheme.labelSmall?.copyWith(
+            fontWeight: AppFontWeight.medium,
+          ),
+        ),
       ],
     );
   }

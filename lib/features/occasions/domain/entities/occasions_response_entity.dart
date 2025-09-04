@@ -7,10 +7,5 @@ class OccasionsResponseEntity {
   final MetadataEntity? metadata;
   final List<ProductsEntity>? products;
 
-  OccasionsResponseEntity ({
-    this.message,
-    this.metadata,
-    this.products,
-  });
-
+  OccasionsResponseEntity({this.message, this.metadata, this.products});
 }

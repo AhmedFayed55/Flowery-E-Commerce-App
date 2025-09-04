@@ -4,11 +4,10 @@ class MetadataEntity {
   final int? limit;
   final int? totalItems;
 
-  MetadataEntity ({
+  MetadataEntity({
     this.currentPage,
     this.totalPages,
     this.limit,
     this.totalItems,
   });
-
 }

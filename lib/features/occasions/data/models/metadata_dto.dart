@@ -14,12 +14,7 @@ class MetadataDto {
   @JsonKey(name: "totalItems")
   final int? totalItems;
 
-  MetadataDto ({
-    this.currentPage,
-    this.totalPages,
-    this.limit,
-    this.totalItems,
-  });
+  MetadataDto({this.currentPage, this.totalPages, this.limit, this.totalItems});
 
   factory MetadataDto.fromJson(Map<String, dynamic> json) {
     return _$MetadataDtoFromJson(json);

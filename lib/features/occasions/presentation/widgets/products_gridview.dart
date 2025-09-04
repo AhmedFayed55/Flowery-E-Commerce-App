@@ -10,13 +10,13 @@ class ProductsGridview extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       itemCount: products.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.94/3,
-          crossAxisSpacing: 17,
-          mainAxisSpacing: 17
-        ),
-      itemBuilder: (context, index) => ProductCart(product: products[index],),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1.94 / 3,
+        crossAxisSpacing: 17,
+        mainAxisSpacing: 17,
+      ),
+      itemBuilder: (context, index) => ProductCart(product: products[index]),
     );
   }
 }

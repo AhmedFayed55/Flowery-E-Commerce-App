@@ -15,11 +15,7 @@ class OccasionsResponseDto {
   @JsonKey(name: "products")
   final List<ProductsDto>? products;
 
-  OccasionsResponseDto ({
-    this.message,
-    this.metadata,
-    this.products,
-  });
+  OccasionsResponseDto({this.message, this.metadata, this.products});
 
   factory OccasionsResponseDto.fromJson(Map<String, dynamic> json) {
     return _$OccasionsResponseDtoFromJson(json);
@@ -35,9 +31,3 @@ class OccasionsResponseDto {
     products: products?.map((product) => product.toEntity()).toList(),
   );
 }
-
-
-
-
-
-

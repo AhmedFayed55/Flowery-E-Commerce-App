@@ -3,6 +3,7 @@ import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../domain/entities/products_entity.dart';
 
 class ProductCart extends StatelessWidget {
@@ -46,7 +47,7 @@ class ProductCart extends StatelessWidget {
           ),
           Flexible(
             child: Padding(
-              padding:  REdgeInsets.only(left: 13.5),
+              padding: REdgeInsets.only(left: 13.5),
               child: Column(
                 spacing: 4.h,
                 crossAxisAlignment: CrossAxisAlignment.start,

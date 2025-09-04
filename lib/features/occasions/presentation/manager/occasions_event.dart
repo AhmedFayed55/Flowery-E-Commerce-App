@@ -1,3 +1,3 @@
-sealed class OccasionsEvent{}
+sealed class OccasionsEvent {}
 
-class LoadOccasionsEvent extends OccasionsEvent{}
+class LoadOccasionsEvent extends OccasionsEvent {}

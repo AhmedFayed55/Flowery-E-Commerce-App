@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/errors/api_results.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/errors/internet_connection.dart';
@@ -10,21 +11,20 @@ import '../data_sources/occasions_ds.dart';
 import '../models/occasions_response_dto.dart';
 
 @Injectable(as: OccasionsRepository)
-class OccasionsRepositoryImpl implements OccasionsRepository{
+class OccasionsRepositoryImpl implements OccasionsRepository {
   final OccasionsDataSource _dataSource;
   final NetworkConnection _networkConnection;
   OccasionsRepositoryImpl(this._dataSource, this._networkConnection);
 
   @override
-  Future<ApiResult<OccasionsResponseEntity>> getOccasions() async{
-
+  Future<ApiResult<OccasionsResponseEntity>> getOccasions() async {
     if (!await _networkConnection.isConnected) {
       return ApiErrorResult(
         failure: Failure(errorMessage: AppConstants.noInternet),
       );
     }
 
-    try{
+    try {
       OccasionsResponseDto dto = await _dataSource.getOccasions();
       OccasionsResponseEntity entity = dto.toEntity();
       return ApiSuccessResult<OccasionsResponseEntity>(data: entity);
@@ -37,7 +37,5 @@ class OccasionsRepositoryImpl implements OccasionsRepository{
         failure: Failure(errorMessage: e.toString()),
       );
     }
-
   }
-
 }

@@ -5,17 +5,19 @@ import 'package:flowers_ecommerce_app/features/occasions/domain/use_cases/get_sp
 import 'package:flowers_ecommerce_app/features/occasions/presentation/manager/occasions_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 import 'occasions_event.dart';
 
 @injectable
-class OccasionsCubit extends Cubit<OccasionsState>{
-  OccasionsCubit(this.getSpecificOccasionsUseCase):super(OccasionsState());
+class OccasionsCubit extends Cubit<OccasionsState> {
+  OccasionsCubit(this.getSpecificOccasionsUseCase)
+    : super(const OccasionsState());
   final GetSpecificOccasionsUseCase getSpecificOccasionsUseCase;
 
   Map<String, List<ProductsEntity>> cachedOccasions = {};
 
-  doIntent(OccasionsEvent event, String id){
-    switch(event){
+  doIntent(OccasionsEvent event, String id) {
+    switch (event) {
       case LoadOccasionsEvent():
         _loadOccasions(id);
         break;
@@ -23,7 +25,6 @@ class OccasionsCubit extends Cubit<OccasionsState>{
   }
 
   Future<void> _loadOccasions(String id) async {
-
     if (cachedOccasions.containsKey(id)) {
       emit(state.copyWith(products: cachedOccasions[id]!));
       return;
@@ -31,20 +32,32 @@ class OccasionsCubit extends Cubit<OccasionsState>{
 
     emit(state.copyWith(isLoadingGetOccasion: true));
     var result = await getSpecificOccasionsUseCase.invoke();
-    switch(result){
+    switch (result) {
       case ApiSuccessResult<OccasionsResponseEntity>():
         final filteredProducts = _productsByOccasion(id, result.data.products!);
         cachedOccasions[id] = filteredProducts;
-        emit(state.copyWith(isLoadingGetOccasion: false, products: filteredProducts));
+        emit(
+          state.copyWith(
+            isLoadingGetOccasion: false,
+            products: filteredProducts,
+          ),
+        );
         break;
       case ApiErrorResult<OccasionsResponseEntity>():
-        emit(state.copyWith(isLoadingGetOccasion: false, errorGetOccasion: result.failure.errorMessage));
+        emit(
+          state.copyWith(
+            isLoadingGetOccasion: false,
+            errorGetOccasion: result.failure.errorMessage,
+          ),
+        );
         break;
     }
   }
 
-  List<ProductsEntity> _productsByOccasion(String id, List<ProductsEntity> products) {
+  List<ProductsEntity> _productsByOccasion(
+    String id,
+    List<ProductsEntity> products,
+  ) {
     return products.where((product) => product.occasion == id).toList();
   }
-
 }

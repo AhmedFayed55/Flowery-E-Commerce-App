@@ -21,7 +21,7 @@ void main() {
 
   test(
     'When call invoke fun should return ApiSuccessResult when repo returns success',
-        () async {
+    () async {
       final OccasionsResponseEntity expectedResponse = OccasionsResponseEntity(
         products: [
           ProductsEntity(slug: "image", title: "name", id: "1"),
@@ -30,7 +30,7 @@ void main() {
       );
 
       when(repository.getOccasions()).thenAnswer(
-            (_) async =>
+        (_) async =>
             ApiSuccessResult<OccasionsResponseEntity>(data: expectedResponse),
       );
 
@@ -39,7 +39,10 @@ void main() {
       verify(repository.getOccasions()).called(1);
       expect(result, isA<ApiSuccessResult<OccasionsResponseEntity>>());
       result as ApiSuccessResult<OccasionsResponseEntity>;
-      expect(result.data.products?.length, equals(expectedResponse.products?.length));
+      expect(
+        result.data.products?.length,
+        equals(expectedResponse.products?.length),
+      );
       expect(result.data, equals(expectedResponse));
     },
   );
