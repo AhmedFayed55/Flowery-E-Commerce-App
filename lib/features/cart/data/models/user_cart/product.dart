@@ -49,7 +49,9 @@ class ProductDto {
     slug: json['slug'] as String?,
     description: json['description'] as String?,
     imgCover: json['imgCover'] as String?,
-    images: json['images'] as List<String>?,
+    images: (json['images'] as List<dynamic>?)
+        ?.map((e) => e.toString())
+        .toList(),
     price: json['price'] as int?,
     priceAfterDiscount: json['priceAfterDiscount'] as int?,
     quantity: json['quantity'] as int?,

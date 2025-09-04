@@ -27,12 +27,12 @@ abstract class ApiServices {
   @GET(ApiConstants.cart)
   Future<UserCartDto> getUserCart();
 
-  @PUT(ApiConstants.cart)
+  @PUT(ApiConstants.cartUD)
   Future<UpdeateProudactQuantityRespone> updeateCartProudctQuantity(
     @Path("id") String id,
     @Body() UpdeateCartProuductQuantityBody body,
   );
 
-  @DELETE(ApiConstants.cart)
+  @DELETE(ApiConstants.cartUD)
   Future<DeleteCartItemRespone> deleteCartProudct(@Path("id") String id);
 }

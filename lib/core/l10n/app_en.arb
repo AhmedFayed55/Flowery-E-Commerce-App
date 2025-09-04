@@ -39,5 +39,23 @@
   "email_not_valid":"This Email is not valid",
   "email_required":"Email is required",
   "password_not_valid":"Invalid password",
-  "password_empty":"Password is required"
+  "password_empty":"Password is required",
+  "you_should_login":"You should login first",
+  "some_thing_went_wrong":"Something went wrong",
+  "your_cart_is_empty":"Your cart is empty",
+  "total":"Total",
+  "checkout":"Checkout",
+  "add_to_cart":"Add to cart",
+  "remove_from_cart":"Remove from cart",
+  "quantity":"Quantity",
+  "items":"Items",
+  "delivery_fee":"Delivery Fee",
+  "subtotal":"Subtotal",
+  "order_summary":"Order Summary",
+  "place_order":"Place Order",
+  "order_placed_successfully":"Order placed successfully",
+  "order_placed":"Order Placed",
+  "egp" :"EGP"
+ 
+
 }

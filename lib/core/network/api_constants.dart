@@ -5,6 +5,7 @@ abstract class ApiConstants {
   static const String forgetPasswordEndpoint = "auth/forgotPassword";
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String resetPassword = "auth/resetPassword";
-  static const String cart = "cart/{id}";
+  static const String cart = "cart";
+  static const String cartUD = "cart/{id}";
   
 }

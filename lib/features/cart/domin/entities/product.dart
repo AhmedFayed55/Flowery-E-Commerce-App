@@ -10,4 +10,18 @@ class Product {
   int? priceAfterDiscount;
   String? category;
   String? occasion;
+
+  Product({
+    this.rateAvg,
+    this.rateCount,
+    this.id,
+    this.title,
+    this.slug,
+    this.description,
+    this.imgCover,
+    this.price,
+    this.priceAfterDiscount,
+    this.category,
+    this.occasion,
+  });
 }

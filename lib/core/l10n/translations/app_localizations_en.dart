@@ -130,4 +130,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get you_should_login => 'You should login first';
+
+  @override
+  String get some_thing_went_wrong => 'Something went wrong';
+
+  @override
+  String get your_cart_is_empty => 'Your cart is empty';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get remove_from_cart => 'Remove from cart';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get items => 'Items';
+
+  @override
+  String get delivery_fee => 'Delivery Fee';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get order_summary => 'Order Summary';
+
+  @override
+  String get place_order => 'Place Order';
+
+  @override
+  String get order_placed_successfully => 'Order placed successfully';
+
+  @override
+  String get order_placed => 'Order Placed';
+
+  @override
+  String get egp => 'EGP';
 }
