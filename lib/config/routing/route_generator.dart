@@ -4,7 +4,6 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
-import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';

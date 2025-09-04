@@ -78,7 +78,7 @@ class _ImageAndDotsIndecatorBuilderState
                   shape: BoxShape.circle,
                   color: _currentPage == index
                       ? AppColors.pink
-                      : AppColors.darkGrey.withOpacity(0.7),
+                      : AppColors.darkGrey.withValues(alpha: 0.5),
                 ),
               ),
             ),
