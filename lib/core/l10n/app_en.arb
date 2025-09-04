@@ -44,7 +44,7 @@
   "current_password" : "Current Password",
   "new_password" : "New Password",
   "update": "Update",
-  "password_changed_successfully" : "Password changed successfully"
+  "password_changed_successfully" : "Password changed successfully",
   "please_enter_your_email_associated_to_your_account": "Please enter your email associated to\n your account",
   "confirm": "Confirm",
   "email_verification": "Email verification",

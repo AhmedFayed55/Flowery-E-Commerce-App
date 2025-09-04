@@ -13,8 +13,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/components/custom_text_form_field.dart';
 import '../../../../../core/di/di.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+class ChangePasswordScreen extends StatelessWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +25,6 @@ class ResetPasswordScreen extends StatelessWidget {
       child: Builder(
           builder: (context) {
             final viewModel = context.read<ChangePasswordCubit>();
-            bool isFormFilled = viewModel.passwordController.text.isNotEmpty &&
-                viewModel.newPasswordController.text.isNotEmpty &&
-                viewModel.confirmNewPasswordController.text.isNotEmpty;
             return Scaffold(
               appBar: AppBar(
                 title: Text(localizations.reset_password),
@@ -71,7 +68,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         },
                         builder: (context, state) {
                           return ElevatedButton(
-                              onPressed: !isFormFilled ? null :() {
+                              onPressed:() {
                                 if (viewModel.formKey.currentState!.validate()) {
                                 viewModel.doIntent(SubmitChangePasswordEvent());
                                 }

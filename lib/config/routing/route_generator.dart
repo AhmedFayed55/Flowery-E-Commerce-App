@@ -4,7 +4,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
-import 'package:flowers_ecommerce_app/features/auth/reset_password/presentation/pages/reset_password_screen.dart';
+import 'package:flowers_ecommerce_app/features/auth/reset_password/presentation/pages/reset_password_screen.dart' hide ResetPasswordScreen;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -15,12 +15,9 @@ class RouteGenerator {
     switch (settings.name) {
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) =>  const LoginScreen());
-        return MaterialPageRoute(builder: (_) =>const  LoginScreen());
 
       case AppRoutes.register:
         return MaterialPageRoute(builder: (_) =>  const RegisterScreen());
-        return MaterialPageRoute(builder: (_) => const RegisterScreen());
-
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
 
@@ -44,8 +41,10 @@ class RouteGenerator {
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());
 
-      case AppRoutes.resetPassword:
-        return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
+
+      case AppRoutes.changePassword:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+
 
       default:
         return unDefinedRoute();
