@@ -4,7 +4,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
-import 'package:flowers_ecommerce_app/features/cart/presentation/pages/Cart_page.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -43,7 +43,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const MainLayout());
 
       case AppRoutes.cart:
-        return MaterialPageRoute(builder: (context) =>  CartPage());
+        return MaterialPageRoute(builder: (context) =>  const CartPage());
 
       default:
         return unDefinedRoute();
