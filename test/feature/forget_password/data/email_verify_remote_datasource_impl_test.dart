@@ -45,7 +45,9 @@ void main() {
           result as ApiSuccessResult<EmailVerifyModel>;
       expect(successResult.data, equals(mockEmailVerifyModel));
 
-      verify(mockApiServices.verifyResetCode({"resetCode": mockCode})).called(1);
+      verify(
+        mockApiServices.verifyResetCode({"resetCode": mockCode}),
+      ).called(1);
     });
 
     /// ErrorDioException
@@ -66,7 +68,9 @@ void main() {
         ).thenThrow(mockDioException);
 
         /// Act
-        var result = await emailVerifyRemoteDataSourceImpl.emailVerify(mockCode);
+        var result = await emailVerifyRemoteDataSourceImpl.emailVerify(
+          mockCode,
+        );
 
         /// Assert
         expect(result, isA<ApiErrorResult<EmailVerifyModel>>());
@@ -77,7 +81,9 @@ void main() {
           equals(mockServerFailureFromDioError.errorMessage),
         );
 
-        verify(mockApiServices.verifyResetCode({"resetCode": mockCode})).called(1);
+        verify(
+          mockApiServices.verifyResetCode({"resetCode": mockCode}),
+        ).called(1);
       },
     );
 
@@ -104,7 +110,9 @@ void main() {
         equals(mockFailure.errorMessage),
       );
 
-      verify(mockApiServices.verifyResetCode({"resetCode": mockCode})).called(1);
+      verify(
+        mockApiServices.verifyResetCode({"resetCode": mockCode}),
+      ).called(1);
     });
   });
 }

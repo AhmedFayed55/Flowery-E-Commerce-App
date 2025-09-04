@@ -58,7 +58,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
         ),
       );
     }
-
   }
 
   Future<void> _emailVerify(String code) async {

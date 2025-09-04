@@ -16,7 +16,6 @@ import 'change_password_cubit_test.mocks.dart';
 void main() {
   group("Change Password View Model test ", () {
     final ChangePasswordUseCase useCase = MockChangePasswordUseCase();
-    final ChangePasswordCubit viewModel = ChangePasswordCubit(useCase);
 
     const ChangePasswordResponseEntity response = ChangePasswordResponseEntity(
       message: "Good",
@@ -39,9 +38,9 @@ void main() {
       "call doIntent with SubmitChangePasswordEvent then call _submitChangePassword and return success",
       build: () {
         when(useCase.invoke(request)).thenAnswer((_) async => successResponse);
-        return viewModel;
+        return ChangePasswordCubit(useCase);
       },
-      act: (viewModel) async{
+      act: (viewModel) async {
         viewModel.passwordController.text = "1";
         viewModel.newPasswordController.text = "2";
         await viewModel.doIntent(SubmitChangePasswordEvent());
@@ -57,9 +56,9 @@ void main() {
       "call doIntent with SubmitChangePasswordEvent then call _submitChangePassword and return error",
       build: () {
         when(useCase.invoke(request)).thenAnswer((_) async => errorResponse);
-        return viewModel;
+        return ChangePasswordCubit(useCase);
       },
-      act: (viewModel) async{
+      act: (viewModel) async {
         viewModel.passwordController.text = "1";
         viewModel.newPasswordController.text = "2";
         await viewModel.doIntent(SubmitChangePasswordEvent());

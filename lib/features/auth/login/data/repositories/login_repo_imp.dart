@@ -9,6 +9,7 @@ import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/repositories/login_repo.dart';
 import 'package:injectable/injectable.dart';
+
 @Injectable(as: LoginRepo)
 class LoginRepoImp implements LoginRepo {
   final LoginDataSource _loginDataSource;

@@ -44,7 +44,7 @@ void main() {
       mockApiServices.login(loginRequestDto),
     ).thenAnswer((_) async => loginResponceDto);
 
-    var result =await loginDataSourceImp.login(loginRequestDto);
+    var result = await loginDataSourceImp.login(loginRequestDto);
 
     verify(mockApiServices.login(loginRequestDto)).called(1);
     expect(result, equals(loginResponceDto));

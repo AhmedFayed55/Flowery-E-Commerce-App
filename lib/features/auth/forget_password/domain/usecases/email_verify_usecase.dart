@@ -4,15 +4,13 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/domain/repos
 import 'package:injectable/injectable.dart';
 
 @injectable
-class EmailVerifyUseCase{
-EmailVerifyRepoContract emailVerifyRepoContract;
+class EmailVerifyUseCase {
+  EmailVerifyRepoContract emailVerifyRepoContract;
   EmailVerifyUseCase({required this.emailVerifyRepoContract});
 
   Future<ApiResult<EmailVerifyModel>> call(String code) async {
-    ApiResult<EmailVerifyModel> emailVerifyModel =
-        await emailVerifyRepoContract.emailVerify(code);
+    ApiResult<EmailVerifyModel> emailVerifyModel = await emailVerifyRepoContract
+        .emailVerify(code);
     return emailVerifyModel;
   }
-
-
 }

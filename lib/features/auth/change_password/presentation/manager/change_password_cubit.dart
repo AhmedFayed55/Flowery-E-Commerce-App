@@ -29,7 +29,7 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
   }
 
   Future<void> _submitChangePassword() async {
-    emit(state.copyWith(isLoading: true,errorMessage: null, isSuccess: false));
+    emit(state.copyWith(isLoading: true, errorMessage: null, isSuccess: false));
 
     final result = await _useCase.invoke(
       ChangePasswordRequestEntity(

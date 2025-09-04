@@ -56,7 +56,7 @@ void main() {
       result as ApiSuccessResult<RegisterRespone>;
 
       //assert
-    verify(mockAuthRemoteDataSource.register(any)).called(1);
+      verify(mockAuthRemoteDataSource.register(any)).called(1);
       expect(result, isA<ApiSuccessResult<RegisterRespone>>());
       expect(result.data.message, equals(expected.message));
     },
