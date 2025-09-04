@@ -22,7 +22,7 @@ class UserModelDto extends Equatable {
   factory UserModelDto.fromJson(Map<String, dynamic> json) =>
       _$UserModelDtoFromJson(json);
 
-  UserModelDto(
+  const UserModelDto(
     this.id,
     this.firstName,
     this.lastName,

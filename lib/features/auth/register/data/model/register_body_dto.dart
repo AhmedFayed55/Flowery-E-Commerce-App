@@ -1,4 +1,3 @@
-import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()

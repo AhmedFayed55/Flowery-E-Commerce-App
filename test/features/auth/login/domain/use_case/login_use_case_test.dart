@@ -12,19 +12,19 @@ import 'login_use_case_test.mocks.dart';
 @GenerateMocks([LoginRepo])
 void main() {
   test('when call usecase is should call loginRepo from Repo', () async {
-    LoginRequestEntity loginRequestEntity = LoginRequestEntity(
+    LoginRequestEntity loginRequestEntity = const LoginRequestEntity(
       email: 'yahya22@',
       password: 'yahya22!',
     );
-    UserEntity userEntity = UserEntity(
+    UserEntity userEntity = const UserEntity(
       'yahya',
       'mohamed',
       'ym',
       'male',
       '',
       '',
-      const [],
-      const [],
+      [],
+      [],
     );
     var expectedResult = ApiSuccessResult<UserEntity>(data: userEntity);
     MockLoginRepo mockLoginRepo = MockLoginRepo();

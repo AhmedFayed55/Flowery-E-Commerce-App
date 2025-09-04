@@ -10,7 +10,7 @@ class UserEntity extends Equatable {
   final List<dynamic> wishlist;
   final List<dynamic> addresses;
 
-  UserEntity(
+  const UserEntity(
     this.firstName,
     this.lastName,
     this.email,
