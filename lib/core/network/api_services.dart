@@ -4,6 +4,8 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/reset_password/data/models/request/change_password_request_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/reset_password/data/models/response/change_password_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -19,4 +21,11 @@ abstract class ApiServices {
 
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
+
+  @PATCH(ApiConstants.changePassword)
+ Future<ChangePasswordResponseDto> changePassword(
+      @Body() ChangePasswordRequestDto requestDto,
+      @Header(ApiConstants.authorization) String token,
+      );
+
 }

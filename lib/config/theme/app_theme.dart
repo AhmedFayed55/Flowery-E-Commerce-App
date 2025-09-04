@@ -22,6 +22,7 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.pink,
+          disabledBackgroundColor: AppColors.black[30],
           foregroundColor: AppColors.white,
           minimumSize: Size(double.infinity, 50.h),
           shape: RoundedRectangleBorder(

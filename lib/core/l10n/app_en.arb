@@ -39,5 +39,10 @@
   "email_not_valid":"This Email is not valid",
   "email_required":"Email is required",
   "password_not_valid":"Invalid password",
-  "password_empty":"Password is required"
+  "password_empty":"Password is required",
+  "reset_password": "Reset Password",
+  "current_password" : "Current Password",
+  "new_password" : "New Password",
+  "update": "Update",
+  "password_changed_successfully" : "Password changed successfully"
 }
