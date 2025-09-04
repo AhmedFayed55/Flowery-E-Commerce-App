@@ -3,15 +3,29 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i10;
 
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i4;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
-    as _i6;
-import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
-    as _i2;
-import 'package:flowers_ecommerce_app/features/products_detalis/data/model/get_specific_product_respone/get_specific_product_respone.dart'
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i9;
+import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/request/change_password_request_dto.dart'
+    as _i13;
+import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/response/change_password_response_dto.dart'
+    as _i7;
+import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart'
+    as _i4;
+import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart'
     as _i3;
+import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart'
+    as _i5;
+import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
+    as _i11;
+import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
+    as _i2;
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
+    as _i12;
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
+    as _i6;
+import 'package:flowers_ecommerce_app/features/products_detalis/data/model/get_specific_product_respone/get_specific_product_respone.dart'
+    as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -28,51 +42,157 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeRegisterResponeDto_0 extends _i1.SmartFake
-    implements _i2.RegisterResponeDto {
-  _FakeRegisterResponeDto_0(Object parent, Invocation parentInvocation)
+class _FakeLoginResponceDto_0 extends _i1.SmartFake
+    implements _i2.LoginResponceDto {
+  _FakeLoginResponceDto_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeGetSpecificProductRespone_1 extends _i1.SmartFake
-    implements _i3.GetSpecificProductRespone {
-  _FakeGetSpecificProductRespone_1(Object parent, Invocation parentInvocation)
+class _FakeForgetPasswordModel_1 extends _i1.SmartFake
+    implements _i3.ForgetPasswordModel {
+  _FakeForgetPasswordModel_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeEmailVerifyModel_2 extends _i1.SmartFake
+    implements _i4.EmailVerifyModel {
+  _FakeEmailVerifyModel_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeResetPasswordModel_3 extends _i1.SmartFake
+    implements _i5.ResetPasswordModel {
+  _FakeResetPasswordModel_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeRegisterResponeDto_4 extends _i1.SmartFake
+    implements _i6.RegisterResponeDto {
+  _FakeRegisterResponeDto_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeChangePasswordResponseDto_5 extends _i1.SmartFake
+    implements _i7.ChangePasswordResponseDto {
+  _FakeChangePasswordResponseDto_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeGetSpecificProductRespone_6 extends _i1.SmartFake
+    implements _i8.GetSpecificProductRespone {
+  _FakeGetSpecificProductRespone_6(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i4.ApiServices {
+class MockApiServices extends _i1.Mock implements _i9.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.RegisterResponeDto> register(_i6.RegisterBodyDTo? request) =>
+  _i10.Future<_i2.LoginResponceDto> login(
+    _i11.LoginRequestDto? loginRequestDto,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#login, [loginRequestDto]),
+            returnValue: _i10.Future<_i2.LoginResponceDto>.value(
+              _FakeLoginResponceDto_0(
+                this,
+                Invocation.method(#login, [loginRequestDto]),
+              ),
+            ),
+          )
+          as _i10.Future<_i2.LoginResponceDto>);
+
+  @override
+  _i10.Future<_i3.ForgetPasswordModel> forgetPassword(
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#forgetPassword, [body]),
+            returnValue: _i10.Future<_i3.ForgetPasswordModel>.value(
+              _FakeForgetPasswordModel_1(
+                this,
+                Invocation.method(#forgetPassword, [body]),
+              ),
+            ),
+          )
+          as _i10.Future<_i3.ForgetPasswordModel>);
+
+  @override
+  _i10.Future<_i4.EmailVerifyModel> verifyResetCode(
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#verifyResetCode, [body]),
+            returnValue: _i10.Future<_i4.EmailVerifyModel>.value(
+              _FakeEmailVerifyModel_2(
+                this,
+                Invocation.method(#verifyResetCode, [body]),
+              ),
+            ),
+          )
+          as _i10.Future<_i4.EmailVerifyModel>);
+
+  @override
+  _i10.Future<_i5.ResetPasswordModel> resetPassword(
+    Map<String, dynamic>? body,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [body]),
+            returnValue: _i10.Future<_i5.ResetPasswordModel>.value(
+              _FakeResetPasswordModel_3(
+                this,
+                Invocation.method(#resetPassword, [body]),
+              ),
+            ),
+          )
+          as _i10.Future<_i5.ResetPasswordModel>);
+
+  @override
+  _i10.Future<_i6.RegisterResponeDto> register(_i12.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i5.Future<_i2.RegisterResponeDto>.value(
-              _FakeRegisterResponeDto_0(
+            returnValue: _i10.Future<_i6.RegisterResponeDto>.value(
+              _FakeRegisterResponeDto_4(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i5.Future<_i2.RegisterResponeDto>);
+          as _i10.Future<_i6.RegisterResponeDto>);
 
   @override
-  _i5.Future<_i3.GetSpecificProductRespone> getSpecificProduct(
+  _i10.Future<_i7.ChangePasswordResponseDto> changePassword(
+    _i13.ChangePasswordRequestDto? requestDto,
+    String? token,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#changePassword, [requestDto, token]),
+            returnValue: _i10.Future<_i7.ChangePasswordResponseDto>.value(
+              _FakeChangePasswordResponseDto_5(
+                this,
+                Invocation.method(#changePassword, [requestDto, token]),
+              ),
+            ),
+          )
+          as _i10.Future<_i7.ChangePasswordResponseDto>);
+
+  @override
+  _i10.Future<_i8.GetSpecificProductRespone> getSpecificProduct(
     String? productId,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#getSpecificProduct, [productId]),
-            returnValue: _i5.Future<_i3.GetSpecificProductRespone>.value(
-              _FakeGetSpecificProductRespone_1(
+            returnValue: _i10.Future<_i8.GetSpecificProductRespone>.value(
+              _FakeGetSpecificProductRespone_6(
                 this,
                 Invocation.method(#getSpecificProduct, [productId]),
               ),
             ),
           )
-          as _i5.Future<_i3.GetSpecificProductRespone>);
+          as _i10.Future<_i8.GetSpecificProductRespone>);
 }

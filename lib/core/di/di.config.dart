@@ -155,8 +155,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i637.AuthRemoteDataSource>(
       () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
     );
-    gh.factory<_i329.ProductsDetalisRepo>(
-      () => _i505.ProductsDetalisRepoImpl(gh<_i25.ProductsDetalisDs>()),
+    gh.factory<_i975.AuthRepo>(
+      () => _i990.AuthRepoImpl(gh<_i637.AuthRemoteDataSource>()),
     );
     gh.factory<_i217.ResetPasswordRemoteDataSource>(
       () => _i398.ResetPasswordRemoteDataSourceImpl(
@@ -167,6 +167,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i865.EmailVerifyRepoImpl(
         emailVerifyRemoteDataSource: gh<_i45.EmailVerifyRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i25.ProductsDetalisDs>(
+      () => _i247.ProductsDetalisDsImpl(gh<_i804.ApiServices>()),
     );
     gh.factory<_i171.ForgetPasswordRepoContract>(
       () => _i791.ForgetPasswordRepoImpl(
@@ -187,9 +190,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i580.LoginBloc>(
       () => _i580.LoginBloc(gh<_i630.LoginUseCase>()),
-    );
-    gh.factory<_i25.ProductsDetalisDs>(
-      () => _i247.ProductsDetalisDsImpl(gh<_i804.ApiServices>()),
     );
     gh.factory<_i329.ProductsDetalisRepo>(
       () => _i505.ProductsDetalisRepoImpl(gh<_i25.ProductsDetalisDs>()),
@@ -219,15 +219,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i444.RegisterCubit>(
       () => _i444.RegisterCubit(gh<_i752.RegisterUsecase>()),
     );
+    gh.factory<_i838.GetSpecificProductUsecase>(
+      () => _i838.GetSpecificProductUsecase(gh<_i329.ProductsDetalisRepo>()),
+    );
     gh.factory<_i648.ForgetPasswordCubit>(
       () => _i648.ForgetPasswordCubit(
         forgetPasswordUseCase: gh<_i107.ForgetPasswordUseCase>(),
         emailVerifyUseCase: gh<_i532.EmailVerifyUseCase>(),
         resetPasswordUseCase: gh<_i801.ResetPasswordUseCase>(),
       ),
-    );
-    gh.factory<_i838.GetSpecificProductUsecase>(
-      () => _i838.GetSpecificProductUsecase(gh<_i329.ProductsDetalisRepo>()),
     );
     gh.factory<_i680.ProductsDetalis>(
       () => _i680.ProductsDetalis(gh<_i838.GetSpecificProductUsecase>()),

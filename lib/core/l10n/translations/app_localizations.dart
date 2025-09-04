@@ -446,10 +446,6 @@ abstract class AppLocalizations {
   /// No description provided for @cart.
   ///
   /// In en, this message translates to:
-  /// **'Cart'**
-  String get cart;
-
-  /// No description provided for @checkout.
   ///
   /// In en, this message translates to:
   /// **'Checkout'**
