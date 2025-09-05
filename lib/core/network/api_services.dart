@@ -34,9 +34,9 @@ abstract class ApiServices {
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
-  
+
   @GET(ApiConstants.userData)
-  Future<UserResponseDto>userData();
+  Future<UserResponseDto> userData();
 
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(

@@ -36,18 +36,17 @@ class SectionDataUser extends StatelessWidget {
           child: enable == true
               ? Image.network(imageUrl!)
               : SvgPicture.asset(AppImages.gestuserPhoto),
-         
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               enable == true ? userName! : Constants.nameGest,
-              
-               style: Theme.of(context).textTheme.labelMedium,
+
+              style: Theme.of(context).textTheme.labelMedium,
             ),
             IconButton(
-              onPressed: enable==false
+              onPressed: enable == false
                   ? null
                   : () {
                       context.pushNamed(AppRoutes.login);

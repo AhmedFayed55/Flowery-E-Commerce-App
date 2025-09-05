@@ -6,5 +6,10 @@ class AboutUsEntity {
   final String? title;
   final AboutUsStyleEntity style;
 
-  AboutUsEntity({required this.section, required this.content, this.title, required this.style});
+  AboutUsEntity({
+    required this.section,
+    required this.content,
+    this.title,
+    required this.style,
+  });
 }

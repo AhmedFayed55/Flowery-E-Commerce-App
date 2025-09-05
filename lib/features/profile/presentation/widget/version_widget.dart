@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flutter/material.dart';
+
 class VersionWidget extends StatelessWidget {
   const VersionWidget({
     super.key,

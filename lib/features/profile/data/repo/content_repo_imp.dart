@@ -21,7 +21,7 @@ class GetContentRepoImp implements GetContectRepo {
   Future<List<TermEntity>> getTerms() async {
     final dtos = await _getContentDataSource.loadTerms();
     var lang = _getCurrentLang();
-    return dtos.map((dto) => dto.toDomain(lang )).toList();
+    return dtos.map((dto) => dto.toDomain(lang)).toList();
   }
 
   @override
@@ -29,6 +29,6 @@ class GetContentRepoImp implements GetContectRepo {
     final dtos = await _getContentDataSource.loadAbotUs();
     var lang = _getCurrentLang();
 
-    return dtos.map((dto) => dto.toDomain(lang )).toList();
+    return dtos.map((dto) => dto.toDomain(lang)).toList();
   }
 }

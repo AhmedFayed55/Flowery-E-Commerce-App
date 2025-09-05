@@ -160,6 +160,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saved_address => 'Saved address';
+
+  @override
   String get reset_password => 'Reset Password';
 
   @override

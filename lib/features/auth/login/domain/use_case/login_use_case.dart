@@ -8,7 +8,9 @@ import 'package:injectable/injectable.dart';
 class LoginUseCase {
   final LoginRepo _loginRepo;
   LoginUseCase(this._loginRepo);
-  Future<ApiResult<UserLoginEntity>> call(LoginRequestEntity loginRequestEntity) {
+  Future<ApiResult<UserLoginEntity>> call(
+    LoginRequestEntity loginRequestEntity,
+  ) {
     return _loginRepo.loginRepo(loginRequestEntity);
   }
 }

@@ -166,8 +166,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          context.read<LoginBloc>().doIntent(SumitAsGestEvent());
-                         context.pushReplacementNamed(AppRoutes.mainLayout);
+                          context.read<LoginBloc>().doIntent(
+                            SumitAsGestEvent(),
+                          );
+                          context.pushReplacementNamed(AppRoutes.mainLayout);
                         },
                         style: ElevatedButton.styleFrom().copyWith(
                           backgroundColor: WidgetStateProperty.all(

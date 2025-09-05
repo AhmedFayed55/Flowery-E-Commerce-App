@@ -126,46 +126,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
     );
-    gh.factory<_i197.ForgetPasswordRemoteDataSource>(
-      () => _i990.ForgetPasswordRemoteDataSourceImpl(
-        apiServices: gh<_i804.ApiServices>(),
-      ),
-    );
-    gh.factory<_i45.EmailVerifyRemoteDataSource>(
-      () => _i950.EmailVerifyRemoteDataSourceImpl(
-        apiServices: gh<_i804.ApiServices>(),
-      ),
-    );
-    gh.factory<_i637.AuthRemoteDataSource>(
-      () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
-    );
-    gh.factory<_i975.AuthRepo>(
-      () => _i990.AuthRepoImpl(gh<_i637.AuthRemoteDataSource>()),
-    );
-    gh.factory<_i217.ResetPasswordRemoteDataSource>(
-      () => _i398.ResetPasswordRemoteDataSourceImpl(
-        apiServices: gh<_i804.ApiServices>(),
-      ),
-    );
-    gh.factory<_i209.EmailVerifyRepoContract>(
-      () => _i865.EmailVerifyRepoImpl(
-        emailVerifyRemoteDataSource: gh<_i45.EmailVerifyRemoteDataSource>(),
-      ),
-    );
     gh.factory<_i99.GetContentDataSource>(
       () => _i283.GetContentDataSourceImp(),
     );
-    gh.factory<_i171.ForgetPasswordRepoContract>(
-      () => _i791.ForgetPasswordRepoImpl(
-        forgetPasswordRemoteDataSource:
-            gh<_i197.ForgetPasswordRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_i532.EmailVerifyUseCase>(
-      () => _i532.EmailVerifyUseCase(
-        emailVerifyRepoContract: gh<_i209.EmailVerifyRepoContract>(),
-      ),
-    );
+    gh.factory<_i804.ApiServices>(() => _i804.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i773.LoginDataSource>(
       () => _i265.LoginDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -199,11 +163,73 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i172.LoginRepo>(
       () => _i408.LoginRepoImp(gh<_i773.LoginDataSource>()),
     );
+    gh.factory<_i954.GetUserDataUseCase>(
+      () => _i954.GetUserDataUseCase(gh<_i275.GetUserDataRepo>()),
+    );
+    gh.factory<_i197.ForgetPasswordRemoteDataSource>(
+      () => _i990.ForgetPasswordRemoteDataSourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
+    gh.factory<_i45.EmailVerifyRemoteDataSource>(
+      () => _i950.EmailVerifyRemoteDataSourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
+    gh.factory<_i922.GetTermsUseCase>(
+      () => _i922.GetTermsUseCase(gh<_i755.GetContectRepo>()),
+    );
+    gh.factory<_i116.GetAboutUsUseCase>(
+      () => _i116.GetAboutUsUseCase(gh<_i755.GetContectRepo>()),
+    );
+    gh.factory<_i637.AuthRemoteDataSource>(
+      () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
+    );
+    gh.factory<_i975.AuthRepo>(
+      () => _i990.AuthRepoImpl(gh<_i637.AuthRemoteDataSource>()),
+    );
+    gh.factory<_i217.ResetPasswordRemoteDataSource>(
+      () => _i398.ResetPasswordRemoteDataSourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
+    gh.factory<_i209.EmailVerifyRepoContract>(
+      () => _i865.EmailVerifyRepoImpl(
+        emailVerifyRemoteDataSource: gh<_i45.EmailVerifyRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i171.ForgetPasswordRepoContract>(
+      () => _i791.ForgetPasswordRepoImpl(
+        forgetPasswordRemoteDataSource:
+            gh<_i197.ForgetPasswordRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i532.EmailVerifyUseCase>(
+      () => _i532.EmailVerifyUseCase(
+        emailVerifyRepoContract: gh<_i209.EmailVerifyRepoContract>(),
+      ),
+    );
+    gh.factory<_i792.ChangePasswordUseCase>(
+      () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
+    );
+    gh.factory<_i630.LoginUseCase>(
+      () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
+    );
+    gh.factory<_i124.ProfileSettingCubit>(
+      () => _i124.ProfileSettingCubit(
+        gh<_i954.GetUserDataUseCase>(),
+        gh<_i922.GetTermsUseCase>(),
+        gh<_i116.GetAboutUsUseCase>(),
+      ),
+    );
+    gh.factory<_i959.LoginBloc>(
+      () => _i959.LoginBloc(gh<_i630.LoginUseCase>()),
+    );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
-    gh.factory<_i954.GetUserDataUseCase>(
-      () => _i954.GetUserDataUseCase(gh<_i275.GetUserDataRepo>()),
+    gh.factory<_i1035.ChangePasswordCubit>(
+      () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
     );
     gh.factory<_i107.ForgetPasswordUseCase>(
       () => _i107.ForgetPasswordUseCase(
@@ -216,32 +242,13 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i217.ResetPasswordRemoteDataSource>(),
       ),
     );
-    gh.factory<_i922.GetTermsUseCase>(
-      () => _i922.GetTermsUseCase(gh<_i755.GetContectRepo>()),
-    );
-    gh.factory<_i116.GetAboutUsUseCase>(
-      () => _i116.GetAboutUsUseCase(gh<_i755.GetContectRepo>()),
-    );
     gh.factory<_i801.ResetPasswordUseCase>(
       () => _i801.ResetPasswordUseCase(
         resetPasswordRepoContract: gh<_i735.ResetPasswordRepoContract>(),
       ),
     );
-    gh.factory<_i792.ChangePasswordUseCase>(
-      () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
-    );
-    gh.factory<_i630.LoginUseCase>(
-      () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
-    );
     gh.factory<_i444.RegisterCubit>(
       () => _i444.RegisterCubit(gh<_i752.RegisterUsecase>()),
-    );
-    gh.factory<_i124.ProfileSettingCubit>(
-      () => _i124.ProfileSettingCubit(
-        gh<_i954.GetUserDataUseCase>(),
-        gh<_i922.GetTermsUseCase>(),
-        gh<_i116.GetAboutUsUseCase>(),
-      ),
     );
     gh.factory<_i648.ForgetPasswordCubit>(
       () => _i648.ForgetPasswordCubit(
@@ -249,12 +256,6 @@ extension GetItInjectableX on _i174.GetIt {
         emailVerifyUseCase: gh<_i532.EmailVerifyUseCase>(),
         resetPasswordUseCase: gh<_i801.ResetPasswordUseCase>(),
       ),
-    );
-    gh.factory<_i959.LoginBloc>(
-      () => _i959.LoginBloc(gh<_i630.LoginUseCase>()),
-    );
-    gh.factory<_i1035.ChangePasswordCubit>(
-      () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
     );
     return this;
   }

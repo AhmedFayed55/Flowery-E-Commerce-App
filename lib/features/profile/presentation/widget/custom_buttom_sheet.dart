@@ -10,12 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButtomSheet extends StatelessWidget {
-  
   const CustomButtomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-      var lang =AppLocalizations.of(context)!;
+    var lang = AppLocalizations.of(context)!;
 
     final cubit = context.watch<ProfileSettingCubit>();
     final cubitState = cubit.state.localizationCode;
@@ -37,7 +36,7 @@ class CustomButtomSheet extends StatelessWidget {
             ),
 
             Text(
-            lang.change_language  ,
+              lang.change_language,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             CustomCard(

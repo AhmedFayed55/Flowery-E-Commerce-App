@@ -13,4 +13,5 @@ class ChangeLanguageEvent extends ProfileSettingEvent {
 }
 
 class LoadTermsEvent extends ProfileSettingEvent {}
-class LoadAboutUsEvent extends ProfileSettingEvent{}
+
+class LoadAboutUsEvent extends ProfileSettingEvent {}

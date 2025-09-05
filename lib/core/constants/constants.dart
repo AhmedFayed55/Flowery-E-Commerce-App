@@ -6,8 +6,8 @@ abstract class Constants {
   static const String enableNotification = 'enableNotification';
   static const String arKey = 'ar';
   static const String enKey = 'en';
-  static const String nameGest='GestUser';
-  static const String emailGest='no-email@example.com';
-  static const String termsKey='terms_and_conditions';
-  static  const String aboutUsKey='about_app';
+  static const String nameGest = 'GestUser';
+  static const String emailGest = 'no-email@example.com';
+  static const String termsKey = 'terms_and_conditions';
+  static const String aboutUsKey = 'about_app';
 }

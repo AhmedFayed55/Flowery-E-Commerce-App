@@ -403,6 +403,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved address'**
   String get saved_address;
+
   /// No description provided for @reset_password.
   ///
   /// In en, this message translates to:

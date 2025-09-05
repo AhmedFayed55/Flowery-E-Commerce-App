@@ -11,9 +11,7 @@ import 'package:injectable/injectable.dart';
 class GetContentDataSourceImp implements GetContentDataSource {
   @override
   Future<List<TermModelDto>> loadTerms() async {
-    final jsonString = await rootBundle.loadString(
-      AppImages.termsPath,
-    );
+    final jsonString = await rootBundle.loadString(AppImages.termsPath);
     final jsonData = json.decode(jsonString);
 
     final List<dynamic> termsListJson = jsonData[Constants.termsKey];
@@ -22,9 +20,7 @@ class GetContentDataSourceImp implements GetContentDataSource {
 
   @override
   Future<List<AbotUsModelDto>> loadAbotUs() async {
-    final jsonString = await rootBundle.loadString(
-      AppImages.aboutUsPath,
-    );
+    final jsonString = await rootBundle.loadString(AppImages.aboutUsPath);
     final jsonData = json.decode(jsonString);
     final List<dynamic> aboutUsListJson = jsonData[Constants.aboutUsKey];
     return aboutUsListJson.map((e) => AbotUsModelDto.fromJson(e)).toList();

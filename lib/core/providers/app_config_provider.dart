@@ -10,7 +10,7 @@ class AppConfigProvider extends ChangeNotifier {
     final currentLocale =
         getIt<SharedPrefHelper>().getData(key: Constants.languageCode)
             as String?;
-          
+
     selectedLocale = Locale(currentLocale ?? Constants.enKey);
     notifyListeners();
   }

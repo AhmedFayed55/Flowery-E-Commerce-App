@@ -2,22 +2,18 @@ import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_style_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'term_style_model_dto.g.dart';
+
 @JsonSerializable()
 class TermStyleModelDto {
-    @JsonKey(defaultValue: 14.0)
-
+  @JsonKey(defaultValue: 14.0)
   final double fontSize;
-    @JsonKey(defaultValue: 'bold')
-
+  @JsonKey(defaultValue: 'bold')
   final String fontWeight;
-    @JsonKey(defaultValue: '#000000')
-
+  @JsonKey(defaultValue: '#000000')
   final String color;
-    @JsonKey(defaultValue: {'en': 'center'})
-
+  @JsonKey(defaultValue: {'en': 'center'})
   final Map<String, dynamic> textAlign;
-    @JsonKey(defaultValue: '#FFFFFF')
-
+  @JsonKey(defaultValue: '#FFFFFF')
   final String backgroundColor;
 
   TermStyleModelDto({

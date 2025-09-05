@@ -32,7 +32,8 @@ class AboutUsStyleModelDto {
       fontSize: fontSize,
       fontWeight: fontWeight,
       color: color,
-      textAlign:( textAlign[languageCode] ?? textAlign[Constants.enKey]).toString(),
+      textAlign: (textAlign[languageCode] ?? textAlign[Constants.enKey])
+          .toString(),
       backgroundColor: backgroundColor,
     );
   }

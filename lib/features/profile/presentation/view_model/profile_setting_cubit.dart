@@ -96,7 +96,7 @@ class ProfileSettingCubit extends Cubit<ProfileSettingState> {
         localizationCode: localizationCode,
         local: Locale(localizationCode),
       ),
-    );    
+    );
     await _saveLanguage(localizationCode);
     await _loadTerms();
     await _loadAboutUs();

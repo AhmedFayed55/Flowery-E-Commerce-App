@@ -26,10 +26,11 @@ class ProfileSettingScreen extends StatefulWidget {
 class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
   @override
   void initState() {
-        context.read<ProfileSettingCubit>().doIntent(SumitProflieSetting());
+    context.read<ProfileSettingCubit>().doIntent(SumitProflieSetting());
 
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     var lang = AppLocalizations.of(context)!;
@@ -43,7 +44,8 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
             }
             return Padding(
               padding: EdgeInsets.only(top: 20.h),
-              child: Skeletonizer(enabled: state.isLoadding==true?true:false,
+              child: Skeletonizer(
+                enabled: state.isLoadding == true ? true : false,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -54,7 +56,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       userName: state.userEntity?.firstName ?? '',
                     ),
                     const Divider(),
-                   CustomNotificationSwitch(
+                    CustomNotificationSwitch(
                       onChanged: (value) {
                         context.read<ProfileSettingCubit>().doIntent(
                           ToggleNotificationEvent(value),

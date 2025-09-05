@@ -8,7 +8,7 @@ class CustomRow extends StatelessWidget {
     required this.firstIcon,
     required this.title,
     required this.onPressed,
-    this.lastWidget
+    this.lastWidget,
   });
 
   final Widget? firstIcon;
@@ -36,10 +36,11 @@ class CustomRow extends StatelessWidget {
                 ),
               ),
             const Spacer(),
-            lastWidget??const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: AppColors.darkGrey,
-            ),
+            lastWidget ??
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: AppColors.darkGrey,
+                ),
           ],
         ),
       ),
