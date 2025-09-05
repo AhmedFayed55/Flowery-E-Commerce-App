@@ -7,10 +7,13 @@ import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/widget/custom_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../auth/login/domain/entities/user_entitiy.dart';
 
 class SectionDataUser extends StatelessWidget {
   const SectionDataUser({
@@ -18,11 +21,13 @@ class SectionDataUser extends StatelessWidget {
     required this.email,
     required this.imageUrl,
     required this.userName,
+    required this.userLoginEntity,
   });
 
   final String? imageUrl;
   final String? userName;
   final String? email;
+  final UserLoginEntity? userLoginEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,7 @@ class SectionDataUser extends StatelessWidget {
               onPressed: enable == false
                   ? null
                   : () {
-                      context.pushNamed(AppRoutes.login);
+                      context.pushNamed(AppRoutes.editProfile,arguments: userLoginEntity);
                     },
               icon: const Icon(Icons.edit_outlined),
             ),

@@ -9,12 +9,16 @@ import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/e
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_state.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/gender_selection.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/image_picker.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../auth/login/domain/entities/user_entitiy.dart';
+
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+  final UserLoginEntity userEntity;
+  const EditProfileScreen({super.key,required this.userEntity});
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -52,13 +56,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           }
         },
         builder: (context, state) {
+          firstNameController.text = widget.userEntity.firstName;
+          lastNameController.text = widget.userEntity.lastName;
+          emailController.text = widget.userEntity.email;
+          phoneController.text = widget.userEntity.phone.substring(2);
+          passwordController.text = "11111111";
+          _selectedGender = widget.userEntity.gender;
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.keyboard_arrow_left),
                 onPressed: () {
-                  /// navigate to main profile
-                },
+                  Navigator.pop(context);
+                  },
               ),
               scrolledUnderElevation: 0,
               elevation: 0,
@@ -88,6 +98,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         children: [
                           Expanded(
                             child: TextFormField(
+                              controller: firstNameController,
                               decoration: InputDecoration(
                                 label: Text(
                                   AppLocalizations.of(context)!.first_name,
@@ -98,6 +109,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           horizontalSpace(17),
                           Expanded(
                             child: TextFormField(
+                              controller: lastNameController,
                               decoration: InputDecoration(
                                 label: Text(
                                   AppLocalizations.of(context)!.last_name,

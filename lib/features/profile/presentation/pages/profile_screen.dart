@@ -2,6 +2,7 @@ import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_cubit.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_event.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_state.dart';
@@ -17,7 +18,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ProfileSettingScreen extends StatefulWidget {
-  const ProfileSettingScreen({super.key});
+  const ProfileSettingScreen({super.key,});
 
   @override
   State<ProfileSettingScreen> createState() => _ProfileSettingScreenState();
@@ -54,6 +55,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       email: state.userEntity?.email ?? '',
                       imageUrl: state.userEntity?.photo ?? '',
                       userName: state.userEntity?.firstName ?? '',
+                      userLoginEntity: state.userEntity ,
                     ),
                     const Divider(),
                     CustomNotificationSwitch(

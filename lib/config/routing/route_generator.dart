@@ -2,11 +2,13 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/domain/entit
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/email_verification_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/forget_password_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/pages/edit_profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
@@ -58,8 +60,11 @@ class RouteGenerator {
 
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());
+
       case AppRoutes.profile:
+
         return MaterialPageRoute(builder: (_) => const ProfileSettingScreen());
+
       case AppRoutes.terms:
         final termsList = settings.arguments as List<TermEntity>? ?? [];
         return MaterialPageRoute(
@@ -100,7 +105,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) =>  const CartPage());
 
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (context) =>  const EditProfileScreen());
+        final args = settings.arguments as UserLoginEntity;
+        return MaterialPageRoute(builder: (context) =>  EditProfileScreen(userEntity: args,));
 
       default:
         return unDefinedRoute();

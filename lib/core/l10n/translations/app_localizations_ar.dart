@@ -4,102 +4,103 @@ import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
 
-/// The translations for English (`en`).
-class AppLocalizationsEn extends AppLocalizations {
-  AppLocalizationsEn([String locale = 'en']) : super(locale);
+/// The translations for Arabic (`ar`).
+class AppLocalizationsAr extends AppLocalizations {
+  AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get login => 'Login';
+  String get login => 'تسجيل الدخول';
 
   @override
-  String get email => 'Email';
+  String get email => 'البريد الإلكتروني';
 
   @override
-  String get password => 'Password';
+  String get password => 'كلمة المرور';
 
   @override
-  String get enter_your_email => 'Enter your email';
+  String get enter_your_email => 'ادخل بريدك الإلكتروني';
 
   @override
-  String get enter_your_password => 'Enter your password';
+  String get enter_your_password => 'ادخل كلمة المرور';
 
   @override
-  String get remember_me => 'Remember me';
+  String get remember_me => 'تذكرني';
 
   @override
-  String get forget_password => 'Forget password';
+  String get forget_password => 'نسيت كلمة المرور';
 
   @override
-  String get dont_have_an_account => 'Don\'t have an account';
+  String get dont_have_an_account => 'ليس لديك حساب؟';
 
   @override
-  String get sign_up => 'Sign up';
+  String get sign_up => 'إنشاء حساب';
 
   @override
-  String get enter_first_name => 'Enter first name';
+  String get enter_first_name => 'ادخل الاسم الأول';
 
   @override
-  String get register => 'Register';
+  String get register => 'تسجيل';
 
   @override
-  String get first_name => 'First name';
+  String get first_name => 'الاسم الأول';
 
   @override
-  String get enter_last_name => 'Enter last name';
+  String get enter_last_name => 'ادخل الاسم الأخير';
 
   @override
-  String get last_name => 'Last name';
+  String get last_name => 'الاسم الأخير';
 
   @override
-  String get enter_password => 'Enter password';
+  String get enter_password => 'ادخل كلمة المرور';
 
   @override
-  String get confirm_password => 'Confirm password';
+  String get confirm_password => 'تأكيد كلمة المرور';
 
   @override
-  String get enter_phone_number => 'Enter phone number';
+  String get enter_phone_number => 'ادخل رقم الهاتف';
 
   @override
-  String get phone_number => 'Phone number';
+  String get phone_number => 'رقم الهاتف';
 
   @override
-  String get already_have_an_account => 'Already have an account?';
+  String get already_have_an_account => 'هل لديك حساب بالفعل؟';
 
   @override
-  String get ok => 'OK';
+  String get ok => 'حسناً';
 
   @override
-  String get gender => 'Gender';
+  String get gender => 'الجنس';
 
   @override
-  String get male => 'male';
+  String get male => 'ذكر';
 
   @override
-  String get female => 'female';
+  String get female => 'أنثى';
 
   @override
-  String get terms_conditions => 'Terms&Conditions';
+  String get terms_conditions => 'الشروط والأحكام';
 
   @override
-  String get agree_to_our => 'Creating an account, you agree to our';
+  String get agree_to_our =>
+      'بإنشاء حساب، أنت توافق على الشروط والأحكام الخاصة بنا';
 
   @override
-  String get acount_created_successfully => 'Account created successfully';
+  String get acount_created_successfully => 'تم إنشاء الحساب بنجاح';
 
   @override
-  String get success => 'Success';
+  String get success => 'نجاح';
 
   @override
-  String get no_internet_connection => 'No internet connection';
+  String get no_internet_connection => 'لا يوجد اتصال بالإنترنت';
 
   @override
-  String get loading => 'Loading...';
+  String get loading => 'جاري التحميل...';
 
   @override
-  String get error => 'Error';
+  String get error => 'خطأ';
 
   @override
-  String get login_successfully => 'Login successfully';
+  String get login_successfully => 'تم تسجيل الدخول بنجاح';
 
   @override
   String get filer => 'Filter';
@@ -111,7 +112,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get no_products_found => 'No products found';
 
   @override
-  String get register_successfully => 'Register Successfully';
+  String get register_successfully => 'تم إنشاء الحساب بنجاح';
 
   @override
   String get product_details => 'Product Details';
@@ -156,55 +157,55 @@ class AppLocalizationsEn extends AppLocalizations {
   String get occasion => 'Occasion';
 
   @override
-  String get home => 'Home';
+  String get home => 'الرئيسية';
 
   @override
-  String get categories => 'Categories';
+  String get categories => 'الفئات';
 
   @override
-  String get cart => 'Cart';
+  String get cart => 'سلة التسوق';
 
   @override
-  String get email_not_valid => 'This Email is not valid';
+  String get email_not_valid => 'هذا البريد الإلكتروني غير صالح';
 
   @override
-  String get email_required => 'Email is required';
+  String get email_required => 'البريد الإلكتروني مطلوب';
 
   @override
-  String get password_not_valid => 'Invalid password';
+  String get password_not_valid => 'كلمة المرور غير صالحة';
 
   @override
-  String get password_empty => 'Password is required';
+  String get password_empty => 'كلمة المرور مطلوبة';
 
   @override
-  String get notification => 'Notification';
+  String get notification => 'الإشعارات';
 
   @override
-  String get language => 'Language';
+  String get language => 'اللغة';
 
   @override
-  String get arabic => 'Arabic';
+  String get arabic => 'العربية';
 
   @override
-  String get english => 'English';
+  String get english => 'الإنجليزية';
 
   @override
-  String get about_us => 'About us';
+  String get about_us => 'من نحن';
 
   @override
-  String get logout => 'Logout';
+  String get logout => 'تسجيل الخروج';
 
   @override
-  String get change_language => 'Change Language';
+  String get change_language => 'تغيير اللغة';
 
   @override
-  String get flower => 'Flower';
+  String get flower => 'زهرة';
 
   @override
-  String get my_order => 'My orders';
+  String get my_order => 'طلباتي';
 
   @override
-  String get saved_address => 'Saved address';
+  String get saved_address => 'العناوين المحفوظة';
 
   @override
   String get current_password => 'Current Password';
@@ -312,13 +313,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile_updated_successfully => 'Profile updated successfully';
 
   @override
-  String get profile => 'Profile';
+  String get profile => 'الملف الشخصي';
 
   @override
   String get new_password => 'new password';
 
   @override
-  String get continue_as_guest => 'continue as guest';
+  String get continue_as_guest => 'المتابعة كضيف';
 
   @override
   String get reset_password => 'reset password';
