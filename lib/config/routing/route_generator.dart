@@ -48,7 +48,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
 
       case AppRoutes.logout:
-        return MaterialPageRoute(builder: (context) => const LogoutScreen(),);
+        return MaterialPageRoute(builder: (context) => const LogoutScreen());
 
       default:
         return unDefinedRoute();

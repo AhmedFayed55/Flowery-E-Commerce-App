@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/di/di.dart';
-import '../manager/logout_event.dart';
+import '../widgets/logout_alert_dialogue.dart';
 
 class LogoutScreen extends StatelessWidget {
   const LogoutScreen({super.key});
@@ -14,18 +14,14 @@ class LogoutScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<LogoutCubit>(),
       child: Scaffold(
-        body: InkWell(
-          onTap: () => getIt<LogoutCubit>().doIntent(SubmitLogoutEvent()),
-          child: Expanded(
-            child: Row(
-              children: [
-                const Icon(Icons.logout),
-                Text(AppLocalizations.of(context)!.logout),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Icon(Icons.logout),
-                ),
-              ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: ListTile(
+              leading: const Icon(Icons.logout),
+              title: Text(AppLocalizations.of(context)!.logout),
+              trailing: const Icon(Icons.logout),
+              onTap: () => _logout(context),
             ),
           ),
         ),
@@ -34,63 +30,14 @@ class LogoutScreen extends StatelessWidget {
   }
 }
 
-void logout(context) {
-  showDialog(context: context, builder: (context) => const LogoutDialog());
-}
-
-class LogoutDialog extends StatelessWidget {
-  const LogoutDialog({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      title: const Center(
-        child: Text("LOGOUT", style: TextStyle(fontWeight: FontWeight.bold)),
-      ),
-      content: const Text("Confirm logout!!", textAlign: TextAlign.center),
-      actionsAlignment: MainAxisAlignment.center,
-      actions: [
-        Row(
-          children: [
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                side: const BorderSide(color: Colors.black26),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(); // إغلاق الديالوج
-              },
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                child: Text("Cancel"),
-              ),
-            ),
-
-            // Logout button
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pink,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-              onPressed: () {
-                // هنا تحط كود تسجيل الخروج
-                Navigator.of(context).pop();
-              },
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                child: Text("Logout"),
-              ),
-            ),
-          ],
-        ),
-
-        // Cancel button
-      ],
-    );
-  }
+void _logout(context) {
+  showDialog(
+    context: context,
+    builder: (_) {
+      return BlocProvider.value(
+        value: getIt<LogoutCubit>(),
+        child: const LogoutAlertDialogue(),
+      );
+    },
+  );
 }

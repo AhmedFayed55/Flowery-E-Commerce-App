@@ -43,6 +43,6 @@ abstract class ApiServices {
 
   @GET(ApiConstants.logout)
   Future<LogoutResponseDto> logout(
-      @Header(ApiConstants.authorization) String token);
-
+    @Header(ApiConstants.authorization) String token,
+  );
 }
