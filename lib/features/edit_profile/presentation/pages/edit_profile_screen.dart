@@ -171,7 +171,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           }
                         },
                         child: state.isLoading
-                            ? Center(
+                            ? const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.white,
                                 ),

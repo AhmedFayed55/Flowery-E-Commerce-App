@@ -43,7 +43,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const MainLayout());
 
       case AppRoutes.editProfile:
-        return MaterialPageRoute(builder: (context) =>  EditProfileScreen());
+        return MaterialPageRoute(builder: (context) =>  const EditProfileScreen());
 
       default:
         return unDefinedRoute();
