@@ -7,5 +7,4 @@ class SumitLoginEvent extends LoginEvent {
   bool isRemember;
   SumitLoginEvent({required this.loginRequestEntity, required this.isRemember});
 }
-
 class SumitAsGestEvent extends LoginEvent {}

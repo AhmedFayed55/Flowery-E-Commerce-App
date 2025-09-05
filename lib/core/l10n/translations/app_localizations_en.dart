@@ -160,4 +160,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saved_address => 'Saved address';
+  String get reset_password => 'Reset Password';
+
+  @override
+  String get current_password => 'Current Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get password_changed_successfully => 'Password changed successfully';
+
+  @override
+  String get please_enter_your_email_associated_to_your_account =>
+      'Please enter your email associated to\n your account';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get email_verification => 'Email verification';
+
+  @override
+  String get please_enter_your_code_that_send_to_your_email_address =>
+      'Please enter your code that send to your\n email address';
+
+  @override
+  String get didnot_receive_code => 'Didn\'t receive code? ';
+
+  @override
+  String get resend => 'Resend';
+
+  @override
+  String
+  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least =>
+      'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
+
+  @override
+  String get password_is_required => 'Password is required';
+
+  @override
+  String get password_must_be_at_least_6_characters =>
+      'Password must be at least 6 characters';
+
+  @override
+  String get passwords_do_not_match => 'Passwords do not match';
 }

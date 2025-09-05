@@ -16,8 +16,7 @@ void main() {
       email: 'yahya22@',
       password: 'yahya22!',
     );
-    UserLoginEntity userEntity =const UserLoginEntity(
-     
+    UserLoginEntity userEntity = const UserLoginEntity(
       firstName: 'yahya',
       lastName: 'mohamed',
       email: 'ym',

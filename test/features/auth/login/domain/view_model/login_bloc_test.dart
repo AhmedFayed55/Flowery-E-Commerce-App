@@ -30,8 +30,7 @@ void main() {
     await getIt.reset();
     getIt.registerLazySingleton<SharedPrefHelper>(() => mockSharedPrefHelper);
 
-    userEntity =const UserLoginEntity(
-     
+    userEntity = const UserLoginEntity(
       firstName: 'yahya',
       lastName: 'mohamed',
       email: 'ym',

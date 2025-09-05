@@ -66,7 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppLocalizations.of(context)!.login_successfully,
                 );
 
-                Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
+                Navigator.pushReplacementNamed(
+                  context,
+                  AppRoutes.resetPassword,
+                );
               }
             },
             builder: (BuildContext context, LoginState state) {

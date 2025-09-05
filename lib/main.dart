@@ -35,6 +35,7 @@ class FlowersEcommerce extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     final isRemember =
         getIt<SharedPrefHelper>().getData(key: Constants.isRemeber) as bool? ??
         false;
@@ -59,6 +60,21 @@ class FlowersEcommerce extends StatelessWidget {
           },
         );
       },
+=======
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => MaterialApp(
+        locale: const Locale("en"),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: RouteGenerator.getRoute,
+        initialRoute: AppRoutes.login,
+        theme: AppTheme.lightTheme,
+      ),
+>>>>>>> origin/development
     );
   }
 }

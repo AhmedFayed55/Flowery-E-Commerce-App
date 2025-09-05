@@ -403,6 +403,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved address'**
   String get saved_address;
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_password;
+
+  /// No description provided for @current_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get current_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get new_password;
+
+  /// No description provided for @update.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get update;
+
+  /// No description provided for @password_changed_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get password_changed_successfully;
+
+  /// No description provided for @please_enter_your_email_associated_to_your_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email associated to\n your account'**
+  String get please_enter_your_email_associated_to_your_account;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @email_verification.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verification'**
+  String get email_verification;
+
+  /// No description provided for @please_enter_your_code_that_send_to_your_email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your code that send to your\n email address'**
+  String get please_enter_your_code_that_send_to_your_email_address;
+
+  /// No description provided for @didnot_receive_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code? '**
+  String get didnot_receive_code;
+
+  /// No description provided for @resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get resend;
+
+  /// No description provided for @password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least'**
+  String
+  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least;
+
+  /// No description provided for @password_is_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_is_required;
+
+  /// No description provided for @password_must_be_at_least_6_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get password_must_be_at_least_6_characters;
+
+  /// No description provided for @passwords_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwords_do_not_match;
 }
 
 class _AppLocalizationsDelegate

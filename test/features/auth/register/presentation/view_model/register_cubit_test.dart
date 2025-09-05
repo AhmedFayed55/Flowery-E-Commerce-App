@@ -30,12 +30,9 @@ void main() {
       phone: '+20123456789',
       gender: 'male',
     );
-    registerRespone = RegisterRespone(
-      'message',
-    );
+    registerRespone = RegisterRespone('message');
     successResult = ApiSuccessResult<RegisterRespone>(data: registerRespone);
 
-    
     provideDummy<ApiResult<RegisterRespone>>(successResult);
   });
 

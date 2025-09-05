@@ -15,7 +15,6 @@ void main() {
     MockApiServices mockApiServices = MockApiServices();
 
     UserModelDto userModelDto = const UserModelDto(
-     
       id: 'sss',
       firstName: 'yahya',
       lastName: 'mohamed',

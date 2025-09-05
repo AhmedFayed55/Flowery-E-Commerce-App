@@ -15,6 +15,6 @@ void main() {
     var result = mockAboutUsStyleModelDto.toDomain('');
     expect(result, isA<AboutUsStyleEntity>());
     expect(result.backgroundColor, 'backgroundColor');
-    expect(result.color,'color');
+    expect(result.color, 'color');
   });
 }

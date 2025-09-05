@@ -12,7 +12,8 @@ void main() {
       textAlign: {},
       backgroundColor: 'backgroundColor',
     );
-    TermModelDto mockTermModelDto = TermModelDto(title: {},
+    TermModelDto mockTermModelDto = TermModelDto(
+      title: {},
       section: 'section',
       content: {},
       style: mockTermModelStruleDto,
