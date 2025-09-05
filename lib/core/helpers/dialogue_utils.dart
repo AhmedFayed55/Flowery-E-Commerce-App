@@ -37,7 +37,7 @@ abstract class DialogueUtils {
      {
        return AlertDialog(
          title: Text(AppLocalizations.of(context)!.error),
-         content: Text(errorMessage),
+         content: Text(errorMessage,style: Theme.of(context).textTheme.labelSmall,),
          actions: [
            TextButton(onPressed: () {
              Navigator.pop(context);

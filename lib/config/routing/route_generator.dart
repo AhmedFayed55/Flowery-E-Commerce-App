@@ -8,6 +8,7 @@ import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occa
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -20,6 +21,7 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
+        return MaterialPageRoute(builder: (_) =>const  LoginScreen());
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case AppRoutes.register:
@@ -72,6 +74,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => MostSellingPage(products: args),
         );
+
+      case AppRoutes.cart:
+        return MaterialPageRoute(builder: (context) =>  const CartPage());
 
       default:
         return unDefinedRoute();

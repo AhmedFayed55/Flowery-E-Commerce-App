@@ -1,6 +1,5 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
-import 'package:flowers_ecommerce_app/core/helpers/dialogue_utils.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/domain/entity/email_verify_args.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/cubit/forget_pass_cubit.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/cubit/forget_pass_event.dart';
@@ -29,9 +28,6 @@ class _OtpCodeTextFieldState extends State<OtpCodeTextField> {
       listener: (context, state) {
         if (state.isSuccessState) {
           Navigator.pushNamed(context, AppRoutes.resetPassword,arguments: EmailVerifyArgs(widget.forgetPasswordCubit, widget.email));
-        }
-        if (state.isErrorState) {
-          return DialogueUtils.showAlertDialog(context, state.errorMessage);
         }
       },
       builder: (context, state) {

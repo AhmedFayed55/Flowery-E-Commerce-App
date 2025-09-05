@@ -31,7 +31,6 @@ abstract class ExternalModules {
   }
 
 
-
   @lazySingleton
   InternetConnectionChecker get connectionChecker => InternetConnectionChecker.instance;
 
