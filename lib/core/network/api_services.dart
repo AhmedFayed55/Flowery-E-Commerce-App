@@ -15,6 +15,7 @@ import 'package:flowers_ecommerce_app/features/products_detalis/data/model/get_s
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart';
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart';
 import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/edit_profile_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -39,8 +40,12 @@ abstract class ApiServices {
 
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
+
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
+
+  @PUT(ApiConstants.editProfile)
+  Future<EditProfileResponse> editProfile(@Body() Map<String, dynamic> body);
 
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
