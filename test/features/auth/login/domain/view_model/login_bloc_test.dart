@@ -5,9 +5,9 @@ import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/use_case/login_use_case.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_bloc.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_event.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_state.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_bloc.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_event.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -16,9 +16,9 @@ import 'login_bloc_test.mocks.dart';
 @GenerateMocks([LoginUseCase, SharedPrefHelper])
 void main() {
   late MockLoginUseCase mockLoginUseCase;
-  late UserEntity userEntity;
+  late UserLoginEntity userEntity;
   late LoginRequestEntity loginRequestEntity;
-  late ApiResult<UserEntity> responce;
+  late ApiResult<UserLoginEntity> responce;
 
   setUp(() async {
     mockLoginUseCase = MockLoginUseCase();
@@ -30,15 +30,16 @@ void main() {
     await getIt.reset();
     getIt.registerLazySingleton<SharedPrefHelper>(() => mockSharedPrefHelper);
 
-    userEntity = const UserEntity(
-      'yahya',
-      'mohamed',
-      'ym',
-      'male',
-      '',
-      '',
-      [],
-      [],
+    userEntity =const UserLoginEntity(
+     
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'ym',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      wishlist: [],
+      addresses: [],
     );
 
     loginRequestEntity = const LoginRequestEntity(
@@ -48,7 +49,7 @@ void main() {
 
     responce = ApiSuccessResult(data: userEntity);
 
-    provideDummy<ApiResult<UserEntity>>(responce);
+    provideDummy<ApiResult<UserLoginEntity>>(responce);
 
     when(
       mockLoginUseCase.call(loginRequestEntity),

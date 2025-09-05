@@ -43,17 +43,17 @@ void main() {
           message: '',
           token: 'token',
           user: const UserModelDto(
-            'sss',
-            'yahya',
-            'mohamed',
-            'yahya22@gmail.com',
-            'male',
-            '',
-            '',
-            '',
-            [],
-            [],
-            '',
+            id: 'sss',
+            firstName: 'yahya',
+            lastName: 'mohamed',
+            email: 'yahya22@gmail.com',
+            gender: 'male',
+            phone: '',
+            photo: '',
+            role: '',
+            wishlist: [],
+            addresses: [],
+            createdAt: '',
           ),
         );
 
@@ -64,21 +64,19 @@ void main() {
         var result = await loginRepoImp.loginRepo(loginRequestEntity);
 
         verify(mockLoginDataSource.login(dto)).called(1);
-        verify(mockTokenService.saveToken('token')).called(1);
-        expect(result, isA<ApiSuccessResult<UserEntity>>());
+       verify(mockTokenService.saveToken('token')).called(1);
+        expect(result, isA<ApiSuccessResult<UserLoginEntity>>());
       },
     );
 
-    test('verify loginRepo calls loginDataSource on error', ()async {
-
-      
+    test('verify loginRepo calls loginDataSource on error', () async {
       when(
         mockLoginDataSource.login(dto),
       ).thenThrow(Exception('something wrong'));
 
       var result = await loginRepoImp.loginRepo(loginRequestEntity);
       verify(mockLoginDataSource.login(dto)).called(1);
-      expect(result, isA<ApiErrorResult<UserEntity>>());
+      expect(result, isA<ApiErrorResult<UserLoginEntity>>());
     });
   });
 }

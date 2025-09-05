@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/utils/font_weight.dart';
 import 'colors.dart';
@@ -48,7 +49,8 @@ abstract class AppTheme {
           color: AppColors.pink,
         ),
       ),
-      checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(),
+      checkboxTheme: const CheckboxThemeData(
+        shape: RoundedRectangleBorder(),
         fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
@@ -121,7 +123,18 @@ abstract class AppTheme {
           fontSize: 18.sp,
           color: AppColors.black,
         ),
+        titleLarge: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20.sp,
+          color: AppColors.pink,
+        ),
+        headlineMedium: GoogleFonts.imFellEnglish(
+          fontSize: 20.sp,
+          fontWeight: AppFontWeight.medium,
+          color: AppColors.pink,
+        ),
       ),
+      dividerTheme: DividerThemeData(color: AppColors.white[70]),
     );
   }
 

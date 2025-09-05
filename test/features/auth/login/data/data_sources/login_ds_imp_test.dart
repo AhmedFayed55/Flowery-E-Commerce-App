@@ -15,17 +15,18 @@ void main() {
     MockApiServices mockApiServices = MockApiServices();
 
     UserModelDto userModelDto = const UserModelDto(
-      'sss',
-      'yahya',
-      'mohamed',
-      'yahya22@gmail.com',
-      'male',
-      '',
-      '',
-      '',
-      [],
-      [],
-      '',
+     
+      id: 'sss',
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'yahya22@gmail.com',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      role: '',
+      wishlist: [],
+      addresses: [],
+      createdAt: '',
     );
 
     LoginResponceDto loginResponceDto = LoginResponceDto(
@@ -44,7 +45,7 @@ void main() {
       mockApiServices.login(loginRequestDto),
     ).thenAnswer((_) async => loginResponceDto);
 
-    var result =await loginDataSourceImp.login(loginRequestDto);
+    var result = await loginDataSourceImp.login(loginRequestDto);
 
     verify(mockApiServices.login(loginRequestDto)).called(1);
     expect(result, equals(loginResponceDto));

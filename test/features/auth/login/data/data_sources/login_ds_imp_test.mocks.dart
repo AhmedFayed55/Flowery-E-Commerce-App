@@ -3,17 +3,19 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i4;
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i5;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
-    as _i6;
+    as _i7;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
     as _i2;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
-    as _i7;
+    as _i8;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
     as _i3;
+import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart'
+    as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -42,39 +44,55 @@ class _FakeRegisterResponeDto_1 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeUserResponseDto_2 extends _i1.SmartFake
+    implements _i4.UserResponseDto {
+  _FakeUserResponseDto_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i4.ApiServices {
+class MockApiServices extends _i1.Mock implements _i5.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.LoginResponceDto> login(
-    _i6.LoginRequestDto? loginRequestDto,
+  _i6.Future<_i2.LoginResponceDto> login(
+    _i7.LoginRequestDto? loginRequestDto,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#login, [loginRequestDto]),
-            returnValue: _i5.Future<_i2.LoginResponceDto>.value(
+            returnValue: _i6.Future<_i2.LoginResponceDto>.value(
               _FakeLoginResponceDto_0(
                 this,
                 Invocation.method(#login, [loginRequestDto]),
               ),
             ),
           )
-          as _i5.Future<_i2.LoginResponceDto>);
+          as _i6.Future<_i2.LoginResponceDto>);
 
   @override
-  _i5.Future<_i3.RegisterResponeDto> register(_i7.RegisterBodyDTo? request) =>
+  _i6.Future<_i3.RegisterResponeDto> register(_i8.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i5.Future<_i3.RegisterResponeDto>.value(
+            returnValue: _i6.Future<_i3.RegisterResponeDto>.value(
               _FakeRegisterResponeDto_1(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i5.Future<_i3.RegisterResponeDto>);
+          as _i6.Future<_i3.RegisterResponeDto>);
+
+  @override
+  _i6.Future<_i4.UserResponseDto> userData() =>
+      (super.noSuchMethod(
+            Invocation.method(#userData, []),
+            returnValue: _i6.Future<_i4.UserResponseDto>.value(
+              _FakeUserResponseDto_2(this, Invocation.method(#userData, [])),
+            ),
+          )
+          as _i6.Future<_i4.UserResponseDto>);
 }

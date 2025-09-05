@@ -16,21 +16,23 @@ void main() {
       email: 'yahya22@',
       password: 'yahya22!',
     );
-    UserEntity userEntity = const UserEntity(
-      'yahya',
-      'mohamed',
-      'ym',
-      'male',
-      '',
-      '',
-      [],
-      [],
+    UserLoginEntity userEntity =const UserLoginEntity(
+     
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'ym',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      wishlist: [],
+      addresses: [],
     );
-    var expectedResult = ApiSuccessResult<UserEntity>(data: userEntity);
+
+    var expectedResult = ApiSuccessResult<UserLoginEntity>(data: userEntity);
     MockLoginRepo mockLoginRepo = MockLoginRepo();
     LoginUseCase loginUseCase = LoginUseCase(mockLoginRepo);
-    var expectedResuilt = ApiSuccessResult<UserEntity>(data: userEntity);
-    provideDummy<ApiResult<UserEntity>>(expectedResuilt);
+    var expectedResuilt = ApiSuccessResult<UserLoginEntity>(data: userEntity);
+    provideDummy<ApiResult<UserLoginEntity>>(expectedResuilt);
     when(
       mockLoginRepo.loginRepo(loginRequestEntity),
     ).thenAnswer((_) async => expectedResult);
@@ -38,6 +40,6 @@ void main() {
     final result = await loginUseCase.call(loginRequestEntity);
 
     verify(mockLoginRepo.loginRepo(loginRequestEntity)).called(1);
-    expect(result, isA<ApiSuccessResult<UserEntity>>());
+    expect(result, isA<ApiSuccessResult<UserLoginEntity>>());
   });
 }

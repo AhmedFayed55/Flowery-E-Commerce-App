@@ -5,28 +5,31 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('when use toDomain should return userEntity', () {
     UserModelDto userModelDto = const UserModelDto(
-      '',
-      'yahya',
-      'mohamed',
-      'yahya22@',
-      'male',
-      '',
-      '',
-      '',
-      [],
-      [],
-      '',
+     
+      id: '',
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'yahya22@',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      role: '',
+      wishlist: [],
+      addresses: [],
+      createdAt: '',
     );
-    UserEntity userEntity = const UserEntity(
-      'yahya',
-      'mohamed',
-      'yahya22@',
-      'male',
-      '',
-      '',
-      [],
-      [],
+    UserLoginEntity userEntity =const UserLoginEntity(
+     
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'yahya22@',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      wishlist: const [],
+      addresses: const [],
     );
+
     var result = userModelDto.toDomain();
     expect(result, equals(userEntity));
   });
