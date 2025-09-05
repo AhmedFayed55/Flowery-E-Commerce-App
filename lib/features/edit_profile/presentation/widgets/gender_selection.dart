@@ -1,4 +1,3 @@
-import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -36,12 +35,7 @@ class _GenderSelectionState extends State<GenderSelection> {
           Expanded(
             flex: 2,
             child: RadioListTile(
-              fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return AppColors.pink;
-                }
-                return AppColors.pink;
-              }),
+              enabled: false,
               contentPadding: EdgeInsets.zero,
               value: AppLocalizations.of(context)!.female,
               title: Text(
@@ -53,13 +47,8 @@ class _GenderSelectionState extends State<GenderSelection> {
           Expanded(
             flex: 2,
             child: RadioListTile(
+              enabled: false,
               contentPadding: EdgeInsets.zero,
-              fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return AppColors.pink;
-                }
-                return AppColors.pink;
-              }),
               value: AppLocalizations.of(context)!.male,
               title: Text(
                 AppLocalizations.of(context)!.male,
