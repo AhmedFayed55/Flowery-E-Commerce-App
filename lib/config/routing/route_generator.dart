@@ -4,6 +4,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
+import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/pages/edit_profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
@@ -19,6 +20,7 @@ import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/m
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
 import '../../features/main_layout/tabs/home_screen/domain/entities/best_saller_entity.dart';
@@ -107,6 +109,9 @@ class RouteGenerator {
       case AppRoutes.editProfile:
         final args = settings.arguments as UserLoginEntity;
         return MaterialPageRoute(builder: (context) =>  EditProfileScreen(userEntity: args,));
+
+      case AppRoutes.logout:
+        return MaterialPageRoute(builder: (context) => const LogoutScreen());
 
       default:
         return unDefinedRoute();

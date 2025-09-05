@@ -18,4 +18,5 @@ abstract class ApiConstants {
   static const String userData = 'auth/profile-data';
   static const String changePassword = "auth/change-password";
   static const String editProfile = "auth/editProfile";
+  static const String logout = "auth/logout";
 }
