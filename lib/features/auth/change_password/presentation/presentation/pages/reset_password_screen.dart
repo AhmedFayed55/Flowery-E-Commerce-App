@@ -28,7 +28,11 @@ class ChangePasswordScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(localizations.reset_password),
-              leading: const Icon(Icons.arrow_back_ios_new),
+              leading: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.arrow_back_ios_new)),
             ),
             body: Padding(
               padding: REdgeInsets.symmetric(horizontal: 16, vertical: 20),
