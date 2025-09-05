@@ -13,19 +13,13 @@ class LogoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<LogoutCubit>(),
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: ListTile(
-              leading: const Icon(Icons.logout),
-              title: Text(AppLocalizations.of(context)!.logout),
-              trailing: const Icon(Icons.logout),
-              onTap: () => _logout(context),
-            ),
-          ),
-        ),
+      child: ListTile(
+        leading: const Icon(Icons.logout),
+        title: Text(AppLocalizations.of(context)!.logout),
+        trailing: const Icon(Icons.logout),
+        onTap: () => _logout(context),
       ),
+
     );
   }
 }

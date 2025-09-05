@@ -17,6 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../auth/logout/presentation/pages/logout_screen.dart';
+
 class ProfileSettingScreen extends StatefulWidget {
   const ProfileSettingScreen({super.key,});
 
@@ -108,13 +110,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       },
                     ),
                     const Divider(),
-                    CustomRow(
-                      firstIcon: const Icon(Icons.logout_outlined),
-                      title: lang.logout,
-                      lastWidget: const Icon(Icons.logout_rounded),
-                      //logout action
-                      onPressed: () {},
-                    ),
+                    LogoutScreen(),
                     const Spacer(),
                     VersionWidget(
                       buildNumber: state.buildNumber,

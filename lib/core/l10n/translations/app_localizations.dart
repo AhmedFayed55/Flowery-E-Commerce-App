@@ -716,6 +716,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'reset password'**
   String get reset_password;
+
+  /// No description provided for @confirm_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Logout!!'**
+  String get confirm_logout;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @logout_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout Successfully'**
+  String get logout_successfully;
 }
 
 class _AppLocalizationsDelegate

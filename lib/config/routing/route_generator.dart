@@ -110,8 +110,6 @@ class RouteGenerator {
         final args = settings.arguments as UserLoginEntity;
         return MaterialPageRoute(builder: (context) =>  EditProfileScreen(userEntity: args,));
 
-      case AppRoutes.logout:
-        return MaterialPageRoute(builder: (context) => const LogoutScreen());
 
       default:
         return unDefinedRoute();

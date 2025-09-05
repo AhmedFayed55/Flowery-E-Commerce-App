@@ -322,4 +322,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reset_password => 'reset password';
+
+  @override
+  String get confirm_logout => 'Confirm Logout!!';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logout_successfully => 'Logout Successfully';
 }
