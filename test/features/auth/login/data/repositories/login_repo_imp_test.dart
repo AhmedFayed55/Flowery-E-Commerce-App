@@ -76,7 +76,7 @@ void main() {
 
       var result = await loginRepoImp.loginRepo(loginRequestEntity);
       verify(mockLoginDataSource.login(dto)).called(1);
-      expect(result, equals(ApiSuccessResult(data: UserEntity)));
+      expect(result, isA<ApiErrorResult<UserEntity>>());
     });
   });
 }

@@ -23,6 +23,7 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.pink,
+          disabledBackgroundColor: AppColors.black[30],
           foregroundColor: AppColors.white,
           minimumSize: Size(double.infinity, 50.h),
           shape: RoundedRectangleBorder(
@@ -34,6 +35,19 @@ abstract class AppTheme {
             fontWeight: AppFontWeight.medium,
             color: AppColors.white,
           ),
+        ),
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.white[80],
+        ),
+        selectedLabelStyle: TextStyle(
+          fontWeight: AppFontWeight.regular,
+          fontSize: 12.sp,
+          color: AppColors.pink,
         ),
       ),
       checkboxTheme: const CheckboxThemeData(
