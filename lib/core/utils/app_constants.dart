@@ -10,9 +10,9 @@ abstract class AppConstants {
   static const String rePassword = 'rePassword';
   static const String phone = 'phone';
   static const String gender = 'gender';
-
   static const String noInternet = 'No Internet Connection';
   static const String error = 'error';
+  static const String bearer = "Bearer";
   static const String message = 'message';
 
   static const String authorization = 'Authorization';

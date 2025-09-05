@@ -3,5 +3,7 @@ import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 
 abstract class LoginRepo {
-  Future<ApiResult<UserEntity>> loginRepo(LoginRequestEntity loginRequestEntity);
+  Future<ApiResult<UserLoginEntity>> loginRepo(
+    LoginRequestEntity loginRequestEntity,
+  );
 }

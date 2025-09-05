@@ -4,6 +4,11 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
+import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
+import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
+import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
@@ -11,6 +16,7 @@ import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/m
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
 import '../../features/main_layout/tabs/home_screen/domain/entities/best_saller_entity.dart';
 import '../../features/main_layout/tabs/home_screen/domain/entities/product_entity.dart';
@@ -21,12 +27,10 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) =>const  LoginScreen());
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case AppRoutes.register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
-
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
@@ -38,20 +42,36 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: args.cubit,
-            child:   EmailVerificationScreen(email: args.email),
+            child: EmailVerificationScreen(email: args.email),
           ),
         );
 
       case AppRoutes.resetPassword:
         final args = settings.arguments as EmailVerifyArgs;
-        return MaterialPageRoute(builder: (_) =>   BlocProvider.value(
-          value: args.cubit,
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: args.cubit,
             child: ResetPasswordScreen(email: args.email),
           ),
         );
 
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());
+      case AppRoutes.profile:
+        return MaterialPageRoute(builder: (_) => const ProfileSettingScreen());
+      case AppRoutes.terms:
+        final termsList = settings.arguments as List<TermEntity>? ?? [];
+        return MaterialPageRoute(
+          builder: (_) => TermsScreen(termsList: termsList),
+        );
+      case AppRoutes.aboutUs:
+        final aboutUsList = settings.arguments as List<AboutUsEntity>? ?? [];
+        return MaterialPageRoute(
+          builder: (_) => AboutUsScreen(aboutUsList: aboutUsList),
+        );
+
+      case AppRoutes.changePassword:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),

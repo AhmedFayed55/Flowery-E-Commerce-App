@@ -19,11 +19,14 @@ abstract class DialogueUtils {
               const CircularProgressIndicator(),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text(message, style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.pink,
-                )),
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.pink,
+                  ),
+                ),
               ),
             ],
           ),
@@ -32,20 +35,29 @@ abstract class DialogueUtils {
     );
   }
 
-  static void showAlertDialog(BuildContext context,String errorMessage) {
-     showDialog(context: context, builder: (context)
-     {
-       return AlertDialog(
-         title: Text(AppLocalizations.of(context)!.error),
-         content: Text(errorMessage,style: Theme.of(context).textTheme.labelSmall,),
-         actions: [
-           TextButton(onPressed: () {
-             Navigator.pop(context);
-           }, child: Text(AppLocalizations.of(context)!.ok))
-         ],
-       );
-     });
+  static void showAlertDialog(BuildContext context, String errorMessage) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.error),
+          content: Text(
+            errorMessage,
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(AppLocalizations.of(context)!.ok),
+            ),
+          ],
+        );
+      },
+    );
   }
+
   static void hideLoading(BuildContext context) {
     Navigator.pop(context);
   }
@@ -89,16 +101,15 @@ abstract class DialogueUtils {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Text(message,style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColors.black,
-          ),),
-          title: Text(title ?? "", style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColors.pink,
-          )),
+          content: Text(message),
+          title: Text(
+            title ?? "",
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.pink,
+            ),
+          ),
           actions: actions,
         );
       },

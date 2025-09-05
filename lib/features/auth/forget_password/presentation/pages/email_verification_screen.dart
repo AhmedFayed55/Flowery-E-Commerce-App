@@ -39,9 +39,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(AppLocalizations.of(context)!.password),
-            ),
+            appBar: AppBar(title: Text(AppLocalizations.of(context)!.password)),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16),
@@ -87,9 +85,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                               ? () {
                                   _startTimer();
                                   forgetPasswordCubit.doIntent(
-                                    GetIsResendOtpEvent(
-                                      email: widget.email,
-                                    ),
+                                    GetIsResendOtpEvent(email: widget.email),
                                   );
                                 }
                               : null,

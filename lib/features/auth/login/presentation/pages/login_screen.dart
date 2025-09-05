@@ -8,9 +8,9 @@ import 'package:flowers_ecommerce_app/core/helpers/regex.dart';
 import 'package:flowers_ecommerce_app/core/helpers/validators.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_request_entity.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_bloc.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_event.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_state.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_bloc.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_event.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,8 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   context: context,
                   message: AppLocalizations.of(context)!.loading,
                 );
-              }
-            else  if (state.errorMessage.isNotEmpty) {
+              } else if (state.errorMessage.isNotEmpty) {
                 DialogueUtils.hideLoading(context);
                 DialogueUtils.showMessage(
                   context: context,
@@ -68,6 +67,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
 
                 context.pushReplacementNamed(AppRoutes.mainLayout);
+                Navigator.pushReplacementNamed(
+                  context,
+                  AppRoutes.resetPassword,
+                );
               }
             },
             builder: (BuildContext context, LoginState state) {
@@ -79,7 +82,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     spacing: 25.sp,
                     children: [
                       TextFormField(
-                        validator: Validations.validateEmail,
+                        validator: (value) {
+                          if (AppRegExp.isEmailValid(emailController.text) ==
+                              false) {
+                            return AppLocalizations.of(
+                              context,
+                            )!.email_not_valid;
+                          }
+                          return null;
+                        },
                         controller: emailController,
                         decoration: InputDecoration(
                           labelText: AppLocalizations.of(context)!.email,
@@ -156,9 +167,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          context.pushReplacementNamed(
-                            AppRoutes.mainLayout,
+                          context.read<LoginBloc>().doIntent(
+                            SumitAsGestEvent(),
                           );
+                          context.pushReplacementNamed(AppRoutes.mainLayout);
                         },
                         style: ElevatedButton.styleFrom().copyWith(
                           backgroundColor: WidgetStateProperty.all(
@@ -181,7 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             AppLocalizations.of(context)!.dont_have_an_account,
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.pushNamed(AppRoutes.register);
+                            },
                             child: Text(
                               '${AppLocalizations.of(context)!.sign_up}?',
                               style: Theme.of(context).textTheme.displayMedium!

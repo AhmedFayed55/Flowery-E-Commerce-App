@@ -19,10 +19,11 @@ class ForgetPasswordRemoteDataSourceImpl
       ForgetPasswordModel forgetPasswordModel = await apiServices
           .forgetPassword({"email": email});
       return ApiSuccessResult<ForgetPasswordModel>(data: forgetPasswordModel);
-
-    } on DioException catch(dioError){
-      return ApiErrorResult(failure: ServerFailure.fromDioError(dioException: dioError));
-    }catch (error) {
+    } on DioException catch (dioError) {
+      return ApiErrorResult(
+        failure: ServerFailure.fromDioError(dioException: dioError),
+      );
+    } catch (error) {
       return ApiErrorResult<ForgetPasswordModel>(
         failure: Failure(errorMessage: error.toString()),
       );

@@ -6,20 +6,20 @@ import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_e
 class LoginState extends Equatable {
   bool rememberMe = false;
   bool isLoadding = false;
-  UserEntity? userEntity;
+  UserLoginEntity? userEntity;
   String errorMessage = '';
 
   LoginState({
     this.rememberMe = false,
     this.isLoadding = false,
     this.userEntity,
-    this.errorMessage = '', 
+    this.errorMessage = '',
   });
 
   LoginState copyWith({
     bool? rememberMe,
     bool? isLoadding,
-    UserEntity? userEntity,
+    UserLoginEntity? userEntity,
     String? errorMessage,
   }) {
     return LoginState(

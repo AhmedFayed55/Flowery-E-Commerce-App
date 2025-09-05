@@ -32,7 +32,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       child: BlocListener<ForgetPasswordCubit, ForgetPasswordState>(
         listener: (context, state) {
           if (state.isSuccessState == true) {
-            Navigator.pushNamed(context, AppRoutes.emailVerification,arguments: EmailVerifyArgs(forgetPasswordCubit, emailController.text));
+            Navigator.pushNamed(
+              context,
+              AppRoutes.emailVerification,
+              arguments: EmailVerifyArgs(
+                forgetPasswordCubit,
+                emailController.text,
+              ),
+            );
           }
           if (state.isErrorState == true) {
             DialogueUtils.showAlertDialog(context, state.errorMessage);

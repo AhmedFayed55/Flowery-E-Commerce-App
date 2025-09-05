@@ -14,14 +14,12 @@ import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_c
 import 'package:flowers_ecommerce_app/features/products_detalis/data/model/get_specific_product_respone/get_specific_product_respone.dart';
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart';
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart';
+import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
 import 'package:injectable/injectable.dart';
-import 'package:retrofit/retrofit.dart'  hide ParseErrorLogger;
-import 'package:retrofit/http.dart';
-import '../../features/occasions/data/models/occasions_response_dto.dart';
-
-import '../../features/main_layout/tabs/home_screen/data/model/home_response_dto.dart';
-import 'fake_error.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
+import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -30,7 +28,6 @@ part 'api_services.g.dart';
 abstract class ApiServices {
   @factoryMethod
  factory ApiServices(Dio dio) = _ApiServices;
-  factory ApiServices(Dio dio) = _ApiServices;
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
 
@@ -84,4 +81,13 @@ abstract class ApiServices {
 
   @DELETE(ApiConstants.cartUD)
   Future<DeleteCartItemRespone> deleteCartProudct(@Path("id") String id);
+
+  @GET(ApiConstants.userData)
+  Future<UserResponseDto> userData();
+
+  @PATCH(ApiConstants.changePassword)
+  Future<ChangePasswordResponseDto> changePassword(
+    @Body() ChangePasswordRequestDto requestDto,
+    @Header(ApiConstants.authorization) String token,
+  );
 }

@@ -2,6 +2,7 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/main_layout/tabs/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,10 +22,10 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
-      const Center(child: HomeScreen()),
-      const Center(child: CategoriesScreen()),
-      Center(child: Text(locale.cart,style: const TextStyle(color: AppColors.pink),)),
-      Center(child: Text(locale.profile,style: const TextStyle(color: AppColors.pink),)),
+      Center(child: HomeScreen()),
+      Center(child: CategoriesScreen()),
+      Center(child: Text(locale.cart)),
+      const ProfileSettingScreen(),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -36,9 +37,17 @@ class _MainLayoutState extends State<MainLayout> {
         },
         items: [
           _buildBottomNavigationBarItem(AppImages.homeIcon, locale.home, 0),
-          _buildBottomNavigationBarItem(AppImages.categoriesIcon, locale.categories, 1),
+          _buildBottomNavigationBarItem(
+            AppImages.categoriesIcon,
+            locale.categories,
+            1,
+          ),
           _buildBottomNavigationBarItem(AppImages.cartIcon, locale.cart, 2),
-          _buildBottomNavigationBarItem(AppImages.profileIcon, locale.profile, 3),
+          _buildBottomNavigationBarItem(
+            AppImages.profileIcon,
+            locale.profile,
+            3,
+          ),
         ],
       ),
       body: IndexedStack(index: _currentIndex, children: pages),
@@ -48,7 +57,7 @@ class _MainLayoutState extends State<MainLayout> {
   BottomNavigationBarItem _buildBottomNavigationBarItem(
     String icon,
     String label,
-      int index
+    int index,
   ) {
     return BottomNavigationBarItem(
       icon: Column(
@@ -62,10 +71,10 @@ class _MainLayoutState extends State<MainLayout> {
               BlendMode.srcIn,
             ),
           ),
-          verticalSpace(7)
+          verticalSpace(7),
         ],
       ),
-      label: label
+      label: label,
     );
   }
 }
