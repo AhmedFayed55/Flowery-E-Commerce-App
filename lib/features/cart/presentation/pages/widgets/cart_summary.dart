@@ -25,14 +25,14 @@ class CartSummary extends StatelessWidget {
               children: [
                 Text(
                   trans.subtotal,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
                   ),
                 ),
                 Text(
                   "${trans.egp} ${userCart?.cart.totalPrice ?? 0}",
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
                   ),
@@ -45,14 +45,14 @@ class CartSummary extends StatelessWidget {
               children: [
                 Text(
                  trans.delivery_fee ,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
                   ),
                 ),
                 Text(
                   "${trans.egp} ${((userCart!.cart.totalPrice ?? 0) * 0.1).toInt()}",
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
                   ),
@@ -66,7 +66,7 @@ class CartSummary extends StatelessWidget {
               children: [
                 Text(
                   trans.total,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
                   ),
@@ -74,7 +74,7 @@ class CartSummary extends StatelessWidget {
                 const Spacer(),
                 Text(
                   "${trans.egp} ${userCart.cart.totalPrice! + ((userCart.cart.totalPrice ?? 0) * 0.1).toInt()}",
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
                   ),

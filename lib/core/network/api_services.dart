@@ -21,6 +21,8 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
+import '../../features/main_layout/tabs/home_screen/data/model/home_response_dto.dart';
+import '../../features/occasions/data/models/occasions_response_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -47,17 +49,6 @@ abstract class ApiServices {
   @PUT(ApiConstants.editProfile)
   Future<EditProfileResponse> editProfile(@Body() Map<String, dynamic> body);
 
-  @POST(ApiConstants.loginEndpoint)
-  Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
-
-  @POST(ApiConstants.forgetPasswordEndpoint)
-  Future<ForgetPasswordModel> forgetPassword(@Body() Map<String, dynamic> body);
-
-  @POST(ApiConstants.verifyResetCode)
-  Future<EmailVerifyModel> verifyResetCode(@Body() Map<String, dynamic> body);
-
-  @PUT(ApiConstants.verifyResetCode)
-  Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
 
   @GET(ApiConstants.homeEndpoint)
   Future<HomeResponseDto> homeData();

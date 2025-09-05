@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
 
 // ignore_for_file: type=lint
@@ -92,7 +93,10 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
+    Locale('en'),
+  ];
 
   /// No description provided for @login.
   ///
@@ -304,61 +308,6 @@ abstract class AppLocalizations {
   /// **'Register Successfully'**
   String get register_successfully;
 
-  /// No description provided for @please_enter_your_email_associated_to_your_account.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter your email associated to\n your account'**
-  String get please_enter_your_email_associated_to_your_account;
-
-  /// No description provided for @confirm.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm'**
-  String get confirm;
-
-  /// No description provided for @email_verification.
-  ///
-  /// In en, this message translates to:
-  /// **'Email verification'**
-  String get email_verification;
-
-  /// No description provided for @please_enter_your_code_that_send_to_your_email_address.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter your code that send to your\n email address'**
-  String get please_enter_your_code_that_send_to_your_email_address;
-
-  /// No description provided for @didnot_receive_code.
-  ///
-  /// In en, this message translates to:
-  /// **'Didn\'t receive code? '**
-  String get didnot_receive_code;
-
-  /// No description provided for @resend.
-  ///
-  /// In en, this message translates to:
-  /// **'Resend'**
-  String get resend;
-
-  /// No description provided for @reset_password.
-  ///
-  /// In en, this message translates to:
-  /// **'Reset password'**
-  String get reset_password;
-
-  /// No description provided for @new_password.
-  ///
-  /// In en, this message translates to:
-  /// **'New password'**
-  String get new_password;
-
-  /// No description provided for @password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least.
-  ///
-  /// In en, this message translates to:
-  /// **'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least'**
-  String
-  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least;
-
   /// No description provided for @product_details.
   ///
   /// In en, this message translates to:
@@ -455,17 +404,11 @@ abstract class AppLocalizations {
   /// **'Categories'**
   String get categories;
 
-  /// No description provided for @profile.
+  /// No description provided for @cart.
   ///
   /// In en, this message translates to:
-  /// **'Profile'**
-  String get profile;
-
-  /// No description provided for @continue_as_guest.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue as guest'**
-  String get continue_as_guest;
+  /// **'Cart'**
+  String get cart;
 
   /// No description provided for @email_not_valid.
   ///
@@ -485,6 +428,205 @@ abstract class AppLocalizations {
   /// **'Invalid password'**
   String get password_not_valid;
 
+  /// No description provided for @password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_empty;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notification;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @about_us.
+  ///
+  /// In en, this message translates to:
+  /// **'About us'**
+  String get about_us;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @change_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get change_language;
+
+  /// No description provided for @flower.
+  ///
+  /// In en, this message translates to:
+  /// **'Flower'**
+  String get flower;
+
+  /// No description provided for @my_order.
+  ///
+  /// In en, this message translates to:
+  /// **'My orders'**
+  String get my_order;
+
+  /// No description provided for @saved_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved address'**
+  String get saved_address;
+
+  /// No description provided for @current_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get current_password;
+
+  /// No description provided for @password_changed_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get password_changed_successfully;
+
+  /// No description provided for @please_enter_your_email_associated_to_your_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email associated to\n your account'**
+  String get please_enter_your_email_associated_to_your_account;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @email_verification.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verification'**
+  String get email_verification;
+
+  /// No description provided for @please_enter_your_code_that_send_to_your_email_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your code that send to your\n email address'**
+  String get please_enter_your_code_that_send_to_your_email_address;
+
+  /// No description provided for @didnot_receive_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive code? '**
+  String get didnot_receive_code;
+
+  /// No description provided for @resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get resend;
+
+  /// No description provided for @password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least'**
+  String
+  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least;
+
+  /// No description provided for @password_is_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get password_is_required;
+
+  /// No description provided for @password_must_be_at_least_6_characters.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get password_must_be_at_least_6_characters;
+
+  /// No description provided for @you_should_login.
+  ///
+  /// In en, this message translates to:
+  /// **'You should login first'**
+  String get you_should_login;
+
+  /// No description provided for @some_thing_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get some_thing_went_wrong;
+
+  /// No description provided for @your_cart_is_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty'**
+  String get your_cart_is_empty;
+
+  /// No description provided for @remove_from_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from cart'**
+  String get remove_from_cart;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get items;
+
+  /// No description provided for @delivery_fee.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Fee'**
+  String get delivery_fee;
+
+  /// No description provided for @subtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get subtotal;
+
+  /// No description provided for @order_summary.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Summary'**
+  String get order_summary;
+
+  /// No description provided for @place_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get place_order;
+
+  /// No description provided for @order_placed_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Order placed successfully'**
+  String get order_placed_successfully;
+
+  /// No description provided for @order_placed.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Placed'**
+  String get order_placed;
+
   /// No description provided for @bloom_with_our_exquisite_best_sellers.
   ///
   /// In en, this message translates to:
@@ -502,12 +644,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No Products founded'**
   String get no_products;
-
-  /// No description provided for @password_empty.
-  ///
-  /// In en, this message translates to:
-  /// **'Password is required'**
-  String get password_empty;
 
   /// No description provided for @view_all.
   ///
@@ -527,17 +663,59 @@ abstract class AppLocalizations {
   /// **'search'**
   String get search;
 
-  /// No description provided for @flower.
+  /// No description provided for @passwords_do_not_match.
   ///
   /// In en, this message translates to:
-  /// **'Flower'**
-  String get flower;
+  /// **'Passwords do not match'**
+  String get passwords_do_not_match;
 
-  /// No description provided for @cart.
+  /// No description provided for @update.
   ///
   /// In en, this message translates to:
-  /// **'Cart'**
-  String get cart;
+  /// **'Update'**
+  String get update;
+
+  /// No description provided for @edit_profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get edit_profile;
+
+  /// No description provided for @change.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
+
+  /// No description provided for @profile_updated_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profile_updated_successfully;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'new password'**
+  String get new_password;
+
+  /// No description provided for @continue_as_guest.
+  ///
+  /// In en, this message translates to:
+  /// **'continue as guest'**
+  String get continue_as_guest;
+
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'reset password'**
+  String get reset_password;
 }
 
 class _AppLocalizationsDelegate
@@ -551,7 +729,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -560,6 +738,8 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'ar':
+      return AppLocalizationsAr();
     case 'en':
       return AppLocalizationsEn();
   }

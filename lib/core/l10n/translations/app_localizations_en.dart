@@ -114,37 +114,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get please_enter_your_email_associated_to_your_account =>
-      'Please enter your email associated to\n your account';
-
-  @override
-  String get confirm => 'Confirm';
-
-  @override
-  String get email_verification => 'Email verification';
-
-  @override
-  String get please_enter_your_code_that_send_to_your_email_address =>
-      'Please enter your code that send to your\n email address';
-
-  @override
-  String get didnot_receive_code => 'Didn\'t receive code? ';
-
-  @override
-  String get resend => 'Resend';
-
-  @override
-  String get reset_password => 'Reset password';
-
-  @override
-  String get new_password => 'New password';
-
-  @override
-  String
-  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least =>
-      'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
-
-  @override
   String get product_details => 'Product Details';
 
   @override
@@ -193,10 +162,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categories => 'Categories';
 
   @override
-  String get profile => 'Profile';
-
-  @override
-  String get continue_as_guest => 'Continue as guest';
+  String get cart => 'Cart';
 
   @override
   String get email_not_valid => 'This Email is not valid';
@@ -206,6 +172,110 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_not_valid => 'Invalid password';
+
+  @override
+  String get password_empty => 'Password is required';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get about_us => 'About us';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get change_language => 'Change Language';
+
+  @override
+  String get flower => 'Flower';
+
+  @override
+  String get my_order => 'My orders';
+
+  @override
+  String get saved_address => 'Saved address';
+
+  @override
+  String get current_password => 'Current Password';
+
+  @override
+  String get password_changed_successfully => 'Password changed successfully';
+
+  @override
+  String get please_enter_your_email_associated_to_your_account =>
+      'Please enter your email associated to\n your account';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get email_verification => 'Email verification';
+
+  @override
+  String get please_enter_your_code_that_send_to_your_email_address =>
+      'Please enter your code that send to your\n email address';
+
+  @override
+  String get didnot_receive_code => 'Didn\'t receive code? ';
+
+  @override
+  String get resend => 'Resend';
+
+  @override
+  String
+  get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least =>
+      'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
+
+  @override
+  String get password_is_required => 'Password is required';
+
+  @override
+  String get password_must_be_at_least_6_characters =>
+      'Password must be at least 6 characters';
+
+  @override
+  String get you_should_login => 'You should login first';
+
+  @override
+  String get some_thing_went_wrong => 'Something went wrong';
+
+  @override
+  String get your_cart_is_empty => 'Your cart is empty';
+
+  @override
+  String get remove_from_cart => 'Remove from cart';
+
+  @override
+  String get items => 'Items';
+
+  @override
+  String get delivery_fee => 'Delivery Fee';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get order_summary => 'Order Summary';
+
+  @override
+  String get place_order => 'Place Order';
+
+  @override
+  String get order_placed_successfully => 'Order placed successfully';
+
+  @override
+  String get order_placed => 'Order Placed';
 
   @override
   String get bloom_with_our_exquisite_best_sellers =>
@@ -218,9 +288,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get no_products => 'No Products founded';
 
   @override
-  String get password_empty => 'Password is required';
-
-  @override
   String get view_all => 'View All';
 
   @override
@@ -230,8 +297,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'search';
 
   @override
-  String get flower => 'Flower';
+  String get passwords_do_not_match => 'Passwords do not match';
 
   @override
-  String get cart => 'Cart';
+  String get update => 'Update';
+
+  @override
+  String get edit_profile => 'Edit Profile';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get profile_updated_successfully => 'Profile updated successfully';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get new_password => 'new password';
+
+  @override
+  String get continue_as_guest => 'continue as guest';
+
+  @override
+  String get reset_password => 'reset password';
 }

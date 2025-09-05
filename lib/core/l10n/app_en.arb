@@ -97,5 +97,11 @@
   "update": "Update",
   "edit_profile": "Edit Profile",
   "change": "Change",
-  "profile_updated_successfully": "Profile updated successfully"
+  "profile_updated_successfully": "Profile updated successfully",
+  "profile": "Profile",
+  "new_password": "new password",
+  "continue_as_guest": "continue as guest",
+  "reset_password": "reset password"
+
+
 }

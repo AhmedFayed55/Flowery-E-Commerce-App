@@ -15,6 +15,4 @@ abstract class AppConstants {
   static const String error = 'error';
   static const String bearer = "Bearer";
   static const String message = 'message';
-
-  static const String authorization = 'Authorization';
 }

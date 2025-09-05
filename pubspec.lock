@@ -501,6 +501,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  infinite_listview:
+    dependency: transitive
+    description:
+      name: infinite_listview
+      sha256: f6062c1720eb59be553dfa6b89813d3e8dd2f054538445aaa5edaddfa5195ce6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   injectable:
     dependency: "direct main"
     description:
@@ -646,7 +654,7 @@ packages:
     source: hosted
     version: "2.0.0"
   mockito:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: mockito
       sha256: "4546eac99e8967ea91bae633d2ca7698181d008e95fa4627330cf903d573277a"
@@ -685,6 +693,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  numberpicker:
+    dependency: "direct main"
+    description:
+      name: numberpicker
+      sha256: "4c129154944b0f6b133e693f8749c3f8bfb67c4d07ef9dcab48b595c22d1f156"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.2"
   octo_image:
     dependency: transitive
     description:
@@ -701,6 +717,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  package_info_plus:
+    dependency: "direct main"
+    description:
+      name: package_info_plus
+      sha256: "7e76fad405b3e4016cd39d08f455a4eb5199723cf594cd1b8916d47140d93017"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
+  package_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: package_info_plus_platform_interface
+      sha256: "9bc8ba46813a4cc42c66ab781470711781940780fd8beddd0c3da62506d3a6c6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   path:
     dependency: transitive
     description:

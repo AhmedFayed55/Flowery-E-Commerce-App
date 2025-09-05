@@ -50,19 +50,6 @@ abstract class AppTheme {
           ),
         ),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
-        unselectedLabelStyle: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.white[80],
-        ),
-        selectedLabelStyle: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.pink,
-        ),
-      ),
       checkboxTheme: const CheckboxThemeData(
         shape: RoundedRectangleBorder(),
         fillColor: WidgetStatePropertyAll(Colors.transparent),

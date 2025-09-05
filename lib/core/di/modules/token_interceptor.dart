@@ -3,6 +3,8 @@ import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../utils/app_constants.dart';
+
 @injectable
 class TokenInterceptor extends Interceptor {
   final TokenService tokenService = getIt.get<TokenService>();

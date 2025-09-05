@@ -81,7 +81,7 @@ class _CartItemCardState extends State<CartItemCard> {
                         width: 140.w,
                         child: Text(
                           widget.userItem.product!.title!,
-                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                 color: AppColors.black,
                                 fontWeight: AppFontWeight.medium,
                               ),
@@ -108,7 +108,7 @@ class _CartItemCardState extends State<CartItemCard> {
                     children: [
                       Text(
                         '${trans.egp} ${widget.userItem.product!.price}',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: AppColors.black,
                           fontWeight: AppFontWeight.medium,
                         ),
@@ -136,7 +136,7 @@ class _CartItemCardState extends State<CartItemCard> {
                       horizontalSpace(8.w),
                       Text(
                         '${widget.userItem.quantity}',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: AppColors.black,
                           fontWeight: AppFontWeight.medium,
                         ),

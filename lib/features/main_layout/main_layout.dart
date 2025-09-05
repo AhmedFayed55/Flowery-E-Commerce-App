@@ -2,6 +2,7 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/main_layout/tabs/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class _MainLayoutState extends State<MainLayout> {
     final List<Widget> pages = [
       Center(child: HomeScreen()),
       Center(child: CategoriesScreen()),
-      Center(child: Text(locale.cart)),
+      Center(child: CartPage()),
       const ProfileSettingScreen(),
     ];
     return Scaffold(
