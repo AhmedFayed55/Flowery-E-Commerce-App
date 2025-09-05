@@ -10,7 +10,7 @@ import '../../../auth/register/data/source/auth_remote_data_sourse_imlp_test.moc
 @GenerateMocks([ApiServices])
 void main() {
   test('when call homeData is should call homedata From ApiServices', () async {
-    HomeResponseDto mockHomeResponce =const HomeResponseDto(
+    HomeResponseDto mockHomeResponce = const HomeResponseDto(
       message: '',
       products: [],
       categories: [],

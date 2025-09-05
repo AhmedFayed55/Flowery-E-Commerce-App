@@ -18,7 +18,7 @@ class CustomCardOccasion extends StatelessWidget {
       width: double.infinity,
       child: ListView.separated(
         separatorBuilder: (context, index) =>
-             Padding(padding: EdgeInsets.all(10.sp)),
+            Padding(padding: EdgeInsets.all(10.sp)),
         itemCount: itemOccasion.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {

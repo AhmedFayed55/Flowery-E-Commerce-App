@@ -3,5 +3,5 @@ abstract class AppRoutes {
   static const String register = "/register";
   static const String forgetPassword = "/forgetPass";
   static const String mainLayout = "/mainLayout";
-  static const String home='/home';
+  static const String home = '/home';
 }

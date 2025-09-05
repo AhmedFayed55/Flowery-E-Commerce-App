@@ -1,9 +1,9 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_bloc.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_event.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_state.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_bloc.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_event.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_state.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/widget/custom_card_best_saller.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/widget/custom_card_category.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/widget/custom_card_occasion.dart';

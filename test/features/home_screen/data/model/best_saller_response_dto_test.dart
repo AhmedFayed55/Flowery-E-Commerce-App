@@ -19,7 +19,7 @@ void main() {
       );
 
       BestSellerResponseDto mockBestSallerResponceDto =
-         const  BestSellerResponseDto(
+          const BestSellerResponseDto(
             id: 'id',
             imgCover: 'imgCover',
             images: [],
@@ -30,11 +30,9 @@ void main() {
             title: 'title',
             description: 'description',
           );
-    
-    
-    var result=mockBestSallerResponceDto.toDomain();
-    expect(result, equals(mockBestSallerEntity));
 
+      var result = mockBestSallerResponceDto.toDomain();
+      expect(result, equals(mockBestSallerEntity));
     },
   );
 }

@@ -127,4 +127,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get flower => 'Flower';
+
+  @override
+  String get email_not_valid => 'This Email is not valid';
+
+  @override
+  String get email_required => 'Email is required';
+
+  @override
+  String get password_not_valid => 'Invalid password';
+
+  @override
+  String get password_empty => 'Password is required';
 }

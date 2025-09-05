@@ -20,7 +20,7 @@ class HomeState extends Equatable {
       homeEntity: homeEntity ?? this.homeEntity,
     );
   }
-  
+
   @override
-  List<Object?> get props => [isLoadding,errorMassage,homeEntity];
+  List<Object?> get props => [isLoadding, errorMassage, homeEntity];
 }

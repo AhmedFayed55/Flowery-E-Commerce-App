@@ -3,12 +3,22 @@ import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/categ
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-test('when call toDomain from categoryResponceDto is shoulf return CategoryEntity', (){
-  CategoryResponseDto mockCategoryResponceDto=const CategoryResponseDto(id: 'id',name: 'name',image: 'image');
-CategoryEntity mockcategoryEntity=const CategoryEntity("id", "name", "image");
+  test(
+    'when call toDomain from categoryResponceDto is shoulf return CategoryEntity',
+    () {
+      CategoryResponseDto mockCategoryResponceDto = const CategoryResponseDto(
+        id: 'id',
+        name: 'name',
+        image: 'image',
+      );
+      CategoryEntity mockcategoryEntity = const CategoryEntity(
+        "id",
+        "name",
+        "image",
+      );
 
-var result=mockCategoryResponceDto.toDomain();
-expect(result, mockcategoryEntity);
-
-});
+      var result = mockCategoryResponceDto.toDomain();
+      expect(result, mockcategoryEntity);
+    },
+  );
 }

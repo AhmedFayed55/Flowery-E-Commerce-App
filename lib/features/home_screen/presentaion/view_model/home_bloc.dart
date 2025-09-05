@@ -1,9 +1,10 @@
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/use_cases/home_use_case.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_event.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_state.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_event.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class HomeBloc extends Cubit<HomeState> {
   final HomeUseCase _homeUseCase;

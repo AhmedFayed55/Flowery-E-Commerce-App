@@ -12,7 +12,7 @@ class BestSallerEntity extends Equatable {
   final String id;
 
   const BestSallerEntity(
- this.title,
+    this.title,
     this.description,
     this.imgCover,
     this.images,

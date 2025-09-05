@@ -7,9 +7,9 @@ import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/home_
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/occasion_entity.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/product_entity.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/use_cases/home_use_case.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_bloc.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_event.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/view_model/home_state.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_bloc.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_event.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/view_model/home_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -77,14 +77,11 @@ void main() {
       act: (bloc) => bloc.doIntent(GetHomeDataEvent()),
       verify: (bloc) {
         verify(mockHomeUseCase.call()).called(1);
-
       },
-      expect: ()=> [
+      expect: () => [
         HomeState(isLoadding: true),
-        HomeState(errorMassage: 'something error')
-      ]
-        
-      ,
+        HomeState(errorMassage: 'something error'),
+      ],
     );
   });
 }

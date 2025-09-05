@@ -7,7 +7,7 @@ import 'config/routing/route_generator.dart';
 import 'config/theme/app_theme.dart';
 import 'core/l10n/translations/app_localizations.dart';
 
-void main()async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   await ScreenUtil.ensureScreenSize();
@@ -29,9 +29,8 @@ class FlowersEcommerce extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: AppRoutes.home,
+        initialRoute: AppRoutes.register,
         theme: AppTheme.lightTheme,
-        
       ),
     );
   }

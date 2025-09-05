@@ -20,7 +20,7 @@ class HomeResponseDto extends Equatable {
   @JsonKey(defaultValue: [])
   final List<OccasionResponseDto> occasions;
 
-const  HomeResponseDto({
+  const HomeResponseDto({
     required this.message,
     required this.products,
     required this.categories,
@@ -41,7 +41,7 @@ const  HomeResponseDto({
       categoryEntity: categories.map((e) => e.toDomain()).toList(),
     );
   }
-  
+
   @override
-  List<Object?> get props => [bestSeller,products,occasions,categories];
+  List<Object?> get props => [bestSeller, products, occasions, categories];
 }

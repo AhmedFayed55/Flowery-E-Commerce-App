@@ -18,6 +18,10 @@ class HomeEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props =>
-       [bestSallerEntity, productEntity, occasionEntity, categoryEntity];
+  List<Object?> get props => [
+    bestSallerEntity,
+    productEntity,
+    occasionEntity,
+    categoryEntity,
+  ];
 }

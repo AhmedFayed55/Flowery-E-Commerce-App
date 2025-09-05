@@ -30,12 +30,9 @@ void main() {
       phone: '+20123456789',
       gender: 'male',
     );
-    registerRespone = RegisterRespone(
-      'message',
-    );
+    registerRespone = RegisterRespone('message');
     successResult = ApiSuccessResult<RegisterRespone>(data: registerRespone);
 
-    
     provideDummy<ApiResult<RegisterRespone>>(successResult);
   });
 
@@ -53,13 +50,13 @@ void main() {
         verify(registerUsecase.invok(registerBody)).called(1);
       },
       expect: () => [
-        RegisterState(
+        const RegisterState(
           isLoading: true,
           isSuccess: false,
           isFailure: false,
           errorMessage: '',
         ),
-        RegisterState(
+        const RegisterState(
           isLoading: false,
           isSuccess: true,
           isFailure: false,
@@ -84,13 +81,13 @@ void main() {
         verify(registerUsecase.invok(registerBody)).called(1);
       },
       expect: () => [
-        RegisterState(
+        const RegisterState(
           isLoading: true,
           isSuccess: false,
           isFailure: false,
           errorMessage: '',
         ),
-        RegisterState(
+        const RegisterState(
           isLoading: false,
           isSuccess: false,
           isFailure: true,

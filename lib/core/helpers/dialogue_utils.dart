@@ -18,11 +18,14 @@ abstract class DialogueUtils {
               const CircularProgressIndicator(),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text(message, style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.pink,
-                )),
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.pink,
+                  ),
+                ),
               ),
             ],
           ),
@@ -75,11 +78,14 @@ abstract class DialogueUtils {
       builder: (context) {
         return AlertDialog(
           content: Text(message),
-          title: Text(title ?? "", style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColors.pink,
-          )),
+          title: Text(
+            title ?? "",
+            style: TextStyle(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.pink,
+            ),
+          ),
           actions: actions,
         );
       },

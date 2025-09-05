@@ -15,7 +15,7 @@ void main() {
         description: 'description',
         images: [],
         imgCover: 'imgCover',
-        sold: 0
+        sold: 0,
       );
       ProductEntity mockProductEntity = const ProductEntity(
         'id',
@@ -28,8 +28,8 @@ void main() {
         0,
         0,
       );
-    var result=mockProductResponceDto.toDomain();
-    expect(result, mockProductEntity);
+      var result = mockProductResponceDto.toDomain();
+      expect(result, mockProductEntity);
     },
   );
 }

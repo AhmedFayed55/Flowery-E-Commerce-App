@@ -14,7 +14,7 @@ class OccasionResponseDto extends Equatable {
   final String? createdAt;
   final String? updatedAt;
   final bool? isSuperAdmin;
-const  OccasionResponseDto({
+  const OccasionResponseDto({
     this.id,
     this.name,
     this.slug,
@@ -32,7 +32,7 @@ const  OccasionResponseDto({
   OccasionEntity toDomain() {
     return OccasionEntity(id ?? '', name ?? '', image ?? '');
   }
-  
+
   @override
-  List<Object?> get props => [id,name,image];
+  List<Object?> get props => [id, name, image];
 }

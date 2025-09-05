@@ -3,10 +3,21 @@ import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/occas
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-test('when calltoDomain from occasionResponceDto is should return occasinEntity', (){
-OccasionResponseDto mockOccasionResponceDto=const OccasionResponseDto(id: 'id',name: 'name',image: 'image');
-OccasionEntity mockOccasionEntity=const OccasionEntity('id', 'name', 'image');
-var result=mockOccasionResponceDto.toDomain();
-expect(result, equals(mockOccasionEntity));
-});
+  test(
+    'when calltoDomain from occasionResponceDto is should return occasinEntity',
+    () {
+      OccasionResponseDto mockOccasionResponceDto = const OccasionResponseDto(
+        id: 'id',
+        name: 'name',
+        image: 'image',
+      );
+      OccasionEntity mockOccasionEntity = const OccasionEntity(
+        'id',
+        'name',
+        'image',
+      );
+      var result = mockOccasionResponceDto.toDomain();
+      expect(result, equals(mockOccasionEntity));
+    },
+  );
 }

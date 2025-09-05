@@ -1,9 +1,7 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../core/utils/font_weight.dart';
 import 'colors.dart';
 
@@ -39,6 +37,8 @@ abstract class AppTheme {
         ),
       ),
       checkboxTheme: const CheckboxThemeData(
+        shape: RoundedRectangleBorder(),
+        fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
       ),
@@ -121,7 +121,7 @@ abstract class AppTheme {
   }
 
   static ThemeData lightTheme = getTheme(
-    const ColorScheme(
+    ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.pink,
       onPrimary: AppColors.white,
@@ -132,6 +132,7 @@ abstract class AppTheme {
       surface: AppColors.white,
       shadow: AppColors.black,
       onSurface: AppColors.darkGrey,
+      onPrimaryFixed: AppColors.white[80],
     ),
   );
 }
