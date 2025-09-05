@@ -171,4 +171,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get edit_profile => 'Edit Profile';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get profile_updated_successfully => 'Profile updated successfully';
 }
