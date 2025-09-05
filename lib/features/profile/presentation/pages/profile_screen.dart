@@ -2,7 +2,6 @@ import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_cubit.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_event.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_state.dart';
@@ -15,8 +14,11 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/widget/versi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../core/di/di.dart';
+import '../../../../core/services/token_service.dart';
 import '../../../auth/logout/presentation/pages/logout_screen.dart';
 
 class ProfileSettingScreen extends StatefulWidget {
@@ -33,6 +35,8 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
 
     super.initState();
   }
+
+  bool enabled = getIt<TokenService>().isTokenSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +114,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       },
                     ),
                     const Divider(),
-                    LogoutScreen(),
+                    ?enabled ? LogoutScreen() : null,
                     const Spacer(),
                     VersionWidget(
                       buildNumber: state.buildNumber,

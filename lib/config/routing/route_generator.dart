@@ -80,6 +80,7 @@ class RouteGenerator {
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),

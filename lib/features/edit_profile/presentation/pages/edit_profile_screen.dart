@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
@@ -155,7 +157,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         decoration: InputDecoration(
                           suffixIcon: TextButton(
                             onPressed: () {
-                              /// navigate to reset password screen
+                              context.pushNamed(AppRoutes.changePassword);
                             },
                             child: Text(AppLocalizations.of(context)!.change),
                           ),

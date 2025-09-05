@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +31,9 @@ class CustomCardBestSaller extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: onTap,
+                onTap: (){
+                  context.pushNamed(AppRoutes.productDetails,arguments: itemBestSeller[index].id);
+                },
                 child: Image.network(
                   itemBestSeller[index].imgCover,
                   fit: BoxFit.fill,
