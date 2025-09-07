@@ -10,7 +10,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'orders_cubit.mocks.dart';
+import 'orders_cubit_test.mocks.dart';
+
 
 
 @GenerateMocks([GetUserOrdersUsecase])
