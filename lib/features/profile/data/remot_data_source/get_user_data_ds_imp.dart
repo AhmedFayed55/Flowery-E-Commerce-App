@@ -9,7 +9,7 @@ class GetUserDataDataSourceImp implements GetUserDataDataSource {
   GetUserDataDataSourceImp(this._apiServices);
 
   @override
-  Future<UserResponseDto> getUserDataSource() async {
+  Future<UserResponseProfileDto> getUserDataSource() async {
     return await _apiServices.userData();
   }
 }

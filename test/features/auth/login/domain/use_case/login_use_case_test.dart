@@ -16,7 +16,7 @@ void main() {
       email: 'yahya22@',
       password: 'yahya22!',
     );
-    UserLoginEntity userEntity = const UserLoginEntity(
+    UserEntity userEntity = const UserEntity(
       firstName: 'yahya',
       lastName: 'mohamed',
       email: 'ym',
@@ -27,11 +27,11 @@ void main() {
       addresses: [],
     );
 
-    var expectedResult = ApiSuccessResult<UserLoginEntity>(data: userEntity);
+    var expectedResult = ApiSuccessResult<UserEntity>(data: userEntity);
     MockLoginRepo mockLoginRepo = MockLoginRepo();
     LoginUseCase loginUseCase = LoginUseCase(mockLoginRepo);
-    var expectedResuilt = ApiSuccessResult<UserLoginEntity>(data: userEntity);
-    provideDummy<ApiResult<UserLoginEntity>>(expectedResuilt);
+    var expectedResuilt = ApiSuccessResult<UserEntity>(data: userEntity);
+    provideDummy<ApiResult<UserEntity>>(expectedResuilt);
     when(
       mockLoginRepo.loginRepo(loginRequestEntity),
     ).thenAnswer((_) async => expectedResult);
@@ -39,6 +39,6 @@ void main() {
     final result = await loginUseCase.call(loginRequestEntity);
 
     verify(mockLoginRepo.loginRepo(loginRequestEntity)).called(1);
-    expect(result, isA<ApiSuccessResult<UserLoginEntity>>());
+    expect(result, isA<ApiSuccessResult<UserEntity>>());
   });
 }

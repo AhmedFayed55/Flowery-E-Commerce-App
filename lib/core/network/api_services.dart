@@ -36,7 +36,7 @@ abstract class ApiServices {
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
 
   @GET(ApiConstants.userData)
-  Future<UserResponseDto> userData();
+  Future<UserResponseProfileDto> userData();
 
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(

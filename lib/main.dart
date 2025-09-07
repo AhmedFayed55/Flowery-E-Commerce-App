@@ -23,8 +23,9 @@ void main() async {
 
   runApp(
     BlocProvider(
-      create: (_) => getIt<ProfileSettingCubit>()
-        ..doIntent(ChangeLanguageEvent(savedLocale)), // تحميل اللغة وقت التشغيل
+      create: (_) =>
+          getIt<ProfileSettingCubit>()
+            ..doIntent(ChangeLanguageEvent(savedLocale)),
       child: const FlowersEcommerce(),
     ),
   );

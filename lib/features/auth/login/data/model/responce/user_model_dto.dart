@@ -38,8 +38,8 @@ class UserModelDto extends Equatable {
 
   Map<String, dynamic> toJson() => _$UserModelDtoToJson(this);
 
-  UserLoginEntity toDomain() {
-    return UserLoginEntity(
+  UserEntity toDomain() {
+    return UserEntity(
       firstName: firstName,
       lastName: lastName,
       email: email,

@@ -46,19 +46,19 @@ class MockLoginUseCase extends _i1.Mock implements _i3.LoginUseCase {
   }
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.UserLoginEntity>> call(
+  _i4.Future<_i5.ApiResult<_i6.UserEntity>> call(
     _i7.LoginRequestEntity? loginRequestEntity,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#call, [loginRequestEntity]),
-            returnValue: _i4.Future<_i5.ApiResult<_i6.UserLoginEntity>>.value(
-              _i8.dummyValue<_i5.ApiResult<_i6.UserLoginEntity>>(
+            returnValue: _i4.Future<_i5.ApiResult<_i6.UserEntity>>.value(
+              _i8.dummyValue<_i5.ApiResult<_i6.UserEntity>>(
                 this,
                 Invocation.method(#call, [loginRequestEntity]),
               ),
             ),
           )
-          as _i4.Future<_i5.ApiResult<_i6.UserLoginEntity>>);
+          as _i4.Future<_i5.ApiResult<_i6.UserEntity>>);
 }
 
 /// A class which mocks [SharedPrefHelper].

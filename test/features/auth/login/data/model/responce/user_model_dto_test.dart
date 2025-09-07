@@ -17,7 +17,7 @@ void main() {
       addresses: [],
       createdAt: '',
     );
-    UserLoginEntity userEntity = const UserLoginEntity(
+    UserEntity userEntity = const UserEntity(
       firstName: 'yahya',
       lastName: 'mohamed',
       email: 'yahya22@',

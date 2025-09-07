@@ -1,6 +1,6 @@
 sealed class ProfileSettingEvent {}
 
-class SumitProflieSetting extends ProfileSettingEvent {}
+class SumitProflieSettingEvent extends ProfileSettingEvent {}
 
 class ToggleNotificationEvent extends ProfileSettingEvent {
   final bool enable;

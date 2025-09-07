@@ -26,7 +26,7 @@ class ProfileSettingScreen extends StatefulWidget {
 class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
   @override
   void initState() {
-    context.read<ProfileSettingCubit>().doIntent(SumitProflieSetting());
+    context.read<ProfileSettingCubit>().doIntent(SumitProflieSettingEvent());
 
     super.initState();
   }
@@ -51,9 +51,9 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                   children: [
                     const ProfileBar(numberNoti: 0),
                     SectionDataUser(
-                      email: state.userEntity?.email ?? '',
-                      imageUrl: state.userEntity?.photo ?? '',
-                      userName: state.userEntity?.firstName ?? '',
+                      email: state.userProfileEntity?.email ?? '',
+                      imageUrl: state.userProfileEntity?.photo ?? '',
+                      userName: state.userProfileEntity?.firstName ?? '',
                     ),
                     const Divider(),
                     CustomNotificationSwitch(

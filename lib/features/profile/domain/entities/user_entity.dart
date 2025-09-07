@@ -1,4 +1,4 @@
-class UserEntity {
+class UserProfileEntity {
   final String id;
   final String firstName;
   final String lastName;
@@ -9,7 +9,7 @@ class UserEntity {
   final List<dynamic> wishlist;
   final List<dynamic> addresses;
 
-  UserEntity({
+  UserProfileEntity({
     required this.id,
     required this.firstName,
     required this.lastName,

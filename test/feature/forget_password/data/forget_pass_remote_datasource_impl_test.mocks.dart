@@ -72,9 +72,9 @@ class _FakeRegisterResponeDto_4 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeUserResponseDto_5 extends _i1.SmartFake
-    implements _i7.UserResponseDto {
-  _FakeUserResponseDto_5(Object parent, Invocation parentInvocation)
+class _FakeUserResponseProfileDto_5 extends _i1.SmartFake
+    implements _i7.UserResponseProfileDto {
+  _FakeUserResponseProfileDto_5(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -166,14 +166,17 @@ class MockApiServices extends _i1.Mock implements _i9.ApiServices {
           as _i10.Future<_i6.RegisterResponeDto>);
 
   @override
-  _i10.Future<_i7.UserResponseDto> userData() =>
+  _i10.Future<_i7.UserResponseProfileDto> userData() =>
       (super.noSuchMethod(
             Invocation.method(#userData, []),
-            returnValue: _i10.Future<_i7.UserResponseDto>.value(
-              _FakeUserResponseDto_5(this, Invocation.method(#userData, [])),
+            returnValue: _i10.Future<_i7.UserResponseProfileDto>.value(
+              _FakeUserResponseProfileDto_5(
+                this,
+                Invocation.method(#userData, []),
+              ),
             ),
           )
-          as _i10.Future<_i7.UserResponseDto>);
+          as _i10.Future<_i7.UserResponseProfileDto>);
 
   @override
   _i10.Future<_i8.ChangePasswordResponseDto> changePassword(

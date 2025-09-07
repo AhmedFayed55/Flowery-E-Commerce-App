@@ -1,16 +1,15 @@
 import 'dart:ui';
-
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 
 class ProfileSettingState {
   final bool isLoadding;
   final bool enableNotification;
   final String localizationCode;
   final String errorMessage;
-  final UserLoginEntity? userEntity;
+  final UserProfileEntity? userProfileEntity;
   final List<TermEntity> terms;
   final List<AboutUsEntity> aboutUsList;
   final String version;
@@ -27,7 +26,7 @@ class ProfileSettingState {
     this.isLoadding = false,
     this.enableNotification = true,
     this.errorMessage = '',
-    this.userEntity,
+    this.userProfileEntity,
   });
   ProfileSettingState copyWith({
     Locale? local,
@@ -41,7 +40,7 @@ class ProfileSettingState {
     String? localizationCode,
     bool? isLoadding,
     String? errorMessage,
-    UserLoginEntity? userEntity,
+    UserProfileEntity? userProfileEntity,
   }) {
     return ProfileSettingState(
       local: local ?? this.local,
@@ -53,7 +52,7 @@ class ProfileSettingState {
       localizationCode: localizationCode ?? this.localizationCode,
       isLoadding: isLoadding ?? this.isLoadding,
       errorMessage: errorMessage ?? this.errorMessage,
-      userEntity: userEntity ?? this.userEntity,
+      userProfileEntity: userProfileEntity ?? this.userProfileEntity,
     );
   }
 }

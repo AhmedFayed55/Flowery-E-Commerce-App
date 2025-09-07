@@ -65,7 +65,7 @@ void main() {
 
         verify(mockLoginDataSource.login(dto)).called(1);
         verify(mockTokenService.saveToken('token')).called(1);
-        expect(result, isA<ApiSuccessResult<UserLoginEntity>>());
+        expect(result, isA<ApiSuccessResult<UserEntity>>());
       },
     );
 
@@ -76,7 +76,7 @@ void main() {
 
       var result = await loginRepoImp.loginRepo(loginRequestEntity);
       verify(mockLoginDataSource.login(dto)).called(1);
-      expect(result, isA<ApiErrorResult<UserLoginEntity>>());
+      expect(result, isA<ApiErrorResult<UserEntity>>());
     });
   });
 }

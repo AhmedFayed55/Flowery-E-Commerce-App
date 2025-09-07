@@ -15,7 +15,7 @@ class LoginRepoImp implements LoginRepo {
   final LoginDataSource _loginDataSource;
   LoginRepoImp(this._loginDataSource);
   @override
-  Future<ApiResult<UserLoginEntity>> loginRepo(
+  Future<ApiResult<UserEntity>> loginRepo(
     LoginRequestEntity loginRequestEntity,
   ) async {
     try {

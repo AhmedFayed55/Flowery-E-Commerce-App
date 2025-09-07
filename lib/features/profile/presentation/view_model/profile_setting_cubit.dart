@@ -26,7 +26,7 @@ class ProfileSettingCubit extends Cubit<ProfileSettingState> {
 
   Future<void> doIntent(ProfileSettingEvent event) async {
     switch (event) {
-      case SumitProflieSetting():
+      case SumitProflieSettingEvent():
         await _getUserData();
       case ChangeLanguageEvent():
         await _changeLanguage(event.languageCode);
@@ -45,7 +45,7 @@ class ProfileSettingCubit extends Cubit<ProfileSettingState> {
         getIt<SharedPrefHelper>().getData(key: AppConstants.isTokenSaved)
             as bool;
     if (tokenSaved == false) {
-      emit(state.copyWith(isLoadding: false, userEntity: null));
+      emit(state.copyWith(isLoadding: false, userProfileEntity: null));
       return;
     }
 
@@ -56,12 +56,15 @@ class ProfileSettingCubit extends Cubit<ProfileSettingState> {
     await _applicationVersion();
     switch (result) {
       case ApiSuccessResult():
-        return emit(state.copyWith(isLoadding: false, userEntity: result.data));
+        return emit(
+          state.copyWith(isLoadding: false, userProfileEntity: result.data),
+        );
       case ApiErrorResult():
+       
         return emit(
           state.copyWith(
             isLoadding: false,
-            errorMessage: result.failure.toString(),
+            errorMessage: result.failure.errorMessage,
           ),
         );
     }

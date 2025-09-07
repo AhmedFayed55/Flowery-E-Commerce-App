@@ -1,10 +1,11 @@
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'user_model_dto.g.dart';
+part 'user_model_profile_dto.g.dart';
 
 @JsonSerializable()
-class UserModelDto {
+class UserModelProfileDto {
+  @JsonKey(name: "_id")
   final String id;
   final String firstName;
   final String lastName;
@@ -17,7 +18,7 @@ class UserModelDto {
   final List<dynamic> addresses;
   final DateTime createdAt;
 
-  UserModelDto({
+  UserModelProfileDto({
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -31,13 +32,13 @@ class UserModelDto {
     required this.createdAt,
   });
 
-  factory UserModelDto.fromJson(Map<String, dynamic> json) =>
-      _$UserModelDtoFromJson(json);
+  factory UserModelProfileDto.fromJson(Map<String, dynamic> json) =>
+      _$UserModelProfileDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UserModelDtoToJson(this);
+  Map<String, dynamic> toJson() => _$UserModelProfileDtoToJson(this);
 
-  UserEntity toDomain() {
-    return UserEntity(
+  UserProfileEntity toDomain() {
+    return UserProfileEntity(
       id: id,
       firstName: firstName,
       lastName: lastName,

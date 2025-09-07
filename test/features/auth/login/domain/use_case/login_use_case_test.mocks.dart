@@ -38,17 +38,17 @@ class MockLoginRepo extends _i1.Mock implements _i2.LoginRepo {
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.UserLoginEntity>> loginRepo(
+  _i3.Future<_i4.ApiResult<_i5.UserEntity>> loginRepo(
     _i6.LoginRequestEntity? loginRequestEntity,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#loginRepo, [loginRequestEntity]),
-            returnValue: _i3.Future<_i4.ApiResult<_i5.UserLoginEntity>>.value(
-              _i7.dummyValue<_i4.ApiResult<_i5.UserLoginEntity>>(
+            returnValue: _i3.Future<_i4.ApiResult<_i5.UserEntity>>.value(
+              _i7.dummyValue<_i4.ApiResult<_i5.UserEntity>>(
                 this,
                 Invocation.method(#loginRepo, [loginRequestEntity]),
               ),
             ),
           )
-          as _i3.Future<_i4.ApiResult<_i5.UserLoginEntity>>);
+          as _i3.Future<_i4.ApiResult<_i5.UserEntity>>);
 }

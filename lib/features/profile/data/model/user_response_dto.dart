@@ -1,16 +1,16 @@
-import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/user_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/profile/data/model/user_model_profile_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'user_response_dto.g.dart';
 
 @JsonSerializable()
-class UserResponseDto {
+class UserResponseProfileDto {
   final String message;
-  final UserModelDto user;
+  final UserModelProfileDto user;
 
-  UserResponseDto({required this.message, required this.user});
+  UserResponseProfileDto({required this.message, required this.user});
 
-  factory UserResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$UserResponseDtoFromJson(json);
+  factory UserResponseProfileDto.fromJson(Map<String, dynamic> json) =>
+      _$UserResponseProfileDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UserResponseDtoToJson(this);
+  Map<String, dynamic> toJson() => _$UserResponseProfileDtoToJson(this);
 }

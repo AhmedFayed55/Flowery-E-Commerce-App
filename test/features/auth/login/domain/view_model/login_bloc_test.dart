@@ -16,9 +16,9 @@ import 'login_bloc_test.mocks.dart';
 @GenerateMocks([LoginUseCase, SharedPrefHelper])
 void main() {
   late MockLoginUseCase mockLoginUseCase;
-  late UserLoginEntity userEntity;
+  late UserEntity userEntity;
   late LoginRequestEntity loginRequestEntity;
-  late ApiResult<UserLoginEntity> responce;
+  late ApiResult<UserEntity> responce;
 
   setUp(() async {
     mockLoginUseCase = MockLoginUseCase();
@@ -30,7 +30,7 @@ void main() {
     await getIt.reset();
     getIt.registerLazySingleton<SharedPrefHelper>(() => mockSharedPrefHelper);
 
-    userEntity = const UserLoginEntity(
+    userEntity = const UserEntity(
       firstName: 'yahya',
       lastName: 'mohamed',
       email: 'ym',
@@ -48,7 +48,7 @@ void main() {
 
     responce = ApiSuccessResult(data: userEntity);
 
-    provideDummy<ApiResult<UserLoginEntity>>(responce);
+    provideDummy<ApiResult<UserEntity>>(responce);
 
     when(
       mockLoginUseCase.call(loginRequestEntity),
