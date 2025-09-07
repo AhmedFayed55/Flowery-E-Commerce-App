@@ -7,8 +7,7 @@ import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import '../../../login/data/repositories/login_repo_imp_test.mocks.dart';
-import '../../../register/data/source/auth_remote_data_sourse_imlp_test.mocks.dart';
+import 'change_password_ds_impl_test.mocks.dart';
 
 @GenerateMocks([ApiServices, TokenService])
 void main() {
