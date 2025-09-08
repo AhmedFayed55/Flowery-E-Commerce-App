@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
@@ -82,12 +84,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   key: formKey,
                   child: Column(
                     children: [
-                      const ImagePicker(),
+                       ProfileImagePicker(),
                       verticalSpace(24),
                       Row(
                         children: [
                           Expanded(
                             child: TextFormField(
+                              validator: (value) {
+                                if(value == null || value.isEmpty){
+                                  return AppLocalizations.of(context)!.first_name_is_required;
+                                }
+                                return null;
+                              },
+                              controller: firstNameController,
                               decoration: InputDecoration(
                                 label: Text(
                                   AppLocalizations.of(context)!.first_name,
@@ -98,6 +107,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           horizontalSpace(17),
                           Expanded(
                             child: TextFormField(
+                              validator: (value) {
+                                if(value == null || value.isEmpty){
+                                  return AppLocalizations.of(context)!.last_name_is_required;
+                                }
+                                return null;
+                              },
+                              controller: lastNameController,
                               decoration: InputDecoration(
                                 label: Text(
                                   AppLocalizations.of(context)!.last_name,
@@ -168,6 +184,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   phoneNumber: phoneController.text,
                               ),
                             ),);
+                            editProfileCubit.doIntent(UploadPhotoEvent(file: state.pickedImage ?? File("")));
                           }
                         },
                         child: state.isLoading

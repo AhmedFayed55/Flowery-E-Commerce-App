@@ -1,34 +1,58 @@
-import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ImagePicker extends StatelessWidget {
-  const ImagePicker({super.key});
+import 'dialog_image.dart';
+
+class ProfileImagePicker extends StatefulWidget {
+  const ProfileImagePicker({super.key});
+
+  @override
+  State<ProfileImagePicker> createState() => _ProfileImagePickerState();
+}
+
+class _ProfileImagePickerState extends State<ProfileImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomRight,
-      children: [
-        CircleAvatar(
-          radius: 40.r,
-          child: Icon(Icons.person, size: 30.sp),
-        ),
-        InkWell(
-          onTap: () {
-            /// update profile image
-          },
-          child: Container(
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadiusGeometry.circular(5.r),
-              color: AppColors.white[50],
+    return BlocBuilder<EditProfileCubit,EditProfileState>(
+      builder: (context, state) {
+        var cubit = context.read<EditProfileCubit>();
+       return Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            CircleAvatar(
+              radius: 40.r,
+              backgroundImage: state.pickedImage == null ? null : FileImage(state.pickedImage!),
+              child: state.pickedImage == null ? Icon(Icons.person, size: 30.sp) : null ,
             ),
-            child: const Icon(Icons.camera_alt_outlined, size: 20),
-          ),
-        ),
-      ],
+            InkWell(
+              onTap: (){
+               // cubit.loadImage();
+               showDialog(
+                 context: context,
+                 builder: (_) => Dialog(
+                     shape: RoundedRectangleBorder(
+                       borderRadius: BorderRadiusGeometry.circular(15.r)
+                     ),
+                     child: DialogImage(cubit: cubit,)),
+               );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadiusGeometry.circular(5.r),
+                  color: const Color(0xFFF9ECF0),
+                ),
+                child: const Icon(Icons.camera_alt_outlined, size: 20),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
