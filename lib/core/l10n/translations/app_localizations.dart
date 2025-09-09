@@ -430,6 +430,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwords_do_not_match;
+
+  /// No description provided for @your_oredr_placed.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order placed'**
+  String get your_oredr_placed;
+
+  /// No description provided for @successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'successfully'**
+  String get successfully;
+
+  /// No description provided for @track_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Track order'**
+  String get track_order;
+
+  /// No description provided for @payment_cancled.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment cancelled'**
+  String get payment_cancled;
 }
 
 class _AppLocalizationsDelegate

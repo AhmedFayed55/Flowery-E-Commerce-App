@@ -180,4 +180,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get your_oredr_placed => 'Your order placed';
+
+  @override
+  String get successfully => 'successfully';
+
+  @override
+  String get track_order => 'Track order';
+
+  @override
+  String get payment_cancled => 'Payment cancelled';
 }
