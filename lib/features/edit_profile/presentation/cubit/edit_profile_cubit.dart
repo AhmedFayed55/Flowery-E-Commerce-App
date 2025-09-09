@@ -48,17 +48,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     }
   }
 
-  // Future<void> _uploadPhoto(File file) async {
-  //   emit(state.copyWith(isLoading: true, isError: false, isSuccess: false));
-  //   var result = await uploadPhotoUseCase.call(state.pickedImage ?? File(""));
-  //   switch (result) {
-  //     case ApiSuccessResult<UploadPhotoEntity>():
-  //       emit(state.copyWith(isLoading: false, isSuccess: true));
-  //     case ApiErrorResult<UploadPhotoEntity>():
-  //       emit(state.copyWith(isLoading: false, isError: true));
-  //   }
-  // }
-
   Future<void> _uploadPhoto(File file) async {
     await uploadPhotoUseCase.call(state.pickedImage ?? File(""));
   }

@@ -11,6 +11,7 @@ import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/e
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_state.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/gender_selection.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/image_picker.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,6 +35,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  // @override
+  // void initState() {
+  //   firstNameController.text = "model";
+  //   lastNameController.text = "model";
+  //   emailController.text = "model";
+  //   phoneController.text = "model";
+  //   passwordController.text = "model";
+  //   editProfileCubit.state.pickedImage = File("model");
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -41,16 +53,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       child: BlocConsumer<EditProfileCubit, EditProfileState>(
         listener: (context, state) {
           if (state.isSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  AppLocalizations.of(context)!.profile_updated_successfully,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.labelSmall?.copyWith(color: AppColors.white),
-                ),
-              ),
-            );
+            showDialog(context: context, builder: (context) {
+              return const SuccessDialog();
+            },);
           }
         },
         builder: (context, state) {

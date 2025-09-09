@@ -20,9 +20,9 @@ class UploadPhotoRemoteDataSourceImpl
     try {
       UploadPhotoResponse response = await apiServices.uploadPhoto(file);
       UploadPhotoEntity finalResponse = response.toEntity();
-      return ApiSuccessResult(data: finalResponse);
+      return ApiSuccessResult<UploadPhotoEntity>(data: finalResponse);
     } catch (e) {
-      return ApiErrorResult(failure: Failure(errorMessage: e.toString(),));
+      return ApiErrorResult<UploadPhotoEntity>(failure: Failure(errorMessage: e.toString(),));
     }
   }
 }
