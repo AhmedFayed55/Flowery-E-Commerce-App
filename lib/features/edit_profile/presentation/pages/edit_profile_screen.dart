@@ -89,7 +89,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   key: formKey,
                   child: Column(
                     children: [
-                       ProfileImagePicker(),
+                       const ProfileImagePicker(),
                       verticalSpace(24),
                       Row(
                         children: [
