@@ -4,8 +4,7 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/payment/domain/entities/shipping_address_request_entity.dart';
-import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webView_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webview_screen.dart';
 import 'package:flowers_ecommerce_app/features/payment/presentaion/view_model/payment_cubit.dart';
 import 'package:flowers_ecommerce_app/features/payment/presentaion/view_model/payment_event.dart';
 import 'package:flowers_ecommerce_app/features/payment/presentaion/view_model/payment_state.dart';
@@ -28,7 +27,7 @@ class PaymentScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (_) => WebviewScreen(url: url)),
               );
-
+              if (!context.mounted) return;
               if (result == true) {
                 context.pushReplacementNamed(AppRoutes.successPayment);
               } else {
@@ -60,48 +59,9 @@ class PaymentScreen extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
 
-              return Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<PaymentCubit>().doIntent(
-                          PaymentCardEvent(
-                            shippingAddressRequestEntity:
-                                ShippingAddressRequestEntity(
-                                  street: 'street',
-                                  phone: 'phone',
-                                  city: 'city',
-                                  lat: 'lat',
-                                  long: 'long',
-                                ),
-                          ),
-                        );
-                      },
-                      child: const Text('Visa'),
-                    ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<PaymentCubit>().doIntent(
-                          PaymentCashEvent(
-                            shippingAddressRequestEntity:
-                                ShippingAddressRequestEntity(
-                                  street: 'street',
-                                  phone: 'phone',
-                                  city: 'city',
-                                  lat: 'lat',
-                                  long: 'long',
-                                ),
-                          ),
-                        );
-                      },
-                      child: const Text('Cash'),
-                    ),
-                  ],
-                ),
+              return const Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(),
               );
             },
           ),

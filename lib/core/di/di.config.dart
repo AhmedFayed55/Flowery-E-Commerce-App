@@ -77,6 +77,16 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
+import '../../features/payment/data/data_source/payment_ds.dart' as _i152;
+import '../../features/payment/data/data_source/payment_ds_imp.dart' as _i89;
+import '../../features/payment/data/repo/payment_repo_imp.dart' as _i1035;
+import '../../features/payment/domain/repo/payment_repo.dart' as _i50;
+import '../../features/payment/domain/use_case/payment_card_use_case.dart'
+    as _i795;
+import '../../features/payment/domain/use_case/payment_cash_use_case.dart'
+    as _i197;
+import '../../features/payment/presentaion/view_model/payment_cubit.dart'
+    as _i697;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
 import '../network/dio_module.dart' as _i614;
@@ -106,6 +116,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => dioModule.providePrettyDioLogger(),
     );
     gh.factory<_i804.ApiServices>(() => _i804.ApiServices(gh<_i361.Dio>()));
+    gh.factory<_i152.PaymentDataSource>(
+      () => _i89.PaymentDataSourceImp(gh<_i804.ApiServices>()),
+    );
     gh.factory<_i773.LoginDataSource>(
       () => _i265.LoginDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -140,6 +153,9 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
+    gh.factory<_i50.PaymentRepo>(
+      () => _i1035.PaymentRepoImp(gh<_i152.PaymentDataSource>()),
+    );
     gh.factory<_i637.AuthRemoteDataSource>(
       () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
     );
@@ -170,8 +186,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i792.ChangePasswordUseCase>(
       () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
     );
+    gh.factory<_i795.PaymentCardUseCase>(
+      () => _i795.PaymentCardUseCase(gh<_i50.PaymentRepo>()),
+    );
+    gh.factory<_i197.PaymentCashUseCase>(
+      () => _i197.PaymentCashUseCase(gh<_i50.PaymentRepo>()),
+    );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
+    );
+    gh.factory<_i697.PaymentCubit>(
+      () => _i697.PaymentCubit(
+        gh<_i795.PaymentCardUseCase>(),
+        gh<_i197.PaymentCashUseCase>(),
+      ),
     );
     gh.factory<_i580.LoginBloc>(
       () => _i580.LoginBloc(gh<_i630.LoginUseCase>()),

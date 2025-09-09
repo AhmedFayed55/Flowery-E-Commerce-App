@@ -6,10 +6,10 @@ class CustomerDetailsModelDto {
   final String? email;
   final String? name;
   final String? phone;
-  // ignore: non_constant_identifier_names
-  final String? tax_exempt;
+  @JsonKey(name: 'tax_exempt')
+  final String? taxExempt;
 
-  CustomerDetailsModelDto({this.email, this.name, this.phone, this.tax_exempt});
+  CustomerDetailsModelDto({this.email, this.name, this.phone, this.taxExempt});
 
   factory CustomerDetailsModelDto.fromJson(Map<String, dynamic> json) =>
       _$CustomerDetailsModelDtoFromJson(json);
