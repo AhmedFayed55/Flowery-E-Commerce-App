@@ -123,6 +123,11 @@ abstract class AppTheme {
           fontSize: 18.sp,
           color: AppColors.black,
         ),
+        titleLarge: TextStyle(
+          fontWeight: AppFontWeight.bold,
+          fontSize: 24.sp,
+          color: AppColors.black,
+        ),
       ),
     );
   }

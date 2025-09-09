@@ -7,6 +7,9 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/request/payment_request_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/responce/card_pay_responce/card_pay_responce_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/responce/cash_pay_responce/cash_pay_responce_model_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -38,5 +41,13 @@ abstract class ApiServices {
   Future<ChangePasswordResponseDto> changePassword(
     @Body() ChangePasswordRequestDto requestDto,
     @Header(ApiConstants.authorization) String token,
+  );
+  @POST(ApiConstants.paymendCard)
+  Future<CardPayResponceModelDto> paymentCard(
+    @Body() PaymentRequestModelDto paymentRequestModelDto,
+  );
+  @POST(ApiConstants.paymentCash)
+  Future<CashPayResponceModelDto> paymentCash(
+    @Body() PaymentRequestModelDto paymentRequestModelDto,
   );
 }

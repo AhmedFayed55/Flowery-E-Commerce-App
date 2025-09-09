@@ -7,4 +7,6 @@ abstract class ApiConstants {
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String resetPassword = "auth/resetPassword";
   static const String changePassword = "auth/change-password";
+  static const String paymendCard = "orders/checkout?url=http://localhost:3000";
+  static const String paymentCash = "orders";
 }
