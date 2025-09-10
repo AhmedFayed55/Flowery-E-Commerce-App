@@ -53,5 +53,14 @@ class UserModelDto extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [firstName, lastName, email, gender, phone,wishlist,addresses,photo];
+  List<Object?> get props => [
+    firstName,
+    lastName,
+    email,
+    gender,
+    phone,
+    wishlist,
+    addresses,
+    photo,
+  ];
 }

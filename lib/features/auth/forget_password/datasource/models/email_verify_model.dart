@@ -7,9 +7,7 @@ class EmailVerifyModel {
   @JsonKey(name: "status")
   final String? status;
 
-  EmailVerifyModel ({
-    this.status,
-  });
+  EmailVerifyModel({this.status});
 
   factory EmailVerifyModel.fromJson(Map<String, dynamic> json) {
     return _$EmailVerifyModelFromJson(json);
@@ -19,5 +17,3 @@ class EmailVerifyModel {
     return _$EmailVerifyModelToJson(this);
   }
 }
-
-

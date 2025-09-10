@@ -14,13 +14,16 @@ import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
+import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
+
 part 'api_services.g.dart';
 
 @RestApi()
 @injectable
 abstract class ApiServices {
   @factoryMethod
- factory ApiServices(Dio dio) = _ApiServices;
+  factory ApiServices(Dio dio) = _ApiServices;
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
 
@@ -35,6 +38,12 @@ abstract class ApiServices {
 
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
+
+  @PATCH(ApiConstants.changePassword)
+  Future<ChangePasswordResponseDto> changePassword(
+    @Body() ChangePasswordRequestDto requestDto,
+    @Header(ApiConstants.authorization) String token,
+  );
 
   @PUT(ApiConstants.editProfile)
   Future<EditProfileResponse> editProfile(@Body() Map<String, dynamic> body);

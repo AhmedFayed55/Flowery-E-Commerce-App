@@ -340,6 +340,36 @@ abstract class AppLocalizations {
   /// **'Password is required'**
   String get password_empty;
 
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_password;
+
+  /// No description provided for @current_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get current_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get new_password;
+
+  /// No description provided for @update.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get update;
+
+  /// No description provided for @password_changed_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get password_changed_successfully;
+
   /// No description provided for @please_enter_your_email_associated_to_your_account.
   ///
   /// In en, this message translates to:
@@ -375,18 +405,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend'**
   String get resend;
-
-  /// No description provided for @reset_password.
-  ///
-  /// In en, this message translates to:
-  /// **'Reset password'**
-  String get reset_password;
-
-  /// No description provided for @new_password.
-  ///
-  /// In en, this message translates to:
-  /// **'New password'**
-  String get new_password;
 
   /// No description provided for @password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least.
   ///

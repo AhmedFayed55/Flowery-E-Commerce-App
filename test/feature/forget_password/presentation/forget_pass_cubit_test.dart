@@ -163,19 +163,21 @@ void main() {
   group("Test Cases emits for GetResetPasswordEvent", () {
     test(
       "Success Case emits ( loading + success ) states for GetResetPasswordEvent",
-          () async {
+      () async {
         ///Arrange
         var mockModel = ResetPasswordModel();
-        var successResult = ApiSuccessResult<ResetPasswordModel>(data: mockModel);
+        var successResult = ApiSuccessResult<ResetPasswordModel>(
+          data: mockModel,
+        );
         provideDummy<ApiResult<ResetPasswordModel>>(successResult);
 
         when(
-          mockResetPasswordUseCase.call(email,newPassword),
+          mockResetPasswordUseCase.call(email, newPassword),
         ).thenAnswer((_) async => successResult);
 
         ///Act
         await forgetPasswordCubit.doIntent(
-          GetResetPasswordEvent(email: email,newPassword: newPassword),
+          GetResetPasswordEvent(email: email, newPassword: newPassword),
         );
 
         ///Assert
@@ -183,22 +185,24 @@ void main() {
         expect(forgetPasswordCubit.state.isSuccessState, true);
         expect(forgetPasswordCubit.state.isErrorState, false);
 
-        verify(mockResetPasswordUseCase.call(email,newPassword)).called(1);
+        verify(mockResetPasswordUseCase.call(email, newPassword)).called(1);
       },
     );
     test(
       "Error case emits ( loading + error ) states for GetResetPasswordEvent",
-          () async {
+      () async {
         var mocFailure = Failure(errorMessage: "Server Error");
-        var errorResult = ApiErrorResult<ResetPasswordModel>(failure: mocFailure);
+        var errorResult = ApiErrorResult<ResetPasswordModel>(
+          failure: mocFailure,
+        );
         provideDummy<ApiResult<ResetPasswordModel>>(errorResult);
 
         when(
-          mockResetPasswordUseCase.call(email,newPassword),
+          mockResetPasswordUseCase.call(email, newPassword),
         ).thenAnswer((_) async => errorResult);
 
         await forgetPasswordCubit.doIntent(
-          GetResetPasswordEvent(email: email,newPassword: newPassword),
+          GetResetPasswordEvent(email: email, newPassword: newPassword),
         );
 
         expect(forgetPasswordCubit.state.isLoadingState, false);
@@ -209,7 +213,7 @@ void main() {
           equals(mocFailure.errorMessage),
         );
 
-        verify(mockResetPasswordUseCase.call(email,newPassword)).called(1);
+        verify(mockResetPasswordUseCase.call(email, newPassword)).called(1);
       },
     );
   });

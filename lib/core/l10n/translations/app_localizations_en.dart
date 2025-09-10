@@ -132,6 +132,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password_empty => 'Password is required';
 
   @override
+  String get reset_password => 'Reset Password';
+
+  @override
+  String get current_password => 'Current Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get password_changed_successfully => 'Password changed successfully';
+
+  @override
   String get please_enter_your_email_associated_to_your_account =>
       'Please enter your email associated to\n your account';
 
@@ -150,12 +165,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend => 'Resend';
-
-  @override
-  String get reset_password => 'Reset password';
-
-  @override
-  String get new_password => 'New password';
 
   @override
   String

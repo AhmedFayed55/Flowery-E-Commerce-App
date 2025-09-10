@@ -13,7 +13,7 @@ class LoginState extends Equatable {
     this.rememberMe = false,
     this.isLoadding = false,
     this.userEntity,
-    this.errorMessage = '', 
+    this.errorMessage = '',
   });
 
   LoginState copyWith({

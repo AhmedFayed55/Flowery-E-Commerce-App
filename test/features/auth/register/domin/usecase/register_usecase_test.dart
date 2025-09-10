@@ -26,10 +26,7 @@ void main() {
         gender: 'male',
       );
 
-      RegisterRespone registerRespone = RegisterRespone(
-       'message',
-        
-      );
+      RegisterRespone registerRespone = RegisterRespone('message');
       var excepted = ApiSuccessResult<RegisterRespone>(data: registerRespone);
       provideDummy<ApiResult<RegisterRespone>>(excepted);
 
