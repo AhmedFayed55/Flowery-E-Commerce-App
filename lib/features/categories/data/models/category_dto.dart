@@ -6,7 +6,7 @@ part 'category_dto.g.dart';
 @JsonSerializable()
 class CategoriesDTO {
   @JsonKey(name: "_id")
-  final String? Id;
+  final String? id;
   @JsonKey(name: "name")
   final String? name;
   @JsonKey(name: "slug")
@@ -23,7 +23,7 @@ class CategoriesDTO {
   final int? productsCount;
 
   CategoriesDTO ({
-    this.Id,
+    this.id,
     this.name,
     this.slug,
     this.image,
@@ -42,7 +42,7 @@ class CategoriesDTO {
   }
 
   CategoryModel toCategoryModel() => CategoryModel(
-    id: Id ?? "",
+    id: id ?? "",
     image: image ?? "",
     name: name ?? "",
     slug: slug ?? "",

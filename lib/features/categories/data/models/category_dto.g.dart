@@ -8,7 +8,7 @@ part of 'category_dto.dart';
 
 CategoriesDTO _$CategoriesDTOFromJson(Map<String, dynamic> json) =>
     CategoriesDTO(
-      Id: json['_id'] as String?,
+      id: json['_id'] as String?,
       name: json['name'] as String?,
       slug: json['slug'] as String?,
       image: json['image'] as String?,
@@ -20,7 +20,7 @@ CategoriesDTO _$CategoriesDTOFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CategoriesDTOToJson(CategoriesDTO instance) =>
     <String, dynamic>{
-      '_id': instance.Id,
+      '_id': instance.id,
       'name': instance.name,
       'slug': instance.slug,
       'image': instance.image,

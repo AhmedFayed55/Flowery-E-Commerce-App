@@ -30,13 +30,13 @@ void main() {
       ///Arrange
       final categoriesDTO = [
         CategoriesDTO(
-          Id: "1",
+          id: "1",
           name: "category-1",
           image: 'image-1',
           slug: 'slug-1',
         ),
         CategoriesDTO(
-          Id: "2",
+          id: "2",
           name: "category-2",
           image: 'image-2',
           slug: 'slug-2',
