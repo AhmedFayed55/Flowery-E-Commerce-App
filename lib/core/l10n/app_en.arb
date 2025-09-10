@@ -55,7 +55,6 @@
   "password_is_required": "Password is required",
   "password_must_be_at_least_6_characters": "Password must be at least 6 characters",
   "passwords_do_not_match": "Passwords do not match",
-  "update": "Update",
   "edit_profile": "Edit Profile",
   "change": "Change",
   "profile_updated_successfully": "Profile updated successfully",
