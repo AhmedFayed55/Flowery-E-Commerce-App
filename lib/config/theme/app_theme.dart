@@ -22,7 +22,6 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.pink,
-          disabledBackgroundColor: AppColors.black[30],
           foregroundColor: AppColors.white,
           minimumSize: Size(double.infinity, 50.h),
           shape: RoundedRectangleBorder(
@@ -36,22 +35,7 @@ abstract class AppTheme {
           ),
         ),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
-        unselectedLabelStyle: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.white[80],
-        ),
-        selectedLabelStyle: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.pink,
-        ),
-      ),
       checkboxTheme: const CheckboxThemeData(
-        shape: RoundedRectangleBorder(),
-        fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
       ),
@@ -99,36 +83,18 @@ abstract class AppTheme {
       ),
       textTheme: TextTheme(
         displaySmall: TextStyle(
-          fontSize: 13.sp,
-          fontWeight: AppFontWeight.regular,
-          color: AppColors.black,
+          fontSize: 13.sp, fontWeight: AppFontWeight.regular , color: AppColors.black
         ),
-        displayMedium: TextStyle(
-          color: AppColors.pink,
-          fontSize: 16.sp,
-          fontWeight: AppFontWeight.regular,
-        ),
-        bodySmall: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 12.sp,
-          color: AppColors.black,
-        ),
-        labelSmall: TextStyle(
-          fontWeight: AppFontWeight.regular,
-          fontSize: 14.sp,
-          color: AppColors.darkGrey,
-        ),
-        labelMedium: TextStyle(
-          fontWeight: AppFontWeight.medium,
-          fontSize: 18.sp,
-          color: AppColors.black,
-        ),
+        displayMedium: TextStyle(color: AppColors.darkGrey,fontSize: 16.sp,fontWeight: AppFontWeight.medium),
+        bodySmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 12.sp,color: AppColors.black),
+        labelSmall: TextStyle(fontWeight: AppFontWeight.regular,fontSize: 14.sp,color: AppColors.darkGrey),
+        labelMedium: TextStyle(fontWeight: AppFontWeight.medium,fontSize: 18.sp,color: AppColors.black),
       ),
     );
   }
 
   static ThemeData lightTheme = getTheme(
-    ColorScheme(
+    const ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.pink,
       onPrimary: AppColors.white,
@@ -137,9 +103,8 @@ abstract class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       surface: AppColors.white,
-      shadow: AppColors.black,
-      onSurface: AppColors.darkGrey,
-      onPrimaryFixed: AppColors.white[80],
+        shadow: AppColors.black,
+        onSurface: AppColors.darkGrey
     ),
   );
 }

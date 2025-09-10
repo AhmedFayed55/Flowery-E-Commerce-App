@@ -11,6 +11,6 @@ class AuthRemoteDataSourseImlp implements AuthRemoteDataSource {
   AuthRemoteDataSourseImlp(this._apiServices);
   @override
   Future<RegisterResponeDto> register(RegisterBodyDTo request) async {
-    return await _apiServices.register(request);
+  return await _apiServices.register(request);    
   }
 }

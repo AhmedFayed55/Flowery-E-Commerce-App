@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @injectable
 class SharedPrefHelper {
-  final SharedPreferences sharedPreferences;
+  final  SharedPreferences sharedPreferences;
 
   SharedPrefHelper(this.sharedPreferences);
 

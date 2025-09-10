@@ -2,6 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 @module
 abstract class DatabaseModule {
   @preResolve
@@ -13,4 +14,7 @@ abstract class DatabaseModule {
   FlutterSecureStorage flutterSecureStorage() {
     return const FlutterSecureStorage();
   }
+
+
+ 
 }

@@ -44,4 +44,6 @@ abstract class AppColors {
     90: Color(0xFF535353),
     100: Color(0xFF323232),
   });
+
+
 }

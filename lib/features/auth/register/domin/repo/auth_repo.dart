@@ -4,4 +4,5 @@ import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/regis
 
 abstract interface class AuthRepo {
   Future<ApiResult<RegisterRespone>> register(RegisterBody request);
+
 }

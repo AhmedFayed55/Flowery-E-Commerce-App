@@ -1,6 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/errors/failures.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/user.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_body.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/domin/usecase/register_usecase.dart';
@@ -30,9 +33,12 @@ void main() {
       phone: '+20123456789',
       gender: 'male',
     );
-    registerRespone = RegisterRespone('message');
+    registerRespone = RegisterRespone(
+      'message',
+    );
     successResult = ApiSuccessResult<RegisterRespone>(data: registerRespone);
 
+    
     provideDummy<ApiResult<RegisterRespone>>(successResult);
   });
 
@@ -50,13 +56,13 @@ void main() {
         verify(registerUsecase.invok(registerBody)).called(1);
       },
       expect: () => [
-        const RegisterState(
+        RegisterState(
           isLoading: true,
           isSuccess: false,
           isFailure: false,
           errorMessage: '',
         ),
-        const RegisterState(
+        RegisterState(
           isLoading: false,
           isSuccess: true,
           isFailure: false,
@@ -81,13 +87,13 @@ void main() {
         verify(registerUsecase.invok(registerBody)).called(1);
       },
       expect: () => [
-        const RegisterState(
+        RegisterState(
           isLoading: true,
           isSuccess: false,
           isFailure: false,
           errorMessage: '',
         ),
-        const RegisterState(
+        RegisterState(
           isLoading: false,
           isSuccess: false,
           isFailure: true,
