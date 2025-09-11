@@ -1,9 +1,8 @@
-import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/search/search_screen.dart';
 import 'package:flutter/material.dart';
 
 class TextFiledScreen extends StatelessWidget {
-  TextFiledScreen({super.key});
+  const TextFiledScreen({super.key});
 
   // final TextEditingController searchController = TextEditingController();
 
