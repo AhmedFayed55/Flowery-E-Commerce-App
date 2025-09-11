@@ -17,7 +17,7 @@ class TextFiledScreen extends StatelessWidget {
               TextFormField(
                 // controller: searchController,
                 readOnly: true,
-                decoration: InputDecoration(hintText: "search"),
+                decoration: const InputDecoration(hintText: "search"),
                 onTap: () {
                   showSearch(context: context, delegate: SearchScreen());
                 },

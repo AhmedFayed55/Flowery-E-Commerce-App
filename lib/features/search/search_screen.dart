@@ -83,7 +83,7 @@ class SearchScreen extends SearchDelegate {
         },
       );
     }else{
-      return Center(child: Text("Search For Any Product You Want"),);
+      return const Center(child: Text("Search For Any Product You Want"),);
     }
 
   }
