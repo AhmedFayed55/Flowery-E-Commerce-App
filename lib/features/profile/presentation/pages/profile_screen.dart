@@ -14,7 +14,6 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/widget/versi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/di/di.dart';
@@ -114,7 +113,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       },
                     ),
                     const Divider(),
-                    ?enabled ? LogoutScreen() : null,
+                    ?enabled ? const LogoutScreen() : null,
                     const Spacer(),
                     VersionWidget(
                       buildNumber: state.buildNumber,

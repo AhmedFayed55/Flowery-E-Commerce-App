@@ -7,7 +7,6 @@ import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
-import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/widget/custom_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

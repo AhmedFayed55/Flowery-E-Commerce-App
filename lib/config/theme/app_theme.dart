@@ -156,7 +156,7 @@ abstract class AppTheme {
   }
 
   static ThemeData lightTheme = getTheme(
-    ColorScheme(
+    const ColorScheme(
       brightness: Brightness.light,
       primary: AppColors.pink,
       onPrimary: AppColors.white,

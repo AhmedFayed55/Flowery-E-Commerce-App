@@ -5,7 +5,6 @@ import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/dialogue_utils.dart';
 import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
 import 'package:flowers_ecommerce_app/core/helpers/regex.dart';
-import 'package:flowers_ecommerce_app/core/helpers/validators.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_bloc.dart';

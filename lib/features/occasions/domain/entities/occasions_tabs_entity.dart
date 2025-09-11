@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 
 class OccasionsTabsEntity{
   final String?id;

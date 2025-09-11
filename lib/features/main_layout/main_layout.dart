@@ -23,9 +23,9 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
-      Center(child: HomeScreen()),
-      Center(child: CategoriesScreen()),
-      Center(child: CartPage()),
+      const Center(child: HomeScreen()),
+      const Center(child: CategoriesScreen()),
+      const Center(child: CartPage()),
       const ProfileSettingScreen(),
     ];
     return Scaffold(

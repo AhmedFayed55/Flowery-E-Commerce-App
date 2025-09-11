@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flowers_ecommerce_app/features/main_layout/tabs/home_screen/domain/entities/product_entity.dart';
 import '../entities/best_saller_entity.dart';
 import '../entities/home_entity.dart';
 

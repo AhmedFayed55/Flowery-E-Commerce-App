@@ -11,7 +11,6 @@ import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/e
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_state.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/gender_selection.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/widgets/image_picker.dart';
-import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
