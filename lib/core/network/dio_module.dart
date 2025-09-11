@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/di/modules/token_interceptor.dart';
 import 'package:injectable/injectable.dart';
+import 'package:location/location.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
 import '../di/di.dart';
 import 'api_constants.dart';
 
@@ -28,4 +30,7 @@ abstract class DioModule {
       compact: true,
     );
   }
+
+  @lazySingleton
+  Location provideLocation() => Location();
 }
