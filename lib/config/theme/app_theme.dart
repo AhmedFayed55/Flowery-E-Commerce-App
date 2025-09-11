@@ -68,7 +68,7 @@ abstract class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        prefixIconColor: AppColors.darkGrey.withOpacity(.5),
+        prefixIconColor: AppColors.darkGrey.withValues(alpha: 0.5),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
