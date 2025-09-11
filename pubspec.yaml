@@ -37,6 +37,8 @@ dependencies:
   bloc_test: ^10.0.0
   equatable: ^2.0.5
   path_provider_android: 2.2.18
+  google_fonts: ^6.2.1
+  skeletonizer: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:
@@ -56,7 +58,8 @@ flutter:
 
 
   assets:
-    - assets/svgs/
+   - lib/core/utils/images/
+   - assets/svgs/
 
 
   # fonts:
