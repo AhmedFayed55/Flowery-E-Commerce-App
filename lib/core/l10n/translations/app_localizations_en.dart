@@ -180,4 +180,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get enter_your_city => 'Enter your city';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get enter_your_phone => 'Enter your phone';
+
+  @override
+  String get street => 'Street';
+
+  @override
+  String get enter_your_street => 'Enter your street';
+
+  @override
+  String get add_new => 'Add New';
+
+  @override
+  String get its_a_gift => 'It\'s a gift';
+
+  @override
+  String get delivery_address => 'Delivery Address';
+
+  @override
+  String get no_addresses_found => 'No addresses found';
+
+  @override
+  String get place_order => 'Place order';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get delivery_fee => 'Delivery fee';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get credit_card => 'Credit card';
+
+  @override
+  String get cash_on_delivery => 'Cash on delivery';
+
+  @override
+  String get payment_method => 'Payment method';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get delevery_time => 'Delivery time';
 }

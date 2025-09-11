@@ -13,6 +13,8 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:internet_connection_checker/internet_connection_checker.dart'
+    as _i973;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
@@ -77,6 +79,15 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
+import '../../features/checkout/data/repo/checkout_repo_impl.dart' as _i351;
+import '../../features/checkout/data/sources/checkout_remote_ds.dart' as _i676;
+import '../../features/checkout/data/sources/checkout_remote_ds_impl.dart'
+    as _i700;
+import '../../features/checkout/domin/repo/checkout_repo.dart' as _i703;
+import '../../features/checkout/domin/usecase/get_logged_user_addresses_usecase.dart'
+    as _i390;
+import '../../features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart'
+    as _i1043;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
 import '../network/dio_module.dart' as _i614;
@@ -105,6 +116,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
     );
+    gh.lazySingleton<_i973.InternetConnectionChecker>(
+      () => dioModule.provideInternetConnectionChecker(),
+    );
     gh.factory<_i804.ApiServices>(() => _i804.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i773.LoginDataSource>(
       () => _i265.LoginDataSourceImp(gh<_i804.ApiServices>()),
@@ -129,6 +143,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i172.LoginRepo>(
       () => _i408.LoginRepoImp(gh<_i773.LoginDataSource>()),
+    );
+    gh.factory<_i676.CheckoutRemoteDS>(
+      () => _i700.CheckoutRemoteDsImpl(gh<_i804.ApiServices>()),
     );
     gh.factory<_i197.ForgetPasswordRemoteDataSource>(
       () => _i990.ForgetPasswordRemoteDataSourceImpl(
@@ -170,6 +187,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i792.ChangePasswordUseCase>(
       () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
     );
+    gh.factory<_i703.CheckoutRepo>(
+      () => _i351.CheckoutRepoImpl(
+        gh<_i676.CheckoutRemoteDS>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
     );
@@ -178,6 +201,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
+    );
+    gh.factory<_i390.GetLoggedUserAddressesUsecase>(
+      () => _i390.GetLoggedUserAddressesUsecase(gh<_i703.CheckoutRepo>()),
+    );
+    gh.factory<_i1043.CheckoutCubit>(
+      () => _i1043.CheckoutCubit(gh<_i390.GetLoggedUserAddressesUsecase>()),
     );
     gh.factory<_i1035.ChangePasswordCubit>(
       () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
