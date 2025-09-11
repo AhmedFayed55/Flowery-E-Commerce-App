@@ -9,7 +9,7 @@ import 'occasions_event.dart';
 
 @injectable
 class OccasionsCubit extends Cubit<OccasionsState>{
-  OccasionsCubit(this.getSpecificOccasionsUseCase):super(OccasionsState());
+  OccasionsCubit(this.getSpecificOccasionsUseCase):super(const OccasionsState());
   final GetSpecificOccasionsUseCase getSpecificOccasionsUseCase;
 
   Map<String, List<ProductsEntity>> cachedOccasions = {};

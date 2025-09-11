@@ -12,7 +12,7 @@ part 'product_details_state.dart';
 class ProductsDetalis extends Cubit<ProductDetailsState> {
   final GetSpecificProductUsecase getProductUsecase;
 
-  ProductsDetalis(this.getProductUsecase) : super(ProductDetailsState());
+  ProductsDetalis(this.getProductUsecase) : super(const ProductDetailsState());
   void doIntent(GetSpecificProductEvent event) {
     switch (event) {
       case GetSpecificProductEvent():

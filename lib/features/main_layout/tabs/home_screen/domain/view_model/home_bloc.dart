@@ -29,7 +29,7 @@ class HomeBloc extends Cubit<HomeState> {
       case ApiSuccessResult():
         occasion = result.data.occasionEntity;
         products = result.data.productEntity;
-        print("=========================${products.length}===================");
+        //print("=========================${products.length}===================");
         return emit(state.copyWith(isLoadding: false, homeEntity: result.data,products: result.data.bestSallerEntity));
       case ApiErrorResult():
         return emit(
