@@ -40,7 +40,7 @@ class ProductCart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.network(
-            product.imgCover ?? '',
+            product.imgCover,
             width: 147.w,
             height: 131.h,
             fit: BoxFit.fill,
@@ -53,7 +53,7 @@ class ProductCart extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    editTitle(product.title ?? ''),
+                    editTitle(product.title),
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall,
                   ),

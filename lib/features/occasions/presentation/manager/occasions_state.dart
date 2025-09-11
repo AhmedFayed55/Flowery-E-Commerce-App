@@ -2,15 +2,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flowers_ecommerce_app/features/occasions/domain/entities/products_entity.dart';
 
 class OccasionsState extends Equatable{
-  bool isLoadingGetOccasion = false;
+  final bool isLoadingGetOccasion;
 
-  String? errorGetOccasion;
+  final String? errorGetOccasion;
 
-  String? successGetOccasion;
+  final String? successGetOccasion;
 
-  List<ProductsEntity> products;
+  final List<ProductsEntity> products;
 
-  OccasionsState({
+  const OccasionsState({
     this.isLoadingGetOccasion = false,
     this.errorGetOccasion,
     this.successGetOccasion,

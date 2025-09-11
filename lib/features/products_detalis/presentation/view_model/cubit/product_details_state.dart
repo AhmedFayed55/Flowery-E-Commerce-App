@@ -1,17 +1,17 @@
 part of 'product_details_cubit.dart';
 
 class ProductDetailsState extends Equatable {
-  bool isLoading = false;
-  bool isSuccess = false;
-  bool isFailure = false;
-  String? errorMessage = '';
-  ProductEntity? product ;
+  final bool isLoading;
+  final bool isSuccess;
+  final bool isFailure;
+  final String? errorMessage;
+  final ProductEntity? product ;
 
-  ProductDetailsState(
+  const ProductDetailsState(
     {this.isLoading = false ,
     this.isSuccess = false,
     this.isFailure =false,
-    this.errorMessage,
+    this.errorMessage = '',
     this.product }
   );
 
