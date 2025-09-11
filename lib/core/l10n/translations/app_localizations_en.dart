@@ -180,4 +180,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get notification => 'Notification';
 }
