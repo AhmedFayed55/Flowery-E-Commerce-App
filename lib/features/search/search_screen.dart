@@ -1,5 +1,4 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
-import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +27,7 @@ class SearchScreen extends SearchDelegate {
     // final results = cubit.state.allProducts.where((product) {
     //   return product.toLowerCase().contains(query.toLowerCase());
     // }).toList();
-    // return _buildSearchBody(context, query, results);
+    // return _buildProductSearch(context, query, results);
     return Container();
   }
 
@@ -38,7 +37,7 @@ class SearchScreen extends SearchDelegate {
     // final results = cubit.state.allProducts.where((product) {
     //   return product.toLowerCase().contains(query.toLowerCase());
     // }).toList();
-    // return _buildSearchBody(context, query, results);
+    // return _buildProductSearch(context, query, results);
     return Container();
   }
 
@@ -69,43 +68,43 @@ class SearchScreen extends SearchDelegate {
 }
 
 /// Shared Widget
-Widget _buildSearchBody(
-  BuildContext context,
-  String query,
-  List<String> results,
-) {
-  if (query.isEmpty) {
-    return Center(
-      child: Text(
-        AppLocalizations.of(context)!.search_For_Any_Product_You_Want,
-        style: Theme.of(
-          context,
-        ).textTheme.labelSmall?.copyWith(color: AppColors.pink),
-      ),
-    );
-  } else if (results.isEmpty) {
-    return Center(
-      child: Text(
-        AppLocalizations.of(context)!.no_product_found,
-        style: Theme.of(
-          context,
-        ).textTheme.labelSmall?.copyWith(color: AppColors.pink),
-      ),
-    );
-  } else {
-    return GridView.builder(
-      itemCount: results.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        childAspectRatio: 163.w / 229.h,
-        mainAxisSpacing: 17,
-        crossAxisSpacing: 17,
-        crossAxisCount: 2,
-      ),
-      itemBuilder: (context, index) {
-        return null;
-        // final product = results[index];
-        // return ProductItem(product: product);
-      },
-    );
-  }
-}
+// Widget _buildProductSearch(
+//   BuildContext context,
+//   String query,
+//   List<String> results,
+// ) {
+//   if (query.isEmpty) {
+//     return Center(
+//       child: Text(
+//         AppLocalizations.of(context)!.search_For_Any_Product_You_Want,
+//         style: Theme.of(
+//           context,
+//         ).textTheme.labelSmall?.copyWith(color: AppColors.pink),
+//       ),
+//     );
+//   } else if (results.isEmpty) {
+//     return Center(
+//       child: Text(
+//         AppLocalizations.of(context)!.no_product_found,
+//         style: Theme.of(
+//           context,
+//         ).textTheme.labelSmall?.copyWith(color: AppColors.pink),
+//       ),
+//     );
+//   } else {
+//     return GridView.builder(
+//       itemCount: results.length,
+//       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//         childAspectRatio: 163.w / 229.h,
+//         mainAxisSpacing: 17,
+//         crossAxisSpacing: 17,
+//         crossAxisCount: 2,
+//       ),
+//       itemBuilder: (context, index) {
+//         return null;
+//         // final product = results[index];
+//         // return ProductItem(product: product);
+//       },
+//     );
+//   }
+// }
