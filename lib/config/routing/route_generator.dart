@@ -4,8 +4,10 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/saved_addresses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
 import 'app_routes.dart';
@@ -44,6 +46,9 @@ class RouteGenerator {
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+
+      case AppRoutes.savedAddresses:
+        return MaterialPageRoute(builder: (_) => const SavedAddressesScreen());
 
       default:
         return unDefinedRoute();

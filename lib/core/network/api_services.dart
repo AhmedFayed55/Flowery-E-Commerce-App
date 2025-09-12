@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart';
@@ -12,6 +13,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
+import '../../features/saved_addresses/data/models/remove_address_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -37,6 +39,17 @@ abstract class ApiServices {
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(
     @Body() ChangePasswordRequestDto requestDto,
+    @Header(ApiConstants.authorization) String token,
+  );
+
+  @DELETE("${ApiConstants.deleteOrGetSavedAddress}/{id}")
+  Future<RemoveAddressDto> removeAddress(
+    @Header(ApiConstants.authorization) String token,
+    @Path(AppConstants.id) String id,
+  );
+
+  @GET(ApiConstants.deleteOrGetSavedAddress)
+  Future<RemoveAddressDto> getAllAddresses(
     @Header(ApiConstants.authorization) String token,
   );
 }
