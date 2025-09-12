@@ -11,6 +11,12 @@ class TermsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
+        leading:  IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         surfaceTintColor: Colors.transparent,
         title: Text(AppLocalizations.of(context)!.terms_conditions),
       ),

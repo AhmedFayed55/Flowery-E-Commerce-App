@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
@@ -158,11 +156,21 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     }
 
     emit(state.copyWith(isSubmitting: true));
-    // switch(state.selectedPaymentMethod){
-    //   case PaymentMethod.cashOnDelivery:
-    //    state.isGift?_paymentCash(ShippingAddressRequestEntity(city: state.giftCity??'',street: state.giftStreet??'',lat:'' ,long:'' ) ):
 
-    // }
+
+
+    switch(state.selectedPaymentMethod){
+      case PaymentMethod.cashOnDelivery:
+       state.isGift?_paymentCash(ShippingAddressRequestEntity(city: state.giftCity??'',street: state.giftStreet??'',lat:'' ,long:'', phone: state.giftPhone?? '' ) )
+       : _paymentCash(ShippingAddressRequestEntity(city: state.selectedAddress!.city??'',street: state.selectedAddress!.street??'',lat: state.selectedAddress!.lat??'',long: state.selectedAddress!.long??'', phone: state.selectedAddress!.phone??''));
+     case PaymentMethod.creditCard:
+
+    state.isGift?_paymentCard(ShippingAddressRequestEntity(city: state.giftCity??'',street: state.giftStreet??'',lat:'' ,long:'', phone: state.giftPhone?? '' ) )
+       : _paymentCard(ShippingAddressRequestEntity(city: state.selectedAddress!.city??'',street: state.selectedAddress!.street??'',lat: state.selectedAddress!.lat??'',long: state.selectedAddress!.long??'', phone: state.selectedAddress!.phone??''));
+      case null:
+       emit(state.copyWith(isSubmitting: false , isOrderPlacedFalier: true));
+      
+ // }
 
     // if (state.isGift) {
     //   log(
@@ -173,6 +181,6 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     // }
     // log(" Payment Method: ${state.selectedPaymentMethod}");
 
-    emit(state.copyWith(isSubmitting: false));
+  }
   }
 }

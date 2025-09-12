@@ -97,7 +97,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                     firstIcon: null,
                     title: lang.terms_conditions,
                     onPressed: () {
-                      context.pushNamedAndRemoveUntil(predicate: (route) => false,
+                      context.pushNamed(
                         AppRoutes.terms,
                         arguments: state.terms,
                       );

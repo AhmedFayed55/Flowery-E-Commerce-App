@@ -79,7 +79,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(onPressed: (){
-                context.pushNamed(AppRoutes.profile);
+                context.pop();
               }, icon: const Icon(Icons.arrow_back)),
               scrolledUnderElevation: 0,
               elevation: 0,
