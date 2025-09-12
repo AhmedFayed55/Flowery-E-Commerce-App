@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -63,7 +65,9 @@ class HomeScreen extends StatelessWidget {
                       HeaderRow(
                         nameSection: AppLocalizations.of(context)!.best_seller,
                         //navigator to bestSeller Screen
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushNamed(AppRoutes.mostSelling,arguments: state.homeEntity?.bestSallerEntity);
+                        },
                       ),
 
                       CustomCardBestSaller(

@@ -117,7 +117,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categories => 'Categories';
 
   @override
-  String get best_seller => 'Best seller';
+  String get best_seller => 'Best Seller';
 
   @override
   String get occasion => 'Occasion';
@@ -225,4 +225,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get bloom_with_our_exquisite_best_sellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get add_to_cart => 'add to cart';
+
+  @override
+  String get no_products => 'No Products founded';
 }

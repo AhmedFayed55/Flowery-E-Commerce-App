@@ -317,7 +317,7 @@ abstract class AppLocalizations {
   /// No description provided for @best_seller.
   ///
   /// In en, this message translates to:
-  /// **'Best seller'**
+  /// **'Best Seller'**
   String get best_seller;
 
   /// No description provided for @occasion.
@@ -524,6 +524,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwords_do_not_match;
+
+  /// No description provided for @bloom_with_our_exquisite_best_sellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloom_with_our_exquisite_best_sellers;
+
+  /// No description provided for @add_to_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'add to cart'**
+  String get add_to_cart;
+
+  /// No description provided for @no_products.
+  ///
+  /// In en, this message translates to:
+  /// **'No Products founded'**
+  String get no_products;
 }
 
 class _AppLocalizationsDelegate

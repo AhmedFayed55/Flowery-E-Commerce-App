@@ -10,4 +10,5 @@ abstract class AppRoutes {
   static const String terms = '/terms';
   static const String aboutUs = '/aboutus';
   static const String changePassword = "/changePassword";
+  static const String mostSelling = "/mostSelling";
 }
