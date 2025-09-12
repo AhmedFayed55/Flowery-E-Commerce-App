@@ -21,6 +21,8 @@ import 'package:flowers_ecommerce_app/features/payment/data/model/responce/card_
 import 'package:flowers_ecommerce_app/features/payment/data/model/responce/cash_pay_responce/cash_pay_responce_model_dto.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/edit_profile_response.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/upload_photo_response.dart';
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart';
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -53,6 +55,11 @@ abstract class ApiServices {
 
   @GET(ApiConstants.userData)
   Future<UserResponseProfileDto> userData();
+  @GET(ApiConstants.products)
+  Future<ProductResponse> getAllProducts();
+
+  @GET(ApiConstants.categories)
+  Future<CategoryResponse> getAllCategory();
 
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(

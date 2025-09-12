@@ -129,6 +129,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get flower => 'Flower';
 
   @override
+  String get filer => 'Filter';
+
+  @override
+  String get sort_by => 'Sort by';
+
+  @override
+  String get no_products_found => 'No products found';
+
+  @override
   String get home => 'Home';
 
   @override
@@ -358,4 +367,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get last_name_is_required => 'Last Name is required';
+
+  @override
+  String get search_For_Any_Product_You_Want =>
+      'Search For Any Product You Want';
+
+  @override
+  String get no_product_found => 'No Product Found';
 }

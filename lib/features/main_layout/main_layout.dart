@@ -3,6 +3,7 @@ import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _MainLayoutState extends State<MainLayout> {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
        const Center(child: HomeScreen()),
-      Center(child: Text(locale.categories)),
+     const Center(child: CategoriesScreen()),
      const Center(child: CartPage()),
       const ProfileSettingScreen(),
     ];

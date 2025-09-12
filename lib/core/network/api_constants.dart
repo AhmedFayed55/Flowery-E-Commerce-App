@@ -13,9 +13,9 @@ abstract class ApiConstants {
   static const String changePassword = "auth/change-password";
   static const String cart = "cart";
   static const String cartUD = "cart/{id}";
-  
   static const String addresses = "addresses";
-
   static const String paymendCard = "orders/checkout?url=http://localhost:3000";
   static const String paymentCash = "orders";
+  static const String products = "products";
+  static const String categories = "categories";
 }

@@ -338,6 +338,24 @@ abstract class AppLocalizations {
   /// **'Flower'**
   String get flower;
 
+  /// No description provided for @filer.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter'**
+  String get filer;
+
+  /// No description provided for @sort_by.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort by'**
+  String get sort_by;
+
+  /// No description provided for @no_products_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No products found'**
+  String get no_products_found;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:
@@ -788,6 +806,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Last Name is required'**
   String get last_name_is_required;
+
+  /// No description provided for @search_For_Any_Product_You_Want.
+  ///
+  /// In en, this message translates to:
+  /// **'Search For Any Product You Want'**
+  String get search_For_Any_Product_You_Want;
+
+  /// No description provided for @no_product_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No Product Found'**
+  String get no_product_found;
 }
 
 class _AppLocalizationsDelegate

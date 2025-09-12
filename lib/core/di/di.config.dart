@@ -93,6 +93,27 @@ import '../../features/cart/domin/usecase/updeate_cart_product_quantity_usecase.
     as _i177;
 import '../../features/cart/presentation/view_model/cubit/cart_cubit.dart'
     as _i323;
+import '../../features/categories/data/datasources/remote/category_remote_datasource.dart'
+    as _i747;
+import '../../features/categories/data/datasources/remote/category_remote_datasource_impl.dart'
+    as _i337;
+import '../../features/categories/data/datasources/remote/product_remote_datasource.dart'
+    as _i295;
+import '../../features/categories/data/datasources/remote/product_remote_datasource_impl.dart'
+    as _i250;
+import '../../features/categories/data/repository_impl/category_repo_impl.dart'
+    as _i6;
+import '../../features/categories/data/repository_impl/product_repo_impl.dart'
+    as _i574;
+import '../../features/categories/domain/repository/category_repo.dart'
+    as _i124;
+import '../../features/categories/domain/repository/product_repo.dart' as _i573;
+import '../../features/categories/domain/usecases/category_usecase.dart'
+    as _i710;
+import '../../features/categories/domain/usecases/product_usecase.dart'
+    as _i1006;
+import '../../features/categories/presentation/cubit/category_cubit.dart'
+    as _i93;
 import '../../features/checkout/data/repo/checkout_repo_impl.dart' as _i351;
 import '../../features/checkout/data/sources/checkout_remote_ds.dart' as _i676;
 import '../../features/checkout/data/sources/checkout_remote_ds_impl.dart'
@@ -201,6 +222,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i152.PaymentDataSource>(
       () => _i89.PaymentDataSourceImp(gh<_i804.ApiServices>()),
     );
+    gh.factory<_i747.GetAllCategoryRemoteDatasource>(
+      () => _i337.GetAllCategoryRemoteDatasourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
     gh.factory<_i773.LoginDataSource>(
       () => _i265.LoginDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -217,6 +243,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i964.ChangePasswordDataSourceImpl(
         gh<_i804.ApiServices>(),
         gh<_i227.TokenService>(),
+      ),
+    );
+    gh.factory<_i124.GetAllCategoryRepositoryContract>(
+      () => _i6.GetAllCategoryRepositoryImpl(
+        getAllCategoryRemoteDatasource:
+            gh<_i747.GetAllCategoryRemoteDatasource>(),
       ),
     );
     gh.factory<_i42.SharedPrefHelper>(
@@ -297,6 +329,11 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i197.ForgetPasswordRemoteDataSource>(),
       ),
     );
+    gh.factory<_i295.GetAllProductsRemoteDatasource>(
+      () => _i250.GetAllProductsRemoteDatasourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
     gh.factory<_i532.EmailVerifyUseCase>(
       () => _i532.EmailVerifyUseCase(
         emailVerifyRepoContract: gh<_i209.EmailVerifyRepoContract>(),
@@ -319,6 +356,18 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
+    );
+    gh.factory<_i573.GetAllProductsRepositoryContract>(
+      () => _i574.GetAllProductsRepositoryImpl(
+        getAllProductsRemoteDatasource:
+            gh<_i295.GetAllProductsRemoteDatasource>(),
+      ),
+    );
+    gh.factory<_i710.GetAllCategoryUseCase>(
+      () => _i710.GetAllCategoryUseCase(
+        getAllCategoryRepositoryContract:
+            gh<_i124.GetAllCategoryRepositoryContract>(),
+      ),
     );
     gh.factory<_i1047.CartRepo>(
       () => _i234.CartRepoImpl(
@@ -407,6 +456,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i177.UpdeateCartProductQuantityUsecase>(),
       ),
     );
+    gh.factory<_i1006.GetAllProductsUseCase>(
+      () => _i1006.GetAllProductsUseCase(
+        getAllProductsRepositoryContract:
+            gh<_i573.GetAllProductsRepositoryContract>(),
+      ),
+    );
     gh.factory<_i894.EditProfileUseCase>(
       () => _i894.EditProfileUseCase(
         editProfileRepositoryContract:
@@ -427,6 +482,12 @@ extension GetItInjectableX on _i174.GetIt {
         forgetPasswordUseCase: gh<_i107.ForgetPasswordUseCase>(),
         emailVerifyUseCase: gh<_i532.EmailVerifyUseCase>(),
         resetPasswordUseCase: gh<_i801.ResetPasswordUseCase>(),
+      ),
+    );
+    gh.factory<_i93.CategoryCubit>(
+      () => _i93.CategoryCubit(
+        getAllCategoryUseCase: gh<_i710.GetAllCategoryUseCase>(),
+        getAllProductsUseCase: gh<_i1006.GetAllProductsUseCase>(),
       ),
     );
     gh.factory<_i657.EditProfileCubit>(
