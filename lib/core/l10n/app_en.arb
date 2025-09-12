@@ -90,8 +90,6 @@
   "place_order":"Place Order",
   "order_placed_successfully":"Order placed successfully",
   "order_placed":"Order Placed",
-  "city" : "City",
-  "address" : "Address",
   "enter_your_city" : "Enter your city",
   "phone" : "Phone",
   "enter_your_phone" : "Enter your phone",
@@ -124,7 +122,15 @@
   "order_number" : "Order Number",
   "delivered_on" : "Delivered on",
   "completed" : "Completed",
-  "active" : "Active"
-  
-  
+  "active" : "Active",
+  "address": "Address",
+  "enter_the_address": "Enter the address",
+  "enter_the_phone_number": "Enter the phone number",
+  "recipient_name": "Recipient name",
+  "enter_the_recipient_name": "Enter the recipient name",
+  "area": "Area",
+  "city": "City",
+  "save_address": "Save Address",
+  "this_field_is_required": "This field is required",
+  "saved_address_successfully": "Saved Address Successfully"
 }

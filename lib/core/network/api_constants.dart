@@ -19,4 +19,5 @@ abstract class ApiConstants {
   static const String products = "products";
   static const String categories = "categories";
   static const String orders = "orders";
+  static const String address = "addresses";
 }

@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/features/address_details/presentation/pages/address_details_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/domain/entity/email_verify_args.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/email_verification_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/forget_password_screen.dart';
@@ -108,6 +109,11 @@ class RouteGenerator {
 
       case AppRoutes.notifications:
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
+
+      case AppRoutes.addressDetails:
+        return MaterialPageRoute(
+          builder: (context) => const AddressDetailsScreen(),
+        );
 
       default:
         return unDefinedRoute();

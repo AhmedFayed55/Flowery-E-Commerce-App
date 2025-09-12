@@ -16,4 +16,6 @@ abstract class AppImages {
   static const String arrowDown = 'assets/svgs/arrow-down.svg';
 
   static const String successlotti = "assets/svgs/EIeNuVRaYz.json";
+  static const String citiesJson = "assets/json/cities.json";
+  static const String areasJson = "assets/json/states.json";
 }
