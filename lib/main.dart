@@ -11,9 +11,15 @@ import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.d
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_cubit.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_event.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_state.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
+
+await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   await configureDependencies();
 
   final savedLocale =
