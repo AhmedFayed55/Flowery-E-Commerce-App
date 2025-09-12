@@ -9,4 +9,7 @@ abstract class ApiConstants {
   static const String homeEndpoint = 'home';
   static const String userData = 'auth/profile-data';
   static const String changePassword = "auth/change-password";
+  static const String cart = "cart";
+  static const String cartUD = "cart/{id}";
+  
 }

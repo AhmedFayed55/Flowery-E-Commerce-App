@@ -19,4 +19,5 @@ abstract class AppConstants {
   static const String occasionKey = 'occassionKey';
   static const String productKey = 'productKey';
   static const String bearer = "Bearer";
+  static const String authorization = 'Authorization';
 }

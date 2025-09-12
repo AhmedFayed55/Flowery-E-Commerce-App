@@ -9,6 +9,10 @@ import 'package:flowers_ecommerce_app/features/auth/register/data/model/register
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/data/model/home_response_dto.dart';
 import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item_respone/delete_cart_item_respone.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -46,4 +50,15 @@ abstract class ApiServices {
     @Body() ChangePasswordRequestDto requestDto,
     @Header(ApiConstants.authorization) String token,
   );
+  @GET(ApiConstants.cart)
+  Future<UserCartDto> getUserCart();
+
+  @PUT(ApiConstants.cartUD)
+  Future<UpdeateProudactQuantityRespone> updeateCartProudctQuantity(
+    @Path("id") String id,
+    @Body() UpdeateCartProuductQuantityBody body,
+  );
+
+  @DELETE(ApiConstants.cartUD)
+  Future<DeleteCartItemRespone> deleteCartProudct(@Path("id") String id);
 }

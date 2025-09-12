@@ -11,6 +11,7 @@ import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_enti
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
@@ -73,6 +74,9 @@ class RouteGenerator {
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
 
+
+      case AppRoutes.cart:
+        return MaterialPageRoute(builder: (context) =>  const CartPage());
 
       default:
         return unDefinedRoute();
