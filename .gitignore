@@ -51,6 +51,7 @@ app.*.map.json
 /android/app/release
 lib/core/network/api_services.g.dart
 lib/core/di/di.config.dart
+<<<<<<< HEAD
 lib/core/di/di.config.dart
 # Generated files (build_runner, json_serializable, injectable, etc.)
 **/*.g.dart
@@ -62,3 +63,7 @@ lib/core/di/di.config.dart
 **/*.mocks.dart
 lib/core/l10n/translations/**
 **/*.loc
+=======
+# === Localization
+/lib/core/l10n/translations/
+>>>>>>> origin/feature/ECOM-18-edit-profile

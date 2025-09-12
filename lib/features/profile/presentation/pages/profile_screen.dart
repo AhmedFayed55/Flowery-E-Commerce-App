@@ -48,6 +48,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                 children: [
                   const ProfileBar(numberNoti: 0),
                   SectionDataUser(
+                    argUser: state.userProfileEntity,
                     email: state.userProfileEntity?.email ?? '',
                     imageUrl: state.userProfileEntity?.photo ?? '',
                     userName: state.userProfileEntity?.firstName ?? '',
@@ -96,7 +97,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                     firstIcon: null,
                     title: lang.terms_conditions,
                     onPressed: () {
-                      context.pushNamed(
+                      context.pushNamedAndRemoveUntil(predicate: (route) => false,
                         AppRoutes.terms,
                         arguments: state.terms,
                       );

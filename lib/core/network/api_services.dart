@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart';
@@ -17,6 +19,8 @@ import 'package:flowers_ecommerce_app/features/checkout/data/model/get_user_addr
 import 'package:flowers_ecommerce_app/features/payment/data/model/request/payment_request_model_dto.dart';
 import 'package:flowers_ecommerce_app/features/payment/data/model/responce/card_pay_responce/card_pay_responce_model_dto.dart';
 import 'package:flowers_ecommerce_app/features/payment/data/model/responce/cash_pay_responce/cash_pay_responce_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/edit_profile_response.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -43,6 +47,7 @@ abstract class ApiServices {
 
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
+
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
 
@@ -76,4 +81,11 @@ abstract class ApiServices {
   Future<CashPayResponceModelDto> paymentCash(
     @Body() PaymentRequestModelDto paymentRequestModelDto,
   );
+
+  @PUT(ApiConstants.editProfile)
+  Future<EditProfileResponse> editProfile(@Body() Map<String, dynamic> body);
+
+  @MultiPart()
+  @PUT(ApiConstants.uploadPhoto)
+  Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File file);
 }

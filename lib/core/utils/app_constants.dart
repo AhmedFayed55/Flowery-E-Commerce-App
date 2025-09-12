@@ -1,6 +1,7 @@
 abstract class AppConstants {
   static const String token = 'token';
   static const String isTokenSaved = 'isTokenSaved';
+  static const String authorization = 'Authorization';
 
   //register
   static const String firstName = 'firstName';
@@ -19,5 +20,4 @@ abstract class AppConstants {
   static const String occasionKey = 'occassionKey';
   static const String productKey = 'productKey';
   static const String bearer = "Bearer";
-  static const String authorization = 'Authorization';
 }

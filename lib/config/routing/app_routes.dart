@@ -15,4 +15,5 @@ abstract class AppRoutes {
   static const String checkout = "/checkout";
   static const String successPayment = "/successPayment";
   static const String webView = "/webView";
+  static const String editProfile = "/editProfile";
 }

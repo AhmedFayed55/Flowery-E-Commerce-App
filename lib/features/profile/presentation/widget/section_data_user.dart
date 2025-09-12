@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/widget/custom_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,11 +19,13 @@ class SectionDataUser extends StatelessWidget {
     required this.email,
     required this.imageUrl,
     required this.userName,
+    required this.argUser
   });
 
   final String? imageUrl;
   final String? userName;
   final String? email;
+  final  UserProfileEntity? argUser;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +36,9 @@ class SectionDataUser extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 40.r,
-          child: enable == true
-              ? Image.network(imageUrl!)
-              : SvgPicture.asset(AppImages.gestuserPhoto),
+          backgroundImage: enable == true && imageUrl != null && imageUrl!.isNotEmpty
+          ? NetworkImage(imageUrl!)
+          : null,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +52,7 @@ class SectionDataUser extends StatelessWidget {
               onPressed: enable == false
                   ? null
                   : () {
-                      context.pushNamed(AppRoutes.login);
+                      context.pushNamed(AppRoutes.editProfile,arguments:argUser );
                     },
               icon: const Icon(Icons.edit_outlined),
             ),

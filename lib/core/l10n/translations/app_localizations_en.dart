@@ -75,10 +75,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gender => 'Gender';
 
   @override
-  String get male => 'Male';
+  String get male => 'male';
 
   @override
-  String get female => 'Female';
+  String get female => 'female';
 
   @override
   String get terms_conditions => 'Terms & Conditions';
@@ -337,4 +337,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get payment_cancled => 'Payment cancelled';
+
+  @override
+  String get edit_profile => 'Edit Profile';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get profile_updated_successfully => 'Profile updated successfully';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get camera => 'Camera';
+
+  @override
+  String get first_name_is_required => 'First Name is required';
+
+  @override
+  String get last_name_is_required => 'Last Name is required';
 }
