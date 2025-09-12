@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class UserEntity extends Equatable {
+class UserEntity  extends Equatable {
   final String firstName;
   final String lastName;
   final String email;
@@ -10,19 +10,18 @@ class UserEntity extends Equatable {
   final List<dynamic> wishlist;
   final List<dynamic> addresses;
 
-  const UserEntity(
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.gender,
-    this.phone,
-    this.photo,
-    this.wishlist,
-    this.addresses,
-  );
+  const UserEntity({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.gender,
+    required this.phone,
+    required this.photo,
+    required this.wishlist,
+    required this.addresses,
+  });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     firstName,
     lastName,

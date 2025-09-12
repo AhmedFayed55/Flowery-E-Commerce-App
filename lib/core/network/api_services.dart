@@ -8,6 +8,7 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/lo
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/data/model/home_response_dto.dart';
+import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -36,6 +37,9 @@ abstract class ApiServices {
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
+
+  @GET(ApiConstants.userData)
+  Future<UserResponseProfileDto> userData();
 
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(

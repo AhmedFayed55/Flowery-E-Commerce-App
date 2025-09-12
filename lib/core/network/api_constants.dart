@@ -7,5 +7,6 @@ abstract class ApiConstants {
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String resetPassword = "auth/resetPassword";
   static const String homeEndpoint = 'home';
+  static const String userData = 'auth/profile-data';
   static const String changePassword = "auth/change-password";
 }
