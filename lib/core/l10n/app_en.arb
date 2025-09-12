@@ -120,5 +120,6 @@
   "your_oredr_placed":"Your order placed",
   "successfully":"successfully",
   "track_order":"Track order",
-  "payment_cancled":"Payment cancelled"
+  "payment_cancled":"Payment cancelled",
+  "notification":"Notification"
 }
