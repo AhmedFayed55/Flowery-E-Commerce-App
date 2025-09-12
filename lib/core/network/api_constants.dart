@@ -14,4 +14,6 @@ abstract class ApiConstants {
   
   static const String addresses = "addresses";
 
+  static const String paymendCard = "orders/checkout?url=http://localhost:3000";
+  static const String paymentCash = "orders";
 }

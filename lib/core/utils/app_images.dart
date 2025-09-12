@@ -8,11 +8,12 @@ abstract class AppImages {
   static const String orderIcon = 'assets/svgs/orderIcon.svg';
   static const String gestuserPhoto = 'assets/svgs/guest_user.svg';
   static const String termsPath =
-      'assets/json_file/Flowery Terms and Conditions JSON with Arabic and English.json';
+      'assets/json_file/flowery_terms_and_conditions.json';
   static const String aboutUsPath =
-      'assets/json_file/Flowery About Section JSON with Expanded Content.json';
+      'assets/json_file/flowery_about_section.json';
   static const String trashIcon = "assets/svgs/trash.svg";
   static const String location = 'assets/svgs/location.svg';
   static const String arrowDown = 'assets/svgs/arrow-down.svg';
 
+  static const String successlotti = "assets/svgs/EIeNuVRaYz.json";
 }

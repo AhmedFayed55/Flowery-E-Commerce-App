@@ -14,6 +14,8 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profil
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
@@ -75,6 +77,11 @@ class RouteGenerator {
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      case AppRoutes.successPayment:
+        return MaterialPageRoute(builder: (_) => const PaymentSuccessScreen());
+      case AppRoutes.webView:
+        final url = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => WebviewScreen(url: url));
 
 
       case AppRoutes.cart:

@@ -111,6 +111,16 @@ import '../../features/home_screen/domain/use_cases/home_use_case.dart'
     as _i294;
 import '../../features/home_screen/presentaion/view_model/home_bloc.dart'
     as _i341;
+import '../../features/payment/data/data_source/payment_ds.dart' as _i152;
+import '../../features/payment/data/data_source/payment_ds_imp.dart' as _i89;
+import '../../features/payment/data/repo/payment_repo_imp.dart' as _i1035;
+import '../../features/payment/domain/repo/payment_repo.dart' as _i50;
+import '../../features/payment/domain/use_case/payment_card_use_case.dart'
+    as _i795;
+import '../../features/payment/domain/use_case/payment_cash_use_case.dart'
+    as _i197;
+import '../../features/payment/presentaion/view_model/payment_cubit.dart'
+    as _i697;
 import '../../features/profile/data/local_data_source/get_content_ds.dart'
     as _i99;
 import '../../features/profile/data/local_data_source/get_content_ds_imp.dart'
@@ -166,6 +176,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i283.GetContentDataSourceImp(),
     );
     gh.factory<_i804.ApiServices>(() => _i804.ApiServices(gh<_i361.Dio>()));
+    gh.factory<_i152.PaymentDataSource>(
+      () => _i89.PaymentDataSourceImp(gh<_i804.ApiServices>()),
+    );
     gh.factory<_i773.LoginDataSource>(
       () => _i265.LoginDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -218,6 +231,9 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
+    gh.factory<_i50.PaymentRepo>(
+      () => _i1035.PaymentRepoImp(gh<_i152.PaymentDataSource>()),
+    );
     gh.factory<_i635.HomeDataSource>(
       () => _i58.HomeDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -263,6 +279,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i973.InternetConnectionChecker>(),
       ),
     );
+    gh.factory<_i795.PaymentCardUseCase>(
+      () => _i795.PaymentCardUseCase(gh<_i50.PaymentRepo>()),
+    );
+    gh.factory<_i197.PaymentCashUseCase>(
+      () => _i197.PaymentCashUseCase(gh<_i50.PaymentRepo>()),
+    );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
     );
@@ -279,6 +301,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i116.GetAboutUsUseCase>(),
       ),
     );
+    gh.factory<_i697.PaymentCubit>(
+      () => _i697.PaymentCubit(
+        gh<_i795.PaymentCardUseCase>(),
+        gh<_i197.PaymentCashUseCase>(),
+      ),
+    );
     gh.factory<_i959.LoginBloc>(
       () => _i959.LoginBloc(gh<_i630.LoginUseCase>()),
     );
@@ -290,9 +318,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i390.GetLoggedUserAddressesUsecase>(
       () => _i390.GetLoggedUserAddressesUsecase(gh<_i703.CheckoutRepo>()),
-    );
-    gh.factory<_i1043.CheckoutCubit>(
-      () => _i1043.CheckoutCubit(gh<_i390.GetLoggedUserAddressesUsecase>()),
     );
     gh.factory<_i1035.ChangePasswordCubit>(
       () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
@@ -306,6 +331,13 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i592.ResetPasswordRepoImpl(
         resetPasswordRemoteDataSource:
             gh<_i217.ResetPasswordRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i1043.CheckoutCubit>(
+      () => _i1043.CheckoutCubit(
+        gh<_i390.GetLoggedUserAddressesUsecase>(),
+        gh<_i795.PaymentCardUseCase>(),
+        gh<_i197.PaymentCashUseCase>(),
       ),
     );
     gh.factory<_i664.DeleteCartUsecase>(

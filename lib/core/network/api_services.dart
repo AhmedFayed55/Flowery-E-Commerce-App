@@ -14,6 +14,9 @@ import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_pro
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart';
 import 'package:flowers_ecommerce_app/features/checkout/data/model/get_user_addreses_respone/get_user_addreses_respone.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/request/payment_request_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/responce/card_pay_responce/card_pay_responce_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/responce/cash_pay_responce/cash_pay_responce_model_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -65,4 +68,12 @@ abstract class ApiServices {
 
   @GET(ApiConstants.addresses)
   Future<GetUserAddresesRespone> getLoggedUserAddresses();
+  @POST(ApiConstants.paymendCard)
+  Future<CardPayResponceModelDto> paymentCard(
+    @Body() PaymentRequestModelDto paymentRequestModelDto,
+  );
+  @POST(ApiConstants.paymentCash)
+  Future<CashPayResponceModelDto> paymentCash(
+    @Body() PaymentRequestModelDto paymentRequestModelDto,
+  );
 }

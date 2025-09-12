@@ -116,5 +116,9 @@
   "cash_on_delivery" : "Cash on delivery" ,
   "payment_method" : "Payment method",
   "schedule" : "Schedule",
-  "delevery_time" : "Delivery time" 
+  "delevery_time" : "Delivery time",
+  "your_oredr_placed":"Your order placed",
+  "successfully":"successfully",
+  "track_order":"Track order",
+  "payment_cancled":"Payment cancelled"
 }

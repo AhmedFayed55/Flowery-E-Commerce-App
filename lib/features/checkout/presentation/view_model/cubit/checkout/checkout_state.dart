@@ -8,25 +8,40 @@ class CheckoutState extends Equatable {
   final bool isGift;
   final List<Address> addresses;
   final Address? selectedAddress;
-  final PaymentMethod? selectedPaymentMethod ;
-  
+  final PaymentMethod? selectedPaymentMethod;
+  final bool isOrderPlacedSuccess;
+  final bool isOrderPlacedFalier;
+
   final String? giftStreet;
   final String? giftPhone;
   final String? giftCity;
+  final String errorMessage;
+  final PaymentCardEntity? paymentCardEntity;
+  final PaymentCashEntity? paymentCashEntity;
 
   const CheckoutState({
+    this.errorMessage='',
+    this.paymentCardEntity,
+    this.paymentCashEntity,
+    this.isOrderPlacedFalier = false,
+    this.isOrderPlacedSuccess = false,
     this.isLoading = false,
     this.isSubmitting = false,
     this.isGift = false,
     this.addresses = const [],
-    this.selectedAddress ,
-    this.selectedPaymentMethod ,
+    this.selectedAddress,
+    this.selectedPaymentMethod,
     this.giftStreet,
     this.giftPhone,
     this.giftCity,
   });
 
   CheckoutState copyWith({
+    String? errorMessage ,
+    PaymentCardEntity? paymentCardEntity,
+    PaymentCashEntity? paymentCashEntity,
+    bool? isOrderPlacedFalier,
+    bool? isOrderPlacedSuccess,
     bool? isLoading,
     bool? isSubmitting,
     bool? isGift,
@@ -38,7 +53,11 @@ class CheckoutState extends Equatable {
     String? giftPhone,
     String? giftCity,
   }) {
-    return CheckoutState(
+    return CheckoutState(errorMessage: errorMessage??this.errorMessage,
+      paymentCardEntity: paymentCardEntity ?? this.paymentCardEntity,
+      paymentCashEntity: paymentCashEntity ?? this.paymentCashEntity,
+      isOrderPlacedFalier: isOrderPlacedFalier ?? this.isOrderPlacedFalier,
+      isOrderPlacedSuccess: isOrderPlacedSuccess ?? this.isOrderPlacedSuccess,
       isLoading: isLoading ?? this.isLoading,
       isSubmitting: isSubmitting ?? this.isSubmitting,
       isGift: isGift ?? this.isGift,
@@ -54,14 +73,16 @@ class CheckoutState extends Equatable {
 
   @override
   List<Object?> get props => [
-        isLoading,
-        isSubmitting,
-        isGift,
-        addresses,
-        selectedAddress,
-        selectedPaymentMethod,
-        giftStreet,
-        giftPhone,
-        giftCity,
-      ];
+    isLoading,
+    isSubmitting,
+    isGift,
+    addresses,
+    selectedAddress,
+    selectedPaymentMethod,
+    giftStreet,
+    giftPhone,
+    giftCity,
+    isOrderPlacedFalier,
+    isOrderPlacedSuccess,
+  ];
 }
