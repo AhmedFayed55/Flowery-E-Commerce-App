@@ -13,6 +13,7 @@ import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart';
+import 'package:flowers_ecommerce_app/features/checkout/data/model/get_user_addreses_respone/get_user_addreses_respone.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -61,4 +62,7 @@ abstract class ApiServices {
 
   @DELETE(ApiConstants.cartUD)
   Future<DeleteCartItemRespone> deleteCartProudct(@Path("id") String id);
+
+  @GET(ApiConstants.addresses)
+  Future<GetUserAddresesRespone> getLoggedUserAddresses();
 }

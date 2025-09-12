@@ -94,7 +94,27 @@
   "place_order":"Place Order",
   "order_placed_successfully":"Order placed successfully",
   "order_placed":"Order Placed",
-  "egp" :"EGP"
- 
-
+  "passwords_do_not_match": "Passwords do not match" ,
+  "city" : "City",
+  "address" : "Address",
+  "enter_your_city" : "Enter your city",
+  "phone" : "Phone",
+  "enter_your_phone" : "Enter your phone",
+  "street" : "Street",
+  "enter_your_street" : "Enter your street",
+  "add_new" : "Add New",
+  "its_a_gift" : "It's a gift",
+  "delivery_address" : "Delivery Address",
+  "no_addresses_found" : "No addresses found",
+  "place_order" : "Place order",
+  "subtotal" : "Subtotal",
+  "delivery_fee" : "Delivery fee",
+  "total" : "Total",
+  "checkout" : "Checkout",
+  "egp" : "EGP" ,
+  "credit_card" : "Credit card",
+  "cash_on_delivery" : "Cash on delivery" ,
+  "payment_method" : "Payment method",
+  "schedule" : "Schedule",
+  "delevery_time" : "Delivery time" 
 }

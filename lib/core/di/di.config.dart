@@ -93,6 +93,15 @@ import '../../features/cart/domin/usecase/updeate_cart_product_quantity_usecase.
     as _i177;
 import '../../features/cart/presentation/view_model/cubit/cart_cubit.dart'
     as _i323;
+import '../../features/checkout/data/repo/checkout_repo_impl.dart' as _i351;
+import '../../features/checkout/data/sources/checkout_remote_ds.dart' as _i676;
+import '../../features/checkout/data/sources/checkout_remote_ds_impl.dart'
+    as _i700;
+import '../../features/checkout/domin/repo/checkout_repo.dart' as _i703;
+import '../../features/checkout/domin/usecase/get_logged_user_addresses_usecase.dart'
+    as _i390;
+import '../../features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart'
+    as _i1043;
 import '../../features/home_screen/data/data_sources/home_ds.dart' as _i635;
 import '../../features/home_screen/data/data_sources/home_ds_imp.dart' as _i58;
 import '../../features/home_screen/data/repositories/home_repo_imp.dart'
@@ -193,6 +202,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i172.LoginRepo>(
       () => _i408.LoginRepoImp(gh<_i773.LoginDataSource>()),
     );
+    gh.factory<_i676.CheckoutRemoteDS>(
+      () => _i700.CheckoutRemoteDsImpl(gh<_i804.ApiServices>()),
+    );
     gh.factory<_i954.GetUserDataUseCase>(
       () => _i954.GetUserDataUseCase(gh<_i275.GetUserDataRepo>()),
     );
@@ -245,6 +257,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i792.ChangePasswordUseCase>(
       () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
     );
+    gh.factory<_i703.CheckoutRepo>(
+      () => _i351.CheckoutRepoImpl(
+        gh<_i676.CheckoutRemoteDS>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
     );
@@ -269,6 +287,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
+    );
+    gh.factory<_i390.GetLoggedUserAddressesUsecase>(
+      () => _i390.GetLoggedUserAddressesUsecase(gh<_i703.CheckoutRepo>()),
+    );
+    gh.factory<_i1043.CheckoutCubit>(
+      () => _i1043.CheckoutCubit(gh<_i390.GetLoggedUserAddressesUsecase>()),
     );
     gh.factory<_i1035.ChangePasswordCubit>(
       () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),

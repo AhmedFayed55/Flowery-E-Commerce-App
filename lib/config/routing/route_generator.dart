@@ -4,6 +4,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/cart/domin/entities/user_cart.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
@@ -12,6 +13,7 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
@@ -78,6 +80,9 @@ class RouteGenerator {
       case AppRoutes.cart:
         return MaterialPageRoute(builder: (context) =>  const CartPage());
 
+      case AppRoutes.checkout:
+      var arg=settings.arguments as UserCart;
+        return MaterialPageRoute(builder: (_) => CheckoutPage(userCart: arg,));
       default:
         return unDefinedRoute();
     }
@@ -92,3 +97,4 @@ class RouteGenerator {
     );
   }
 }
+
