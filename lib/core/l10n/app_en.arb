@@ -129,4 +129,7 @@
   "camera": "Camera",
   "first_name_is_required": "First Name is required",
   "last_name_is_required": "Last Name is required"
+  "search": "search",
+  "search_For_Any_Product_You_Want": "Search For Any Product You Want",
+  "no_product_found": "No Product Found"
 }

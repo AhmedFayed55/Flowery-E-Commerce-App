@@ -78,6 +78,7 @@ class RouteGenerator {
           builder: (_) => AboutUsScreen(aboutUsList: aboutUsList),
         );
 
+
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
       case AppRoutes.successPayment:

@@ -39,6 +39,13 @@ migrate_working_dir/
 .pub/
 build/
 
+### ===> Generated files
+*.config.dart
+*.freezed.dart
+*.g.dart
+*.mocks.dart
+*.lock
+
 # Symbolication related
 app.*.symbols
 
@@ -49,6 +56,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+<<<<<<< HEAD
 lib/core/network/api_services.g.dart
 lib/core/di/di.config.dart
 <<<<<<< HEAD
@@ -67,3 +75,6 @@ lib/core/l10n/translations/**
 # === Localization
 /lib/core/l10n/translations/
 >>>>>>> origin/feature/ECOM-18-edit-profile
+=======
+/lib/core/l10n/translations/
+>>>>>>> origin/feature/ECOM-27-search
