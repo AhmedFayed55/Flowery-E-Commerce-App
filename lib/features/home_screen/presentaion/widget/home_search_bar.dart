@@ -25,6 +25,7 @@ class HomeSearchBar extends StatelessWidget {
             child: SizedBox(
               height: 35.h,
               child: TextField(
+                
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(

@@ -288,12 +288,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get order_placed => 'Order Placed';
 
   @override
-  String get city => 'City';
-
-  @override
-  String get address => 'Address';
-
-  @override
   String get enter_your_city => 'Enter your city';
 
   @override
@@ -392,4 +386,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get active => 'Active';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get enter_the_address => 'Enter the address';
+
+  @override
+  String get enter_the_phone_number => 'Enter the phone number';
+
+  @override
+  String get recipient_name => 'Recipient name';
+
+  @override
+  String get enter_the_recipient_name => 'Enter the recipient name';
+
+  @override
+  String get area => 'Area';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get save_address => 'Save Address';
+
+  @override
+  String get this_field_is_required => 'This field is required';
+
+  @override
+  String get saved_address_successfully => 'Saved Address Successfully';
 }

@@ -3,6 +3,8 @@ import 'package:flowers_ecommerce_app/core/helpers/dialogue_utils.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/address_details/presentation/manager/add_new_address_cubit/add_new_address_state.dart';
 import 'package:flowers_ecommerce_app/features/address_details/presentation/manager/map_cubit/map_cubit.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +41,7 @@ class AddressDetailsScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(localizations.address),
           leading: IconButton(
-            onPressed: () => context.pop,
+            onPressed: () => context.pop(),
             icon: const Icon(Icons.arrow_back_ios_new),
           ),
         ),
@@ -80,7 +82,11 @@ class AddressDetailsScreen extends StatelessWidget {
                         context: context,
                         message: localizations.saved_address_successfully,
                         posActionName: localizations.ok,
-                        posAction: () => context.pop(),
+                        posAction: () {
+                          // context.read<CheckoutCubit>().doIntent(
+                          //   GetLoggedUserAddresses(),);
+                          context.pop();
+                        },
                       );
                     }
                   },

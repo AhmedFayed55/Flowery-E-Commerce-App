@@ -645,18 +645,6 @@ abstract class AppLocalizations {
   /// **'Order Placed'**
   String get order_placed;
 
-  /// No description provided for @city.
-  ///
-  /// In en, this message translates to:
-  /// **'City'**
-  String get city;
-
-  /// No description provided for @address.
-  ///
-  /// In en, this message translates to:
-  /// **'Address'**
-  String get address;
-
   /// No description provided for @enter_your_city.
   ///
   /// In en, this message translates to:
@@ -854,6 +842,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Active'**
   String get active;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @enter_the_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the address'**
+  String get enter_the_address;
+
+  /// No description provided for @enter_the_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the phone number'**
+  String get enter_the_phone_number;
+
+  /// No description provided for @recipient_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipient name'**
+  String get recipient_name;
+
+  /// No description provided for @enter_the_recipient_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the recipient name'**
+  String get enter_the_recipient_name;
+
+  /// No description provided for @area.
+  ///
+  /// In en, this message translates to:
+  /// **'Area'**
+  String get area;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @save_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Address'**
+  String get save_address;
+
+  /// No description provided for @this_field_is_required.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get this_field_is_required;
+
+  /// No description provided for @saved_address_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Address Successfully'**
+  String get saved_address_successfully;
 }
 
 class _AppLocalizationsDelegate

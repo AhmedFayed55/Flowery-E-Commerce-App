@@ -15,9 +15,32 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
+import 'package:location/location.dart' as _i645;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../features/address_details/data/data_sources/add_new_address_ds.dart'
+    as _i490;
+import '../../features/address_details/data/data_sources/add_new_address_ds_impl.dart'
+    as _i361;
+import '../../features/address_details/data/data_sources/local_ds/get_cities_and_areas_local_ds.dart'
+    as _i363;
+import '../../features/address_details/data/data_sources/local_ds/get_cities_and_areas_local_ds_impl.dart'
+    as _i768;
+import '../../features/address_details/data/repositories/add_new_address_repo_impl.dart'
+    as _i737;
+import '../../features/address_details/domain/repositories/add_new_address_repo.dart'
+    as _i430;
+import '../../features/address_details/domain/use_cases/add_new_address_use_case.dart'
+    as _i586;
+import '../../features/address_details/domain/use_cases/get_areas_use_case.dart'
+    as _i867;
+import '../../features/address_details/domain/use_cases/get_cities_use_case.dart'
+    as _i376;
+import '../../features/address_details/presentation/manager/add_new_address_cubit/add_new_address_cubit.dart'
+    as _i283;
+import '../../features/address_details/presentation/manager/map_cubit/map_cubit.dart'
+    as _i70;
 import '../../features/auth/change_password/data/data_sources/change_password_ds.dart'
     as _i481;
 import '../../features/auth/change_password/data/data_sources/change_password_ds_impl.dart'
@@ -223,6 +246,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
     );
+    gh.lazySingleton<_i645.Location>(() => dioModule.provideLocation());
+    gh.factory<_i363.GetCitiesAndAreasLocalDataSource>(
+      () => _i768.GetCitiesAndAreasLocalDataSourceImpl(),
+    );
     gh.factory<_i99.GetContentDataSource>(
       () => _i283.GetContentDataSourceImp(),
     );
@@ -265,6 +292,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i755.GetContectRepo>(
       () => _i466.GetContentRepoImp(gh<_i99.GetContentDataSource>()),
     );
+    gh.factory<_i490.AddNewAddressDataSource>(
+      () => _i361.AddNewAddressDataSourceImpl(
+        gh<_i804.ApiServices>(),
+        gh<_i227.TokenService>(),
+      ),
+    );
+    gh.factory<_i430.AddNewAddressRepo>(
+      () => _i737.AddNewAddressRepoImpl(
+        gh<_i490.AddNewAddressDataSource>(),
+        gh<_i363.GetCitiesAndAreasLocalDataSource>(),
+      ),
+    );
     gh.factory<_i1046.CartRemoteDataSourse>(
       () => _i84.CartRemoteDataSourseImpl(gh<_i804.ApiServices>()),
     );
@@ -277,6 +316,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i172.LoginRepo>(
       () => _i408.LoginRepoImp(gh<_i773.LoginDataSource>()),
     );
+    gh.factory<_i70.MapCubit>(() => _i70.MapCubit(gh<_i645.Location>()));
     gh.factory<_i676.CheckoutRemoteDS>(
       () => _i700.CheckoutRemoteDsImpl(gh<_i804.ApiServices>()),
     );
@@ -374,6 +414,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
     );
+    gh.factory<_i586.AddNewAddressUseCase>(
+      () => _i586.AddNewAddressUseCase(gh<_i430.AddNewAddressRepo>()),
+    );
+    gh.factory<_i867.GetAreasUseCase>(
+      () => _i867.GetAreasUseCase(gh<_i430.AddNewAddressRepo>()),
+    );
+    gh.factory<_i376.GetCitiesUseCase>(
+      () => _i376.GetCitiesUseCase(gh<_i430.AddNewAddressRepo>()),
+    );
     gh.factory<_i573.GetAllProductsRepositoryContract>(
       () => _i574.GetAllProductsRepositoryImpl(
         getAllProductsRemoteDatasource:
@@ -390,6 +439,13 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i234.CartRepoImpl(
         gh<_i1046.CartRemoteDataSourse>(),
         gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
+    gh.singleton<_i283.AddressDetailsCubit>(
+      () => _i283.AddressDetailsCubit(
+        gh<_i586.AddNewAddressUseCase>(),
+        gh<_i376.GetCitiesUseCase>(),
+        gh<_i867.GetAreasUseCase>(),
       ),
     );
     gh.factory<_i124.ProfileSettingCubit>(
