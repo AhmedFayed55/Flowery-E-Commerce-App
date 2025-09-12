@@ -40,6 +40,8 @@ dependencies:
   google_fonts: ^6.2.1
   skeletonizer: ^2.1.0+1
   package_info_plus: ^4.0.0
+  location: ^8.0.1
+  google_maps_flutter: ^2.13.1
 
   numberpicker: ^2.1.2
   webview_flutter: ^4.13.0
@@ -68,8 +70,9 @@ flutter:
 
   assets:
    - lib/core/utils/images/
-   - assets/svgs/
    - assets/json_file/
+   - assets/svgs/
+   - assets/json/
 
 
   # fonts:

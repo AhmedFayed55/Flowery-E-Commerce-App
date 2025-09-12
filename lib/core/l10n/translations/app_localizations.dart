@@ -245,7 +245,7 @@ abstract class AppLocalizations {
   /// No description provided for @terms_conditions.
   ///
   /// In en, this message translates to:
-  /// **'Terms & Conditions'**
+  /// **'Terms&Conditions'**
   String get terms_conditions;
 
   /// No description provided for @agree_to_our.
@@ -317,7 +317,7 @@ abstract class AppLocalizations {
   /// No description provided for @best_seller.
   ///
   /// In en, this message translates to:
-  /// **'Best Seller'**
+  /// **'Best seller'**
   String get best_seller;
 
   /// No description provided for @occasion.
@@ -552,7 +552,7 @@ abstract class AppLocalizations {
   /// No description provided for @add_to_cart.
   ///
   /// In en, this message translates to:
-  /// **'Add to cart'**
+  /// **'add to cart'**
   String get add_to_cart;
 
   /// No description provided for @no_products.
@@ -612,7 +612,7 @@ abstract class AppLocalizations {
   /// No description provided for @delivery_fee.
   ///
   /// In en, this message translates to:
-  /// **'Delivery fee'**
+  /// **'Delivery Fee'**
   String get delivery_fee;
 
   /// No description provided for @subtotal.
@@ -630,7 +630,7 @@ abstract class AppLocalizations {
   /// No description provided for @place_order.
   ///
   /// In en, this message translates to:
-  /// **'Place order'**
+  /// **'Place Order'**
   String get place_order;
 
   /// No description provided for @order_placed_successfully.
@@ -644,18 +644,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Order Placed'**
   String get order_placed;
-
-  /// No description provided for @city.
-  ///
-  /// In en, this message translates to:
-  /// **'City'**
-  String get city;
-
-  /// No description provided for @address.
-  ///
-  /// In en, this message translates to:
-  /// **'Address'**
-  String get address;
 
   /// No description provided for @enter_your_city.
   ///
@@ -818,6 +806,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No Product Found'**
   String get no_product_found;
+
+  /// No description provided for @my_orders.
+  ///
+  /// In en, this message translates to:
+  /// **'My orders'**
+  String get my_orders;
+
+  /// No description provided for @reorder.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder'**
+  String get reorder;
+
+  /// No description provided for @order_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Number'**
+  String get order_number;
+
+  /// No description provided for @delivered_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered on'**
+  String get delivered_on;
+
+  /// No description provided for @completed.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completed;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @enter_the_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the address'**
+  String get enter_the_address;
+
+  /// No description provided for @enter_the_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the phone number'**
+  String get enter_the_phone_number;
+
+  /// No description provided for @recipient_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipient name'**
+  String get recipient_name;
+
+  /// No description provided for @enter_the_recipient_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the recipient name'**
+  String get enter_the_recipient_name;
+
+  /// No description provided for @area.
+  ///
+  /// In en, this message translates to:
+  /// **'Area'**
+  String get area;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @save_address.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Address'**
+  String get save_address;
+
+  /// No description provided for @this_field_is_required.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get this_field_is_required;
+
+  /// No description provided for @saved_address_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Address Successfully'**
+  String get saved_address_successfully;
 }
 
 class _AppLocalizationsDelegate

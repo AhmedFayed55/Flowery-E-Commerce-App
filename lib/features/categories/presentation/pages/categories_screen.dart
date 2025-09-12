@@ -70,7 +70,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                               showSearch(
                               context: context,
                               delegate: SearchScreen(
-                                cubit: context.read<CategoryCubit>(),
+                                categoryCubit: categoryCubit,
                               ),
                             );},
                             readOnly: true,

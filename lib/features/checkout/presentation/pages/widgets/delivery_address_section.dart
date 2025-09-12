@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -49,7 +51,12 @@ class DeliveryAddressSection extends StatelessWidget {
                       title: address.street!,
                       subtitle: address.city!,
                       isSelected: state.selectedAddress == address,
-                      onEdit: () {},
+                      onEdit: () {
+
+                        context.pushNamed(AppRoutes.addressDetails);
+                      }
+                      
+                      ,
                       onSelect: () => cubit.selectAddress(address),
                     ),
                     SizedBox(height: 16.h),
@@ -58,32 +65,37 @@ class DeliveryAddressSection extends StatelessWidget {
                     onTap: () {
                       
                     },
-                    child: Container(
-                      height: 36.h,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(
-                          color: AppColors.darkGrey.withValues(alpha: 0.5),
-                        ),
-                        color: AppColors.white,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.add, color: AppColors.pink),
-                          SizedBox(width: 8.w),
-                          Text(
-                            trans.add_new,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.pink,
-                                ),
+                    child: GestureDetector(
+                      onTap: () {
+                        context.pushNamed(AppRoutes.addressDetails); 
+                      },
+                      child: Container(
+                        height: 36.h,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          border: Border.all(
+                            color: AppColors.darkGrey.withValues(alpha: 0.5),
                           ),
-                        ],
+                          color: AppColors.white,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.add, color: AppColors.pink),
+                            SizedBox(width: 8.w),
+                            Text(
+                              trans.add_new,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.pink,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
