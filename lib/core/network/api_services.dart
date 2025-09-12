@@ -23,6 +23,7 @@ import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response
 import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/upload_photo_response.dart';
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart';
 import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart';
+import 'package:flowers_ecommerce_app/features/orders/data/model/user_orders_respone/user_orders_respone.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -95,4 +96,9 @@ abstract class ApiServices {
   @MultiPart()
   @PUT(ApiConstants.uploadPhoto)
   Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File file);
+
+  @GET(ApiConstants.orders)
+  Future<UserOrdersRespone> getUserOrders();
+
+
 }

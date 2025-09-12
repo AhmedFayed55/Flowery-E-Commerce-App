@@ -81,7 +81,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get female => 'female';
 
   @override
-  String get terms_conditions => 'Terms & Conditions';
+  String get terms_conditions => 'Terms&Conditions';
 
   @override
   String get agree_to_our => 'Creating an account, you agree to our';
@@ -117,7 +117,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categories => 'Categories';
 
   @override
-  String get best_seller => 'Best Seller';
+  String get best_seller => 'Best seller';
 
   @override
   String get occasion => 'Occasion';
@@ -240,7 +240,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Bloom with our exquisite best sellers';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get add_to_cart => 'add to cart';
 
   @override
   String get no_products => 'No Products founded';
@@ -270,7 +270,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get items => 'Items';
 
   @override
-  String get delivery_fee => 'Delivery fee';
+  String get delivery_fee => 'Delivery Fee';
 
   @override
   String get subtotal => 'Subtotal';
@@ -279,7 +279,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get order_summary => 'Order Summary';
 
   @override
-  String get place_order => 'Place order';
+  String get place_order => 'Place Order';
 
   @override
   String get order_placed_successfully => 'Order placed successfully';
@@ -374,4 +374,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no_product_found => 'No Product Found';
+
+  @override
+  String get my_orders => 'My orders';
+
+  @override
+  String get reorder => 'Reorder';
+
+  @override
+  String get order_number => 'Order Number';
+
+  @override
+  String get delivered_on => 'Delivered on';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get active => 'Active';
 }

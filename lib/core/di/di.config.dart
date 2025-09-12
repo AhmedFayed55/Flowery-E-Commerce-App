@@ -154,6 +154,14 @@ import '../../features/home_screen/domain/use_cases/home_use_case.dart'
     as _i294;
 import '../../features/home_screen/presentaion/view_model/home_bloc.dart'
     as _i341;
+import '../../features/orders/data/repo/order_repo_impl.dart' as _i222;
+import '../../features/orders/data/source/orders_remote_ds.dart' as _i587;
+import '../../features/orders/data/source/orders_remote_ds_impl.dart' as _i368;
+import '../../features/orders/domin/repo/orders_repo.dart' as _i810;
+import '../../features/orders/domin/usecase/get_user_orders_usecase.dart'
+    as _i538;
+import '../../features/orders/presentation/view_model/cubit/orders_cubit.dart'
+    as _i871;
 import '../../features/payment/data/data_source/payment_ds.dart' as _i152;
 import '../../features/payment/data/data_source/payment_ds_imp.dart' as _i89;
 import '../../features/payment/data/repo/payment_repo_imp.dart' as _i1035;
@@ -285,8 +293,17 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
+    gh.factory<_i587.OrdersRemoteDataSource>(
+      () => _i368.OrdersRemoteDataSourceImpl(gh<_i804.ApiServices>()),
+    );
     gh.factory<_i50.PaymentRepo>(
       () => _i1035.PaymentRepoImp(gh<_i152.PaymentDataSource>()),
+    );
+    gh.factory<_i810.OrdersRepo>(
+      () => _i222.OrderRepoImpl(
+        gh<_i587.OrdersRemoteDataSource>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
     );
     gh.factory<_i635.HomeDataSource>(
       () => _i58.HomeDataSourceImp(gh<_i804.ApiServices>()),
@@ -400,11 +417,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i367.HomeRepo>(
       () => _i177.HomeRepoImp(gh<_i635.HomeDataSource>()),
     );
+    gh.factory<_i538.GetUserOrdersUsecase>(
+      () => _i538.GetUserOrdersUsecase(ordersRepo: gh<_i810.OrdersRepo>()),
+    );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
     gh.factory<_i390.GetLoggedUserAddressesUsecase>(
       () => _i390.GetLoggedUserAddressesUsecase(gh<_i703.CheckoutRepo>()),
+    );
+    gh.factory<_i871.OrdersCubit>(
+      () => _i871.OrdersCubit(gh<_i538.GetUserOrdersUsecase>()),
     );
     gh.factory<_i1035.ChangePasswordCubit>(
       () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),

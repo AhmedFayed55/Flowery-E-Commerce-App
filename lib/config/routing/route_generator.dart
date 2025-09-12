@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/
 import 'package:flowers_ecommerce_app/features/cart/domin/entities/user_cart.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
+import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/user_entity.dart';
@@ -19,6 +20,7 @@ import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_
 import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/pages/edit_profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
+import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
@@ -100,6 +102,12 @@ class RouteGenerator {
       case AppRoutes.editProfile:
       final arge=settings.arguments as UserProfileEntity;
         return MaterialPageRoute(builder: (context) =>   EditProfileScreen(userEntity: arge,));
+
+      case AppRoutes.orders:
+        return MaterialPageRoute(builder: (_) =>  OrdersPage());
+
+      case AppRoutes.notifications:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
 
       default:
         return unDefinedRoute();
