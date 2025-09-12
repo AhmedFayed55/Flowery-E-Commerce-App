@@ -137,6 +137,7 @@ import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.d
 import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_cubit.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -291,7 +292,7 @@ Widget _buildProductSearch(
                       topRight: Radius.circular(12.r),
                     ),
                     child: Image.network(
-                      product.image ?? '',
+                      product.imgCover ?? '',
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) =>
                           const Icon(Icons.broken_image),
