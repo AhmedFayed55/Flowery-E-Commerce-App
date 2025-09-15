@@ -31,11 +31,13 @@ class UserAddressesScreen extends StatelessWidget {
         body: Padding(
           padding: REdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Column(
+            spacing: 15.h,
             children: [
               BlocBuilder<UserAddressesCubit, UserAddressesState>(
                 builder: (context, state) {
                   if (state.isLoadingGetAddresses) {
-                    return Expanded(
+                    return SizedBox(
+                      height: 350.h,
                       child: ListView.separated(
                         itemCount: 5,
                         separatorBuilder: (context, index) => verticalSpace(16),
@@ -53,7 +55,8 @@ class UserAddressesScreen extends StatelessWidget {
                       ? Text(AppLocalizations.of(context)!.no_addresses_yet)
                       : BlocBuilder<UserAddressesCubit, UserAddressesState>(
                           builder: (context, state) {
-                            return Expanded(
+                            return SizedBox(
+                              height: 350.h,
                               child: ListView.separated(
                                 itemCount: state.addresses.length,
                                 separatorBuilder: (context, index) =>
@@ -75,6 +78,9 @@ class UserAddressesScreen extends StatelessWidget {
                         );
                 },
               ),
+              ElevatedButton(onPressed: () {
+                // navigate to address details screen
+              }, child: Text(AppLocalizations.of(context)!.add_new_address))
             ],
           ),
         ),
