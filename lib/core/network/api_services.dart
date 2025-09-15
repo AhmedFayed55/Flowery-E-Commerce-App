@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
+import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_product_body.dart';
+import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_product_respone.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart';
@@ -43,4 +45,7 @@ abstract class ApiServices {
 
   @GET(ApiConstants.addresses)
   Future<GetUserAddresesRespone> getLoggedUserAddresses();
+
+  @POST(ApiConstants.cart)
+  Future<AddProductRespone> addToCart(@Body() AddProductBody addProductBody);
 }

@@ -8,5 +8,5 @@ abstract class ApiConstants {
   static const String resetPassword = "auth/resetPassword";
   static const String changePassword = "auth/change-password";
   static const String addresses = "addresses";
-
+  static const String cart = "cart";
 }
