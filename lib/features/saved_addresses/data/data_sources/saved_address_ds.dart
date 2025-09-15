@@ -1,7 +1,9 @@
-import 'package:flowers_ecommerce_app/features/saved_addresses/data/models/remove_address_dto.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/data/models/user_address_dto.dart';
+
+import '../models/get_user_address_dto.dart';
 
 abstract interface class SavedAddressDataSource {
-  Future<RemoveAddressDto> removeAddress(String id);
+  Future<UserAddressDto> removeAddress(String id);
 
-  Future<RemoveAddressDto> getAllAddresses();
+  Future<GetUserAddressDto> getAllAddresses();
 }

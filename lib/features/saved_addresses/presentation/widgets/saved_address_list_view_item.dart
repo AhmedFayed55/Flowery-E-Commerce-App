@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../domain/entities/user_address_data_entity.dart';
+
 class SavedAddressListViewItem extends StatelessWidget {
-  const SavedAddressListViewItem({super.key});
+  const SavedAddressListViewItem({
+    super.key,
+    required this.address,
+    required this.remove,
+  });
+
+  final UserAddressDataEntity address;
+  final void Function() remove;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: Colors.black.withOpacity(.5),
-            offset: const Offset(0, 3),
+            color: Colors.black45,
+            offset: Offset(0, 3),
             blurRadius: 3.0,
             spreadRadius: 0.0,
             blurStyle: BlurStyle.outer,
@@ -29,9 +38,9 @@ class SavedAddressListViewItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.location_on_outlined),
+                  const Icon(Icons.location_on_outlined),
                   Text(
-                    "City",
+                    address.city ?? '',
                     style: Theme.of(
                       context,
                     ).textTheme.labelMedium!.copyWith(fontSize: 16.sp),
@@ -41,7 +50,7 @@ class SavedAddressListViewItem extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: remove,
                     icon: const Icon(
                       Icons.delete_outline_outlined,
                       color: Colors.red,
@@ -53,7 +62,7 @@ class SavedAddressListViewItem extends StatelessWidget {
             ],
           ),
           Text(
-            "Area",
+            address.street ?? '',
             style: Theme.of(
               context,
             ).textTheme.labelSmall!.copyWith(fontSize: 13.sp),

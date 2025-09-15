@@ -1,4 +1,4 @@
-class RemoveAddressDataEntity {
+class UserAddressDataEntity {
   final String? street;
   final String? phone;
   final String? city;
@@ -7,7 +7,7 @@ class RemoveAddressDataEntity {
   final String? username;
   final String? id;
 
-  RemoveAddressDataEntity({
+  UserAddressDataEntity({
     this.street,
     this.phone,
     this.city,

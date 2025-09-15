@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/data/data_sources/saved_address_ds.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/data/models/maper/maper.dart';
-import 'package:flowers_ecommerce_app/features/saved_addresses/domain/entities/remove_address_data_entity.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/domain/entities/user_address_data_entity.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/domain/repositories/saved_address_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,16 +15,14 @@ class SavedAddressRepoImpl implements SavedAddressRepo {
   SavedAddressRepoImpl(this._dataSource);
 
   @override
-  Future<ApiResult<List<RemoveAddressDataEntity>>> removeAddress(
+  Future<ApiResult<List<UserAddressDataEntity>>> removeAddress(
     String id,
   ) async {
     try {
       final response = await _dataSource.removeAddress(id);
 
       return ApiSuccessResult(
-        data: response.address!
-            .map((e) => toRemoveAddressDataEntity(e))
-            .toList(),
+        data: response.address!.map((e) => toUserAddressDataEntity(e)).toList(),
       );
     } on DioException catch (e) {
       return ApiErrorResult(
@@ -36,14 +34,12 @@ class SavedAddressRepoImpl implements SavedAddressRepo {
   }
 
   @override
-  Future<ApiResult<List<RemoveAddressDataEntity>>> getAllAddresses() async {
+  Future<ApiResult<List<UserAddressDataEntity>>> getAllAddresses() async {
     try {
       final response = await _dataSource.getAllAddresses();
 
       return ApiSuccessResult(
-        data: response.address!
-            .map((e) => toRemoveAddressDataEntity(e))
-            .toList(),
+        data: response.address!.map((e) => toUserAddressDataEntity(e)).toList(),
       );
     } on DioException catch (e) {
       return ApiErrorResult(

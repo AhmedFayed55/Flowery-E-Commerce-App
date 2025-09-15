@@ -1,0 +1,103 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/manager/user_addresses_cubit.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/manager/user_addresses_event.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../../core/di/di.dart';
+import '../manager/user_addresses_state.dart';
+import '../widgets/saved_address_list_view_item.dart';
+
+class UserAddressesScreen extends StatelessWidget {
+  const UserAddressesScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) =>
+          getIt<UserAddressesCubit>()..doIntent(GetUserAddressesEvent()),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(Icons.arrow_back_ios_new),
+          ),
+          title: Text(AppLocalizations.of(context)!.saved_addresses),
+        ),
+        body: Padding(
+          padding: REdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          child: Column(
+            children: [
+              BlocBuilder<UserAddressesCubit, UserAddressesState>(
+                builder: (context, state) {
+                  if (state.isLoadingGetAddresses) {
+                    return Expanded(
+                      child: ListView.separated(
+                        itemCount: 5,
+                        separatorBuilder: (context, index) => verticalSpace(16),
+                        itemBuilder: (context, index) =>
+                            const AddressShimmerItem(),
+                      ),
+                    );
+                  }
+                  if (state.errorGetAddresses != null) {
+                    return Expanded(
+                      child: Center(child: Text(state.errorGetAddresses!)),
+                    );
+                  }
+                  return state.addresses.isEmpty
+                      ? Text(AppLocalizations.of(context)!.no_addresses_yet)
+                      : BlocBuilder<UserAddressesCubit, UserAddressesState>(
+                          builder: (context, state) {
+                            return Expanded(
+                              child: ListView.separated(
+                                itemCount: state.addresses.length,
+                                separatorBuilder: (context, index) =>
+                                    verticalSpace(16),
+                                itemBuilder: (context, index) =>
+                                    SavedAddressListViewItem(
+                                      address: state.addresses[index],
+                                      remove: () => context
+                                          .read<UserAddressesCubit>()
+                                          .doIntent(
+                                            RemoveAddressEvent(
+                                              state.addresses[index].id!,
+                                            ),
+                                          ),
+                                    ),
+                              ),
+                            );
+                          },
+                        );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AddressShimmerItem extends StatelessWidget {
+  const AddressShimmerItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade100,
+      child: Container(
+        height: 80.h,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+      ),
+    );
+  }
+}

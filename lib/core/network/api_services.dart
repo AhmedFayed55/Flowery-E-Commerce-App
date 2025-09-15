@@ -13,7 +13,8 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
-import '../../features/saved_addresses/data/models/remove_address_dto.dart';
+import '../../features/saved_addresses/data/models/get_user_address_dto.dart';
+import '../../features/saved_addresses/data/models/user_address_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -43,13 +44,13 @@ abstract class ApiServices {
   );
 
   @DELETE("${ApiConstants.deleteOrGetSavedAddress}/{id}")
-  Future<RemoveAddressDto> removeAddress(
+  Future<UserAddressDto> removeAddress(
     @Header(ApiConstants.authorization) String token,
     @Path(AppConstants.id) String id,
   );
 
   @GET(ApiConstants.deleteOrGetSavedAddress)
-  Future<RemoveAddressDto> getAllAddresses(
+  Future<GetUserAddressDto> getAllAddresses(
     @Header(ApiConstants.authorization) String token,
   );
 }

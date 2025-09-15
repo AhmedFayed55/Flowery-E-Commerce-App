@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'remove_address_data_dto.g.dart';
+part 'user_address_data_dto.g.dart';
 
 @JsonSerializable()
-class RemoveAddressDataDto {
+class UserAddressDataDto {
   @JsonKey(name: "street")
   final String? street;
   @JsonKey(name: "phone")
@@ -19,7 +19,7 @@ class RemoveAddressDataDto {
   @JsonKey(name: "_id")
   final String? id;
 
-  RemoveAddressDataDto({
+  UserAddressDataDto({
     this.street,
     this.phone,
     this.city,
@@ -29,11 +29,11 @@ class RemoveAddressDataDto {
     this.id,
   });
 
-  factory RemoveAddressDataDto.fromJson(Map<String, dynamic> json) {
-    return _$RemoveAddressDataDtoFromJson(json);
+  factory UserAddressDataDto.fromJson(Map<String, dynamic> json) {
+    return _$UserAddressDataDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$RemoveAddressDataDtoToJson(this);
+    return _$UserAddressDataDtoToJson(this);
   }
 }
