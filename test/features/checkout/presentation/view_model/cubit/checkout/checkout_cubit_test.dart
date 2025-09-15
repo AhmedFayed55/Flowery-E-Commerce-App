@@ -25,58 +25,77 @@ void main() {
   });
 
   final address = Address(id: '1', city: 'Cairo', street: 'Street 1');
-  
-group('getLoggedUserAddresses', () {
-  
- blocTest<CheckoutCubit, CheckoutState>(
-  'emits [loading, success] when getLoggedUserAddresses succeeds',
-  build: () {
-    when(mockUsecase.invok())
-        .thenAnswer((_) async => ApiSuccessResult(data: [address]));
-    return cubit;
-  },
-  act: (cubit) => cubit.getLoggedUserAddresses(),
-  expect: () => [
-    cubit.state.copyWith(isLoading: true, addresses: []), 
-    cubit.state.copyWith(isLoading: false, addresses: [address]),
-  ],
-);
 
-  blocTest<CheckoutCubit, CheckoutState>(
-    'emits [loading, error] when getLoggedUserAddresses fails',
-    build: () {
-      when(mockUsecase.invok()).thenAnswer(
-        (_) async => ApiErrorResult(failure: Failure(errorMessage: "error")),
-      );
-      return cubit;
-    },
-    act: (cubit) => cubit.getLoggedUserAddresses(),
-    expect: () => [
-      cubit.state.copyWith(isLoading: true),
-      cubit.state.copyWith(isLoading: false),
-    ],
-  );
+  group('getLoggedUserAddresses', () {
+    blocTest<CheckoutCubit, CheckoutState>(
+      'emits [loading, success] when getLoggedUserAddresses succeeds',
+      build: () {
+        when(
+          mockUsecase.invok(),
+        ).thenAnswer((_) async => ApiSuccessResult(data: [address]));
+        return cubit;
+      },
+      act: (cubit) => cubit.getLoggedUserAddresses(),
+      expect: () => [
+        cubit.state.copyWith(isLoading: true, addresses: []),
+        cubit.state.copyWith(isLoading: false, addresses: [address]),
+      ],
+    );
 
-blocTest<CheckoutCubit, CheckoutState>(
-  'updates gift fields step by step',
-  build: () => CheckoutCubit(mockUsecase),
-  act: (cubit) {
-    cubit.toggleGift(true);
-    cubit.updateGiftStreet("Street X");
-    cubit.updateGiftPhone("0100000000");
-    cubit.updateGiftCity("Giza");
-  },
-  expect: () => [
-    cubit.state.copyWith(isGift: true),
-    cubit.state.copyWith(isGift: true, giftStreet: "Street X"),
-    cubit.state.copyWith(isGift: true, giftStreet: "Street X", giftPhone: "0100000000"),
-    cubit.state.copyWith(isGift: true, giftStreet: "Street X", giftPhone: "0100000000", giftCity: "Giza"),
-  ],
-);
+    blocTest<CheckoutCubit, CheckoutState>(
+      'emits [loading, error] when getLoggedUserAddresses fails',
+      build: () {
+        when(mockUsecase.invok()).thenAnswer(
+          (_) async => ApiErrorResult(failure: Failure(errorMessage: "error")),
+        );
+        return cubit;
+      },
+      act: (cubit) => cubit.getLoggedUserAddresses(),
+      expect: () => [
+        cubit.state.copyWith(isLoading: true),
+        cubit.state.copyWith(isLoading: false),
+      ],
+    );
 
-
-
-});
-  
-
+    blocTest<CheckoutCubit, CheckoutState>(
+      'updates gift fields step by step',
+      build: () => CheckoutCubit(mockUsecase),
+      act: (cubit) {
+        cubit.toggleGift(true);
+        cubit.updateGiftStreet("Street X");
+        cubit.updateGiftPhone("0100000000");
+        cubit.updateGiftCity("Giza");
+      },
+      expect: () => [
+        cubit.state.copyWith(
+          isGift: true,
+          selectedPaymentMethod: PaymentMethod.creditCard,
+          giftStreet: '',
+          giftPhone: '',
+          giftCity: '',
+        ),
+        cubit.state.copyWith(
+          isGift: true,
+          giftStreet: "Street X",
+          giftPhone: '',
+          giftCity: '',
+          selectedPaymentMethod: PaymentMethod.creditCard,
+        ),
+        cubit.state.copyWith(
+          isGift: true,
+          giftStreet: "Street X",
+          giftPhone: "0100000000",
+          giftCity: '',
+          selectedPaymentMethod: PaymentMethod.creditCard,
+        ),
+        cubit.state.copyWith(
+          isGift: true,
+          giftStreet: "Street X",
+          giftPhone: "0100000000",
+          giftCity: "Giza",
+          selectedPaymentMethod: PaymentMethod.creditCard,
+        ),
+      ],
+    );
+  });
 }
