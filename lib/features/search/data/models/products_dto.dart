@@ -42,7 +42,7 @@ class ProductsDto {
   @JsonKey(name: "rateCount")
   final int? rateCount;
   @JsonKey(name: "favoriteId")
-  final dynamic? favoriteId;
+  final dynamic favoriteId;
   @JsonKey(name: "isInWishlist")
   final bool? isInWishlist;
 
