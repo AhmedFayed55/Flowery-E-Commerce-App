@@ -3,8 +3,9 @@ name: Build & Distribute via Fastlane
 on:
   pull_request:
     branches:
-      - release  
-  workflow_dispatch:
+      - release 
+  workflow_dispatch: 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +16,9 @@ jobs:
 
       - name: 📌 Get Flutter Version
         id: flutter_version
-        run: echo "version=$(grep flutter pubspec.lock | awk '{print $2}' | tr -d '\"')" >> $GITHUB_OUTPUT
+        run: |
+          version=$(grep -m 1 "flutter:" pubspec.lock | awk '{print $2}' | tr -d '"')
+          echo "version=$version" >> $GITHUB_OUTPUT
 
       - name: 🔧 Setup Flutter
         uses: subosito/flutter-action@v2
