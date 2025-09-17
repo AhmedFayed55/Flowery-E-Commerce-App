@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../../core/utils/font_weight.dart';
 import 'colors.dart';
 
@@ -71,6 +71,7 @@ abstract class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: AppColors.darkGrey.withOpacity(.5),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
@@ -151,6 +152,11 @@ abstract class AppTheme {
           fontWeight: AppFontWeight.medium,
           fontSize: 14.sp,
           color: AppColors.black,
+        ),
+        headlineMedium: GoogleFonts.imFellEnglish(
+          fontSize: 20.sp,
+          fontWeight: AppFontWeight.medium,
+          color: AppColors.pink,
         ),
       ),
     );
