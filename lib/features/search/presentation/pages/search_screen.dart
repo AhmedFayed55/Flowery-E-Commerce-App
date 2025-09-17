@@ -37,7 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 trailing: [
                   IconButton(
                     onPressed: () {
-                      /// delete controller.text || Navigator
+                      Navigator.pop(context);
                     },
                     icon: const Icon(Icons.cancel_outlined),
                   ),
