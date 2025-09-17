@@ -14,7 +14,6 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/widget/versi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class ProfileSettingScreen extends StatefulWidget {
   const ProfileSettingScreen({super.key});
@@ -44,82 +43,79 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
             }
             return Padding(
               padding: EdgeInsets.only(top: 20.h),
-              child: Skeletonizer(
-                enabled: state.isLoadding == true ? true : false,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const ProfileBar(numberNoti: 0),
-                    SectionDataUser(
-                      email: state.userProfileEntity?.email ?? '',
-                      imageUrl: state.userProfileEntity?.photo ?? '',
-                      userName: state.userProfileEntity?.firstName ?? '',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const ProfileBar(numberNoti: 0),
+                  SectionDataUser(
+                    email: state.userProfileEntity?.email ?? '',
+                    imageUrl: state.userProfileEntity?.photo ?? '',
+                    userName: state.userProfileEntity?.firstName ?? '',
+                  ),
+                  const Divider(),
+                  CustomNotificationSwitch(
+                    onChanged: (value) {
+                      context.read<ProfileSettingCubit>().doIntent(
+                        ToggleNotificationEvent(value),
+                      );
+                    },
+                    title: lang.notification,
+                    valueNoti: state.enableNotification,
+                    onPressed: () {},
+                  ),
+                  const Divider(),
+                  CustomRow(
+                    firstIcon: const Icon(Icons.translate),
+                    title: lang.language,
+                    lastWidget: Text(
+                      state.localizationCode == Constants.arKey
+                          ? lang.arabic
+                          : lang.english,
                     ),
-                    const Divider(),
-                    CustomNotificationSwitch(
-                      onChanged: (value) {
-                        context.read<ProfileSettingCubit>().doIntent(
-                          ToggleNotificationEvent(value),
-                        );
-                      },
-                      title: lang.notification,
-                      valueNoti: state.enableNotification,
-                      onPressed: () {},
-                    ),
-                    const Divider(),
-                    CustomRow(
-                      firstIcon: const Icon(Icons.translate),
-                      title: lang.language,
-                      lastWidget: Text(
-                        state.localizationCode == Constants.arKey
-                            ? lang.arabic
-                            : lang.english,
-                      ),
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (_) => BlocProvider.value(
-                            value: context.read<ProfileSettingCubit>(),
-                            child: const CustomButtomSheet(),
-                          ),
-                        );
-                      },
-                    ),
-                    CustomRow(
-                      firstIcon: null,
-                      title: lang.about_us,
-                      onPressed: () {
-                        context.pushNamed(
-                          AppRoutes.aboutUs,
-                          arguments: state.aboutUsList,
-                        );
-                      },
-                    ),
-                    CustomRow(
-                      firstIcon: null,
-                      title: lang.terms_conditions,
-                      onPressed: () {
-                        context.pushNamed(
-                          AppRoutes.terms,
-                          arguments: state.terms,
-                        );
-                      },
-                    ),
-                    const Divider(),
-                    CustomRow(
-                      firstIcon: const Icon(Icons.logout_outlined),
-                      title: lang.logout,
-                      lastWidget: const Icon(Icons.logout_rounded),
-                      //logout action
-                      onPressed: () {},
-                    ),
-                    const Spacer(),
-                    VersionWidget(
-                      buildNumber: state.buildNumber,
-                      version: state.version,
-                    ),
-                  ],
-                ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (_) => BlocProvider.value(
+                          value: context.read<ProfileSettingCubit>(),
+                          child: const CustomButtomSheet(),
+                        ),
+                      );
+                    },
+                  ),
+                  CustomRow(
+                    firstIcon: null,
+                    title: lang.about_us,
+                    onPressed: () {
+                      context.pushNamed(
+                        AppRoutes.aboutUs,
+                        arguments: state.aboutUsList,
+                      );
+                    },
+                  ),
+                  CustomRow(
+                    firstIcon: null,
+                    title: lang.terms_conditions,
+                    onPressed: () {
+                      context.pushNamed(
+                        AppRoutes.terms,
+                        arguments: state.terms,
+                      );
+                    },
+                  ),
+                  const Divider(),
+                  CustomRow(
+                    firstIcon: const Icon(Icons.logout_outlined),
+                    title: lang.logout,
+                    lastWidget: const Icon(Icons.logout_rounded),
+                    //logout action
+                    onPressed: () {},
+                  ),
+                  const Spacer(),
+                  VersionWidget(
+                    buildNumber: state.buildNumber,
+                    version: state.version,
+                  ),
+                ],
               ),
             );
           },

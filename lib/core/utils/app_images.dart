@@ -10,4 +10,9 @@ abstract class AppImages {
       'assets/json_file/Flowery Terms and Conditions JSON with Arabic and English.json';
   static const String aboutUsPath =
       'assets/json_file/Flowery About Section JSON with Expanded Content.json';
+  static const String trashIcon = "assets/svgs/trash.svg";
+  static const String location = 'assets/svgs/location.svg';
+  static const String arrowDown = 'assets/svgs/arrow-down.svg';
+
+  static const String imagePhoto = 'lib/core/utils/images/flowerImage.png';
 }

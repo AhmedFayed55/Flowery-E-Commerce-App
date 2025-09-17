@@ -60,7 +60,6 @@ class ProfileSettingCubit extends Cubit<ProfileSettingState> {
           state.copyWith(isLoadding: false, userProfileEntity: result.data),
         );
       case ApiErrorResult():
-       
         return emit(
           state.copyWith(
             isLoadding: false,
@@ -82,7 +81,8 @@ class ProfileSettingCubit extends Cubit<ProfileSettingState> {
 
   _loadSetting() async {
     var pref = getIt<SharedPrefHelper>();
-    final notificationResult = pref.getData(key: Constants.enableNotification);
+    final notificationResult =
+        pref.getData(key: Constants.enableNotification) ?? false;
     var localizationResult = pref.getData(key: Constants.languageCode);
 
     emit(

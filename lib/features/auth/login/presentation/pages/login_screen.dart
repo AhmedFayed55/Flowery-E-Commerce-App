@@ -23,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  ValueNotifier<bool> ischeck = ValueNotifier(false);
+  ValueNotifier<bool> isCheck = ValueNotifier(false);
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -66,10 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppLocalizations.of(context)!.login_successfully,
                 );
 
-                Navigator.pushReplacementNamed(
-                  context,
-                  AppRoutes.mainLayout,
-                );
+                Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
               }
             },
             builder: (BuildContext context, LoginState state) {
@@ -121,12 +118,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           ValueListenableBuilder<bool>(
-                            valueListenable: ischeck,
+                            valueListenable: isCheck,
                             builder: (context, value, child) {
                               return Checkbox(
                                 value: value,
                                 onChanged: (value) {
-                                  ischeck.value = value ?? false;
+                                  isCheck.value = value ?? false;
                                 },
                               );
                             },
@@ -153,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_key.currentState!.validate()) {
                             context.read<LoginBloc>().doIntent(
                               SumitLoginEvent(
-                                isRemember: ischeck.value,
+                                isRemember: isCheck.value,
                                 loginRequestEntity: LoginRequestEntity(
                                   email: emailController.text,
                                   password: passwordController.text,

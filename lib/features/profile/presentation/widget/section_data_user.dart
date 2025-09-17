@@ -33,9 +33,10 @@ class SectionDataUser extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 40.r,
-          child: enable == true
-              ? Image.network(imageUrl!)
-              : SvgPicture.asset(AppImages.gestuserPhoto),
+          backgroundImage:
+              enable == true && imageUrl != null && imageUrl!.isNotEmpty
+              ? NetworkImage(imageUrl!)
+              : null,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
