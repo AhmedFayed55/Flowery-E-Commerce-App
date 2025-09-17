@@ -292,17 +292,53 @@ abstract class AppLocalizations {
   /// **'Register Successfully'**
   String get register_successfully;
 
-  /// No description provided for @home.
+  /// No description provided for @egp.
   ///
   /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get view_all;
 
   /// No description provided for @categories.
   ///
   /// In en, this message translates to:
   /// **'Categories'**
   String get categories;
+
+  /// No description provided for @best_seller.
+  ///
+  /// In en, this message translates to:
+  /// **'Best seller'**
+  String get best_seller;
+
+  /// No description provided for @occasion.
+  ///
+  /// In en, this message translates to:
+  /// **'Occasion'**
+  String get occasion;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'search'**
+  String get search;
+
+  /// No description provided for @flower.
+  ///
+  /// In en, this message translates to:
+  /// **'Flower'**
+  String get flower;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
 
   /// No description provided for @cart.
   ///
@@ -340,6 +376,36 @@ abstract class AppLocalizations {
   /// **'Password is required'**
   String get password_empty;
 
+  /// No description provided for @reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get reset_password;
+
+  /// No description provided for @current_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get current_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get new_password;
+
+  /// No description provided for @update.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get update;
+
+  /// No description provided for @password_changed_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get password_changed_successfully;
+
   /// No description provided for @please_enter_your_email_associated_to_your_account.
   ///
   /// In en, this message translates to:
@@ -376,18 +442,6 @@ abstract class AppLocalizations {
   /// **'Resend'**
   String get resend;
 
-  /// No description provided for @reset_password.
-  ///
-  /// In en, this message translates to:
-  /// **'Reset password'**
-  String get reset_password;
-
-  /// No description provided for @new_password.
-  ///
-  /// In en, this message translates to:
-  /// **'New password'**
-  String get new_password;
-
   /// No description provided for @password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least.
   ///
   /// In en, this message translates to:
@@ -407,11 +461,29 @@ abstract class AppLocalizations {
   /// **'Password must be at least 6 characters'**
   String get password_must_be_at_least_6_characters;
 
+  /// No description provided for @bloom_with_our_exquisite_best_sellers.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloom_with_our_exquisite_best_sellers;
+
+  /// No description provided for @no_products.
+  ///
+  /// In en, this message translates to:
+  /// **'No Products founded'**
+  String get no_products;
+
   /// No description provided for @passwords_do_not_match.
   ///
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get passwords_do_not_match;
+
+  /// No description provided for @bloom_with.
+  ///
+  /// In en, this message translates to:
+  /// **'Bloom with our exquisite best sellers'**
+  String get bloom_with;
 
   /// No description provided for @you_should_login.
   ///
@@ -502,12 +574,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Order Placed'**
   String get order_placed;
-
-  /// No description provided for @egp.
-  ///
-  /// In en, this message translates to:
-  /// **'EGP'**
-  String get egp;
 }
 
 class _AppLocalizationsDelegate

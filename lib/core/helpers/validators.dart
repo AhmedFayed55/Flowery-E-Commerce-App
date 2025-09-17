@@ -30,14 +30,19 @@ abstract class Validations {
     return null;
   }
 
-  static String? confirmPassword(BuildContext context,String? newPassword, [String? confirmPassword]) {
+  static String? confirmPassword(
+    BuildContext context,
+    String? newPassword, [
+    String? confirmPassword,
+  ]) {
     if (newPassword == null || newPassword.isEmpty) {
       return AppLocalizations.of(context)!.password_is_required;
     } else if (newPassword.length < 6) {
-      return AppLocalizations.of(context)!.password_must_be_at_least_6_characters;
+      return AppLocalizations.of(
+        context,
+      )!.password_must_be_at_least_6_characters;
     } else if (confirmPassword != null && newPassword != confirmPassword) {
       return AppLocalizations.of(context)!.passwords_do_not_match;
-
     }
     return null;
   }

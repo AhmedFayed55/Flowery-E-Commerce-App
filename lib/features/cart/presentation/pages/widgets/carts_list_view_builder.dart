@@ -1,4 +1,3 @@
-
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/widgets/cart.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/view_model/cubit/cart_cubit.dart';
@@ -16,7 +15,7 @@ class CartsListViewBuilder extends StatelessWidget {
       builder: (context, state) {
         final userCart = state.userCart;
         if (userCart == null || userCart.cart.cartItems == null) {
-          return  Center(child: Text(trans.your_cart_is_empty));
+          return Center(child: Text(trans.your_cart_is_empty));
         }
         final cartItems = userCart.cart.cartItems!;
 
@@ -33,10 +32,8 @@ class CartsListViewBuilder extends StatelessWidget {
                   final productId = cartItems[index].product!.id!;
 
                   context.read<CartCubit>().doIntent(
-                        DeleteCartItemEvent(productId),
-                      );
-                    
-
+                    DeleteCartItemEvent(productId),
+                  );
                 },
               ),
             ),

@@ -5,7 +5,11 @@ class UpdeateProudactQuantityRespone {
   int? numOfCartItems;
   CartDto? cart;
 
-  UpdeateProudactQuantityRespone({this.message, this.numOfCartItems, this.cart});
+  UpdeateProudactQuantityRespone({
+    this.message,
+    this.numOfCartItems,
+    this.cart,
+  });
 
   factory UpdeateProudactQuantityRespone.fromJson(Map<String, dynamic> json) {
     return UpdeateProudactQuantityRespone(

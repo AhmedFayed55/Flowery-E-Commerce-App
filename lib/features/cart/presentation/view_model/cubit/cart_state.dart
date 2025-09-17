@@ -1,7 +1,7 @@
 part of 'cart_cubit.dart';
 
 // ignore: must_be_immutable
-class CartState extends Equatable  {
+class CartState extends Equatable {
   bool isSuccess = false;
   bool isLoading = false;
   String errorMessage = '';
@@ -52,22 +52,22 @@ class CartState extends Equatable  {
       isCartQuantityUpdatedFailure:
           isCartQuantityUpdatedFailure ?? this.isCartQuantityUpdatedFailure,
       isCartLoading: isCartLoading ?? this.isCartLoading,
-      isCartQuantityUpdatedLoading: isCartQuantityUpdatedLoading ?? this.isCartQuantityUpdatedLoading,
+      isCartQuantityUpdatedLoading:
+          isCartQuantityUpdatedLoading ?? this.isCartQuantityUpdatedLoading,
     );
   }
 
-@override
-List<Object?> get props => [
-  isSuccess,
-  isLoading,
-  errorMessage,
-  userCart,  
-  isCartRemoved,
-  isCartRemovedFailure,
-  isCartQuantityUpdated,
-  isCartQuantityUpdatedFailure,
-  isCartLoading,
-  isCartQuantityUpdatedLoading,
-];
-
+  @override
+  List<Object?> get props => [
+    isSuccess,
+    isLoading,
+    errorMessage,
+    userCart,
+    isCartRemoved,
+    isCartRemovedFailure,
+    isCartQuantityUpdated,
+    isCartQuantityUpdatedFailure,
+    isCartLoading,
+    isCartQuantityUpdatedLoading,
+  ];
 }

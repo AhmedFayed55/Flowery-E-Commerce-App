@@ -21,10 +21,12 @@ void main() {
     newPassword = "123456789";
     mockErrorMessage = "Error Message";
     mockResetPasswordRepoContract = MockResetPasswordRepoContract();
-    resetPasswordUseCase = ResetPasswordUseCase(resetPasswordRepoContract: mockResetPasswordRepoContract);
+    resetPasswordUseCase = ResetPasswordUseCase(
+      resetPasswordRepoContract: mockResetPasswordRepoContract,
+    );
   });
 
-  group("Test ResetPasswordUseCase in Domain Layer", (){
+  group("Test ResetPasswordUseCase in Domain Layer", () {
     test("Success Case for ForgetPassword with ApiSuccessResult", () async {
       var mockSuccessResult = ApiSuccessResult<ResetPasswordModel>(
         data: ResetPasswordModel(),
@@ -33,43 +35,53 @@ void main() {
 
       /// Arrange
       when(
-        mockResetPasswordRepoContract.resetPassword(email,newPassword),
+        mockResetPasswordRepoContract.resetPassword(email, newPassword),
       ).thenAnswer((_) async => mockSuccessResult);
 
       /// Act
-      var result = await resetPasswordUseCase.call(email,newPassword);
+      var result = await resetPasswordUseCase.call(email, newPassword);
 
       /// Assert
       expect(result, isA<ApiSuccessResult<ResetPasswordModel>>());
       ApiSuccessResult<ResetPasswordModel> successResult =
-      result as ApiSuccessResult<ResetPasswordModel>;
+          result as ApiSuccessResult<ResetPasswordModel>;
       expect(successResult.data, equals(mockSuccessResult.data));
 
-      verify(mockResetPasswordRepoContract.resetPassword(email,newPassword)).called(1);
+      verify(
+        mockResetPasswordRepoContract.resetPassword(email, newPassword),
+      ).called(1);
     });
 
     /// Error
     test("Error Case for ResetPasswordUseCase with ApiErrorResult", () async {
       var mockFailure = Failure(errorMessage: mockErrorMessage);
-      var mockErrorResult = ApiErrorResult<ResetPasswordModel>(failure: mockFailure,);
+      var mockErrorResult = ApiErrorResult<ResetPasswordModel>(
+        failure: mockFailure,
+      );
       provideDummy<ApiResult<ResetPasswordModel>>(mockErrorResult);
 
       /// Arrange
       when(
-        mockResetPasswordRepoContract.resetPassword(email,newPassword),
-      ).thenAnswer((_) async => ApiErrorResult<ResetPasswordModel>(failure: mockFailure));
+        mockResetPasswordRepoContract.resetPassword(email, newPassword),
+      ).thenAnswer(
+        (_) async => ApiErrorResult<ResetPasswordModel>(failure: mockFailure),
+      );
 
       /// Act
-      var result = await resetPasswordUseCase.call(email,newPassword);
+      var result = await resetPasswordUseCase.call(email, newPassword);
 
       /// Assert
       expect(result, isA<ApiErrorResult<ResetPasswordModel>>());
       ApiErrorResult<ResetPasswordModel> errorResult =
-      result as ApiErrorResult<ResetPasswordModel>;
-      expect(errorResult.failure.errorMessage, equals(mockFailure.errorMessage));
+          result as ApiErrorResult<ResetPasswordModel>;
+      expect(
+        errorResult.failure.errorMessage,
+        equals(mockFailure.errorMessage),
+      );
 
-      verify(mockResetPasswordRepoContract.resetPassword(email,newPassword)).called(1);
+      verify(
+        mockResetPasswordRepoContract.resetPassword(email, newPassword),
+      ).called(1);
     });
   });
-
 }

@@ -21,13 +21,13 @@ class CartPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Text(trans.you_should_login),
+                Text(trans.you_should_login),
                 verticalSpace(20),
                 ElevatedButton(
                   onPressed: () {
                     context.pushReplacementNamed(AppRoutes.login);
                   },
-                  child:  Text(trans.login),
+                  child: Text(trans.login),
                 ),
               ],
             ),

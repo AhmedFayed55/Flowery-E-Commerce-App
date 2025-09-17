@@ -18,7 +18,6 @@ class CartBlocBuilder extends StatelessWidget {
     return BlocProvider(
       create: (_) => viewModel..doIntent(const LoadUserCartEvent()),
       child: BlocBuilder<CartCubit, CartState>(
-
         builder: (context, state) {
           if (state.isLoading) {
             return const Scaffold(
@@ -31,7 +30,7 @@ class CartBlocBuilder extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                     Text(trans.some_thing_went_wrong),
+                    Text(trans.some_thing_went_wrong),
                     verticalSpace(10),
                     Text(state.errorMessage),
                   ],
@@ -43,11 +42,11 @@ class CartBlocBuilder extends StatelessWidget {
             return CartBody(userCart: state.userCart!);
           }
           if (state.userCart == null) {
-            return  Scaffold(
+            return Scaffold(
               body: Center(child: Text(trans.your_cart_is_empty)),
             );
           }
-          return  Scaffold(
+          return Scaffold(
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

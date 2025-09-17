@@ -8,12 +8,7 @@ class CartItem {
 
   CartItem({this.product, this.price, this.quantity, this.id});
 
-  CartItem copyWith({
-    Product? product,
-    int? price,
-    int? quantity,
-    String? id,
-  }) {
+  CartItem copyWith({Product? product, int? price, int? quantity, String? id}) {
     return CartItem(
       product: product ?? this.product,
       price: price ?? this.price,

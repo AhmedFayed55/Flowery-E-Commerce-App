@@ -22,7 +22,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  ValueNotifier<bool> ischeck = ValueNotifier(false);
+  ValueNotifier<bool> isCheck = ValueNotifier(false);
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -52,8 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   context: context,
                   message: AppLocalizations.of(context)!.loading,
                 );
-              }
-            else  if (state.errorMessage.isNotEmpty) {
+              } else if (state.errorMessage.isNotEmpty) {
                 DialogueUtils.hideLoading(context);
                 DialogueUtils.showMessage(
                   context: context,
@@ -79,7 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextFormField(
                         validator: (value) {
-                          if (AppRegExp.isEmailValid(emailController.text)==false) {
+                          if (AppRegExp.isEmailValid(emailController.text) ==
+                              false) {
                             return AppLocalizations.of(
                               context,
                             )!.email_not_valid;
@@ -117,12 +117,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           ValueListenableBuilder<bool>(
-                            valueListenable: ischeck,
+                            valueListenable: isCheck,
                             builder: (context, value, child) {
                               return Checkbox(
                                 value: value,
                                 onChanged: (value) {
-                                  ischeck.value = value ?? false;
+                                  isCheck.value = value ?? false;
                                 },
                               );
                             },
@@ -149,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_key.currentState!.validate()) {
                             context.read<LoginBloc>().doIntent(
                               SumitLoginEvent(
-                                isRemember: ischeck.value,
+                                isRemember: isCheck.value,
                                 loginRequestEntity: LoginRequestEntity(
                                   email: emailController.text,
                                   password: passwordController.text,

@@ -11,11 +11,7 @@ class UserCart {
     required this.cart,
   });
 
-  UserCart copyWith({
-    String? message,
-    int? numOfCartItems,
-    Cart? cart,
-  }) {
+  UserCart copyWith({String? message, int? numOfCartItems, Cart? cart}) {
     return UserCart(
       message: message ?? this.message,
       numOfCartItems: numOfCartItems ?? this.numOfCartItems,

@@ -21,12 +21,12 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (_) =>const  LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
       case AppRoutes.register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case AppRoutes.forgetPassword:
-        return MaterialPageRoute(builder: (_) =>   const ForgetPasswordScreen());
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
       case AppRoutes.emailVerification:
         final args = settings.arguments as EmailVerifyArgs;
@@ -68,7 +68,7 @@ class RouteGenerator {
           builder: (_) => MostSellingPage(products: args),
         );
       case AppRoutes.cart:
-        return MaterialPageRoute(builder: (context) =>  const CartPage());
+        return MaterialPageRoute(builder: (context) => const CartPage());
 
       default:
         return unDefinedRoute();

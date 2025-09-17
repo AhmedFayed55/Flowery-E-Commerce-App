@@ -13,7 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CartItemCard extends StatefulWidget {
-  const CartItemCard({super.key, required this.userItem , this.onDelete} );
+  const CartItemCard({super.key, required this.userItem, this.onDelete});
 
   final CartItem userItem;
   final void Function()? onDelete;
@@ -59,9 +59,7 @@ class _CartItemCardState extends State<CartItemCard> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
                 image: DecorationImage(
-                  image: NetworkImage(
-                    widget.userItem.product!.imgCover!,
-                  ),
+                  image: NetworkImage(widget.userItem.product!.imgCover!),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -81,7 +79,8 @@ class _CartItemCardState extends State<CartItemCard> {
                         width: 140.w,
                         child: Text(
                           widget.userItem.product!.title!,
-                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          style: Theme.of(context).textTheme.bodyMedium!
+                              .copyWith(
                                 color: AppColors.black,
                                 fontWeight: AppFontWeight.medium,
                               ),
@@ -90,7 +89,7 @@ class _CartItemCardState extends State<CartItemCard> {
                         ),
                       ),
                       GestureDetector(
-                        onTap:widget.onDelete,
+                        onTap: widget.onDelete,
                         child: SvgPicture.asset(
                           AppImages.trashIcon,
                           width: 24.w,
@@ -108,7 +107,7 @@ class _CartItemCardState extends State<CartItemCard> {
                     children: [
                       Text(
                         '${trans.egp} ${widget.userItem.product!.price}',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: AppColors.black,
                           fontWeight: AppFontWeight.medium,
                         ),
@@ -118,7 +117,6 @@ class _CartItemCardState extends State<CartItemCard> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            
                             final item = widget.userItem;
                             if (item.quantity! > 0) {
                               item.quantity = item.quantity! - 1;
@@ -136,7 +134,7 @@ class _CartItemCardState extends State<CartItemCard> {
                       horizontalSpace(8.w),
                       Text(
                         '${widget.userItem.quantity}',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: AppColors.black,
                           fontWeight: AppFontWeight.medium,
                         ),

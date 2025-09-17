@@ -44,7 +44,7 @@ class CartSummary extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                 trans.delivery_fee ,
+                  trans.delivery_fee,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
@@ -73,7 +73,7 @@ class CartSummary extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  "${trans.egp} ${(userCart!.cart.totalPrice! + 50 ).toInt()}",
+                  "${trans.egp} ${(userCart!.cart.totalPrice! + 50).toInt()}",
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: AppFontWeight.bold,
                     color: AppColors.black,
@@ -82,7 +82,7 @@ class CartSummary extends StatelessWidget {
               ],
             ),
             verticalSpace(24.h),
-            ElevatedButton(onPressed: () {}, child:  Text(trans.checkout)),
+            ElevatedButton(onPressed: () {}, child: Text(trans.checkout)),
           ],
         );
       },

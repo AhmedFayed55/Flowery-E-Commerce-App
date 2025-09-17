@@ -97,11 +97,9 @@ class CartCubit extends Cubit<CartState> {
     UpdeateCartProuductQuantityBody quantity,
   ) async {
     if (quantity.quantity! <= 0) {
-      _deleteCart(
-        cartId,
-      );
+      _deleteCart(cartId);
       return;
-      }
+    }
     var oldQuantity = 0;
     state.userCart!.cart.cartItems!
             .firstWhere((item) => item.product!.id == cartId)

@@ -25,7 +25,7 @@ part 'api_services.g.dart';
 @injectable
 abstract class ApiServices {
   @factoryMethod
- factory ApiServices(Dio dio) = _ApiServices;
+  factory ApiServices(Dio dio) = _ApiServices;
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
   @GET(ApiConstants.homeEndpoint)

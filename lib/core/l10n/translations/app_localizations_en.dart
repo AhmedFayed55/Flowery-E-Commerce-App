@@ -108,10 +108,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get home => 'Home';
+  String get egp => 'EGP';
+
+  @override
+  String get view_all => 'View All';
 
   @override
   String get categories => 'Categories';
+
+  @override
+  String get best_seller => 'Best seller';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get search => 'search';
+
+  @override
+  String get flower => 'Flower';
+
+  @override
+  String get home => 'Home';
 
   @override
   String get cart => 'Cart';
@@ -130,6 +148,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get reset_password => 'Reset Password';
+
+  @override
+  String get current_password => 'Current Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get update => 'Update';
+
+  @override
+  String get password_changed_successfully => 'Password changed successfully';
 
   @override
   String get please_enter_your_email_associated_to_your_account =>
@@ -152,12 +185,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resend => 'Resend';
 
   @override
-  String get reset_password => 'Reset password';
-
-  @override
-  String get new_password => 'New password';
-
-  @override
   String
   get password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least =>
       'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
@@ -170,7 +197,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 6 characters';
 
   @override
+  String get bloom_with_our_exquisite_best_sellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get no_products => 'No Products founded';
+
+  @override
   String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
+  String get bloom_with => 'Bloom with our exquisite best sellers';
 
   @override
   String get you_should_login => 'You should login first';
@@ -216,7 +253,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get order_placed => 'Order Placed';
-
-  @override
-  String get egp => 'EGP';
 }

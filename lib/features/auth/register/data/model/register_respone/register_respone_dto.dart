@@ -27,7 +27,5 @@ class RegisterResponeDto {
     'token': token,
   };
 
-  RegisterRespone toEntity() => RegisterRespone(
-   message!
-  );
+  RegisterRespone toEntity() => RegisterRespone(message!);
 }

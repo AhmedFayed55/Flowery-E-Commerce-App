@@ -9,6 +9,6 @@ abstract interface class CartRemoteDataSourse {
     String id,
     UpdeateCartProuductQuantityBody body,
   );
-  
+
   Future<DeleteCartItemRespone> deleteCartProudct(String id);
 }

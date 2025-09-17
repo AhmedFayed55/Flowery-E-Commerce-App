@@ -30,5 +30,4 @@ class Cart {
       totalPrice: totalPrice ?? this.totalPrice,
     );
   }
-  
 }

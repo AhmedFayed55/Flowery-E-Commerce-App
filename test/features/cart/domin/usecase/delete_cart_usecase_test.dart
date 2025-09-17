@@ -22,39 +22,46 @@ void main() {
   group('DeleteCartUsecase', () {
     const cartId = "123";
 
-    test('should return ApiSuccessResult when repo call is successful', () async {
-      // arrange
-      final mockResponse = DeleteCartItemRespone(
-        message: "Deleted successfully",
-        numOfCartItems: 1,
-      );
+    test(
+      'should return ApiSuccessResult when repo call is successful',
+      () async {
+        // arrange
+        final mockResponse = DeleteCartItemRespone(
+          message: "Deleted successfully",
+          numOfCartItems: 1,
+        );
 
-      provideDummy<ApiResult<DeleteCartItemRespone>>(
-          ApiSuccessResult(data: mockResponse));
+        provideDummy<ApiResult<DeleteCartItemRespone>>(
+          ApiSuccessResult(data: mockResponse),
+        );
 
-      when(mockCartRepo.deleteCartProudct(cartId))
-          .thenAnswer((_) async => ApiSuccessResult(data: mockResponse));
+        when(
+          mockCartRepo.deleteCartProudct(cartId),
+        ).thenAnswer((_) async => ApiSuccessResult(data: mockResponse));
 
-      // act
-      final result = await usecase.invok(cartId);
+        // act
+        final result = await usecase.invok(cartId);
 
-      // assert
-      expect(result, isA<ApiSuccessResult<DeleteCartItemRespone>>());
-      final success = result as ApiSuccessResult<DeleteCartItemRespone>;
-      expect(success.data.message, "Deleted successfully");
-      expect(success.data.numOfCartItems, 1);
-      verify(mockCartRepo.deleteCartProudct(cartId)).called(1);
-    });
+        // assert
+        expect(result, isA<ApiSuccessResult<DeleteCartItemRespone>>());
+        final success = result as ApiSuccessResult<DeleteCartItemRespone>;
+        expect(success.data.message, "Deleted successfully");
+        expect(success.data.numOfCartItems, 1);
+        verify(mockCartRepo.deleteCartProudct(cartId)).called(1);
+      },
+    );
 
     test('should return ApiErrorResult when repo call fails', () async {
       // arrange
       final failure = Failure(errorMessage: "Something went wrong");
 
       provideDummy<ApiResult<DeleteCartItemRespone>>(
-          ApiErrorResult(failure: failure));
+        ApiErrorResult(failure: failure),
+      );
 
-      when(mockCartRepo.deleteCartProudct(cartId))
-          .thenAnswer((_) async => ApiErrorResult(failure: failure));
+      when(
+        mockCartRepo.deleteCartProudct(cartId),
+      ).thenAnswer((_) async => ApiErrorResult(failure: failure));
 
       // act
       final result = await usecase.invok(cartId);

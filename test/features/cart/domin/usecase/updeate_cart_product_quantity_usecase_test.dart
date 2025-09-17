@@ -25,9 +25,7 @@ void main() {
       ),
     );
     provideDummy<ApiResult<UpdeateProudactQuantityRespone>>(
-      ApiErrorResult(
-        failure: Failure(errorMessage: ""),
-      ),
+      ApiErrorResult(failure: Failure(errorMessage: "")),
     );
   });
 
@@ -40,33 +38,39 @@ void main() {
     const cartId = "123";
     final body = UpdeateCartProuductQuantityBody(quantity: 5);
 
-    test('should return ApiSuccessResult when repo call is successful', () async {
-      // arrange
-      final mockResponse = UpdeateProudactQuantityRespone(
-        message: "updated",
-        numOfCartItems: 2,
-      );
+    test(
+      'should return ApiSuccessResult when repo call is successful',
+      () async {
+        // arrange
+        final mockResponse = UpdeateProudactQuantityRespone(
+          message: "updated",
+          numOfCartItems: 2,
+        );
 
-      when(mockCartRepo.updeateCartProudctQuantity(cartId, body))
-          .thenAnswer((_) async => ApiSuccessResult(data: mockResponse));
+        when(
+          mockCartRepo.updeateCartProudctQuantity(cartId, body),
+        ).thenAnswer((_) async => ApiSuccessResult(data: mockResponse));
 
-      // act
-      final result = await usecase.invok(cartId, body);
+        // act
+        final result = await usecase.invok(cartId, body);
 
-      // assert
-      expect(result, isA<ApiSuccessResult<UpdeateProudactQuantityRespone>>());
-      final success = result as ApiSuccessResult<UpdeateProudactQuantityRespone>;
-      expect(success.data.message, "updated");
-      expect(success.data.numOfCartItems, 2);
-      verify(mockCartRepo.updeateCartProudctQuantity(cartId, body)).called(1);
-    });
+        // assert
+        expect(result, isA<ApiSuccessResult<UpdeateProudactQuantityRespone>>());
+        final success =
+            result as ApiSuccessResult<UpdeateProudactQuantityRespone>;
+        expect(success.data.message, "updated");
+        expect(success.data.numOfCartItems, 2);
+        verify(mockCartRepo.updeateCartProudctQuantity(cartId, body)).called(1);
+      },
+    );
 
     test('should return ApiErrorResult when repo call fails', () async {
       // arrange
       final failure = Failure(errorMessage: "Something went wrong");
 
-      when(mockCartRepo.updeateCartProudctQuantity(cartId, body))
-          .thenAnswer((_) async => ApiErrorResult(failure: failure));
+      when(
+        mockCartRepo.updeateCartProudctQuantity(cartId, body),
+      ).thenAnswer((_) async => ApiErrorResult(failure: failure));
 
       // act
       final result = await usecase.invok(cartId, body);

@@ -5,8 +5,8 @@ class LoginRequestEntity extends Equatable {
   final String password;
 
   const LoginRequestEntity({required this.email, required this.password});
-  
+
   @override
   // TODO: implement props
-  List<Object?> get props => [email,password];
+  List<Object?> get props => [email, password];
 }

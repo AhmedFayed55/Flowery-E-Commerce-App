@@ -166,7 +166,8 @@ void main() {
         );
         return cubit;
       },
-      act: (cubit) => cubit.doIntent(const UpdeateCartItemQuantityEvent("123", 3)),
+      act: (cubit) =>
+          cubit.doIntent(const UpdeateCartItemQuantityEvent("123", 3)),
       expect: () => [
         isA<CartState>().having(
           (s) => s.isCartQuantityUpdatedLoading,
