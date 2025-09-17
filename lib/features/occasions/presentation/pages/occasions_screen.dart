@@ -8,11 +8,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../domain/entities/occasions_tabs_entity.dart';
+import '../../../home_screen/domain/entities/occasion_entity.dart';
 
 class OccasionsScreen extends StatefulWidget {
-  const OccasionsScreen({super.key, required this.occasionsList});
-  final List<OccasionsTabsEntity> occasionsList;
+  const OccasionsScreen({
+    super.key,
+    required this.occasionsList,
+    required this.startedIndex,
+  });
+
+  final List<OccasionEntity> occasionsList;
+  final int startedIndex;
 
   @override
   State<OccasionsScreen> createState() => _OccasionsScreenState();
@@ -28,6 +34,7 @@ class _OccasionsScreenState extends State<OccasionsScreen>
     _tabController = TabController(
       length: widget.occasionsList.length,
       vsync: this,
+      initialIndex: widget.startedIndex,
     );
   }
 
@@ -39,10 +46,15 @@ class _OccasionsScreenState extends State<OccasionsScreen>
 
   @override
   Widget build(BuildContext context) {
-    List<String> tabs = widget.occasionsList.map((e) => e.name!).toList();
-    List<String> ids = widget.occasionsList.map((e) => e.id!).toList();
+    List<String> tabs = widget.occasionsList.map((e) => e.name).toList();
+    List<String> ids = widget.occasionsList.map((e) => e.id).toList();
+    final viewModel = getIt<OccasionsCubit>();
     return BlocProvider(
-      create: (context) => getIt<OccasionsCubit>(),
+      create: (context) => viewModel
+        ..doIntent(
+          LoadOccasionsEvent(),
+          widget.occasionsList[widget.startedIndex].id,
+        ),
       child: Scaffold(
         body: SafeArea(
           child: Padding(
@@ -58,7 +70,7 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                       TabBar(
                         controller: _tabController,
                         onTap: (index) {
-                          context.read<OccasionsCubit>().doIntent(
+                          getIt<OccasionsCubit>().doIntent(
                             LoadOccasionsEvent(),
                             ids[index],
                           );
@@ -71,6 +83,7 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                         ids: ids,
                         tabs: tabs,
                         controller: _tabController,
+                        startedIndex: widget.startedIndex,
                       ),
                     ],
                   ),

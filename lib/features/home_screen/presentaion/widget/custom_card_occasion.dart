@@ -1,15 +1,16 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/occasion_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/routing/app_routes.dart';
+import '../../../../core/utils/app_constants.dart';
+import '../view_model/home_bloc.dart';
+
 class CustomCardOccasion extends StatelessWidget {
-  const CustomCardOccasion({
-    super.key,
-    required this.itemOccasion,
-    required this.onTap,
-  });
+  const CustomCardOccasion({super.key, required this.itemOccasion});
   final List<OccasionEntity> itemOccasion;
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,15 @@ class CustomCardOccasion extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: onTap,
+                onTap: () => context.pushNamed(
+                  AppRoutes.occasions,
+                  arguments: {
+                    AppConstants.occasionsParam: context
+                        .read<HomeBloc>()
+                        .occasion,
+                    AppConstants.index: index,
+                  },
+                ),
                 child: Image.network(
                   itemOccasion[index].image,
                   fit: BoxFit.fill,

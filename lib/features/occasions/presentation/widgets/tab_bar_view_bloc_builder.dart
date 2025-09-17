@@ -12,11 +12,13 @@ class TabBarViewBlocBuilder extends StatefulWidget {
     required this.tabs,
     required this.ids,
     required this.controller,
+    required this.startedIndex,
   });
 
   final List<String> tabs;
   final List<String> ids;
   final TabController controller;
+  final int startedIndex;
 
   @override
   State<TabBarViewBlocBuilder> createState() => _TabBarViewBlocBuilderState();
@@ -32,7 +34,7 @@ class _TabBarViewBlocBuilderState extends State<TabBarViewBlocBuilder>
     super.initState();
     context.read<OccasionsCubit>().doIntent(
       LoadOccasionsEvent(),
-      widget.ids[0],
+      widget.startedIndex.toString(),
     );
 
     widget.controller.addListener(() {

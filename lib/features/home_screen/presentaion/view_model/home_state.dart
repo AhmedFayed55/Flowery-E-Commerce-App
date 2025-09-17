@@ -1,26 +1,36 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/home_entity.dart';
+
+import '../../domain/entities/best_saller_entity.dart';
+import '../../domain/entities/home_entity.dart';
 
 // ignore: must_be_immutable
 class HomeState extends Equatable {
-  bool isLoadding = false;
+  bool isLoading = false;
   String errorMassage = '';
   HomeEntity? homeEntity;
-  HomeState({this.isLoadding = false, this.errorMassage = '', this.homeEntity});
+  List<BestSallerEntity> products;
+
+  HomeState({
+    this.isLoading = false,
+    this.errorMassage = '',
+    this.homeEntity,
+    this.products = const [],
+  });
 
   HomeState copyWith({
-    bool? isLoadding,
+    bool? isLoading,
     String? errorMassage,
     HomeEntity? homeEntity,
+    List<BestSallerEntity>? products,
   }) {
     return HomeState(
-      isLoadding: isLoadding ?? this.isLoadding,
+      isLoading: isLoading ?? this.isLoading,
       errorMassage: errorMassage ?? this.errorMassage,
       homeEntity: homeEntity ?? this.homeEntity,
+      products: products ?? this.products,
     );
   }
 
   @override
-  List<Object?> get props => [isLoadding, errorMassage, homeEntity];
+  List<Object?> get props => [isLoading, errorMassage, homeEntity, products];
 }

@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -14,13 +15,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../config/routing/app_routes.dart';
+import '../../../../core/utils/app_constants.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final HomeBloc viewModel = getIt<HomeBloc>();
     return BlocProvider(
-      create: (context) => getIt<HomeBloc>()..doIntent(GetHomeDataEvent()),
+      create: (context) => viewModel..doIntent(GetHomeDataEvent()),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
@@ -32,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 }
 
                 return Skeletonizer(
-                  enabled: state.isLoadding ? true : false,
+                  enabled: state.isLoading ? true : false,
                   child: Column(
                     children: [
                       const HomeSearchBar(),
@@ -73,13 +78,17 @@ class HomeScreen extends StatelessWidget {
                       ),
                       HeaderRow(
                         nameSection: AppLocalizations.of(context)!.occasion,
-                        //navigator to occasion Screen
-                        onPressed: () {},
+                        onPressed: () => context.pushNamed(
+                          AppRoutes.occasions,
+                          arguments: {
+                            AppConstants.occasionsParam: viewModel.occasion,
+                            AppConstants.index: 0,
+                          },
+                        ),
                       ),
 
                       CustomCardOccasion(
                         itemOccasion: state.homeEntity?.occasionEntity ?? [],
-                        onTap: () {},
                       ),
                     ],
                   ),
