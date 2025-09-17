@@ -5,5 +5,15 @@ abstract class AppRoutes {
   static const String emailVerification = "/emailVerification";
   static const String resetPassword = "/resetPassword";
   static const String mainLayout = "/mainLayout";
+  static const String profile = '/profile';
+  static const String terms = '/terms';
+  static const String aboutUs = '/aboutus';
+  static const String cart = "/cart";
+  static const String occasions = "/occasions";
+  static const String home = '/home';
   static const String changePassword = "/changePassword";
+  static const String addressDetails = "/addressDetails";
+  static const String savedAddresses = "/savedAddresses";
+  static const String logout = "/logout";
+  static const String mostSelling = "/mostSelling";
 }
