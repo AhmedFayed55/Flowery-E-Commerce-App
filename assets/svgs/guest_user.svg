@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFD3E2"/>
+      <stop offset="1" stop-color="#D21E6A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background circle -->
+  <circle cx="120" cy="120" r="118" fill="url(#g)" />
+
+  <!-- subtle inner circle -->
+  <circle cx="120" cy="120" r="96" fill="white" opacity="0.06"/>
+
+  <!-- person head -->
+  <circle cx="120" cy="88" r="30" fill="#FFFFFF" opacity="0.95"/>
+
+  <!-- person body (rounded) -->
+  <path d="M60 178c0-30 25-54 60-54s60 24 60 54v6H60v-6z" fill="#FFFFFF" opacity="0.95" />
+
+  <!-- outline for head -->
+  <circle cx="120" cy="88" r="30" fill="none" stroke="#000000" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- subtle shadow under body -->
+  <ellipse cx="120" cy="190" rx="52" ry="8" fill="#000000" opacity="0.06"/>
+
+  <!-- "Guest" label (optional inside SVG) -->
+  <text x="120" y="222" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FFFFFF" opacity="0.95">Guest</text>
+</svg>

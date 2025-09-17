@@ -15,17 +15,17 @@ void main() {
     MockApiServices mockApiServices = MockApiServices();
 
     UserModelDto userModelDto = const UserModelDto(
-      'sss',
-      'yahya',
-      'mohamed',
-      'yahya22@gmail.com',
-      'male',
-      '',
-      '',
-      '',
-      [],
-      [],
-      '',
+      id: 'sss',
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'yahya22@gmail.com',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      role: '',
+      wishlist: [],
+      addresses: [],
+      createdAt: '',
     );
 
     LoginResponceDto loginResponceDto = LoginResponceDto(
