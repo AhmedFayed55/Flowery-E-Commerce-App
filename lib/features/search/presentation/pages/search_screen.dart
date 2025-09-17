@@ -20,6 +20,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   SearchCubit searchCubit = getIt.get<SearchCubit>();
 
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
