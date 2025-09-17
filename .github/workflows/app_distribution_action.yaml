@@ -1,8 +1,9 @@
 name: Build & Distribute via Fastlane
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    branches:
+      - release  
   workflow_dispatch:
 jobs:
   build:
