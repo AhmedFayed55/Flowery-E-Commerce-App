@@ -431,29 +431,35 @@ abstract class AppLocalizations {
   /// **'Passwords do not match'**
   String get passwords_do_not_match;
 
-  /// No description provided for @bloom_with.
+  /// No description provided for @best_seller.
+  ///
+  /// In en, this message translates to:
+  /// **'Best Seller'**
+  String get best_seller;
+
+  /// No description provided for @bloom_with_our_exquisite_best_sellers.
   ///
   /// In en, this message translates to:
   /// **'Bloom with our exquisite best sellers'**
-  String get bloom_with;
-
-  /// No description provided for @occasion.
-  ///
-  /// In en, this message translates to:
-  /// **'Occasion'**
-  String get occasion;
-
-  /// No description provided for @add_to_cart.
-  ///
-  /// In en, this message translates to:
-  /// **'Add to cart'**
-  String get add_to_cart;
+  String get bloom_with_our_exquisite_best_sellers;
 
   /// No description provided for @egp.
   ///
   /// In en, this message translates to:
   /// **'EGP'**
   String get egp;
+
+  /// No description provided for @add_to_cart.
+  ///
+  /// In en, this message translates to:
+  /// **'add to cart'**
+  String get add_to_cart;
+
+  /// No description provided for @no_products.
+  ///
+  /// In en, this message translates to:
+  /// **'No Products founded'**
+  String get no_products;
 }
 
 class _AppLocalizationsDelegate

@@ -77,15 +77,6 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
-import '../../features/home_screen/data/data_sources/home_ds.dart' as _i635;
-import '../../features/home_screen/data/data_sources/home_ds_imp.dart' as _i58;
-import '../../features/home_screen/data/repositories/home_repo_imp.dart'
-    as _i177;
-import '../../features/home_screen/domain/repositories/home_repo.dart' as _i367;
-import '../../features/home_screen/domain/use_cases/home_use_case.dart'
-    as _i294;
-import '../../features/home_screen/presentaion/view_model/home_bloc.dart'
-    as _i341;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
 import '../network/dio_module.dart' as _i614;
@@ -149,9 +140,6 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
-    gh.factory<_i635.HomeDataSource>(
-      () => _i58.HomeDataSourceImp(gh<_i804.ApiServices>()),
-    );
     gh.factory<_i637.AuthRemoteDataSource>(
       () => _i30.AuthRemoteDataSourseImlp(gh<_i804.ApiServices>()),
     );
@@ -188,9 +176,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i580.LoginBloc>(
       () => _i580.LoginBloc(gh<_i630.LoginUseCase>()),
     );
-    gh.factory<_i367.HomeRepo>(
-      () => _i177.HomeRepoImp(gh<_i635.HomeDataSource>()),
-    );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
@@ -213,10 +198,6 @@ extension GetItInjectableX on _i174.GetIt {
         resetPasswordRepoContract: gh<_i735.ResetPasswordRepoContract>(),
       ),
     );
-    gh.factory<_i294.HomeUseCase>(
-      () => _i294.HomeUseCase(gh<_i367.HomeRepo>()),
-    );
-    gh.factory<_i341.HomeBloc>(() => _i341.HomeBloc(gh<_i294.HomeUseCase>()));
     gh.factory<_i444.RegisterCubit>(
       () => _i444.RegisterCubit(gh<_i752.RegisterUsecase>()),
     );

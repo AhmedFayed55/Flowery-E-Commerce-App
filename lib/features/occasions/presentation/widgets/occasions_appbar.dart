@@ -1,8 +1,9 @@
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
-import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/l10n/translations/app_localizations.dart';
 
 class OccasionsAppbar extends StatelessWidget {
   const OccasionsAppbar({super.key});

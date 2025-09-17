@@ -5,12 +5,14 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
+import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_constants.dart';
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
+import '../../features/home_screen/domain/entities/best_saller_entity.dart';
 import '../../features/main_layout/main_layout.dart';
 import 'app_routes.dart';
 
@@ -59,7 +61,11 @@ class RouteGenerator {
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
-
+      case AppRoutes.mostSelling:
+        final args = settings.arguments as List<BestSallerEntity>;
+        return MaterialPageRoute(
+          builder: (_) => MostSellingPage(products: args),
+        );
       default:
         return unDefinedRoute();
     }

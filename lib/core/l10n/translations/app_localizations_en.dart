@@ -108,28 +108,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get egp => 'EGP';
-
-  @override
-  String get view_all => 'View All';
+  String get home => 'Home';
 
   @override
   String get categories => 'Categories';
-
-  @override
-  String get best_seller => 'Best seller';
-
-  @override
-  String get occasion => 'Occasion';
-
-  @override
-  String get search => 'search';
-
-  @override
-  String get flower => 'Flower';
-
-  @override
-  String get home => 'Home';
 
   @override
   String get cart => 'Cart';
@@ -148,6 +130,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get best_seller => 'Best Seller';
+
+  @override
+  String get bloom_with_our_exquisite_best_sellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get add_to_cart => 'add to cart';
+
+  @override
+  String get no_products => 'No Products founded';
 
   @override
   String get reset_password => 'Reset Password';

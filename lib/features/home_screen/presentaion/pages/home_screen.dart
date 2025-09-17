@@ -68,7 +68,12 @@ class HomeScreen extends StatelessWidget {
                       HeaderRow(
                         nameSection: AppLocalizations.of(context)!.best_seller,
                         //navigator to bestSeller Screen
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushNamed(
+                            AppRoutes.mostSelling,
+                            arguments: state.homeEntity?.bestSallerEntity,
+                          );
+                        },
                       ),
 
                       CustomCardBestSaller(
