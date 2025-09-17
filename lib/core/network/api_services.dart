@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
+import 'package:flowers_ecommerce_app/features/address_details/data/models/request/add_new_address_request_dto.dart';
+import 'package:flowers_ecommerce_app/features/address_details/data/models/response/addresses_response_dto.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart';
@@ -69,6 +71,12 @@ abstract class ApiServices {
   Future<ChangePasswordResponseDto> changePassword(
     @Body() ChangePasswordRequestDto requestDto,
     @Header(ApiConstants.authorization) String token,
+  );
+
+  @PATCH(ApiConstants.address)
+  Future<AddressesResponseDto> addNewAddress(
+    @Header(ApiConstants.authorization) String token,
+    @Body() AddNewAddressRequestDto requestDto,
   );
 
   @DELETE("${ApiConstants.deleteOrGetSavedAddress}/{id}")

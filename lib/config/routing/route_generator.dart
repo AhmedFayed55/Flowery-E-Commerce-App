@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/features/address_details/presentation/manager/add_new_address_cubit/add_new_address_cubit.dart';
+import 'package:flowers_ecommerce_app/features/address_details/presentation/pages/address_details_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/domain/entity/email_verify_args.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/email_verification_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/forget_password_screen.dart';
@@ -5,21 +7,24 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
-import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
+import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
+import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
-import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
-import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
-import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
+import '../../core/di/di.dart';
 import '../../core/utils/app_constants.dart';
+import '../../features/address_details/presentation/manager/add_new_address_cubit/add_new_address_event.dart';
+import '../../features/address_details/presentation/manager/map_cubit/map_cubit.dart';
+import '../../features/address_details/presentation/manager/map_cubit/map_event.dart';
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
 import '../../features/home_screen/domain/entities/best_saller_entity.dart';
 import '../../features/main_layout/main_layout.dart';
@@ -95,6 +100,25 @@ class RouteGenerator {
 
       case AppRoutes.savedAddresses:
         return MaterialPageRoute(builder: (_) => const UserAddressesScreen());
+
+      case AppRoutes.addressDetails:
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<AddressDetailsCubit>()
+                      ..doIntent(GetAreasAndCitiesEvent()),
+              ),
+              BlocProvider(
+                create: (context) => getIt<MapCubit>()
+                  ..doIntent(RequestLocationPermissionEvent())
+                  ..doIntent(CheckLocationServiceEvent()),
+              ),
+            ],
+            child: const AddressDetailsScreen(),
+          ),
+        );
 
       default:
         return unDefinedRoute();
