@@ -44,7 +44,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const MainLayout());
 
       case AppRoutes.searchScreen:
-        return MaterialPageRoute(builder: (context) => SearchScreen());
+        return MaterialPageRoute(builder: (context) => const SearchScreen());
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
