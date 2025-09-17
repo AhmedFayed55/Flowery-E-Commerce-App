@@ -11,7 +11,7 @@ class SearchRepoImpl implements SearchRepo {
   SearchRepoImpl({required this.searchRemoteDataSource});
 
   @override
-  Future<ApiResult<SearchResponseEntity>> search(String? keyword) async {
+  Future<ApiResult<SearchResponseEntity>> search(String keyword) async {
     var result = await searchRemoteDataSource.search(keyword);
     return result;
   }

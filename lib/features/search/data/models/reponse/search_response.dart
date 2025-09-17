@@ -27,8 +27,8 @@ class SearchResponse {
   SearchResponseEntity toEntity() {
     return SearchResponseEntity(
       message: message,
-      metadataDto: metadataDto,
-      productsDto: productsDto,
+      metadataDtoEntity: metadataDto?.toEntity(),
+      productsDtoEntity: productsDto?.map((product) => product.toEntity()).toList(),
     );
   }
 }

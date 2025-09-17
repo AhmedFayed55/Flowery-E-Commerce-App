@@ -1,16 +1,16 @@
-import 'package:flowers_ecommerce_app/features/search/data/models/metadata_dto.dart';
-import 'package:flowers_ecommerce_app/features/search/data/models/products_dto.dart';
+import 'package:flowers_ecommerce_app/features/search/domain/entity/meatadata_dto_entity.dart';
+import 'package:flowers_ecommerce_app/features/search/domain/entity/products_dto_entity.dart';
 
 class SearchResponseEntity {
   final String? message;
 
-  final MetadataDto? metadataDto;
+  final MetadataDtoEntity? metadataDtoEntity;
 
-  final List<ProductsDto>? productsDto;
+  final List<ProductsDtoEntity>? productsDtoEntity;
 
   const SearchResponseEntity({
     this.message,
-    this.metadataDto,
-    this.productsDto,
+    this.metadataDtoEntity,
+    this.productsDtoEntity,
   });
 }

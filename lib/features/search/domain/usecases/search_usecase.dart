@@ -9,7 +9,7 @@ class SearchUseCase {
 
   SearchUseCase({required this.searchRepo});
 
-  Future<ApiResult<SearchResponseEntity>> call(String? keyword) async {
+  Future<ApiResult<SearchResponseEntity>> call(String keyword) async {
     var result = await searchRepo.search(keyword);
     return result;
   }

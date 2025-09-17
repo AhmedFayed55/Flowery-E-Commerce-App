@@ -13,7 +13,7 @@ class SearchRemoteDataSourceImpl implements SearchRemoteDataSource {
   SearchRemoteDataSourceImpl({required this.apiServices});
 
   @override
-  Future<ApiResult<SearchResponseEntity>> search(String? keyword) async {
+  Future<ApiResult<SearchResponseEntity>> search(String keyword) async {
     try {
       var responseResult = await apiServices.search(keyword);
       var entityResult = responseResult.toEntity();
