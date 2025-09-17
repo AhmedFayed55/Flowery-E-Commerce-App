@@ -13,21 +13,11 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:internet_connection_checker/internet_connection_checker.dart'
+    as _i973;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
-import '../../features/auth/change_password/data/data_sources/change_password_ds.dart'
-    as _i481;
-import '../../features/auth/change_password/data/data_sources/change_password_ds_impl.dart'
-    as _i964;
-import '../../features/auth/change_password/data/repositories/change_password_repo_impl.dart'
-    as _i960;
-import '../../features/auth/change_password/domain/repositories/change_password_repo.dart'
-    as _i784;
-import '../../features/auth/change_password/domain/use_cases/change_password_use_case.dart'
-    as _i792;
-import '../../features/auth/change_password/presentation/manager/change_password_cubit.dart'
-    as _i1035;
 import '../../features/auth/forget_password/datasource/datasources/remote/email_verify_remote_datasource.dart'
     as _i45;
 import '../../features/auth/forget_password/datasource/datasources/remote/email_verify_remote_datasource_impl.dart'
@@ -77,6 +67,19 @@ import '../../features/auth/register/domin/usecase/register_usecase.dart'
     as _i752;
 import '../../features/auth/register/presentation/view_model/cubit/register_cubit.dart'
     as _i444;
+import '../../features/cart/data/data_sources/cart_remote_data_sourse.dart'
+    as _i1046;
+import '../../features/cart/data/data_sources/cart_remote_data_sourse_impl.dart'
+    as _i84;
+import '../../features/cart/data/repo/cart_repo_impl.dart' as _i234;
+import '../../features/cart/domin/repo/cart_repo.dart' as _i1047;
+import '../../features/cart/domin/usecase/delete_cart_usecase.dart' as _i664;
+import '../../features/cart/domin/usecase/get_user_carts_usecase.dart'
+    as _i1043;
+import '../../features/cart/domin/usecase/updeate_cart_product_quantity_usecase.dart'
+    as _i177;
+import '../../features/cart/presentation/view_model/cubit/cart_cubit.dart'
+    as _i323;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
 import '../network/dio_module.dart' as _i614;
@@ -101,6 +104,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => databaseModule.flutterSecureStorage(),
     );
+    gh.lazySingleton<_i973.InternetConnectionChecker>(
+      () => dioModule.connectionChecker,
+    );
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => dioModule.providePrettyDioLogger(),
@@ -115,17 +121,11 @@ extension GetItInjectableX on _i174.GetIt {
         sharedPreferences: gh<_i460.SharedPreferences>(),
       ),
     );
-    gh.factory<_i481.ChangePasswordDataSource>(
-      () => _i964.ChangePasswordDataSourceImpl(
-        gh<_i804.ApiServices>(),
-        gh<_i227.TokenService>(),
-      ),
-    );
     gh.factory<_i42.SharedPrefHelper>(
       () => _i42.SharedPrefHelper(gh<_i460.SharedPreferences>()),
     );
-    gh.factory<_i784.ChangePasswordRepo>(
-      () => _i960.ChangePasswordRepoImpl(gh<_i481.ChangePasswordDataSource>()),
+    gh.factory<_i1046.CartRemoteDataSourse>(
+      () => _i84.CartRemoteDataSourseImpl(gh<_i804.ApiServices>()),
     );
     gh.factory<_i172.LoginRepo>(
       () => _i408.LoginRepoImp(gh<_i773.LoginDataSource>()),
@@ -167,20 +167,20 @@ extension GetItInjectableX on _i174.GetIt {
         emailVerifyRepoContract: gh<_i209.EmailVerifyRepoContract>(),
       ),
     );
-    gh.factory<_i792.ChangePasswordUseCase>(
-      () => _i792.ChangePasswordUseCase(gh<_i784.ChangePasswordRepo>()),
-    );
     gh.factory<_i630.LoginUseCase>(
       () => _i630.LoginUseCase(gh<_i172.LoginRepo>()),
+    );
+    gh.factory<_i1047.CartRepo>(
+      () => _i234.CartRepoImpl(
+        gh<_i1046.CartRemoteDataSourse>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
     );
     gh.factory<_i580.LoginBloc>(
       () => _i580.LoginBloc(gh<_i630.LoginUseCase>()),
     );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
-    );
-    gh.factory<_i1035.ChangePasswordCubit>(
-      () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
     );
     gh.factory<_i107.ForgetPasswordUseCase>(
       () => _i107.ForgetPasswordUseCase(
@@ -193,9 +193,25 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i217.ResetPasswordRemoteDataSource>(),
       ),
     );
+    gh.factory<_i664.DeleteCartUsecase>(
+      () => _i664.DeleteCartUsecase(gh<_i1047.CartRepo>()),
+    );
+    gh.factory<_i1043.GetUserCartsUsecase>(
+      () => _i1043.GetUserCartsUsecase(gh<_i1047.CartRepo>()),
+    );
+    gh.factory<_i177.UpdeateCartProductQuantityUsecase>(
+      () => _i177.UpdeateCartProductQuantityUsecase(gh<_i1047.CartRepo>()),
+    );
     gh.factory<_i801.ResetPasswordUseCase>(
       () => _i801.ResetPasswordUseCase(
         resetPasswordRepoContract: gh<_i735.ResetPasswordRepoContract>(),
+      ),
+    );
+    gh.factory<_i323.CartCubit>(
+      () => _i323.CartCubit(
+        gh<_i1043.GetUserCartsUsecase>(),
+        gh<_i664.DeleteCartUsecase>(),
+        gh<_i177.UpdeateCartProductQuantityUsecase>(),
       ),
     );
     gh.factory<_i444.RegisterCubit>(

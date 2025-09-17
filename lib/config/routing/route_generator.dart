@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,6 +67,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => MostSellingPage(products: args),
         );
+      case AppRoutes.cart:
+        return MaterialPageRoute(builder: (context) => const CartPage());
+
       default:
         return unDefinedRoute();
     }

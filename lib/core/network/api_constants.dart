@@ -10,4 +10,6 @@ abstract class ApiConstants {
   static const String changePassword = "auth/change-password";
   static const String ocassion = "Ocassion";
   static const String getSpecificOccasion = "products";
+  static const String cart = "cart";
+  static const String cartUD = "cart/{id}";
 }

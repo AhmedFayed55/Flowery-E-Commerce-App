@@ -3,13 +3,9 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i9;
+import 'dart:async' as _i11;
 
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i8;
-import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/request/change_password_request_dto.dart'
-    as _i12;
-import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/response/change_password_response_dto.dart'
-    as _i7;
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i10;
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart'
     as _i4;
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart'
@@ -17,13 +13,21 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/m
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart'
     as _i5;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
-    as _i10;
+    as _i12;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
     as _i2;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
-    as _i11;
+    as _i13;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
     as _i6;
+import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item_respone/delete_cart_item_respone.dart'
+    as _i9;
+import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart'
+    as _i14;
+import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart'
+    as _i8;
+import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart'
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -70,106 +74,142 @@ class _FakeRegisterResponeDto_4 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeChangePasswordResponseDto_5 extends _i1.SmartFake
-    implements _i7.ChangePasswordResponseDto {
-  _FakeChangePasswordResponseDto_5(Object parent, Invocation parentInvocation)
+class _FakeUserCartDto_5 extends _i1.SmartFake implements _i7.UserCartDto {
+  _FakeUserCartDto_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeUpdeateProudactQuantityRespone_6 extends _i1.SmartFake
+    implements _i8.UpdeateProudactQuantityRespone {
+  _FakeUpdeateProudactQuantityRespone_6(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(parent, parentInvocation);
+}
+
+class _FakeDeleteCartItemRespone_7 extends _i1.SmartFake
+    implements _i9.DeleteCartItemRespone {
+  _FakeDeleteCartItemRespone_7(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i8.ApiServices {
+class MockApiServices extends _i1.Mock implements _i10.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i9.Future<_i2.LoginResponceDto> login(
-    _i10.LoginRequestDto? loginRequestDto,
+  _i11.Future<_i2.LoginResponceDto> login(
+    _i12.LoginRequestDto? loginRequestDto,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#login, [loginRequestDto]),
-            returnValue: _i9.Future<_i2.LoginResponceDto>.value(
+            returnValue: _i11.Future<_i2.LoginResponceDto>.value(
               _FakeLoginResponceDto_0(
                 this,
                 Invocation.method(#login, [loginRequestDto]),
               ),
             ),
           )
-          as _i9.Future<_i2.LoginResponceDto>);
+          as _i11.Future<_i2.LoginResponceDto>);
 
   @override
-  _i9.Future<_i3.ForgetPasswordModel> forgetPassword(
+  _i11.Future<_i3.ForgetPasswordModel> forgetPassword(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [body]),
-            returnValue: _i9.Future<_i3.ForgetPasswordModel>.value(
+            returnValue: _i11.Future<_i3.ForgetPasswordModel>.value(
               _FakeForgetPasswordModel_1(
                 this,
                 Invocation.method(#forgetPassword, [body]),
               ),
             ),
           )
-          as _i9.Future<_i3.ForgetPasswordModel>);
+          as _i11.Future<_i3.ForgetPasswordModel>);
 
   @override
-  _i9.Future<_i4.EmailVerifyModel> verifyResetCode(
+  _i11.Future<_i4.EmailVerifyModel> verifyResetCode(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [body]),
-            returnValue: _i9.Future<_i4.EmailVerifyModel>.value(
+            returnValue: _i11.Future<_i4.EmailVerifyModel>.value(
               _FakeEmailVerifyModel_2(
                 this,
                 Invocation.method(#verifyResetCode, [body]),
               ),
             ),
           )
-          as _i9.Future<_i4.EmailVerifyModel>);
+          as _i11.Future<_i4.EmailVerifyModel>);
 
   @override
-  _i9.Future<_i5.ResetPasswordModel> resetPassword(
+  _i11.Future<_i5.ResetPasswordModel> resetPassword(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [body]),
-            returnValue: _i9.Future<_i5.ResetPasswordModel>.value(
+            returnValue: _i11.Future<_i5.ResetPasswordModel>.value(
               _FakeResetPasswordModel_3(
                 this,
                 Invocation.method(#resetPassword, [body]),
               ),
             ),
           )
-          as _i9.Future<_i5.ResetPasswordModel>);
+          as _i11.Future<_i5.ResetPasswordModel>);
 
   @override
-  _i9.Future<_i6.RegisterResponeDto> register(_i11.RegisterBodyDTo? request) =>
+  _i11.Future<_i6.RegisterResponeDto> register(_i13.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i9.Future<_i6.RegisterResponeDto>.value(
+            returnValue: _i11.Future<_i6.RegisterResponeDto>.value(
               _FakeRegisterResponeDto_4(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i9.Future<_i6.RegisterResponeDto>);
+          as _i11.Future<_i6.RegisterResponeDto>);
 
   @override
-  _i9.Future<_i7.ChangePasswordResponseDto> changePassword(
-    _i12.ChangePasswordRequestDto? requestDto,
-    String? token,
+  _i11.Future<_i7.UserCartDto> getUserCart() =>
+      (super.noSuchMethod(
+            Invocation.method(#getUserCart, []),
+            returnValue: _i11.Future<_i7.UserCartDto>.value(
+              _FakeUserCartDto_5(this, Invocation.method(#getUserCart, [])),
+            ),
+          )
+          as _i11.Future<_i7.UserCartDto>);
+
+  @override
+  _i11.Future<_i8.UpdeateProudactQuantityRespone> updeateCartProudctQuantity(
+    String? id,
+    _i14.UpdeateCartProuductQuantityBody? body,
   ) =>
       (super.noSuchMethod(
-            Invocation.method(#changePassword, [requestDto, token]),
-            returnValue: _i9.Future<_i7.ChangePasswordResponseDto>.value(
-              _FakeChangePasswordResponseDto_5(
+            Invocation.method(#updeateCartProudctQuantity, [id, body]),
+            returnValue: _i11.Future<_i8.UpdeateProudactQuantityRespone>.value(
+              _FakeUpdeateProudactQuantityRespone_6(
                 this,
-                Invocation.method(#changePassword, [requestDto, token]),
+                Invocation.method(#updeateCartProudctQuantity, [id, body]),
               ),
             ),
           )
-          as _i9.Future<_i7.ChangePasswordResponseDto>);
+          as _i11.Future<_i8.UpdeateProudactQuantityRespone>);
+
+  @override
+  _i11.Future<_i9.DeleteCartItemRespone> deleteCartProudct(String? id) =>
+      (super.noSuchMethod(
+            Invocation.method(#deleteCartProudct, [id]),
+            returnValue: _i11.Future<_i9.DeleteCartItemRespone>.value(
+              _FakeDeleteCartItemRespone_7(
+                this,
+                Invocation.method(#deleteCartProudct, [id]),
+              ),
+            ),
+          )
+          as _i11.Future<_i9.DeleteCartItemRespone>);
 }
