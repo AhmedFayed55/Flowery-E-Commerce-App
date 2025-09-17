@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -78,9 +79,10 @@ class UserAddressesScreen extends StatelessWidget {
                         );
                 },
               ),
-              ElevatedButton(onPressed: () {
-                // navigate to address details screen
-              }, child: Text(AppLocalizations.of(context)!.add_new_address))
+              ElevatedButton(
+                onPressed: () => context.pushNamed(AppRoutes.addressDetails),
+                child: Text(AppLocalizations.of(context)!.add_new_address),
+              ),
             ],
           ),
         ),
