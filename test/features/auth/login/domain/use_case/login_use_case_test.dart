@@ -17,15 +17,16 @@ void main() {
       password: 'yahya22!',
     );
     UserEntity userEntity = const UserEntity(
-      'yahya',
-      'mohamed',
-      'ym',
-      'male',
-      '',
-      '',
-      [],
-      [],
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'ym',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      wishlist: [],
+      addresses: [],
     );
+
     var expectedResult = ApiSuccessResult<UserEntity>(data: userEntity);
     MockLoginRepo mockLoginRepo = MockLoginRepo();
     LoginUseCase loginUseCase = LoginUseCase(mockLoginRepo);

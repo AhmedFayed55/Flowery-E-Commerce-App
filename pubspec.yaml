@@ -38,6 +38,12 @@ dependencies:
   equatable: ^2.0.5
   location: ^8.0.1
   google_maps_flutter: ^2.13.1
+  shimmer:
+  google_fonts: ^6.2.1
+  skeletonizer: ^2.1.0+1
+  numberpicker: ^2.1.2
+  package_info_plus: ^4.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -50,14 +56,20 @@ dev_dependencies:
   test: ^1.25.15
   mockito: ^5.4.6
 
+
 flutter:
 
   uses-material-design: true
   generate: true
 
 
+
+
+
   assets:
+    - lib/core/utils/images/
     - assets/svgs/
+    - assets/json_file/
     - assets/json/
 
 
