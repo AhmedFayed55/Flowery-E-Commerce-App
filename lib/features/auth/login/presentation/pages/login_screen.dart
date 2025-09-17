@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 Navigator.pushReplacementNamed(
                   context,
-                  AppRoutes.resetPassword,
+                  AppRoutes.mainLayout,
                 );
               }
             },

@@ -1,0 +1,33 @@
+name: Build & Distribute via Fastlane
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔽 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 📌 Get Flutter Version
+        id: flutter_version
+        run: echo "version=$(grep flutter pubspec.lock | awk '{print $2}' | tr -d '\"')" >> $GITHUB_OUTPUT
+
+      - name: 🔧 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.flutter_version.outputs.version }}
+
+      - name: 📦 Install Ruby & Fastlane
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby-full -y
+          sudo gem install fastlane -NV
+
+      - name: 🚀 Run Fastlane Firebase Distribution
+        run: fastlane firebase_distribution
+        env:
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
