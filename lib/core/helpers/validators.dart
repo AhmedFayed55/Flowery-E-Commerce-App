@@ -69,4 +69,11 @@ abstract class Validations {
     }
     return null;
   }
+
+  static String? validateRequired(String? value) {
+    if (value == null || value.isEmpty) {
+      return "This field is required";
+    }
+    return null;
+  }
 }

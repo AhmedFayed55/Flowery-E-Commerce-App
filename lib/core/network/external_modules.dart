@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/di/modules/token_interceptor.dart';
 import 'package:injectable/injectable.dart';
+import 'package:location/location.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -34,4 +35,7 @@ abstract class ExternalModules {
   @lazySingleton
   InternetConnectionChecker get connectionChecker =>
       InternetConnectionChecker.instance;
+
+  @lazySingleton
+  Location provideLocation() => Location();
 }
