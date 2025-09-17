@@ -1,7 +1,9 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
+import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_cubit.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_event.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_state.dart';
@@ -14,6 +16,8 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/widget/versi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../auth/logout/presentation/pages/logout_screen.dart';
 
 class ProfileSettingScreen extends StatefulWidget {
   const ProfileSettingScreen({super.key});
@@ -29,6 +33,8 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
 
     super.initState();
   }
+
+  bool enabled = getIt<TokenService>().isTokenSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -103,13 +109,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                     },
                   ),
                   const Divider(),
-                  CustomRow(
-                    firstIcon: const Icon(Icons.logout_outlined),
-                    title: lang.logout,
-                    lastWidget: const Icon(Icons.logout_rounded),
-                    //logout action
-                    onPressed: () {},
-                  ),
+                  ?enabled ? const LogoutScreen() : null,
                   const Spacer(),
                   VersionWidget(
                     buildNumber: state.buildNumber,

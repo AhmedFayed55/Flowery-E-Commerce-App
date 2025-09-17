@@ -18,6 +18,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
+import '../../features/auth/logout/data/models/logout_response_dto.dart';
 import '../../features/occasions/data/models/occasions_response_dto.dart';
 
 part 'api_services.g.dart';
@@ -64,6 +65,11 @@ abstract class ApiServices {
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(
     @Body() ChangePasswordRequestDto requestDto,
+    @Header(ApiConstants.authorization) String token,
+  );
+
+  @GET(ApiConstants.logout)
+  Future<LogoutResponseDto> logout(
     @Header(ApiConstants.authorization) String token,
   );
 }

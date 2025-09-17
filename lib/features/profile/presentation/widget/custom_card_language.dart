@@ -22,7 +22,13 @@ class CustomCard extends StatelessWidget {
           child: Card(
             child: Padding(
               padding: EdgeInsets.all(8.0.sp),
-              child: Row(children: [Text(title), const Spacer(), icon]),
+              child: Row(
+                children: [
+                  Text(title, style: Theme.of(context).textTheme.bodySmall),
+                  const Spacer(),
+                  icon,
+                ],
+              ),
             ),
           ),
         ),

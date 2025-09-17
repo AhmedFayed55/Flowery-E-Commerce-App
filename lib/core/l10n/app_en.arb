@@ -51,7 +51,6 @@
   "arabic":"Arabic",
   "english":"English",
   "about_us":"About us",
-  "logout":"Logout",
   "change_language":"Change Language",
   "my_order":"My orders",
   "saved_address":"Saved address",
@@ -69,9 +68,11 @@
   "password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least": "Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least",
   "password_is_required": "Password is required",
   "password_must_be_at_least_6_characters": "Password must be at least 6 characters",
+  "confirm_logout": "Confirm Logout!!",
+  "cancel": "Cancel",
+  "logout_successfully": "Logout Successfully",
   "bloom_with_our_exquisite_best_sellers" : "Bloom with our exquisite best sellers",
   "no_products" : "No Products founded",
-  "passwords_do_not_match": "Passwords do not match",
   "bloom_with" : "Bloom with our exquisite best sellers",
   "you_should_login":"You should login first",
   "some_thing_went_wrong":"Something went wrong",
@@ -87,7 +88,7 @@
   "order_summary":"Order Summary",
   "place_order":"Place Order",
   "order_placed_successfully":"Order placed successfully",
-  "order_placed":"Order Placed"
-
-
+  "order_placed":"Order Placed",
+  "logout":"logout",
+  "passwords_do_not_match":"Passwords Don't Match"
 }

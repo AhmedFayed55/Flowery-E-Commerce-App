@@ -81,7 +81,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get female => 'Female';
 
   @override
-  String get terms_conditions => 'Terms & Conditions';
+  String get terms_conditions => 'Terms&Conditions';
 
   @override
   String get agree_to_our => 'Creating an account, you agree to our';
@@ -130,36 +130,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
-
-  @override
-  String get notification => 'Notification';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get arabic => 'Arabic';
-
-  @override
-  String get english => 'English';
-
-  @override
-  String get about_us => 'About us';
-
-  @override
-  String get logout => 'Logout';
-
-  @override
-  String get change_language => 'Change Language';
-
-  @override
-  String get flower => 'Flower';
-
-  @override
-  String get my_order => 'My orders';
-
-  @override
-  String get saved_address => 'Saved address';
 
   @override
   String get reset_password => 'Reset Password';

@@ -3,6 +3,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/forget_password_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation/pages/reset_password.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
+import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
@@ -86,6 +87,9 @@ class RouteGenerator {
         );
       case AppRoutes.cart:
         return MaterialPageRoute(builder: (context) => const CartPage());
+
+      case AppRoutes.logout:
+        return MaterialPageRoute(builder: (context) => const LogoutScreen());
 
       default:
         return unDefinedRoute();

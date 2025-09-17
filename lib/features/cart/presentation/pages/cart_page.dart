@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -21,7 +22,12 @@ class CartPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(trans.you_should_login),
+                Text(
+                  trans.you_should_login,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium!.copyWith(color: AppColors.black),
+                ),
                 verticalSpace(20),
                 ElevatedButton(
                   onPressed: () {

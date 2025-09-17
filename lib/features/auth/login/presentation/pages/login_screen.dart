@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(AppLocalizations.of(context)!.login),
         ),
         body: Padding(
@@ -187,13 +187,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text(
                             AppLocalizations.of(context)!.dont_have_an_account,
+                            style: Theme.of(context).textTheme.bodySmall,
                           ),
                           TextButton(
                             onPressed: () {
                               context.pushNamed(AppRoutes.register);
                             },
                             child: Text(
-                              '${AppLocalizations.of(context)!.sign_up}?',
+                              AppLocalizations.of(context)!.sign_up,
                               style: Theme.of(context).textTheme.displayMedium!
                                   .copyWith(
                                     decoration: TextDecoration.underline,
