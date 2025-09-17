@@ -81,7 +81,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get female => 'Female';
 
   @override
-  String get terms_conditions => 'Terms&Conditions';
+  String get terms_conditions => 'Terms & Conditions';
 
   @override
   String get agree_to_our => 'Creating an account, you agree to our';
@@ -108,28 +108,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get egp => 'EGP';
-
-  @override
-  String get view_all => 'View All';
+  String get home => 'Home';
 
   @override
   String get categories => 'Categories';
-
-  @override
-  String get best_seller => 'Best seller';
-
-  @override
-  String get occasion => 'Occasion';
-
-  @override
-  String get search => 'search';
-
-  @override
-  String get flower => 'Flower';
-
-  @override
-  String get home => 'Home';
 
   @override
   String get cart => 'Cart';
@@ -148,6 +130,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get about_us => 'About us';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get change_language => 'Change Language';
+
+  @override
+  String get flower => 'Flower';
+
+  @override
+  String get my_order => 'My orders';
+
+  @override
+  String get saved_address => 'Saved address';
 
   @override
   String get reset_password => 'Reset Password';
@@ -197,60 +209,5 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 6 characters';
 
   @override
-  String get bloom_with_our_exquisite_best_sellers =>
-      'Bloom with our exquisite best sellers';
-
-  @override
-  String get no_products => 'No Products founded';
-
-  @override
   String get passwords_do_not_match => 'Passwords do not match';
-
-  @override
-  String get bloom_with => 'Bloom with our exquisite best sellers';
-
-  @override
-  String get you_should_login => 'You should login first';
-
-  @override
-  String get some_thing_went_wrong => 'Something went wrong';
-
-  @override
-  String get your_cart_is_empty => 'Your cart is empty';
-
-  @override
-  String get total => 'Total';
-
-  @override
-  String get checkout => 'Checkout';
-
-  @override
-  String get add_to_cart => 'Add to cart';
-
-  @override
-  String get remove_from_cart => 'Remove from cart';
-
-  @override
-  String get quantity => 'Quantity';
-
-  @override
-  String get items => 'Items';
-
-  @override
-  String get delivery_fee => 'Delivery Fee';
-
-  @override
-  String get subtotal => 'Subtotal';
-
-  @override
-  String get order_summary => 'Order Summary';
-
-  @override
-  String get place_order => 'Place Order';
-
-  @override
-  String get order_placed_successfully => 'Order placed successfully';
-
-  @override
-  String get order_placed => 'Order Placed';
 }

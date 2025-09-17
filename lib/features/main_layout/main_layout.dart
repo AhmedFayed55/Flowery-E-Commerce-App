@@ -7,6 +7,8 @@ import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/hom
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../profile/presentation/pages/profile_screen.dart';
+
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 
@@ -24,7 +26,7 @@ class _MainLayoutState extends State<MainLayout> {
       const HomeScreen(),
       Center(child: Text(locale.categories)),
       const CartPage(),
-      Center(child: Text(locale.profile)),
+      const ProfileSettingScreen(),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(

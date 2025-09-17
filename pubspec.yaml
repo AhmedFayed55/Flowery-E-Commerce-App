@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^6.2.1
   skeletonizer: ^2.1.0+1
   numberpicker: ^2.1.2
+  package_info_plus: ^4.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -51,15 +53,20 @@ dev_dependencies:
   test: ^1.25.15
   mockito: ^5.4.6
 
+
 flutter:
 
   uses-material-design: true
   generate: true
 
 
+
+
+
   assets:
-   - lib/core/utils/images/
-   - assets/svgs/
+    - lib/core/utils/images/
+    - assets/svgs/
+    - assets/json_file/
 
 
   # fonts:

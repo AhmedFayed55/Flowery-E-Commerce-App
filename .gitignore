@@ -45,6 +45,7 @@ app.*.map.json
 /android/app/release
 lib/core/network/api_services.g.dart
 lib/core/di/di.config.dart
+lib/core/di/di.config.dart
 # Generated files (build_runner, json_serializable, injectable, etc.)
 **/*.g.dart
 **/*.freezed.dart

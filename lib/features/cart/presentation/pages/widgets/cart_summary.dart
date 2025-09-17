@@ -82,7 +82,10 @@ class CartSummary extends StatelessWidget {
               ],
             ),
             verticalSpace(24.h),
-            ElevatedButton(onPressed: () {}, child: Text(trans.checkout)),
+            ElevatedButton(
+              onPressed: state.userCart!.cart.cartItems!.isEmpty ? null : () {},
+              child: Text(trans.checkout),
+            ),
           ],
         );
       },

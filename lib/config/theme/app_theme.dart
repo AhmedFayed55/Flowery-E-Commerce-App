@@ -159,7 +159,13 @@ abstract class AppTheme {
           fontWeight: AppFontWeight.medium,
           color: AppColors.pink,
         ),
+        titleLarge: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20.sp,
+          color: AppColors.pink,
+        ),
       ),
+      dividerTheme: DividerThemeData(color: AppColors.white[70]),
     );
   }
 
