@@ -61,8 +61,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     }
                     if (state.isError) {
                       return Center(
-                        child: Text(
-                          AppLocalizations.of(context)!.error,
+                        child: Text(state.errorMessage ?? AppLocalizations.of(context)!.error,
                           style: Theme.of(context).textTheme.labelMedium
                               ?.copyWith(
                                 color: AppColors.pink,
