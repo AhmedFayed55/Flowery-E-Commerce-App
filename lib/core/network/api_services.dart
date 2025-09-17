@@ -13,6 +13,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
+import '../../features/occasions/data/models/occasions_response_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -36,6 +37,9 @@ abstract class ApiServices {
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
+
+  @GET(ApiConstants.getSpecificOccasion)
+  Future<OccasionsResponseDto> getOccasions();
 
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(

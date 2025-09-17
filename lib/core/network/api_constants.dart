@@ -8,4 +8,6 @@ abstract class ApiConstants {
   static const String resetPassword = "auth/resetPassword";
   static const String homeEndpoint = 'home';
   static const String changePassword = "auth/change-password";
+  static const String ocassion = "Ocassion";
+  static const String getSpecificOccasion = "products";
 }

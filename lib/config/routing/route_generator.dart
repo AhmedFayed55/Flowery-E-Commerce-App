@@ -5,9 +5,11 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
+import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/utils/app_constants.dart';
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
 import '../../features/main_layout/main_layout.dart';
 import 'app_routes.dart';
@@ -45,6 +47,15 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const MainLayout());
       case AppRoutes.home:
         return MaterialPageRoute(builder: (context) => const HomeScreen());
+
+      case AppRoutes.occasions:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder: (context) => OccasionsScreen(
+            occasionsList: args[AppConstants.occasionsParam],
+            startedIndex: args[AppConstants.index],
+          ),
+        );
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());

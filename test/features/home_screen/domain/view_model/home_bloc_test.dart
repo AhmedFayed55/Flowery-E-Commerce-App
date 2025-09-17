@@ -49,7 +49,7 @@ void main() {
 
   group('bloc Test', () {
     blocTest<HomeBloc, HomeState>(
-      'should emit[loadding , success] when homeUseCase return success',
+      'should emit[loading , success] when homeUseCase return success',
       build: () {
         when(mockHomeUseCase.call()).thenAnswer((_) async => successResult);
         return HomeBloc(mockHomeUseCase);
@@ -59,8 +59,18 @@ void main() {
         verify(mockHomeUseCase.call()).called(1);
       },
       expect: () => [
-        HomeState(isLoadding: true, homeEntity: null, errorMassage: ''),
-        HomeState(isLoadding: false, homeEntity: homeEntity, errorMassage: ''),
+        HomeState(
+          isLoading: true,
+          homeEntity: null,
+          errorMassage: '',
+          products: const [],
+        ),
+        HomeState(
+          isLoading: false,
+          homeEntity: homeEntity,
+          errorMassage: '',
+          products: homeEntity.bestSallerEntity,
+        ),
       ],
     );
 
@@ -79,7 +89,7 @@ void main() {
         verify(mockHomeUseCase.call()).called(1);
       },
       expect: () => [
-        HomeState(isLoadding: true),
+        HomeState(isLoading: true),
         HomeState(errorMassage: 'something error'),
       ],
     );

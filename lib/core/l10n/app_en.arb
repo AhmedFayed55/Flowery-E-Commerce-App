@@ -60,5 +60,7 @@
   "password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least": "Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least",
   "password_is_required": "Password is required",
   "password_must_be_at_least_6_characters": "Password must be at least 6 characters",
-  "passwords_do_not_match": "Passwords do not match"
+  "passwords_do_not_match": "Passwords do not match",
+  "bloom_with" : "Bloom with our exquisite best sellers",
+  "add_to_cart": "Add to cart"
 }

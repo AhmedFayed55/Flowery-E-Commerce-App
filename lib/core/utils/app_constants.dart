@@ -13,6 +13,8 @@ abstract class AppConstants {
 
   static const String noInternet = 'No Internet Connection';
   static const String error = 'error';
+  static const String index = 'index';
+  static const String occasionsParam = "occasions";
 
   //argument_key
   static const String bestSellerKey = 'bestSellerKey';
