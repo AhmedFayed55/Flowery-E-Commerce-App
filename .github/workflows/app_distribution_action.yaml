@@ -3,8 +3,8 @@ name: Build & Distribute via Fastlane
 on:
   pull_request:
     branches:
-      - release 
-  workflow_dispatch: 
+      - release  
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,8 +17,7 @@ jobs:
       - name: 📌 Get Flutter Version
         id: flutter_version
         run: |
-          version=$(grep -m 1 "flutter:" pubspec.lock | awk '{print $2}' | tr -d '"')
-          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "version=$(grep 'flutter:' pubspec.lock | awk '{print $2}' | tr -d '\"')" >> $GITHUB_OUTPUT
 
       - name: 🔧 Setup Flutter
         uses: subosito/flutter-action@v2
@@ -32,6 +31,8 @@ jobs:
           sudo gem install fastlane -NV
 
       - name: 🚀 Run Fastlane Firebase Distribution
-        run: fastlane firebase_distribution
+        run: |
+          cd android
+          fastlane firebase_distribution
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
