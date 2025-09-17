@@ -14,7 +14,7 @@ class TokenInterceptor extends Interceptor {
   ) async {
     final String? token = await tokenService.getToken();
     if (token != null) {
-      options.headers[AppConstants.token] = token;
+      options.headers[AppConstants.authorization] = "Bearer $token";
     }
     return super.onRequest(options, handler);
   }
