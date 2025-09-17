@@ -13,5 +13,13 @@ abstract class AppConstants {
 
   static const String noInternet = 'No Internet Connection';
   static const String error = 'error';
+  static const String index = 'index';
+  static const String occasionsParam = "occasions";
+
+  //argument_key
+  static const String bestSellerKey = 'bestSellerKey';
+  static const String categoryKey = 'categoryKey';
+  static const String occasionKey = 'occassionKey';
+  static const String productKey = 'productKey';
   static const String bearer = "Bearer";
 }

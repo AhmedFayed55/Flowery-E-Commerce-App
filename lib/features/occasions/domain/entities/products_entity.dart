@@ -18,7 +18,7 @@ class ProductsEntity {
   final bool? isSuperAdmin;
   final int? sold;
 
-  ProductsEntity ({
+  ProductsEntity({
     this.rateAvg,
     this.rateCount,
     this.id,
@@ -38,5 +38,4 @@ class ProductsEntity {
     this.isSuperAdmin,
     this.sold,
   });
-
 }

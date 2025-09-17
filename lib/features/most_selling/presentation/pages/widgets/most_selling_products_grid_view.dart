@@ -1,10 +1,11 @@
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/widgets/product_cart.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../../home_screen/domain/entities/best_saller_entity.dart';
+
 class MostSellingProductsGridView extends StatelessWidget {
-  const MostSellingProductsGridView({super.key , required this.products});
-  final List<ProductsEntity> products ;
+  const MostSellingProductsGridView({super.key, required this.products});
+  final List<BestSallerEntity> products;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,10 +14,10 @@ class MostSellingProductsGridView extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-         crossAxisCount: 2,
-          childAspectRatio: 1.94/3,
+          crossAxisCount: 2,
+          childAspectRatio: 1.94 / 3,
           crossAxisSpacing: 17,
-          mainAxisSpacing: 17
+          mainAxisSpacing: 17,
         ),
         itemCount: products.length,
         itemBuilder: (context, index) {
@@ -25,7 +26,8 @@ class MostSellingProductsGridView extends StatelessWidget {
               // Navigator.pushNamed(context, AppRoutes.productDetails,
               //     arguments: products[index].id);
             },
-            child: ProductCart(product: products[index]));
+            child: ProductCart(product: products[index]),
+          );
         },
       ),
     );

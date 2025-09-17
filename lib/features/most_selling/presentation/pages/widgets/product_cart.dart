@@ -1,13 +1,13 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/features/most_selling/presentation/entites/products_entity.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductCart extends StatelessWidget {
   const ProductCart({super.key, required this.product});
-  final ProductsEntity product;
+  final BestSallerEntity product;
 
   String editTitle(String title) {
     List<String> words = title.split(' ');
@@ -39,20 +39,20 @@ class ProductCart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.network(
-            product.imgCover ?? '',
+            product.imgCover,
             width: 147.w,
             height: 131.h,
             fit: BoxFit.fill,
           ),
           Flexible(
             child: Padding(
-              padding:  REdgeInsets.only(left: 13.5),
+              padding: REdgeInsets.only(left: 13.5),
               child: Column(
                 spacing: 4.h,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    editTitle(product.title ?? ''),
+                    editTitle(product.title),
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall,
                   ),
@@ -64,12 +64,12 @@ class ProductCart extends StatelessWidget {
                         style: theme.textTheme.titleSmall,
                       ),
                       Text(
-                        product.price.toString(),
+                        product.price.toInt().toString(),
                         style: theme.textTheme.titleSmall,
                       ),
                       verticalSpace(5),
                       Text(
-                        product.priceAfterDiscount.toString(),
+                        product.priceAfterDiscount.toInt().toString(),
                         style: theme.textTheme.bodySmall!.copyWith(
                           color: AppColors.darkGrey,
                           decoration: TextDecoration.lineThrough,
@@ -78,8 +78,8 @@ class ProductCart extends StatelessWidget {
                       verticalSpace(5),
                       Text(
                         calculateDiscount(
-                          product.price!.toInt(),
-                          product.priceAfterDiscount!.toInt(),
+                          product.price.toInt(),
+                          product.priceAfterDiscount.toInt(),
                         ),
                         style: theme.textTheme.bodySmall!.copyWith(
                           color: AppColors.green,
@@ -100,7 +100,9 @@ class ProductCart extends StatelessWidget {
                 const Icon(Icons.shopping_cart_outlined, color: Colors.white),
                 Text(
                   AppLocalizations.of(context)!.add_to_cart,
-                  style: theme.textTheme.bodyMedium ?.copyWith(color: Colors.white),
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: Colors.white,
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
