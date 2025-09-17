@@ -5,6 +5,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
@@ -16,6 +17,7 @@ import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occa
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 import '../../core/utils/app_constants.dart';
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
@@ -90,6 +92,9 @@ class RouteGenerator {
 
       case AppRoutes.logout:
         return MaterialPageRoute(builder: (context) => const LogoutScreen());
+
+      case AppRoutes.savedAddresses:
+        return MaterialPageRoute(builder: (_) => const UserAddressesScreen());
 
       default:
         return unDefinedRoute();
