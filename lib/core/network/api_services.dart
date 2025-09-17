@@ -11,8 +11,13 @@ import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/data/model/home_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
+import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
+import '../../features/occasions/data/models/occasions_response_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -20,9 +25,11 @@ part 'api_services.g.dart';
 @injectable
 abstract class ApiServices {
   @factoryMethod
-  factory ApiServices(Dio dio) = _ApiServices;
+ factory ApiServices(Dio dio) = _ApiServices;
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
+  @GET(ApiConstants.homeEndpoint)
+  Future<HomeResponseDto> homeData();
 
   @POST(ApiConstants.forgetPasswordEndpoint)
   Future<ForgetPasswordModel> forgetPassword(@Body() Map<String, dynamic> body);
@@ -46,4 +53,13 @@ abstract class ApiServices {
 
   @DELETE(ApiConstants.cartUD)
   Future<DeleteCartItemRespone> deleteCartProudct(@Path("id") String id);
+
+  @GET(ApiConstants.getSpecificOccasion)
+  Future<OccasionsResponseDto> getOccasions();
+
+  @PATCH(ApiConstants.changePassword)
+  Future<ChangePasswordResponseDto> changePassword(
+    @Body() ChangePasswordRequestDto requestDto,
+    @Header(ApiConstants.authorization) String token,
+  );
 }

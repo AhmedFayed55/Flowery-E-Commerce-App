@@ -7,4 +7,5 @@ abstract class AppImages {
   static const String location = 'assets/svgs/location.svg';
   static const String arrowDown = 'assets/svgs/arrow-down.svg';
 
+  static const String imagePhoto = 'lib/core/utils/images/flowerImage.png';
 }

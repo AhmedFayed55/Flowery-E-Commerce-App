@@ -2,6 +2,8 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -19,9 +21,9 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
-      Center(child: Text(locale.home)),
+      const HomeScreen(),
       Center(child: Text(locale.categories)),
-      Center(child: Text(locale.cart)),
+      const CartPage(),
       Center(child: Text(locale.profile)),
     ];
     return Scaffold(
@@ -34,19 +36,27 @@ class _MainLayoutState extends State<MainLayout> {
         },
         items: [
           _buildBottomNavigationBarItem(AppImages.homeIcon, locale.home, 0),
-          _buildBottomNavigationBarItem(AppImages.categoriesIcon, locale.categories, 1),
+          _buildBottomNavigationBarItem(
+            AppImages.categoriesIcon,
+            locale.categories,
+            1,
+          ),
           _buildBottomNavigationBarItem(AppImages.cartIcon, locale.cart, 2),
-          _buildBottomNavigationBarItem(AppImages.profileIcon, locale.profile, 3),
+          _buildBottomNavigationBarItem(
+            AppImages.profileIcon,
+            locale.profile,
+            3,
+          ),
         ],
       ),
-      body: IndexedStack(index: _currentIndex, children: pages),
+      body: pages[_currentIndex],
     );
   }
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(
     String icon,
     String label,
-      int index
+    int index,
   ) {
     return BottomNavigationBarItem(
       icon: Column(
@@ -60,10 +70,10 @@ class _MainLayoutState extends State<MainLayout> {
               BlendMode.srcIn,
             ),
           ),
-          verticalSpace(7)
+          verticalSpace(7),
         ],
       ),
-      label: label
+      label: label,
     );
   }
 }

@@ -15,4 +15,13 @@ abstract class AppConstants {
   static const String error = 'error';
 
   static const String authorization = 'Authorization';
+  static const String index = 'index';
+  static const String occasionsParam = "occasions";
+
+  //argument_key
+  static const String bestSellerKey = 'bestSellerKey';
+  static const String categoryKey = 'categoryKey';
+  static const String occasionKey = 'occassionKey';
+  static const String productKey = 'productKey';
+  static const String bearer = "Bearer";
 }

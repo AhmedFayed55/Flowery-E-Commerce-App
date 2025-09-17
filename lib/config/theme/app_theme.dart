@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/utils/font_weight.dart';
 import 'colors.dart';
@@ -22,6 +23,7 @@ abstract class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.pink,
+          disabledBackgroundColor: AppColors.black[30],
           foregroundColor: AppColors.white,
           minimumSize: Size(double.infinity, 50.h),
           shape: RoundedRectangleBorder(
@@ -48,13 +50,29 @@ abstract class AppTheme {
           color: AppColors.pink,
         ),
       ),
-      checkboxTheme: const CheckboxThemeData(shape: RoundedRectangleBorder(),
+      checkboxTheme: const CheckboxThemeData(
+        shape: RoundedRectangleBorder(),
         fillColor: WidgetStatePropertyAll(Colors.transparent),
         checkColor: WidgetStatePropertyAll(AppColors.pink),
         side: BorderSide(color: Color(0xff49454F)),
       ),
-
+      tabBarTheme: TabBarThemeData(
+        dividerHeight: 0,
+        indicatorColor: AppColors.pink,
+        tabAlignment: TabAlignment.start,
+        labelStyle: TextStyle(
+          color: AppColors.pink,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.regular,
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: AppColors.darkGrey,
+          fontSize: 16.sp,
+          fontWeight: AppFontWeight.regular,
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
+        prefixIconColor: AppColors.darkGrey.withValues(alpha: .5),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         errorStyle: TextStyle(
           fontSize: 12.sp,
@@ -102,9 +120,9 @@ abstract class AppTheme {
           color: AppColors.black,
         ),
         displayMedium: TextStyle(
-          color: AppColors.pink,
+          color: AppColors.darkGrey,
           fontSize: 16.sp,
-          fontWeight: AppFontWeight.regular,
+          fontWeight: AppFontWeight.medium,
         ),
         bodySmall: TextStyle(
           fontWeight: AppFontWeight.regular,
@@ -120,6 +138,26 @@ abstract class AppTheme {
           fontWeight: AppFontWeight.medium,
           fontSize: 18.sp,
           color: AppColors.black,
+        ),
+        bodyLarge: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 20.sp,
+          color: AppColors.black,
+        ),
+        bodyMedium: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 14.sp,
+          color: AppColors.white,
+        ),
+        titleSmall: TextStyle(
+          fontWeight: AppFontWeight.medium,
+          fontSize: 14.sp,
+          color: AppColors.black,
+        ),
+        headlineMedium: GoogleFonts.imFellEnglish(
+          fontSize: 20.sp,
+          fontWeight: AppFontWeight.medium,
+          color: AppColors.pink,
         ),
       ),
     );

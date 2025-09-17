@@ -3,11 +3,12 @@ import 'package:flowers_ecommerce_app/core/di/modules/token_interceptor.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
 import '../di/di.dart';
 import 'api_constants.dart';
 
 @module
-abstract class DioModule {
+abstract class ExternalModules {
   @lazySingleton
   Dio provideDio() {
     Dio dio = Dio();
@@ -30,8 +31,7 @@ abstract class DioModule {
     );
   }
 
-
   @lazySingleton
-  InternetConnectionChecker get connectionChecker => InternetConnectionChecker.instance;
-
+  InternetConnectionChecker get connectionChecker =>
+      InternetConnectionChecker.instance;
 }
