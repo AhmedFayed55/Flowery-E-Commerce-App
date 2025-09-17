@@ -48,6 +48,9 @@ class RouteGenerator {
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
 
+      case AppRoutes.changePassword:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+
       default:
         return unDefinedRoute();
     }

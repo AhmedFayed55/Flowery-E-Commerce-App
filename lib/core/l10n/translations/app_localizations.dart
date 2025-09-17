@@ -292,53 +292,17 @@ abstract class AppLocalizations {
   /// **'Register Successfully'**
   String get register_successfully;
 
-  /// No description provided for @egp.
+  /// No description provided for @home.
   ///
   /// In en, this message translates to:
-  /// **'EGP'**
-  String get egp;
-
-  /// No description provided for @view_all.
-  ///
-  /// In en, this message translates to:
-  /// **'View All'**
-  String get view_all;
+  /// **'Home'**
+  String get home;
 
   /// No description provided for @categories.
   ///
   /// In en, this message translates to:
   /// **'Categories'**
   String get categories;
-
-  /// No description provided for @best_seller.
-  ///
-  /// In en, this message translates to:
-  /// **'Best seller'**
-  String get best_seller;
-
-  /// No description provided for @occasion.
-  ///
-  /// In en, this message translates to:
-  /// **'Occasion'**
-  String get occasion;
-
-  /// No description provided for @search.
-  ///
-  /// In en, this message translates to:
-  /// **'search'**
-  String get search;
-
-  /// No description provided for @flower.
-  ///
-  /// In en, this message translates to:
-  /// **'Flower'**
-  String get flower;
-
-  /// No description provided for @home.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
 
   /// No description provided for @cart.
   ///

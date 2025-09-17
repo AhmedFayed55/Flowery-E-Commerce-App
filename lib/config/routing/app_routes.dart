@@ -7,4 +7,5 @@ abstract class AppRoutes {
   static const String mainLayout = "/mainLayout";
   static const String home = '/home';
   static const String changePassword = "/changePassword";
+  static const String changePassword = "/changePassword";
 }
