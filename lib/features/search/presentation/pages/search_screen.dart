@@ -20,7 +20,6 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   SearchCubit searchCubit = getIt.get<SearchCubit>();
 
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -62,7 +61,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     }
                     if (state.isError) {
                       return Center(
-                        child: Text(state.errorMessage ?? AppLocalizations.of(context)!.error,
+                        child: Text(
+                          state.errorMessage ??
+                              AppLocalizations.of(context)!.error,
                           style: Theme.of(context).textTheme.labelMedium
                               ?.copyWith(
                                 color: AppColors.pink,

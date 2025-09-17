@@ -45,7 +45,13 @@ class SearchCubit extends Cubit<SearchState> {
         );
         break;
       case ApiErrorResult<SearchResponseEntity>():
-        emit(state.copyWith(isLoading: false, isError: true,errorMessage: result.failure.errorMessage));
+        emit(
+          state.copyWith(
+            isLoading: false,
+            isError: true,
+            errorMessage: result.failure.errorMessage,
+          ),
+        );
         break;
     }
   }

@@ -32,23 +32,26 @@ void main() {
 
   group("Test search in Data Layer", () {
     /// Success
-    test("success case for SearchRemoteDataSourceImpl with ApiSuccessResult", () async {
-      /// Arrange
-      when(
-        mockApiServices.search(keyword),
-      ).thenAnswer((_) async => searchResponse);
+    test(
+      "success case for SearchRemoteDataSourceImpl with ApiSuccessResult",
+      () async {
+        /// Arrange
+        when(
+          mockApiServices.search(keyword),
+        ).thenAnswer((_) async => searchResponse);
 
-      /// Act
-      var result = await searchRemoteDataSourceImpl.search(keyword);
+        /// Act
+        var result = await searchRemoteDataSourceImpl.search(keyword);
 
-      /// Assert
-      expect(result, isA<ApiSuccessResult<SearchResponseEntity>>());
-      ApiSuccessResult<SearchResponseEntity> successResult =
-          result as ApiSuccessResult<SearchResponseEntity>;
-      expect(successResult.data.message, equals(searchResponse.message));
+        /// Assert
+        expect(result, isA<ApiSuccessResult<SearchResponseEntity>>());
+        ApiSuccessResult<SearchResponseEntity> successResult =
+            result as ApiSuccessResult<SearchResponseEntity>;
+        expect(successResult.data.message, equals(searchResponse.message));
 
-      verify(mockApiServices.search(keyword)).called(1);
-    });
+        verify(mockApiServices.search(keyword)).called(1);
+      },
+    );
 
     /// ErrorDioException
     test(

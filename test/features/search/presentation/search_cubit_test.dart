@@ -46,7 +46,6 @@ void main() {
   });
 
   group("Test Cases emits for GoToSearchEvent", () {
-
     /// Success
     test(
       "Success Case emits ( loading + success + productsDtoEntity ) states for GoToSearchEvent",
