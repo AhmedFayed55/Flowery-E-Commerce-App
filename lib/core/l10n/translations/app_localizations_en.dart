@@ -108,10 +108,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get home => 'Home';
+  String get egp => 'EGP';
+
+  @override
+  String get view_all => 'View All';
 
   @override
   String get categories => 'Categories';
+
+  @override
+  String get best_seller => 'Best seller';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get search => 'search';
+
+  @override
+  String get flower => 'Flower';
+
+  @override
+  String get home => 'Home';
 
   @override
   String get cart => 'Cart';
