@@ -7,12 +7,19 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item_respone/delete_cart_item_respone.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart';
+import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart';
+import 'package:flowers_ecommerce_app/features/home_screen/data/model/home_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/change_password/data/models/request/change_password_request_dto.dart';
 import '../../features/auth/change_password/data/models/response/change_password_response_dto.dart';
 import '../../features/auth/logout/data/models/logout_response_dto.dart';
+import '../../features/occasions/data/models/occasions_response_dto.dart';
 
 part 'api_services.g.dart';
 
@@ -23,6 +30,8 @@ abstract class ApiServices {
   factory ApiServices(Dio dio) = _ApiServices;
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
+  @GET(ApiConstants.homeEndpoint)
+  Future<HomeResponseDto> homeData();
 
   @POST(ApiConstants.forgetPasswordEndpoint)
   Future<ForgetPasswordModel> forgetPassword(@Body() Map<String, dynamic> body);
@@ -34,6 +43,24 @@ abstract class ApiServices {
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
+
+  @GET(ApiConstants.userData)
+  Future<UserResponseProfileDto> userData();
+
+  @GET(ApiConstants.cart)
+  Future<UserCartDto> getUserCart();
+
+  @PUT(ApiConstants.cartUD)
+  Future<UpdeateProudactQuantityRespone> updeateCartProudctQuantity(
+    @Path("id") String id,
+    @Body() UpdeateCartProuductQuantityBody body,
+  );
+
+  @DELETE(ApiConstants.cartUD)
+  Future<DeleteCartItemRespone> deleteCartProudct(@Path("id") String id);
+
+  @GET(ApiConstants.getSpecificOccasion)
+  Future<OccasionsResponseDto> getOccasions();
 
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(

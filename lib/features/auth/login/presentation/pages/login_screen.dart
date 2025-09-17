@@ -1,4 +1,5 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/dialogue_utils.dart';
@@ -6,9 +7,9 @@ import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
 import 'package:flowers_ecommerce_app/core/helpers/regex.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_request_entity.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_bloc.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_event.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_state.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_bloc.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_event.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  ValueNotifier<bool> ischeck = ValueNotifier(false);
+  ValueNotifier<bool> isCheck = ValueNotifier(false);
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -40,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(AppLocalizations.of(context)!.login),
         ),
         body: Padding(
@@ -65,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppLocalizations.of(context)!.login_successfully,
                 );
 
-                Navigator.pushReplacementNamed(context, AppRoutes.logout);
+                Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
               }
             },
             builder: (BuildContext context, LoginState state) {
@@ -117,12 +118,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         children: [
                           ValueListenableBuilder<bool>(
-                            valueListenable: ischeck,
+                            valueListenable: isCheck,
                             builder: (context, value, child) {
                               return Checkbox(
                                 value: value,
                                 onChanged: (value) {
-                                  ischeck.value = value ?? false;
+                                  isCheck.value = value ?? false;
                                 },
                               );
                             },
@@ -149,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (_key.currentState!.validate()) {
                             context.read<LoginBloc>().doIntent(
                               SumitLoginEvent(
-                                isRemember: ischeck.value,
+                                isRemember: isCheck.value,
                                 loginRequestEntity: LoginRequestEntity(
                                   email: emailController.text,
                                   password: passwordController.text,
@@ -162,10 +163,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            AppRoutes.mainLayout,
+                          context.read<LoginBloc>().doIntent(
+                            SumitAsGestEvent(),
                           );
+                          context.pushReplacementNamed(AppRoutes.mainLayout);
                         },
                         style: ElevatedButton.styleFrom().copyWith(
                           backgroundColor: WidgetStateProperty.all(
@@ -186,11 +187,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text(
                             AppLocalizations.of(context)!.dont_have_an_account,
+                            style: Theme.of(context).textTheme.bodySmall,
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.pushNamed(AppRoutes.register);
+                            },
                             child: Text(
-                              '${AppLocalizations.of(context)!.sign_up}?',
+                              AppLocalizations.of(context)!.sign_up,
                               style: Theme.of(context).textTheme.displayMedium!
                                   .copyWith(
                                     decoration: TextDecoration.underline,

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/domain/entities/logout_response_entity.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/domain/repositories/logout_repo.dart';
 import 'package:injectable/injectable.dart';
@@ -10,14 +11,15 @@ import '../data_sources/logout_ds.dart';
 @Injectable(as: LogoutRepo)
 class LogoutRepoImpl implements LogoutRepo {
   final LogoutDataSource _dataSource;
+  final TokenService _tokenService;
 
-  LogoutRepoImpl(this._dataSource);
+  LogoutRepoImpl(this._dataSource, this._tokenService);
 
   @override
   Future<ApiResult<LogoutResponseEntity>> logout() async {
     try {
       final dtoResponse = await _dataSource.logout();
-
+      _tokenService.deleteToken();
       return ApiSuccessResult<LogoutResponseEntity>(
         data: dtoResponse.toLogoutResponseEntity(),
       );

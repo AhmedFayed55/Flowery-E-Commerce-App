@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/errors/failures.dart';
+import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/data/data_sources/logout_ds.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/data/models/logout_response_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/data/repositories/logout_repo_impl.dart';
@@ -11,15 +12,15 @@ import 'package:mockito/mockito.dart';
 
 import 'logout_repo_impl_test.mocks.dart';
 
-@GenerateMocks([LogoutDataSource])
+@GenerateMocks([LogoutDataSource, TokenService])
 void main() {
   final LogoutDataSource dataSource = MockLogoutDataSource();
-  final LogoutRepoImpl repoImpl = LogoutRepoImpl(dataSource);
+  final MockTokenService tokenService = MockTokenService();
+  final LogoutRepoImpl repoImpl = LogoutRepoImpl(dataSource, tokenService);
   final LogoutResponseDto expectedResponse = LogoutResponseDto(message: "Good");
 
   test('should return ApiSuccessResult when successfully', () async {
     when(dataSource.logout()).thenAnswer((_) async => expectedResponse);
-
     final result = await repoImpl.logout();
 
     verify(dataSource.logout()).called(1);
