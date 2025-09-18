@@ -1,3 +1,4 @@
+
 name: Build & Distribute via Fastlane
 
 on:
@@ -29,16 +30,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ruby-full
           gem install --user-install bundler fastlane
-          echo "$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin" >> $GITHUB_PATH
+          echo "$(ruby -e 'print Gem.user_dir')/bin" >> $GITHUB_PATH
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
           cd android
-          if [ -f Gemfile ]; then
-            bundle install
-            bundle exec fastlane firebase_distribution
-          else
-            fastlane firebase_distribution
-          fi
+          bundle exec fastlane firebase_distribution
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
