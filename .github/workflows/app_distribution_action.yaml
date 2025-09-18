@@ -24,28 +24,26 @@ jobs:
         with:
           flutter-version: ${{ steps.flutter_version.outputs.version }}
 
-      - name: 📦 Install Ruby
-        run: sudo apt-get update && sudo apt-get install -y ruby-full build-essential
-
-      - name: 📦 Install Bundler in User Space
-        run: gem install --user-install bundler
-
-      - name: 🔧 Install Project Gems
+      - name: 📦 Install Ruby, Bundler & Build Essentials
         run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full build-essential
+          gem install --user-install bundler
+        shell: bash
+
+      - name: 🚀 Setup Gems, Flutter & Run Fastlane
+        run: |
+         
           export PATH="$HOME/.gem/ruby/3.2.0/bin:$PATH"
+
+         
           cd android
+
+         
           bundle install --jobs=4 --retry=3
 
-      - name: 🧹 Flutter Clean & Pub Get
-        run: |
-          flutter clean
-          flutter pub get
-          flutter pub run build_runner build --delete-conflicting-outputs
-
-      - name: 🚀 Run Fastlane Firebase Distribution
-        run: |
-          export PATH="$HOME/.gem/ruby/3.2.0/bin:$PATH"
-          cd android
+          
           bundle exec fastlane firebase_distribution
+        shell: bash
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
