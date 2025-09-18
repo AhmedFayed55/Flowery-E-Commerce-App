@@ -3,7 +3,7 @@ name: Build & Distribute via Fastlane
 on:
   pull_request:
     branches:
-      - release  
+      - release
   workflow_dispatch:
 
 jobs:
@@ -28,7 +28,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install ruby-full -y
-          gem install bundler
+          sudo gem install bundler -N
+          bundle config set --local path 'vendor/bundle'
           bundle install --gemfile=Gemfile
 
       - name: 🚀 Run Fastlane Firebase Distribution
