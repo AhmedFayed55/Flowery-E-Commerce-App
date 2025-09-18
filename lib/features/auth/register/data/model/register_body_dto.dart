@@ -1,8 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'register_body_dto.g.dart';
-
-@JsonSerializable()
 class RegisterBodyDTo {
   String firstName;
   String lastName;

@@ -1,11 +1,7 @@
 import 'package:flowers_ecommerce_app/features/auth/register/domin/entites/register_respone.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import 'user.dart';
 
-part 'register_respone_dto.g.dart';
-
-@JsonSerializable()
 class RegisterResponeDto {
   String? message;
   User? user;
