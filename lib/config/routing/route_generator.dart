@@ -7,6 +7,11 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
+import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
+import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
@@ -28,6 +33,7 @@ import '../../features/address_details/presentation/manager/add_new_address_cubi
 import '../../features/address_details/presentation/manager/map_cubit/map_cubit.dart';
 import '../../features/address_details/presentation/manager/map_cubit/map_event.dart';
 import '../../features/auth/change_password/presentation/presentation/pages/reset_password_screen.dart';
+import '../../features/cart/domin/entities/user_cart.dart';
 import '../../features/home_screen/domain/entities/best_saller_entity.dart';
 import '../../features/main_layout/main_layout.dart';
 import 'app_routes.dart';
@@ -95,6 +101,11 @@ class RouteGenerator {
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      case AppRoutes.successPayment:
+        return MaterialPageRoute(builder: (_) => const PaymentSuccessScreen());
+      case AppRoutes.webView:
+        final url = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => WebviewScreen(url: url));
       case AppRoutes.mostSelling:
         final args = settings.arguments as List<BestSallerEntity>;
         return MaterialPageRoute(
@@ -127,7 +138,17 @@ class RouteGenerator {
             child: const AddressDetailsScreen(),
           ),
         );
+      case AppRoutes.notification:
+        return MaterialPageRoute(
+          builder: (context) => const NotificationScreen(),
+        );
 
+      case AppRoutes.orders:
+        return MaterialPageRoute(builder: (_) => OrdersPage());
+
+      case AppRoutes.checkout:
+        final args = settings.arguments as UserCart;
+        return MaterialPageRoute(builder: (_) => CheckoutPage(userCart: args));
       default:
         return unDefinedRoute();
     }

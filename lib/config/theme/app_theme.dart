@@ -139,6 +139,11 @@ abstract class AppTheme {
           fontSize: 18.sp,
           color: AppColors.black,
         ),
+        titleLarge: TextStyle(
+          fontWeight: AppFontWeight.bold,
+          fontSize: 24.sp,
+          color: AppColors.black,
+        ),
         bodyLarge: TextStyle(
           fontWeight: AppFontWeight.medium,
           fontSize: 20.sp,
@@ -157,11 +162,6 @@ abstract class AppTheme {
         headlineMedium: GoogleFonts.imFellEnglish(
           fontSize: 20.sp,
           fontWeight: AppFontWeight.medium,
-          color: AppColors.pink,
-        ),
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20.sp,
           color: AppColors.pink,
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/widgets/cart.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/view_model/cubit/cart_cubit.dart';
@@ -14,8 +15,19 @@ class CartsListViewBuilder extends StatelessWidget {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         final userCart = state.userCart;
-        if (userCart == null || userCart.cart.cartItems == null) {
-          return Center(child: Text(trans.your_cart_is_empty));
+        if (userCart == null ||
+            userCart.cart.cartItems == null ||
+            userCart.numOfCartItems == 0) {
+          return Expanded(
+            child: Center(
+              child: Text(
+                trans.your_cart_is_empty,
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium!.copyWith(color: AppColors.black),
+              ),
+            ),
+          );
         }
         final cartItems = userCart.cart.cartItems!;
 

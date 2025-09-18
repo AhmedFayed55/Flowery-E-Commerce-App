@@ -24,7 +24,7 @@ class AddressDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(localizations.address),
         leading: IconButton(
-          onPressed: () => context.pop,
+          onPressed: () => context.pop(),
           icon: const Icon(Icons.arrow_back_ios_new),
         ),
       ),

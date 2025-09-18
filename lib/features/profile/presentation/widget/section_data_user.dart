@@ -69,7 +69,9 @@ class SectionDataUser extends StatelessWidget {
             width: 20.w,
           ),
           title: AppLocalizations.of(context)!.my_order,
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(AppRoutes.orders);
+          },
         ),
         CustomRow(
           firstIcon: const Icon(Icons.location_on_outlined),
