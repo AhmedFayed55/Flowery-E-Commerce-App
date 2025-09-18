@@ -14,7 +14,6 @@ class ProductResponseDto extends Equatable {
   final String? slug;
   final String? description;
   final String? imgCover;
-  @JsonKey(defaultValue: [])
   final List<String> images;
   final int? price;
   final int? priceAfterDiscount;

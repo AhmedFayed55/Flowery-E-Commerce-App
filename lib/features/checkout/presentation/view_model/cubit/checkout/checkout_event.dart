@@ -1,8 +1,19 @@
 import 'package:flowers_ecommerce_app/features/checkout/domin/entities/address.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart';
+import 'package:flowers_ecommerce_app/features/payment/domain/entities/shipping_address_request_entity.dart';
 
 sealed class CheckoutEvent {
   const CheckoutEvent();
+}
+
+class PaymentCardEvent extends CheckoutEvent {
+  ShippingAddressRequestEntity shippingAddressRequestEntity;
+  PaymentCardEvent({required this.shippingAddressRequestEntity});
+}
+
+class PaymentCashEvent extends CheckoutEvent {
+  ShippingAddressRequestEntity shippingAddressRequestEntity;
+  PaymentCashEvent({required this.shippingAddressRequestEntity});
 }
 
 class PlaceOrder extends CheckoutEvent {}

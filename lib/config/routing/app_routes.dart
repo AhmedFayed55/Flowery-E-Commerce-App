@@ -12,6 +12,8 @@ abstract class AppRoutes {
   static const String occasions = "/occasions";
   static const String home = '/home';
   static const String changePassword = "/changePassword";
+  static const String successPayment = "/successPayment";
+  static const String webView = "/webView";
   static const String orders = "/orders";
   static const String searchScreen = "/SearchScreen";
   static const String addressDetails = "/addressDetails";

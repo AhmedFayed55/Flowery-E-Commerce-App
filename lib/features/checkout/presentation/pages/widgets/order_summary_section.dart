@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
+import 'package:flowers_ecommerce_app/features/cart/domin/entities/user_cart.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_event.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/theme/colors.dart';
 import '../../../../../core/helpers/spacing.dart';
-import '../../../../cart/domin/entities/user_cart.dart';
 
 class OrderSummarySection extends StatelessWidget {
   const OrderSummarySection({super.key, required this.userCart});

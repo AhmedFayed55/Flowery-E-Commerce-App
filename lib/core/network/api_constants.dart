@@ -9,6 +9,8 @@ abstract class ApiConstants {
   static const String userData = 'auth/profile-data';
   static const String homeEndpoint = 'home';
   static const String changePassword = "auth/change-password";
+  static const String paymendCard = "orders/checkout?url=http://localhost:3000";
+  static const String paymentCash = "orders";
   static const String orders = "orders";
   static const String address = "addresses";
   static const String deleteOrGetSavedAddress = "addresses";

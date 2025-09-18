@@ -4,7 +4,6 @@ import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_produc
 import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_product_respone.dart';
 import 'package:flowers_ecommerce_app/features/address_details/data/models/request/add_new_address_request_dto.dart';
 import 'package:flowers_ecommerce_app/features/address_details/data/models/response/addresses_response_dto.dart';
-import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart';
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart';
@@ -12,6 +11,9 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/request/payment_request_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/responce/card_pay_responce/card_pay_responce_model_dto.dart';
+import 'package:flowers_ecommerce_app/features/payment/data/model/responce/cash_pay_responce/cash_pay_responce_model_dto.dart';
 import 'package:flowers_ecommerce_app/features/checkout/data/model/get_user_addreses_respone/get_user_addreses_respone.dart';
 import 'package:flowers_ecommerce_app/features/orders/data/model/user_orders_respone/user_orders_respone.dart';
 import 'package:flowers_ecommerce_app/features/search/data/models/reponse/search_response.dart';
@@ -30,6 +32,7 @@ import '../../features/saved_addresses/data/models/get_user_address_dto.dart';
 import '../../features/saved_addresses/data/models/user_address_dto.dart';
 import '../../features/auth/logout/data/models/logout_response_dto.dart';
 import '../../features/occasions/data/models/occasions_response_dto.dart';
+import '../utils/app_constants.dart';
 
 part 'api_services.g.dart';
 
@@ -78,6 +81,14 @@ abstract class ApiServices {
   Future<ChangePasswordResponseDto> changePassword(
     @Body() ChangePasswordRequestDto requestDto,
     @Header(ApiConstants.authorization) String token,
+  );
+  @POST(ApiConstants.paymendCard)
+  Future<CardPayResponceModelDto> paymentCard(
+    @Body() PaymentRequestModelDto paymentRequestModelDto,
+  );
+  @POST(ApiConstants.paymentCash)
+  Future<CashPayResponceModelDto> paymentCash(
+    @Body() PaymentRequestModelDto paymentRequestModelDto,
   );
 
   @GET(ApiConstants.addresses)

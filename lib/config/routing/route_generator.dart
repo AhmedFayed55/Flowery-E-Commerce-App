@@ -7,6 +7,8 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
 import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
@@ -95,6 +97,11 @@ class RouteGenerator {
 
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+      case AppRoutes.successPayment:
+        return MaterialPageRoute(builder: (_) => const PaymentSuccessScreen());
+      case AppRoutes.webView:
+        final url = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => WebviewScreen(url: url));
       case AppRoutes.mostSelling:
         final args = settings.arguments as List<BestSallerEntity>;
         return MaterialPageRoute(

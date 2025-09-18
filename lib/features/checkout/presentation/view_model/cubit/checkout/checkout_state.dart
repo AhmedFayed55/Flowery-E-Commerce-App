@@ -9,12 +9,22 @@ class CheckoutState extends Equatable {
   final List<Address> addresses;
   final Address? selectedAddress;
   final PaymentMethod? selectedPaymentMethod;
+  final bool isOrderPlacedSuccess;
+  final bool isOrderPlacedFalier;
 
   final String? giftStreet;
   final String? giftPhone;
   final String? giftCity;
+  final String errorMessage;
+  final PaymentCardEntity? paymentCardEntity;
+  final PaymentCashEntity? paymentCashEntity;
 
   const CheckoutState({
+    this.errorMessage = '',
+    this.paymentCardEntity,
+    this.paymentCashEntity,
+    this.isOrderPlacedFalier = false,
+    this.isOrderPlacedSuccess = false,
     this.isLoading = false,
     this.isSubmitting = false,
     this.isGift = false,
@@ -27,6 +37,11 @@ class CheckoutState extends Equatable {
   });
 
   CheckoutState copyWith({
+    String? errorMessage,
+    PaymentCardEntity? paymentCardEntity,
+    PaymentCashEntity? paymentCashEntity,
+    bool? isOrderPlacedFalier,
+    bool? isOrderPlacedSuccess,
     bool? isLoading,
     bool? isSubmitting,
     bool? isGift,
@@ -39,6 +54,11 @@ class CheckoutState extends Equatable {
     String? giftCity,
   }) {
     return CheckoutState(
+      errorMessage: errorMessage ?? this.errorMessage,
+      paymentCardEntity: paymentCardEntity ?? this.paymentCardEntity,
+      paymentCashEntity: paymentCashEntity ?? this.paymentCashEntity,
+      isOrderPlacedFalier: isOrderPlacedFalier ?? this.isOrderPlacedFalier,
+      isOrderPlacedSuccess: isOrderPlacedSuccess ?? this.isOrderPlacedSuccess,
       isLoading: isLoading ?? this.isLoading,
       isSubmitting: isSubmitting ?? this.isSubmitting,
       isGift: isGift ?? this.isGift,
@@ -63,5 +83,7 @@ class CheckoutState extends Equatable {
     giftStreet,
     giftPhone,
     giftCity,
+    isOrderPlacedFalier,
+    isOrderPlacedSuccess,
   ];
 }
