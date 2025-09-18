@@ -52,7 +52,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   children: [
                     const Icon(Icons.tune),
                     horizontalSpace(12),
-                    Text(AppLocalizations.of(context)!.filer),
+                    Text(AppLocalizations.of(context)!.filter),
                   ],
                 ),
               ),

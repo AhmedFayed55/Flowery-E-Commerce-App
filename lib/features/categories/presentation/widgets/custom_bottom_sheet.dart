@@ -101,7 +101,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                   children: [
                     const Icon(Icons.tune),
                     horizontalSpace(10),
-                    Text(AppLocalizations.of(context)!.filer),
+                    Text(AppLocalizations.of(context)!.filter),
                   ],
                 ),
               ),
