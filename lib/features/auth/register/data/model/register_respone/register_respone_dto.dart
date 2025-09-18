@@ -3,6 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'user.dart';
 
+part 'register_respone_dto.g.dart';
+
 @JsonSerializable()
 class RegisterResponeDto {
   String? message;
