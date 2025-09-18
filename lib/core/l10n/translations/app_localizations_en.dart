@@ -221,6 +221,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwords_do_not_match => 'Passwords Don\'t Match';
 
   @override
+  String get my_orders => 'My orders';
+
+  @override
+  String get track_order => 'Track Order';
+
+  @override
+  String get reorder => 'Reorder';
+
+  @override
+  String get order_number => 'Order Number';
+
+  @override
+  String get delivered_on => 'Delivered on';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get active => 'Active';
+
+  @override
   String get search => 'Search';
 
   @override

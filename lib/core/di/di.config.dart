@@ -147,6 +147,14 @@ import '../../features/occasions/domain/use_cases/get_specific_occasions_use_cas
     as _i859;
 import '../../features/occasions/presentation/manager/occasions_cubit.dart'
     as _i610;
+import '../../features/orders/data/repo/order_repo_impl.dart' as _i222;
+import '../../features/orders/data/source/orders_remote_ds.dart' as _i587;
+import '../../features/orders/data/source/orders_remote_ds_impl.dart' as _i368;
+import '../../features/orders/domin/repo/orders_repo.dart' as _i810;
+import '../../features/orders/domin/usecase/get_user_orders_usecase.dart'
+    as _i538;
+import '../../features/orders/presentation/view_model/cubit/orders_cubit.dart'
+    as _i871;
 import '../../features/profile/data/local_data_source/get_content_ds.dart'
     as _i99;
 import '../../features/profile/data/local_data_source/get_content_ds_imp.dart'
@@ -215,12 +223,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => databaseModule.flutterSecureStorage(),
     );
-    gh.lazySingleton<_i973.InternetConnectionChecker>(
-      () => externalModules.connectionChecker,
-    );
     gh.lazySingleton<_i361.Dio>(() => externalModules.provideDio());
     gh.lazySingleton<_i528.PrettyDioLogger>(
       () => externalModules.providePrettyDioLogger(),
+    );
+    gh.lazySingleton<_i973.InternetConnectionChecker>(
+      () => externalModules.provideInternetConnectionChecker(),
     );
     gh.lazySingleton<_i645.Location>(() => externalModules.provideLocation());
     gh.factory<_i363.GetCitiesAndAreasLocalDataSource>(
@@ -316,9 +324,18 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
+    gh.factory<_i587.OrdersRemoteDataSource>(
+      () => _i368.OrdersRemoteDataSourceImpl(gh<_i804.ApiServices>()),
+    );
     gh.factory<_i716.SearchRemoteDataSource>(
       () => _i1054.SearchRemoteDataSourceImpl(
         apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
+    gh.factory<_i810.OrdersRepo>(
+      () => _i222.OrderRepoImpl(
+        gh<_i587.OrdersRemoteDataSource>(),
+        gh<_i973.InternetConnectionChecker>(),
       ),
     );
     gh.factory<_i635.HomeDataSource>(
@@ -424,8 +441,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i367.HomeRepo>(
       () => _i177.HomeRepoImp(gh<_i635.HomeDataSource>()),
     );
+    gh.factory<_i538.GetUserOrdersUsecase>(
+      () => _i538.GetUserOrdersUsecase(ordersRepo: gh<_i810.OrdersRepo>()),
+    );
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
+    );
+    gh.factory<_i871.OrdersCubit>(
+      () => _i871.OrdersCubit(gh<_i538.GetUserOrdersUsecase>()),
     );
     gh.factory<_i1053.SearchUseCase>(
       () => _i1053.SearchUseCase(searchRepo: gh<_i858.SearchRepo>()),

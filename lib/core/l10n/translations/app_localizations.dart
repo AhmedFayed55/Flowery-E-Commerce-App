@@ -513,6 +513,48 @@ abstract class AppLocalizations {
   /// **'Passwords Don\'t Match'**
   String get passwords_do_not_match;
 
+  /// No description provided for @my_orders.
+  ///
+  /// In en, this message translates to:
+  /// **'My orders'**
+  String get my_orders;
+
+  /// No description provided for @track_order.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Order'**
+  String get track_order;
+
+  /// No description provided for @reorder.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder'**
+  String get reorder;
+
+  /// No description provided for @order_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Number'**
+  String get order_number;
+
+  /// No description provided for @delivered_on.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered on'**
+  String get delivered_on;
+
+  /// No description provided for @completed.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completed;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
   /// No description provided for @search.
   ///
   /// In en, this message translates to:
