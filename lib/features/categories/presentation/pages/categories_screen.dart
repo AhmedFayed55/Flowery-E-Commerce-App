@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -11,7 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({super.key});
+  final int? selectedIndex;
+  const CategoriesScreen({super.key,this.selectedIndex});
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -23,9 +26,21 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => categoryCubit
-        ..doIntent(GetAllCategoryEvent())
-        ..doIntent(GetAllProductsEvent()),
+      create: (context) {
+        final cubit = categoryCubit;
+        cubit.doIntent(GetAllCategoryEvent()).then((_) async {
+          await cubit.doIntent(GetAllProductsEvent());
+          final index = widget.selectedIndex ?? 0;
+          if (cubit.state.listCategoryModel.isNotEmpty) {
+            final firstCategoryId = cubit.state.listCategoryModel[index].id;
+            cubit.doIntent(
+              ProductsByCategoryId(categoryId: firstCategoryId),
+            );
+          }
+        });
+
+        return cubit;
+      },
       child: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
           return SafeArea(
@@ -65,6 +80,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         Expanded(
                           flex: 5,
                           child: TextField(
+                            readOnly: true,
+                            onTap: () {
+                              context.pushNamed(AppRoutes.searchScreen);
+                            },
                             decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.search),
                               hintText: AppLocalizations.of(context)!.search,
@@ -100,17 +119,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           child: Column(
                             children: [
                               DefaultTabController(
+                                initialIndex: widget.selectedIndex ?? 0,
                                 length: state.listCategoryModel.length,
                                 child: TabBar(
                                   onTap: (value) {
-                                    String categoryId =
-                                        state.listCategoryModel[value].id;
+                                    final categoryId = state.listCategoryModel[value].id;
                                     categoryCubit.doIntent(
-                                      ProductsByCategoryId(
-                                        categoryId: categoryId,
-                                      ),
+                                      ProductsByCategoryId(categoryId: categoryId),
                                     );
-                                    setState(() {});
                                   },
                                   dividerColor: Colors.transparent,
                                   tabAlignment: TabAlignment.start,

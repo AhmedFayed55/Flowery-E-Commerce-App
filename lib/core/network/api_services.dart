@@ -101,7 +101,7 @@ abstract class ApiServices {
     @Header(ApiConstants.authorization) String token,
   );
 
-  @POST(ApiConstants.search)
+  @GET(ApiConstants.search)
   Future<SearchResponse> search(@Query("keyword") String? keyword);
 
   @GET(ApiConstants.logout)

@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../domain/entity/products_entity.dart';
 
 class ProductItem extends StatelessWidget {
-  // final int index;
   final ProductsEntity product;
 
   const ProductItem({super.key, required this.product});
@@ -43,7 +42,11 @@ class ProductItem extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return SizedBox(
                       height: 131.h,
-                      child: const Icon(Icons.error, size: 50, color: Colors.red),
+                      child: const Icon(
+                        Icons.error,
+                        size: 50,
+                        color: Colors.red,
+                      ),
                     );
                   },
                 ),
@@ -51,6 +54,7 @@ class ProductItem extends StatelessWidget {
               verticalSpace(8),
               Text(
                 product.title ?? "",
+                style: Theme.of(context).textTheme.labelSmall,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
@@ -59,19 +63,18 @@ class ProductItem extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text:
-                          "EGP ${product.priceAfterDiscount ?? ""}  ",
+                      text: "EGP ${product.priceAfterDiscount ?? ""}  ",
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                     TextSpan(
-                      text:
-                          "${product.price ?? ""}",
+                      text: "${product.price ?? ""}",
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         decoration: TextDecoration.lineThrough,
                       ),
                     ),
                     TextSpan(
-                      text: "  20%",
+                      text:
+                          "  ${getDiscountPercentage(product.price, product.priceAfterDiscount)}",
                       style: Theme.of(
                         context,
                       ).textTheme.labelSmall?.copyWith(color: AppColors.green),
@@ -100,5 +103,14 @@ class ProductItem extends StatelessWidget {
         );
       },
     );
+  }
+
+  String getDiscountPercentage(num? price, num? priceAfterDiscount) {
+    if (price == null || priceAfterDiscount == null) return "";
+    if (price <= 0 || priceAfterDiscount >= price) {
+      return "";
+    }
+    final discount = ((price - priceAfterDiscount) / price) * 100;
+    return "${discount.round()}%";
   }
 }

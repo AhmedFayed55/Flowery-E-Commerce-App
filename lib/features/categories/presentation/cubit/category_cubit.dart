@@ -24,7 +24,7 @@ class CategoryCubit extends Cubit<CategoryState> {
   Future<void> doIntent(CategoryEvent event) async {
     switch (event) {
       case GetAllCategoryEvent():
-        await _getAllCategory();
+        await _getAllCategories();
         break;
       case GetAllProductsEvent():
         await _getAllProducts();
@@ -35,7 +35,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  Future<void> _getAllCategory() async {
+  Future<void> _getAllCategories() async {
     emit(state.copyWith(isLoading: true));
     ApiResult<List<CategoryModel>> result = await getAllCategoryUseCase.call();
     switch (result) {
@@ -96,6 +96,36 @@ class CategoryCubit extends Cubit<CategoryState> {
           ),
         );
     }
+
+    // emit(state.copyWith(isLoading: true));
+    // ApiResult<ProductResponseEntity> result = await getAllProductsUseCase.call();
+    // switch (result) {
+    //   case ApiSuccessResult<ProductResponseEntity>():
+    //     final allProducts = result.data.products ?? [];
+    //
+    //     emit(
+    //       state.copyWith(
+    //         isSuccess: true,
+    //         isLoading: false,
+    //         dataLoading: true,
+    //         allProducts: allProducts,
+    //         filteredProducts: [],
+    //       ),
+    //     );
+    //     break;
+    //
+    //   case ApiErrorResult<ProductResponseEntity>():
+    //     emit(
+    //       state.copyWith(
+    //         isError: true,
+    //         isLoading: false,
+    //         errorMessage: Failure(
+    //           errorMessage: result.failure.errorMessage,
+    //           code: result.failure.code,
+    //         ),
+    //       ),
+    //     );
+    // }
   }
 
 

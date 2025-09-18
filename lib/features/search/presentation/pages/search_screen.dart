@@ -21,6 +21,16 @@ class _SearchScreenState extends State<SearchScreen> {
   SearchCubit searchCubit = getIt.get<SearchCubit>();
 
   @override
+  void initState() {
+    super.initState();
+    searchCubit.searchController.addListener(() {
+      if (searchCubit.searchController.text.trim().isEmpty) {
+        searchCubit.doIntent(ClearSearchEvent(keyword: searchCubit.searchController.text.trim()));
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => searchCubit,
@@ -56,6 +66,21 @@ class _SearchScreenState extends State<SearchScreen> {
               Expanded(
                 child: BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {
+                    if (searchCubit.searchController.text.trim().isEmpty ||
+                        state.initial) {
+                      return Center(
+                        child: Text(
+                          AppLocalizations.of(
+                            context,
+                          )!.search_for_any_product_you_want,
+                          style: Theme.of(context).textTheme.labelSmall
+                              ?.copyWith(
+                                color: AppColors.pink,
+                                fontWeight: AppFontWeight.medium,
+                              ),
+                        ),
+                      );
+                    }
                     if (state.isLoading) {
                       return const Center(child: CircularProgressIndicator());
                     }
@@ -73,7 +98,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       );
                     }
                     if (state.productsDtoEntity.isEmpty &&
-                        searchCubit.searchController.text != "") {
+                        state.isSuccess &&
+                        searchCubit.searchController.text.isNotEmpty) {
                       return Center(
                         child: Text(
                           AppLocalizations.of(context)!.no_product_found,
@@ -86,38 +112,24 @@ class _SearchScreenState extends State<SearchScreen> {
                       );
                     }
                     if (state.isSuccess) {
-                      return Expanded(
-                        child: GridView.builder(
-                          padding: EdgeInsets.only(top: 10.h),
-                          itemCount: state.productsDtoEntity.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 5,
-                                crossAxisSpacing: 5,
-                              ),
-                          itemBuilder: (context, index) {
-                            return BlocProvider.value(
-                              value: searchCubit,
-                              child: ProductItem(index: index),
-                            );
-                          },
+                      return GridView.builder(
+                        padding: EdgeInsets.only(top: 10.h),
+                        itemCount: state.productsDtoEntity.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 163.w / 229.h,
+                          mainAxisSpacing: 17,
+                          crossAxisSpacing: 17,
+                          crossAxisCount: 2,
                         ),
-                      );
-                    } else {
-                      return Center(
-                        child: Text(
-                          AppLocalizations.of(
-                            context,
-                          )!.search_for_any_product_you_want,
-                          style: Theme.of(context).textTheme.labelSmall
-                              ?.copyWith(
-                                color: AppColors.pink,
-                                fontWeight: AppFontWeight.medium,
-                              ),
-                        ),
+                        itemBuilder: (context, index) {
+                          return BlocProvider.value(
+                            value: searchCubit,
+                            child: ProductItem(index: index),
+                          );
+                        },
                       );
                     }
+                    return const Center(child: Text("Something Went Wrong"));
                   },
                 ),
               ),

@@ -3,10 +3,10 @@ import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../profile/presentation/pages/profile_screen.dart';
 
 class MainLayout extends StatefulWidget {
@@ -16,15 +16,36 @@ class MainLayout extends StatefulWidget {
   State<MainLayout> createState() => _MainLayoutState();
 }
 
+
+
 class _MainLayoutState extends State<MainLayout> {
   int _currentIndex = 0;
+  int? _selectedCategoryIndex;
+
+  void changeTab(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void onCategorySelected(int? index) {
+    setState(() {
+      _selectedCategoryIndex = index;
+      _currentIndex = 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
-      const HomeScreen(),
-      Center(child: Text(locale.categories)),
+      HomeScreen(onViewAllPressed: () {
+        setState(() {
+          _selectedCategoryIndex = 0;
+          _currentIndex = 1;
+        });
+      },onCategorySelected: onCategorySelected,),
+      CategoriesScreen(selectedIndex: _selectedCategoryIndex),
       const CartPage(),
       const ProfileSettingScreen(),
     ];

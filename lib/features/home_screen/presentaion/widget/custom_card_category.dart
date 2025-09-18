@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCardCategory extends StatelessWidget {
+  final List<CategoryEntity> itemCategory;
+  final Function(int? index) onTap;
+
   const CustomCardCategory({
     super.key,
     required this.itemCategory,
     required this.onTap,
   });
-  final List<CategoryEntity> itemCategory;
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class CustomCardCategory extends StatelessWidget {
           return Column(
             children: [
               GestureDetector(
-                onTap: onTap,
+                onTap: () => onTap(index),
                 child: Container(
                   width: 70.w,
                   height: 65.h,
