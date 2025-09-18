@@ -19,18 +19,16 @@ import '../../../../config/routing/app_routes.dart';
 import '../../../../core/utils/app_constants.dart';
 
 class HomeScreen extends StatelessWidget {
-   int? homeIndex;
   final VoidCallback? onViewAllPressed;
-   final Function(int?)? onCategorySelected;
+  final Function(int?)? onCategorySelected;
 
-   HomeScreen({super.key,this.onViewAllPressed,this.onCategorySelected});
+  const HomeScreen({super.key, this.onViewAllPressed, this.onCategorySelected});
 
-
-   void homeOnTap(int? index) {
-     if (onCategorySelected != null) {
-       onCategorySelected!(index);
-     }
-   }
+  void homeOnTap(int? index) {
+    if (onCategorySelected != null) {
+      onCategorySelected!(index);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +67,9 @@ class HomeScreen extends StatelessWidget {
                         nameSection: AppLocalizations.of(context)!.categories,
                         //navigator to category Screen
                         onPressed: () {
-                            if (onViewAllPressed != null) {
-                              onViewAllPressed!();
-
-                            }
+                          if (onViewAllPressed != null) {
+                            onViewAllPressed!();
+                          }
                         },
                       ),
 
