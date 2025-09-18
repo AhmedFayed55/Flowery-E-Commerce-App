@@ -73,7 +73,7 @@ class RouteGenerator {
       case AppRoutes.mainLayout:
         return MaterialPageRoute(builder: (context) => const MainLayout());
       case AppRoutes.home:
-        return MaterialPageRoute(builder: (context) => HomeScreen());
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
 
       case AppRoutes.occasions:
         final args = settings.arguments as Map<String, dynamic>;
