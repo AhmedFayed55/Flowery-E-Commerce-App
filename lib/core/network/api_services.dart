@@ -23,6 +23,8 @@ import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_pro
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_proudact_quantity_respone/updeate_proudact_quantity_respone.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/user_cart/user_cart.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/data/model/home_response_dto.dart';
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart';
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -77,6 +79,12 @@ abstract class ApiServices {
   @GET(ApiConstants.getSpecificOccasion)
   Future<OccasionsResponseDto> getOccasions();
 
+  @GET(ApiConstants.products)
+  Future<ProductResponse> getAllProducts();
+
+  @GET(ApiConstants.categories)
+  Future<CategoryResponse> getAllCategory();
+
   @PATCH(ApiConstants.changePassword)
   Future<ChangePasswordResponseDto> changePassword(
     @Body() ChangePasswordRequestDto requestDto,
@@ -117,7 +125,7 @@ abstract class ApiServices {
     @Header(ApiConstants.authorization) String token,
   );
 
-  @POST(ApiConstants.search)
+  @GET(ApiConstants.search)
   Future<SearchResponse> search(@Query("keyword") String? keyword);
 
   @GET(ApiConstants.logout)

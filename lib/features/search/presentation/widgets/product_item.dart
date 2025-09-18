@@ -1,6 +1,5 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
-import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/cubit/search_state.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +52,7 @@ class ProductItem extends StatelessWidget {
               verticalSpace(8),
               Text(
                 state.productsDtoEntity[index].title ?? "",
+                style: Theme.of(context).textTheme.labelSmall,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
@@ -72,7 +72,8 @@ class ProductItem extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "  20%",
+                      text:
+                          "  ${getDiscountPercentage(state.productsDtoEntity[index].price, state.productsDtoEntity[index].priceAfterDiscount)}",
                       style: Theme.of(
                         context,
                       ).textTheme.labelSmall?.copyWith(color: AppColors.green),
@@ -91,7 +92,7 @@ class ProductItem extends StatelessWidget {
                     children: [
                       const Icon(Icons.shopping_cart_outlined),
                       horizontalSpace(8),
-                      Text(AppLocalizations.of(context)!.add_to_Cart),
+                      const Text("Add to cart"),
                     ],
                   ),
                 ),
@@ -101,5 +102,14 @@ class ProductItem extends StatelessWidget {
         );
       },
     );
+  }
+
+  String getDiscountPercentage(num? price, num? priceAfterDiscount) {
+    if (price == null || priceAfterDiscount == null) return "";
+    if (price <= 0 || priceAfterDiscount >= price) {
+      return "";
+    }
+    final discount = ((price - priceAfterDiscount) / price) * 100;
+    return "${discount.round()}%";
   }
 }

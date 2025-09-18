@@ -130,5 +130,8 @@
   "logout": "logout",
   "payment_cancled" : "Payment Canceled",
   "your_oredr_placed" : "Your Oredr Placed",
-  "successfully" : "Successfully"
+  "successfully" : "Successfully",
+  "no_products_found" : "No Products Found",
+  "filter" : "Filter",
+  "sort_by" : "Sort by"
 }

@@ -3,13 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i9;
+import 'dart:async' as _i11;
 
-import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i8;
+import 'package:flowers_ecommerce_app/core/network/api_services.dart' as _i10;
 import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/request/change_password_request_dto.dart'
-    as _i12;
+    as _i14;
 import 'package:flowers_ecommerce_app/features/auth/change_password/data/models/response/change_password_response_dto.dart'
-    as _i7;
+    as _i9;
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/email_verify_model.dart'
     as _i4;
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/forget_pass_model.dart'
@@ -17,13 +17,17 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/m
 import 'package:flowers_ecommerce_app/features/auth/forget_password/datasource/models/reset_pass_model.dart'
     as _i5;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/login_request_dto.dart'
-    as _i10;
+    as _i12;
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart'
     as _i2;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart'
-    as _i11;
+    as _i13;
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart'
     as _i6;
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/category_response.dart'
+    as _i8;
+import 'package:flowers_ecommerce_app/features/categories/data/models/response/product_response.dart'
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -70,106 +74,144 @@ class _FakeRegisterResponeDto_4 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeChangePasswordResponseDto_5 extends _i1.SmartFake
-    implements _i7.ChangePasswordResponseDto {
-  _FakeChangePasswordResponseDto_5(Object parent, Invocation parentInvocation)
+class _FakeProductResponse_5 extends _i1.SmartFake
+    implements _i7.ProductResponse {
+  _FakeProductResponse_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeCategoryResponse_6 extends _i1.SmartFake
+    implements _i8.CategoryResponse {
+  _FakeCategoryResponse_6(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeChangePasswordResponseDto_7 extends _i1.SmartFake
+    implements _i9.ChangePasswordResponseDto {
+  _FakeChangePasswordResponseDto_7(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiServices].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiServices extends _i1.Mock implements _i8.ApiServices {
+class MockApiServices extends _i1.Mock implements _i10.ApiServices {
   MockApiServices() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i9.Future<_i2.LoginResponceDto> login(
-    _i10.LoginRequestDto? loginRequestDto,
+  _i11.Future<_i2.LoginResponceDto> login(
+    _i12.LoginRequestDto? loginRequestDto,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#login, [loginRequestDto]),
-            returnValue: _i9.Future<_i2.LoginResponceDto>.value(
+            returnValue: _i11.Future<_i2.LoginResponceDto>.value(
               _FakeLoginResponceDto_0(
                 this,
                 Invocation.method(#login, [loginRequestDto]),
               ),
             ),
           )
-          as _i9.Future<_i2.LoginResponceDto>);
+          as _i11.Future<_i2.LoginResponceDto>);
 
   @override
-  _i9.Future<_i3.ForgetPasswordModel> forgetPassword(
+  _i11.Future<_i3.ForgetPasswordModel> forgetPassword(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [body]),
-            returnValue: _i9.Future<_i3.ForgetPasswordModel>.value(
+            returnValue: _i11.Future<_i3.ForgetPasswordModel>.value(
               _FakeForgetPasswordModel_1(
                 this,
                 Invocation.method(#forgetPassword, [body]),
               ),
             ),
           )
-          as _i9.Future<_i3.ForgetPasswordModel>);
+          as _i11.Future<_i3.ForgetPasswordModel>);
 
   @override
-  _i9.Future<_i4.EmailVerifyModel> verifyResetCode(
+  _i11.Future<_i4.EmailVerifyModel> verifyResetCode(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [body]),
-            returnValue: _i9.Future<_i4.EmailVerifyModel>.value(
+            returnValue: _i11.Future<_i4.EmailVerifyModel>.value(
               _FakeEmailVerifyModel_2(
                 this,
                 Invocation.method(#verifyResetCode, [body]),
               ),
             ),
           )
-          as _i9.Future<_i4.EmailVerifyModel>);
+          as _i11.Future<_i4.EmailVerifyModel>);
 
   @override
-  _i9.Future<_i5.ResetPasswordModel> resetPassword(
+  _i11.Future<_i5.ResetPasswordModel> resetPassword(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [body]),
-            returnValue: _i9.Future<_i5.ResetPasswordModel>.value(
+            returnValue: _i11.Future<_i5.ResetPasswordModel>.value(
               _FakeResetPasswordModel_3(
                 this,
                 Invocation.method(#resetPassword, [body]),
               ),
             ),
           )
-          as _i9.Future<_i5.ResetPasswordModel>);
+          as _i11.Future<_i5.ResetPasswordModel>);
 
   @override
-  _i9.Future<_i6.RegisterResponeDto> register(_i11.RegisterBodyDTo? request) =>
+  _i11.Future<_i6.RegisterResponeDto> register(_i13.RegisterBodyDTo? request) =>
       (super.noSuchMethod(
             Invocation.method(#register, [request]),
-            returnValue: _i9.Future<_i6.RegisterResponeDto>.value(
+            returnValue: _i11.Future<_i6.RegisterResponeDto>.value(
               _FakeRegisterResponeDto_4(
                 this,
                 Invocation.method(#register, [request]),
               ),
             ),
           )
-          as _i9.Future<_i6.RegisterResponeDto>);
+          as _i11.Future<_i6.RegisterResponeDto>);
 
   @override
-  _i9.Future<_i7.ChangePasswordResponseDto> changePassword(
-    _i12.ChangePasswordRequestDto? requestDto,
+  _i11.Future<_i7.ProductResponse> getAllProducts() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllProducts, []),
+            returnValue: _i11.Future<_i7.ProductResponse>.value(
+              _FakeProductResponse_5(
+                this,
+                Invocation.method(#getAllProducts, []),
+              ),
+            ),
+          )
+          as _i11.Future<_i7.ProductResponse>);
+
+  @override
+  _i11.Future<_i8.CategoryResponse> getAllCategory() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllCategory, []),
+            returnValue: _i11.Future<_i8.CategoryResponse>.value(
+              _FakeCategoryResponse_6(
+                this,
+                Invocation.method(#getAllCategory, []),
+              ),
+            ),
+          )
+          as _i11.Future<_i8.CategoryResponse>);
+
+  @override
+  _i11.Future<_i9.ChangePasswordResponseDto> changePassword(
+    _i14.ChangePasswordRequestDto? requestDto,
     String? token,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#changePassword, [requestDto, token]),
-            returnValue: _i9.Future<_i7.ChangePasswordResponseDto>.value(
-              _FakeChangePasswordResponseDto_5(
+            returnValue: _i11.Future<_i9.ChangePasswordResponseDto>.value(
+              _FakeChangePasswordResponseDto_7(
                 this,
                 Invocation.method(#changePassword, [requestDto, token]),
               ),
             ),
           )
-          as _i9.Future<_i7.ChangePasswordResponseDto>);
+          as _i11.Future<_i9.ChangePasswordResponseDto>);
 }

@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
@@ -25,6 +27,10 @@ class HomeSearchBar extends StatelessWidget {
             child: SizedBox(
               height: 35.h,
               child: TextField(
+                readOnly: true,
+                onTap: () {
+                  context.pushNamed(AppRoutes.searchScreen);
+                },
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(

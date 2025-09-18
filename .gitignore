@@ -61,6 +61,7 @@ android/app/release
 **/*.g.dart
 **/*.freezed.dart
 **/*.config.dart
+*.lock
 
 # Localization generated files
 lib/core/l10n/translations/**

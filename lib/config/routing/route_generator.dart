@@ -23,6 +23,7 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,6 +48,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
+
+      case AppRoutes.categories:
+        return MaterialPageRoute(builder: (_) => const CategoriesScreen());
 
       case AppRoutes.emailVerification:
         final args = settings.arguments as EmailVerifyArgs;
