@@ -5,12 +5,6 @@ class OrderItem {
   int? price;
   int? quantity;
   String? id;
-  
-  OrderItem({
-    this.product,
-    this.price,
-    this.quantity,
-    this.id,
-  });
 
+  OrderItem({this.product, this.price, this.quantity, this.id});
 }

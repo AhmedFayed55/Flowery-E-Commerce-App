@@ -31,7 +31,6 @@ class OrderCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
                 image: DecorationImage(
                   image: NetworkImage(
-                    
                     orderItem.orderItems![0].product!.imgCover!,
                   ),
                   fit: BoxFit.cover,

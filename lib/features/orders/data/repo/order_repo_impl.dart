@@ -14,12 +14,11 @@ class OrderRepoImpl implements OrdersRepo {
   final InternetConnectionChecker _internetConnectionChecker;
 
   OrderRepoImpl(this._ordersRemoteDataSource, this._internetConnectionChecker);
-  
+
   @override
-  Future<ApiResult<List<OrderEntity>>> getUserOrders()async{
-    final bool isConnected =
-        await _internetConnectionChecker.hasConnection;
-    if (!isConnected){
+  Future<ApiResult<List<OrderEntity>>> getUserOrders() async {
+    final bool isConnected = await _internetConnectionChecker.hasConnection;
+    if (!isConnected) {
       return ApiErrorResult(
         failure: Failure(errorMessage: AppConstants.noInternet),
       );
@@ -27,7 +26,9 @@ class OrderRepoImpl implements OrdersRepo {
 
     try {
       var respone = await _ordersRemoteDataSource.getUserOrders();
-      return ApiSuccessResult(data: respone.orders!.map((e) => e.toEntity()).toList());
+      return ApiSuccessResult(
+        data: respone.orders!.map((e) => e.toEntity()).toList(),
+      );
     } on DioException catch (e) {
       return ApiErrorResult(
         failure: Failure(errorMessage: e.response!.data[AppConstants.error]),
@@ -35,8 +36,5 @@ class OrderRepoImpl implements OrdersRepo {
     } catch (e) {
       return ApiErrorResult(failure: Failure(errorMessage: e.toString()));
     }
-
-
   }
-
 }

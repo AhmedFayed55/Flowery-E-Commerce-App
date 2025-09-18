@@ -81,5 +81,4 @@ class OrderDto {
     orderNumber: orderNumber,
     v: v,
   );
-
 }

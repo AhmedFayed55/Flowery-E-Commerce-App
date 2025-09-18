@@ -4,7 +4,7 @@ import 'package:flowers_ecommerce_app/features/orders/data/source/orders_remote_
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: OrdersRemoteDataSource)
-class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource{
+class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
   final ApiServices _apiServices;
 
   OrdersRemoteDataSourceImpl(this._apiServices);
@@ -12,6 +12,5 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource{
   @override
   Future<UserOrdersRespone> getUserOrders() async {
     return await _apiServices.getUserOrders();
-    }
-  
+  }
 }

@@ -16,7 +16,7 @@ class OrdersPage extends StatelessWidget {
       create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
-          title:  Text(trans.my_orders),
+          title: Text(trans.my_orders),
 
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_outlined),

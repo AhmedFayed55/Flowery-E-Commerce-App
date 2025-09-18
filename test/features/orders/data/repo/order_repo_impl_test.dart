@@ -22,7 +22,7 @@ void main() {
     ordersRemoteDataSource = MockOrdersRemoteDataSource();
     internetConnectionChecker = MockInternetConnectionChecker();
     orderRepoImpl = OrderRepoImpl(
-     ordersRemoteDataSource,
+      ordersRemoteDataSource,
       internetConnectionChecker,
     );
   });
@@ -48,42 +48,45 @@ void main() {
 
         // act
         var result = await orderRepoImpl.getUserOrders();
-            
+
         // assert
         expect(result, isA<ApiSuccessResult<List<OrderEntity>>>());
         verify(ordersRemoteDataSource.getUserOrders()).called(1);
       },
     );
-    test('when call getOrders should and fail then return ApiErrorResult', () async {
-      // arrange
-      when(
-        internetConnectionChecker.hasConnection,
-      ).thenAnswer((_) async => true);
-      when(
-        ordersRemoteDataSource.getUserOrders(),
-      ).thenThrow(Exception( 
-        "failed",
-      ));
-      // act
-      var result = await orderRepoImpl.getUserOrders();
-      // assert
-      expect(result, isA<ApiErrorResult<List<OrderEntity>>>());
-      verify(ordersRemoteDataSource.getUserOrders()).called(1);
-    }); 
-      
+    test(
+      'when call getOrders should and fail then return ApiErrorResult',
+      () async {
+        // arrange
+        when(
+          internetConnectionChecker.hasConnection,
+        ).thenAnswer((_) async => true);
+        when(
+          ordersRemoteDataSource.getUserOrders(),
+        ).thenThrow(Exception("failed"));
+        // act
+        var result = await orderRepoImpl.getUserOrders();
+        // assert
+        expect(result, isA<ApiErrorResult<List<OrderEntity>>>());
+        verify(ordersRemoteDataSource.getUserOrders()).called(1);
+      },
+    );
 
-  test('when call getOrders with no internet should fail then return ApiErrorResult', () async {
-    // arrange
-    when(
-      internetConnectionChecker.hasConnection,
-    ).thenAnswer((_) async => false);
-    // act
-    var result = await orderRepoImpl.getUserOrders();
-    result as ApiErrorResult<List<OrderEntity>>;
-    // assert
-    expect(result, isA<ApiErrorResult<List<OrderEntity>>>());
-    expect(result.failure.errorMessage, equals(AppConstants.noInternet));
-    verifyNever(ordersRemoteDataSource.getUserOrders());
-  });
+    test(
+      'when call getOrders with no internet should fail then return ApiErrorResult',
+      () async {
+        // arrange
+        when(
+          internetConnectionChecker.hasConnection,
+        ).thenAnswer((_) async => false);
+        // act
+        var result = await orderRepoImpl.getUserOrders();
+        result as ApiErrorResult<List<OrderEntity>>;
+        // assert
+        expect(result, isA<ApiErrorResult<List<OrderEntity>>>());
+        expect(result.failure.errorMessage, equals(AppConstants.noInternet));
+        verifyNever(ordersRemoteDataSource.getUserOrders());
+      },
+    );
   });
 }

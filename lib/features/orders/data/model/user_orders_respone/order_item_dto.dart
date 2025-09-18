@@ -26,7 +26,6 @@ class OrderItemDto {
     '_id': id,
   };
 
-
   OrderItem toEntity() => OrderItem(
     product: product?.toEntity(),
     price: price,

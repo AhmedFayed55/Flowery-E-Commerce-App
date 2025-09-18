@@ -16,17 +16,17 @@ class OrdersBody extends StatefulWidget {
 }
 
 class _OrdersBodyState extends State<OrdersBody> {
-
   @override
   void initState() {
     context.read<OrdersCubit>().doIntent(GetOrdersEvent());
     super.initState();
   }
+
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-     var trans = AppLocalizations.of(context)!;
+    var trans = AppLocalizations.of(context)!;
     return ListView(
       children: [
         SizedBox(
@@ -65,7 +65,7 @@ class _OrdersBodyState extends State<OrdersBody> {
         ),
         verticalSpace(8.h),
 
-        OrdersBlocBuilder(selectedIndex: selectedIndex,),
+        OrdersBlocBuilder(selectedIndex: selectedIndex),
       ],
     );
   }

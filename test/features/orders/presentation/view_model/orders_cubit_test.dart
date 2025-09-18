@@ -12,8 +12,6 @@ import 'package:mockito/mockito.dart';
 
 import 'orders_cubit_test.mocks.dart';
 
-
-
 @GenerateMocks([GetUserOrdersUsecase])
 void main() {
   late OrdersCubit ordersCubit;
@@ -24,11 +22,11 @@ void main() {
     ordersCubit = OrdersCubit(mockGetUserOrdersUsecase);
   });
 
- setUpAll(() {
-  provideDummy<ApiResult<List<OrderEntity>>>(
-    ApiSuccessResult<List<OrderEntity>>(data: []),
-  );
-});
+  setUpAll(() {
+    provideDummy<ApiResult<List<OrderEntity>>>(
+      ApiSuccessResult<List<OrderEntity>>(data: []),
+    );
+  });
   group("OrdersCubit Tests", () {
     final orders = [
       OrderEntity(id: "1", state: "pending", orderItems: []),
@@ -43,7 +41,7 @@ void main() {
         );
         return ordersCubit;
       },
-      act: (cubit) => cubit.doIntent( GetOrdersEvent()),
+      act: (cubit) => cubit.doIntent(GetOrdersEvent()),
       expect: () => [
         const OrdersState(isLoading: true),
         OrdersState(
@@ -69,7 +67,7 @@ void main() {
         );
         return ordersCubit;
       },
-      act: (cubit) => cubit.doIntent( GetOrdersEvent()),
+      act: (cubit) => cubit.doIntent(GetOrdersEvent()),
       expect: () => [
         const OrdersState(isLoading: true),
         const OrdersState(

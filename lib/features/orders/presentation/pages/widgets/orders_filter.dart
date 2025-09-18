@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrdersFilter extends StatelessWidget {
-  const OrdersFilter({super.key, required this.isSelected , required this.text});
+  const OrdersFilter({super.key, required this.isSelected, required this.text});
   final bool isSelected;
   final String text;
 
@@ -18,14 +18,14 @@ class OrdersFilter extends StatelessWidget {
             width: 3.h,
           ),
         ),
-        
       ),
       child: Center(
         child: Text(
-          style: Theme.of( context).textTheme.labelSmall!.copyWith(
+          style: Theme.of(context).textTheme.labelSmall!.copyWith(
             color: isSelected ? AppColors.pink : Colors.grey.shade400,
           ),
-          text,),
+          text,
+        ),
       ),
     );
   }
