@@ -14,33 +14,28 @@ jobs:
       - name: 🔽 Checkout Repository
         uses: actions/checkout@v4
 
-      
       - name: 📌 Get Flutter Version
         id: flutter_version
         run: |
           echo "version=$(grep 'flutter:' pubspec.lock | awk '{print $2}' | tr -d '\"')" >> $GITHUB_OUTPUT
-
 
       - name: 🔧 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ steps.flutter_version.outputs.version }}
 
-
-      - name: 📦 Install Ruby, Bundler & Fastlane
+      - name: 📦 Install Ruby, Bundler & Fastlane (user install)
         run: |
           sudo apt-get update
           sudo apt-get install ruby-full -y
-          # تثبيت bundler محليًا لتجنب مشاكل أذونات
-          gem install bundler -N --user-install
+          gem install --user-install bundler fastlane
           export PATH="$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH"
-          cd android
           bundle config set --local path 'vendor/bundle'
-          bundle install --jobs=4
-
+          bundle install --gemfile=android/Gemfile
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
+          export PATH="$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH"
           cd android
           bundle exec fastlane firebase_distribution
         env:
