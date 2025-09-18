@@ -324,26 +324,20 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
-<<<<<<< HEAD
     gh.factory<_i587.OrdersRemoteDataSource>(
       () => _i368.OrdersRemoteDataSourceImpl(gh<_i804.ApiServices>()),
     );
-=======
->>>>>>> origin/development
     gh.factory<_i716.SearchRemoteDataSource>(
       () => _i1054.SearchRemoteDataSourceImpl(
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
-<<<<<<< HEAD
     gh.factory<_i810.OrdersRepo>(
       () => _i222.OrderRepoImpl(
         gh<_i587.OrdersRemoteDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
     );
-=======
->>>>>>> origin/development
     gh.factory<_i635.HomeDataSource>(
       () => _i58.HomeDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -453,12 +447,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
-<<<<<<< HEAD
     gh.factory<_i871.OrdersCubit>(
       () => _i871.OrdersCubit(gh<_i538.GetUserOrdersUsecase>()),
     );
-=======
->>>>>>> origin/development
     gh.factory<_i1053.SearchUseCase>(
       () => _i1053.SearchUseCase(searchRepo: gh<_i858.SearchRepo>()),
     );
