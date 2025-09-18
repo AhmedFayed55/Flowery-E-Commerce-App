@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
@@ -17,8 +19,8 @@ class PaymentSuccessScreen extends StatelessWidget {
           children: [
             Lottie.asset(
               AppImages.successlotti,
-              repeat: true, // يتكرر ولا مرة واحدة
-              reverse: false, // يعكس ولا لا
+              repeat: true,
+              reverse: false,
               animate: true,
             ),
             Text(
@@ -31,8 +33,10 @@ class PaymentSuccessScreen extends StatelessWidget {
             ),
             verticalSpace(30),
             ElevatedButton(
-              onPressed: () {},
-              child: Text(AppLocalizations.of(context)!.track_order),
+              onPressed: () {
+                context.pushReplacementNamed(AppRoutes.mainLayout);
+              },
+              child: Text("Back to ${AppLocalizations.of(context)!.home}"),
             ),
           ],
         ),

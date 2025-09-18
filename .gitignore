@@ -19,6 +19,15 @@ migrate_working_dir/
 .idea/
 
 # VSCode related (لو عايز تحتفظ بالـ config شيل الكومنت)
+# Generated files
+*.g.dart
+*.mocks.dart
+*.config.dart
+
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
 #.vscode/
 
 # Flutter/Dart/Pub related
@@ -31,12 +40,18 @@ migrate_working_dir/
 .pub/
 build/
 
+
 # Symbolication related
 app.*.symbols
 
 # Obfuscation related
 app.*.map.json
 
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+/lib/core/l10n/translations/
 # Android build outputs
 android/app/debug
 android/app/profile
