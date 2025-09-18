@@ -28,7 +28,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install ruby-full -y
-          gem install bundler -N
+          sudo gem install bundler -N
           bundle config set --local path 'vendor/bundle'
           bundle install --gemfile=android/Gemfile
 
