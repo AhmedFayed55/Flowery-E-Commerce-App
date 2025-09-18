@@ -1,0 +1,105 @@
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/features/search/presentation/cubit/search_cubit.dart';
+import 'package:flowers_ecommerce_app/features/search/presentation/cubit/search_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class ProductItem extends StatelessWidget {
+  final int index;
+
+  const ProductItem({super.key, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        return Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(width: 1),
+            borderRadius: BorderRadiusGeometry.circular(8),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Image.network(
+                  state.productsDtoEntity[index].imgCover ?? "",
+                  width: 147.w,
+                  height: 131.h,
+                  fit: BoxFit.fill,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return SizedBox(
+                      height: 131.h,
+                      child: const Center(child: CircularProgressIndicator()),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return SizedBox(
+                      height: 131.h,
+                      child: const Icon(
+                        Icons.error,
+                        size: 50,
+                        color: Colors.red,
+                      ),
+                    );
+                  },
+                ),
+              ),
+              verticalSpace(8),
+              Text(
+                state.productsDtoEntity[index].title ?? "",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+              verticalSpace(4),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text:
+                          "EGP ${state.productsDtoEntity[index].priceAfterDiscount ?? ""}  ",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    TextSpan(
+                      text: "${state.productsDtoEntity[index].price ?? ""}",
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "  20%",
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelSmall?.copyWith(color: AppColors.green),
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              SizedBox(
+                height: 30.h,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Add to Cart
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.shopping_cart_outlined),
+                      horizontalSpace(8),
+                      Text(AppLocalizations.of(context)!.add_to_Cart),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

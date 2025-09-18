@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "13741399074",
+    "project_id": "flowery-e-commerce-app-c4c0e",
+    "storage_bucket": "flowery-e-commerce-app-c4c0e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13741399074:android:34c86d57247b04e3977e7b",
+        "android_client_info": {
+          "package_name": "com.example.flowers_ecommerce_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbLBzNvVZIQSgh9a9ZVbi9qdo29MvWkeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

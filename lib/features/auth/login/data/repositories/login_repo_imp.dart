@@ -21,8 +21,7 @@ class LoginRepoImp implements LoginRepo {
     try {
       final dto = toDto(loginRequestEntity);
       var responce = await _loginDataSource.login(dto);
-
-      getIt<TokenService>().saveToken(responce.token);
+      await getIt<TokenService>().saveToken(responce.token);
       return ApiSuccessResult(data: responce.user.toDomain());
     } on DioException catch (e) {
       return ApiErrorResult(
