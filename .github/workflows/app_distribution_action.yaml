@@ -32,8 +32,8 @@ jobs:
           echo "$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin" >> $GITHUB_PATH
 
       - name: 💎 Install Fastlane Gems from Gemfile
-        run: |
-          bundle install --jobs=4 --retry=3
+        run: bundle install --jobs=4 --retry=3
+        working-directory: android
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
