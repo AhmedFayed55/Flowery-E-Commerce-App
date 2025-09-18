@@ -34,6 +34,11 @@ jobs:
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
           cd android
-          bundle exec fastlane firebase_distribution
+          if [ -f Gemfile ]; then
+            bundle install
+            bundle exec fastlane firebase_distribution
+          else
+            fastlane firebase_distribution
+          fi
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
