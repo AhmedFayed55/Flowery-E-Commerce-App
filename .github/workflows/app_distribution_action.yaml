@@ -28,9 +28,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install ruby-full -y
-          sudo gem install bundler -N
+          gem install bundler -N
           bundle config set --local path 'vendor/bundle'
-          bundle install --gemfile=Gemfile
+          bundle install --gemfile=android/Gemfile
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
