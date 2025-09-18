@@ -28,8 +28,13 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-          bundler-cache: true  # يثبت Bundler ويخزن الكاش
+          bundler-cache: true
           cache-version: 2
+
+      - name: 📦 Install Bundler Gems
+        run: |
+          cd android
+          bundle install --jobs 4 --retry 3
 
       - name: 🚀 Run Fastlane
         run: |
