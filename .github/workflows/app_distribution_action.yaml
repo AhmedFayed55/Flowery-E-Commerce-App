@@ -33,6 +33,7 @@ jobs:
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
+          export PATH="$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH"
           cd android
           bundle exec fastlane firebase_distribution
         env:
