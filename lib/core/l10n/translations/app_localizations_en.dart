@@ -123,9 +123,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get occasion => 'Occasion';
 
   @override
-  String get search => 'search';
-
-  @override
   String get flower => 'Flower';
 
   @override
@@ -219,6 +216,22 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get password_must_be_at_least_6_characters =>
       'Password must be at least 6 characters';
+
+  @override
+  String get passwords_do_not_match => 'Passwords Don\'t Match';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get no_product_found => 'No Product Found';
+
+  @override
+  String get add_to_Cart => 'Add To Cart';
+
+  @override
+  String get search_for_any_product_you_want =>
+      'Search For Any Product You Want';
 
   @override
   String get address => 'Address';
@@ -326,7 +339,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'logout';
-
-  @override
-  String get passwords_do_not_match => 'Passwords Don\'t Match';
 }

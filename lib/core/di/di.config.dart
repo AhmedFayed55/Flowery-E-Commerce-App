@@ -181,6 +181,15 @@ import '../../features/saved_addresses/domain/use_cases/remove_address_use_case.
     as _i342;
 import '../../features/saved_addresses/presentation/manager/user_addresses_cubit.dart'
     as _i336;
+import '../../features/search/data/datasources/remote/search_remote_ds.dart'
+    as _i716;
+import '../../features/search/data/datasources/remote/search_remote_ds_impl.dart'
+    as _i1054;
+import '../../features/search/data/repository_impl/search_repo_impl.dart'
+    as _i890;
+import '../../features/search/domain/repository/search_repo.dart' as _i858;
+import '../../features/search/domain/usecases/search_usecase.dart' as _i1053;
+import '../../features/search/presentation/cubit/search_cubit.dart' as _i341;
 import '../errors/internet_connection.dart' as _i339;
 import '../helpers/shared_pref.dart' as _i42;
 import '../network/api_services.dart' as _i804;
@@ -307,6 +316,11 @@ extension GetItInjectableX on _i174.GetIt {
         apiServices: gh<_i804.ApiServices>(),
       ),
     );
+    gh.factory<_i716.SearchRemoteDataSource>(
+      () => _i1054.SearchRemoteDataSourceImpl(
+        apiServices: gh<_i804.ApiServices>(),
+      ),
+    );
     gh.factory<_i635.HomeDataSource>(
       () => _i58.HomeDataSourceImp(gh<_i804.ApiServices>()),
     );
@@ -336,6 +350,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i791.ForgetPasswordRepoImpl(
         forgetPasswordRemoteDataSource:
             gh<_i197.ForgetPasswordRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i858.SearchRepo>(
+      () => _i890.SearchRepoImpl(
+        searchRemoteDataSource: gh<_i716.SearchRemoteDataSource>(),
       ),
     );
     gh.factory<_i532.EmailVerifyUseCase>(
@@ -408,6 +427,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i752.RegisterUsecase>(
       () => _i752.RegisterUsecase(authRepo: gh<_i975.AuthRepo>()),
     );
+    gh.factory<_i1053.SearchUseCase>(
+      () => _i1053.SearchUseCase(searchRepo: gh<_i858.SearchRepo>()),
+    );
     gh.factory<_i1035.ChangePasswordCubit>(
       () => _i1035.ChangePasswordCubit(gh<_i792.ChangePasswordUseCase>()),
     );
@@ -430,6 +452,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i177.UpdeateCartProductQuantityUsecase>(
       () => _i177.UpdeateCartProductQuantityUsecase(gh<_i1047.CartRepo>()),
+    );
+    gh.factory<_i341.SearchCubit>(
+      () => _i341.SearchCubit(searchUseCase: gh<_i1053.SearchUseCase>()),
     );
     gh.factory<_i801.ResetPasswordUseCase>(
       () => _i801.ResetPasswordUseCase(
