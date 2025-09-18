@@ -24,15 +24,17 @@ jobs:
         with:
           flutter-version: ${{ steps.flutter_version.outputs.version }}
 
-      - name: 📦 Install Ruby & Fastlane (system-wide)
+      - name: 💎 Setup Ruby & Fastlane locally
         run: |
           sudo apt-get update
           sudo apt-get install -y ruby-full
-          sudo gem install fastlane -N
+          gem install --user-install bundler
+          bundle install --path vendor/bundle
+          echo 'PATH=$HOME/.gem/ruby/$(ruby -e "print RUBY_VERSION")/bin:$PATH' >> $GITHUB_ENV
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
           cd android
-          fastlane firebase_distribution
+          bundle exec fastlane firebase_distribution
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
