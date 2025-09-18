@@ -20,6 +20,7 @@ platform :android do
   lane :firebase_distribution do
     sh "flutter clean"
     sh "flutter pub get"
+    sh "flutter pub run build_runner build --delete-conflicting-outputs"
     sh "flutter build apk --flavor production --target lib/main.dart"
     firebase_app_distribution(
     app: "1:13741399074:android:34c86d57247b04e3977e7b",

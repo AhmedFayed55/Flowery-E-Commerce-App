@@ -24,15 +24,16 @@ jobs:
         with:
           flutter-version: ${{ steps.flutter_version.outputs.version }}
 
-      - name: 📦 Install Ruby & Fastlane
+      - name: 📦 Install Ruby, Bundler & Fastlane
         run: |
           sudo apt-get update
           sudo apt-get install ruby-full -y
-          sudo gem install fastlane -NV
+          gem install bundler
+          bundle install --gemfile=Gemfile
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
           cd android
-          fastlane firebase_distribution
+          bundle exec fastlane firebase_distribution
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
