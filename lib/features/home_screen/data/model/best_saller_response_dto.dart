@@ -14,7 +14,6 @@ class BestSellerResponseDto extends Equatable {
   final String? slug;
   final String? description;
   final String? imgCover;
-  @JsonKey(defaultValue: [])
   final List<String> images;
   final double? price;
   final double? priceAfterDiscount;

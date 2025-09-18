@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
@@ -74,7 +75,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new, size: 26),
-            onPressed: () {},
+            onPressed: () {
+              context.pop();
+            },
           ),
           title: Text(trans.register),
         ),

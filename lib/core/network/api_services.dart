@@ -10,6 +10,7 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/search/data/models/reponse/search_response.dart';
 import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/delete_cart_item_respone/delete_cart_item_respone.dart';
 import 'package:flowers_ecommerce_app/features/cart/data/models/updeate_cart_prouduct_quantity_body.dart';
@@ -35,6 +36,7 @@ part 'api_services.g.dart';
 abstract class ApiServices {
   @factoryMethod
   factory ApiServices(Dio dio) = _ApiServices;
+
   @POST(ApiConstants.loginEndpoint)
   Future<LoginResponceDto> login(@Body() LoginRequestDto loginRequestDto);
   @GET(ApiConstants.homeEndpoint)
@@ -48,6 +50,7 @@ abstract class ApiServices {
 
   @PUT(ApiConstants.resetPassword)
   Future<ResetPasswordModel> resetPassword(@Body() Map<String, dynamic> body);
+
   @POST(ApiConstants.registerEndpoint)
   Future<RegisterResponeDto> register(@Body() RegisterBodyDTo request);
 
@@ -97,6 +100,9 @@ abstract class ApiServices {
   Future<GetUserAddressDto> getAllAddresses(
     @Header(ApiConstants.authorization) String token,
   );
+
+  @POST(ApiConstants.search)
+  Future<SearchResponse> search(@Query("keyword") String? keyword);
 
   @GET(ApiConstants.logout)
   Future<LogoutResponseDto> logout(

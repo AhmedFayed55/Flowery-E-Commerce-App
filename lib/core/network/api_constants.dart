@@ -18,4 +18,5 @@ abstract class ApiConstants {
   static const String cartUD = "cart/{id}";
   static const String products = "products";
   static const String categories = "categories";
+  static const String search = "products";
 }
