@@ -19,4 +19,5 @@ abstract class AppRoutes {
   static const String logout = "/logout";
   static const String mostSelling = "/mostSelling";
   static const String notification = "/notification";
+  static const String checkout = "/checkout";
 }

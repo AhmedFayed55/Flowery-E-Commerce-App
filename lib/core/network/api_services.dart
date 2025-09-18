@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
+import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_product_body.dart';
+import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_product_respone.dart';
 import 'package:flowers_ecommerce_app/features/address_details/data/models/request/add_new_address_request_dto.dart';
 import 'package:flowers_ecommerce_app/features/address_details/data/models/response/addresses_response_dto.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
@@ -10,6 +12,7 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/checkout/data/model/get_user_addreses_respone/get_user_addreses_respone.dart';
 import 'package:flowers_ecommerce_app/features/orders/data/model/user_orders_respone/user_orders_respone.dart';
 import 'package:flowers_ecommerce_app/features/search/data/models/reponse/search_response.dart';
 import 'package:flowers_ecommerce_app/features/profile/data/model/user_response_dto.dart';
@@ -76,6 +79,12 @@ abstract class ApiServices {
     @Body() ChangePasswordRequestDto requestDto,
     @Header(ApiConstants.authorization) String token,
   );
+
+  @GET(ApiConstants.addresses)
+  Future<GetUserAddresesRespone> getLoggedUserAddresses();
+
+  @POST(ApiConstants.cart)
+  Future<AddProductRespone> addToCart(@Body() AddProductBody addProductBody);
 
   @GET(ApiConstants.orders)
   Future<UserOrdersRespone> getUserOrders();

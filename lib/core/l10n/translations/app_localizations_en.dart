@@ -108,25 +108,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get egp => 'EGP';
-
-  @override
-  String get view_all => 'View All';
+  String get home => 'Home';
 
   @override
   String get categories => 'Categories';
-
-  @override
-  String get best_seller => 'Best seller';
-
-  @override
-  String get occasion => 'Occasion';
-
-  @override
-  String get flower => 'Flower';
-
-  @override
-  String get home => 'Home';
 
   @override
   String get cart => 'Cart';
@@ -145,30 +130,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
-
-  @override
-  String get notification => 'Notification';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get arabic => 'Arabic';
-
-  @override
-  String get english => 'English';
-
-  @override
-  String get about_us => 'About us';
-
-  @override
-  String get change_language => 'Change Language';
-
-  @override
-  String get my_order => 'My orders';
-
-  @override
-  String get saved_address => 'Saved address';
 
   @override
   String get reset_password => 'Reset Password';
@@ -218,109 +179,49 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 6 characters';
 
   @override
-  String get passwords_do_not_match => 'Passwords Don\'t Match';
-
-  @override
-  String get my_orders => 'My orders';
-
-  @override
-  String get track_order => 'Track Order';
-
-  @override
-  String get reorder => 'Reorder';
-
-  @override
-  String get order_number => 'Order Number';
-
-  @override
-  String get delivered_on => 'Delivered on';
-
-  @override
-  String get completed => 'Completed';
-
-  @override
-  String get active => 'Active';
-
-  @override
-  String get search => 'Search';
-
-  @override
-  String get no_product_found => 'No Product Found';
-
-  @override
-  String get add_to_Cart => 'Add To Cart';
-
-  @override
-  String get search_for_any_product_you_want =>
-      'Search For Any Product You Want';
-
-  @override
-  String get address => 'Address';
-
-  @override
-  String get enter_the_address => 'Enter the address';
-
-  @override
-  String get enter_the_phone_number => 'Enter the phone number';
-
-  @override
-  String get recipient_name => 'Recipient name';
-
-  @override
-  String get enter_the_recipient_name => 'Enter the recipient name';
-
-  @override
-  String get area => 'Area';
+  String get passwords_do_not_match => 'Passwords do not match';
 
   @override
   String get city => 'City';
 
   @override
-  String get save_address => 'Save Address';
+  String get address => 'Address';
 
   @override
-  String get this_field_is_required => 'This field is required';
+  String get enter_your_city => 'Enter your city';
 
   @override
-  String get saved_address_successfully => 'Saved Address Successfully';
+  String get phone => 'Phone';
 
   @override
-  String get saved_addresses => 'Saved Addresses';
+  String get enter_your_phone => 'Enter your phone';
 
   @override
-  String get no_addresses_yet =>
-      'No Addresses Yet , Press on Add Address to Add New One';
+  String get street => 'Street';
 
   @override
-  String get add_new_address => 'Add New Address';
+  String get enter_your_street => 'Enter your street';
 
   @override
-  String get confirm_logout => 'Confirm Logout!!';
+  String get add_new => 'Add New';
 
   @override
-  String get cancel => 'Cancel';
+  String get its_a_gift => 'It\'s a gift';
 
   @override
-  String get logout_successfully => 'Logout Successfully';
+  String get delivery_address => 'Delivery Address';
 
   @override
-  String get bloom_with_our_exquisite_best_sellers =>
-      'Bloom with our exquisite best sellers';
+  String get no_addresses_found => 'No addresses found';
 
   @override
-  String get no_products => 'No Products founded';
+  String get place_order => 'Place order';
 
   @override
-  String get bloom_with => 'Bloom with our exquisite best sellers';
+  String get subtotal => 'Subtotal';
 
   @override
-  String get you_should_login => 'You should login first';
-
-  @override
-  String get some_thing_went_wrong => 'Something went wrong';
-
-  @override
-  String get your_cart_is_empty => 'Your cart is empty';
+  String get delivery_fee => 'Delivery fee';
 
   @override
   String get total => 'Total';
@@ -329,35 +230,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checkout => 'Checkout';
 
   @override
-  String get add_to_cart => 'Add to cart';
+  String get egp => 'EGP';
 
   @override
-  String get remove_from_cart => 'Remove from cart';
+  String get credit_card => 'Credit card';
 
   @override
-  String get quantity => 'Quantity';
+  String get cash_on_delivery => 'Cash on delivery';
 
   @override
-  String get items => 'Items';
+  String get payment_method => 'Payment method';
 
   @override
-  String get delivery_fee => 'Delivery Fee';
+  String get schedule => 'Schedule';
 
   @override
-  String get subtotal => 'Subtotal';
-
-  @override
-  String get order_summary => 'Order Summary';
-
-  @override
-  String get place_order => 'Place Order';
-
-  @override
-  String get order_placed_successfully => 'Order placed successfully';
-
-  @override
-  String get order_placed => 'Order Placed';
-
-  @override
-  String get logout => 'logout';
+  String get delevery_time => 'Delivery time';
 }

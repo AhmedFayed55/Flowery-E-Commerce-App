@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -83,7 +85,14 @@ class CartSummary extends StatelessWidget {
             ),
             verticalSpace(24.h),
             ElevatedButton(
-              onPressed: state.userCart!.cart.cartItems!.isEmpty ? null : () {},
+              onPressed: state.userCart!.cart.cartItems!.isEmpty
+                  ? null
+                  : () {
+                      context.pushNamed(
+                        AppRoutes.checkout,
+                        arguments: state.userCart,
+                      );
+                    },
               child: Text(trans.checkout),
             ),
           ],

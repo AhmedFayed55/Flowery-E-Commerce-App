@@ -1,4 +1,3 @@
-import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/orders/presentation/pages/widgets/orders_bloc_builder.dart';
 import 'package:flowers_ecommerce_app/features/orders/presentation/pages/widgets/orders_filter.dart';
@@ -6,7 +5,6 @@ import 'package:flowers_ecommerce_app/features/orders/presentation/view_model/cu
 import 'package:flowers_ecommerce_app/features/orders/presentation/view_model/cubit/orders_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrdersBody extends StatefulWidget {
   const OrdersBody({super.key});
@@ -63,7 +61,6 @@ class _OrdersBodyState extends State<OrdersBody> {
             ],
           ),
         ),
-        verticalSpace(8.h),
 
         OrdersBlocBuilder(selectedIndex: selectedIndex),
       ],
