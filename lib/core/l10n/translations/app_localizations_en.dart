@@ -108,10 +108,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
-  String get home => 'Home';
+  String get egp => 'EGP';
+
+  @override
+  String get view_all => 'View All';
 
   @override
   String get categories => 'Categories';
+
+  @override
+  String get best_seller => 'Best seller';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get search => 'search';
+
+  @override
+  String get flower => 'Flower';
+
+  @override
+  String get home => 'Home';
 
   @override
   String get cart => 'Cart';
@@ -130,6 +148,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get about_us => 'About us';
+
+  @override
+  String get change_language => 'Change Language';
+
+  @override
+  String get my_order => 'My orders';
+
+  @override
+  String get saved_address => 'Saved address';
 
   @override
   String get reset_password => 'Reset Password';
@@ -179,5 +221,112 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 6 characters';
 
   @override
-  String get passwords_do_not_match => 'Passwords do not match';
+  String get address => 'Address';
+
+  @override
+  String get enter_the_address => 'Enter the address';
+
+  @override
+  String get enter_the_phone_number => 'Enter the phone number';
+
+  @override
+  String get recipient_name => 'Recipient name';
+
+  @override
+  String get enter_the_recipient_name => 'Enter the recipient name';
+
+  @override
+  String get area => 'Area';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get save_address => 'Save Address';
+
+  @override
+  String get this_field_is_required => 'This field is required';
+
+  @override
+  String get saved_address_successfully => 'Saved Address Successfully';
+
+  @override
+  String get saved_addresses => 'Saved Addresses';
+
+  @override
+  String get no_addresses_yet =>
+      'No Addresses Yet , Press on Add Address to Add New One';
+
+  @override
+  String get add_new_address => 'Add New Address';
+
+  @override
+  String get confirm_logout => 'Confirm Logout!!';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logout_successfully => 'Logout Successfully';
+
+  @override
+  String get bloom_with_our_exquisite_best_sellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get no_products => 'No Products founded';
+
+  @override
+  String get bloom_with => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get you_should_login => 'You should login first';
+
+  @override
+  String get some_thing_went_wrong => 'Something went wrong';
+
+  @override
+  String get your_cart_is_empty => 'Your cart is empty';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get remove_from_cart => 'Remove from cart';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get items => 'Items';
+
+  @override
+  String get delivery_fee => 'Delivery Fee';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get order_summary => 'Order Summary';
+
+  @override
+  String get place_order => 'Place Order';
+
+  @override
+  String get order_placed_successfully => 'Order placed successfully';
+
+  @override
+  String get order_placed => 'Order Placed';
+
+  @override
+  String get logout => 'logout';
+
+  @override
+  String get passwords_do_not_match => 'Passwords Don\'t Match';
 }

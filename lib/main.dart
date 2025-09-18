@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'config/routing/route_generator.dart';
 import 'config/theme/app_theme.dart';
 import 'core/l10n/translations/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
@@ -14,7 +16,11 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/p
 import 'features/profile/presentation/view_model/profile_setting_state.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
+
+await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   await configureDependencies();
 
   final savedLocale =
