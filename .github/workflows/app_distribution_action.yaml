@@ -24,29 +24,15 @@ jobs:
         with:
           flutter-version: ${{ steps.flutter_version.outputs.version }}
 
-      - name: 📦 Install Ruby & Bundler
+      - name: 📦 Install Ruby & Fastlane system-wide
         run: |
           sudo apt-get update
           sudo apt-get install -y ruby-full build-essential
-          gem install --user-install bundler
-          echo "$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin" >> $GITHUB_PATH
-
-      - name: 💎 Check Bundler
-        run: |
-          echo "PATH=$HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH"
-          which bundle
-          bundle --version
-
-      - name: 💎 Install Gems (Fastlane)
-        run: |
-          bundle install --jobs=4 --retry=3
-        env:
-          PATH: $HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH
+          sudo gem install bundler fastlane -N
 
       - name: 🚀 Run Fastlane Firebase Distribution
         run: |
           cd android
-          bundle exec fastlane firebase_distribution
+          fastlane firebase_distribution
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
-          PATH: $HOME/.gem/ruby/$(ruby -e 'print RUBY_VERSION')/bin:$PATH
