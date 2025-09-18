@@ -76,6 +76,7 @@
   "egp" : "EGP",
   "completed" : "Completed",
   "active" : "Active",
+  "notification":"Notification",
   "search": "Search",
   "no_product_found": "No Product Found",
   "add_to_Cart": "Add To Cart",

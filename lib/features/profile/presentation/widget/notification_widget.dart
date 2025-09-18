@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +13,9 @@ class NotificationWidget extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          //navigator to notification screnn
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(AppRoutes.notification);
+          },
           icon: const Icon(Icons.notifications_none, size: 30),
         ),
 
