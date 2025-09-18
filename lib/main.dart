@@ -16,11 +16,9 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/p
 import 'features/profile/presentation/view_model/profile_setting_state.dart';
 
 void main() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
-await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
 
   final savedLocale =

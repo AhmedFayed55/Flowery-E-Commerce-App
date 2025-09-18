@@ -18,7 +18,7 @@ BestSellerResponseDto _$BestSellerResponseDtoFromJson(
   imgCover: json['imgCover'] as String?,
   images:
       (json['images'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-      [],
+      const [],
   price: (json['price'] as num?)?.toDouble(),
   priceAfterDiscount: (json['priceAfterDiscount'] as num?)?.toDouble(),
   quantity: (json['quantity'] as num?)?.toInt(),

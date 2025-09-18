@@ -326,12 +326,6 @@ abstract class AppLocalizations {
   /// **'Occasion'**
   String get occasion;
 
-  /// No description provided for @search.
-  ///
-  /// In en, this message translates to:
-  /// **'search'**
-  String get search;
-
   /// No description provided for @flower.
   ///
   /// In en, this message translates to:
@@ -512,6 +506,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters'**
   String get password_must_be_at_least_6_characters;
+
+  /// No description provided for @passwords_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords Don\'t Match'**
+  String get passwords_do_not_match;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @no_product_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No Product Found'**
+  String get no_product_found;
+
+  /// No description provided for @add_to_Cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add To Cart'**
+  String get add_to_Cart;
+
+  /// No description provided for @search_for_any_product_you_want.
+  ///
+  /// In en, this message translates to:
+  /// **'Search For Any Product You Want'**
+  String get search_for_any_product_you_want;
 
   /// No description provided for @address.
   ///
@@ -722,18 +746,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'logout'**
   String get logout;
-
-  /// No description provided for @passwords_do_not_match.
-  ///
-  /// In en, this message translates to:
-  /// **'Passwords Don\'t Match'**
-  String get passwords_do_not_match;
-
-  /// No description provided for @notification.
-  ///
-  /// In en, this message translates to:
-  /// **'Notification'**
-  String get notification;
 }
 
 class _AppLocalizationsDelegate

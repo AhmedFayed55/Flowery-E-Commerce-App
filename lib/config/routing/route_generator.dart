@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
+import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
@@ -122,6 +123,10 @@ class RouteGenerator {
             ],
             child: const AddressDetailsScreen(),
           ),
+        );
+      case AppRoutes.notification:
+        return MaterialPageRoute(
+          builder: (context) => const NotificationScreen(),
         );
 
       default:
