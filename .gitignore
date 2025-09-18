@@ -33,11 +33,13 @@ migrate_working_dir/
 .pub/
 /build/
 
-### ===> Generated files
+# === Generated Files (JsonSerializable / Injectable )
+*.g.dart
 *.config.dart
 *.freezed.dart
-*.g.dart
+# === Mocks ( mockito / build_runner )
 *.mocks.dart
+# === Lock file
 *.lock
 
 # Symbolication related

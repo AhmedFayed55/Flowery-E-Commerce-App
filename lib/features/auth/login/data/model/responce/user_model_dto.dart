@@ -22,37 +22,36 @@ class UserModelDto extends Equatable {
   factory UserModelDto.fromJson(Map<String, dynamic> json) =>
       _$UserModelDtoFromJson(json);
 
-  const UserModelDto(
-    this.id,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.gender,
-    this.phone,
-    this.photo,
-    this.role,
-    this.wishlist,
-    this.addresses,
-    this.createdAt,
-  );
+  const UserModelDto({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.gender,
+    required this.phone,
+    required this.photo,
+    required this.role,
+    required this.wishlist,
+    required this.addresses,
+    required this.createdAt,
+  });
 
   Map<String, dynamic> toJson() => _$UserModelDtoToJson(this);
 
   UserEntity toDomain() {
     return UserEntity(
-      firstName,
-      lastName,
-      email,
-      gender,
-      phone,
-      photo,
-      wishlist,
-      addresses,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      gender: gender,
+      phone: phone,
+      photo: photo,
+      wishlist: wishlist,
+      addresses: addresses,
     );
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     firstName,
     lastName,
