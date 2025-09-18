@@ -1,6 +1,5 @@
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
-import 'package:flowers_ecommerce_app/features/checkout/domin/entities/user_cart.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_event.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/theme/colors.dart';
 import '../../../../../core/helpers/spacing.dart';
+import '../../../../cart/domin/entities/user_cart.dart';
 
 class OrderSummarySection extends StatelessWidget {
   const OrderSummarySection({super.key, required this.userCart});
@@ -52,7 +52,7 @@ class OrderSummarySection extends StatelessWidget {
                 ),
               ),
               Text(
-                "${trans.egp} ${((userCart.cart.totalPrice ?? 0) * 0.1).toInt()}",
+                "${trans.egp} 50",
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontWeight: AppFontWeight.bold,
                   color: AppColors.black,
@@ -74,7 +74,7 @@ class OrderSummarySection extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "${trans.egp} ${userCart.cart.totalPrice! + ((userCart.cart.totalPrice ?? 0) * 0.1).toInt()}",
+                "${trans.egp} ${(userCart.cart.totalPrice! + 50).toInt()}",
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontWeight: AppFontWeight.bold,
                   color: AppColors.black,
@@ -110,7 +110,7 @@ class OrderSummarySection extends StatelessWidget {
                       : null,
                   child: state.isSubmitting
                       ? const CircularProgressIndicator(color: Colors.white)
-                      :  Text(trans.place_order),
+                      : Text(trans.place_order),
                 ),
               );
             },

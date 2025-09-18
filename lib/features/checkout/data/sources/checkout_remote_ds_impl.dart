@@ -9,8 +9,7 @@ class CheckoutRemoteDsImpl implements CheckoutRemoteDS {
 
   CheckoutRemoteDsImpl(this._apiServices);
   @override
-  Future<GetUserAddresesRespone> getLoggedUserAddresses()async {
-  return await _apiServices.getLoggedUserAddresses();
+  Future<GetUserAddresesRespone> getLoggedUserAddresses() async {
+    return await _apiServices.getLoggedUserAddresses();
   }
-
 }

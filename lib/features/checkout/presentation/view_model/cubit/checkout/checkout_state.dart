@@ -8,8 +8,8 @@ class CheckoutState extends Equatable {
   final bool isGift;
   final List<Address> addresses;
   final Address? selectedAddress;
-  final PaymentMethod? selectedPaymentMethod ;
-  
+  final PaymentMethod? selectedPaymentMethod;
+
   final String? giftStreet;
   final String? giftPhone;
   final String? giftCity;
@@ -19,8 +19,8 @@ class CheckoutState extends Equatable {
     this.isSubmitting = false,
     this.isGift = false,
     this.addresses = const [],
-    this.selectedAddress ,
-    this.selectedPaymentMethod ,
+    this.selectedAddress,
+    this.selectedPaymentMethod,
     this.giftStreet,
     this.giftPhone,
     this.giftCity,
@@ -54,14 +54,14 @@ class CheckoutState extends Equatable {
 
   @override
   List<Object?> get props => [
-        isLoading,
-        isSubmitting,
-        isGift,
-        addresses,
-        selectedAddress,
-        selectedPaymentMethod,
-        giftStreet,
-        giftPhone,
-        giftCity,
-      ];
+    isLoading,
+    isSubmitting,
+    isGift,
+    addresses,
+    selectedAddress,
+    selectedPaymentMethod,
+    giftStreet,
+    giftPhone,
+    giftCity,
+  ];
 }

@@ -35,7 +35,7 @@ class _GiftSectionState extends State<GiftSection> {
                       value: state.isGift,
                       onChanged: (val) => cubit.doIntent(ToggleGift(val)),
                     ),
-                     Text(trans.its_a_gift),
+                    Text(trans.its_a_gift),
                   ],
                 ),
 
@@ -45,8 +45,8 @@ class _GiftSectionState extends State<GiftSection> {
                     onChanged: (val) {
                       cubit.doIntent(UpdateGiftStreet(val));
                     },
-                    decoration:  InputDecoration(
-                      labelText:trans.street ,
+                    decoration: InputDecoration(
+                      labelText: trans.street,
                       hintText: trans.enter_your_street,
                     ),
                     validator: Validations.validateName,
@@ -56,8 +56,8 @@ class _GiftSectionState extends State<GiftSection> {
                     onChanged: (val) {
                       cubit.doIntent(UpdateGiftCity(val));
                     },
-                    decoration:  InputDecoration(
-                      labelText:trans.city,
+                    decoration: InputDecoration(
+                      labelText: trans.city,
                       hintText: trans.enter_your_city,
                     ),
                   ),
@@ -70,8 +70,8 @@ class _GiftSectionState extends State<GiftSection> {
                     onChanged: (val) {
                       cubit.doIntent(UpdateGiftPhone(val));
                     },
-                    decoration:  InputDecoration(
-                      labelText : trans.phone,
+                    decoration: InputDecoration(
+                      labelText: trans.phone,
                       hintText: trans.enter_your_phone,
                       counter: const SizedBox.shrink(),
                     ),

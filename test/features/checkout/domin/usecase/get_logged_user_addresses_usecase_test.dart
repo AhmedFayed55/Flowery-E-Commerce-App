@@ -10,7 +10,6 @@ import 'package:mockito/mockito.dart';
 import 'get_logged_user_addresses_usecase_test.mocks.dart';
 
 @GenerateMocks([CheckoutRepo])
-
 void main() {
   late GetLoggedUserAddressesUsecase usecase;
   late MockCheckoutRepo mockCheckoutRepo;
@@ -19,15 +18,15 @@ void main() {
     mockCheckoutRepo = MockCheckoutRepo();
     usecase = GetLoggedUserAddressesUsecase(mockCheckoutRepo);
     provideDummy<ApiResult<List<Address>>>(ApiSuccessResult(data: []));
-
   });
 
   group('GetLoggedUserAddressesUsecase', () {
     test('should return ApiSuccessResult when repo returns success', () async {
       // arrange
       final addresses = [Address(id: "1", street: "Street 1", city: "Cairo")];
-      when(mockCheckoutRepo.getLoggedUserAddresses())
-          .thenAnswer((_) async => ApiSuccessResult(data: addresses));
+      when(
+        mockCheckoutRepo.getLoggedUserAddresses(),
+      ).thenAnswer((_) async => ApiSuccessResult(data: addresses));
 
       // act
       final result = await usecase.invok();
@@ -41,10 +40,9 @@ void main() {
 
     test('should return ApiErrorResult when repo returns failure', () async {
       // arrange
-      when(mockCheckoutRepo.getLoggedUserAddresses())
-          .thenAnswer((_) async => ApiErrorResult(
-                failure:  Failure(errorMessage: "Error"),
-              ));
+      when(mockCheckoutRepo.getLoggedUserAddresses()).thenAnswer(
+        (_) async => ApiErrorResult(failure: Failure(errorMessage: "Error")),
+      );
 
       // act
       final result = await usecase.invok();

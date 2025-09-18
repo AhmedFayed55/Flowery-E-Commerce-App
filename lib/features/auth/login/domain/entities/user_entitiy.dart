@@ -10,16 +10,16 @@ class UserEntity extends Equatable {
   final List<dynamic> wishlist;
   final List<dynamic> addresses;
 
-  const UserEntity(
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.gender,
-    this.phone,
-    this.photo,
-    this.wishlist,
-    this.addresses,
-  );
+  const UserEntity({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.gender,
+    required this.phone,
+    required this.photo,
+    required this.wishlist,
+    required this.addresses,
+  });
 
   @override
   List<Object?> get props => [

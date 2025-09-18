@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -25,9 +27,9 @@ class DeliveryAddressSection extends StatelessWidget {
           Text(
             trans.delivery_address,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.black,
-                ),
+              fontWeight: FontWeight.w500,
+              color: AppColors.black,
+            ),
           ),
           SizedBox(height: 16.h),
           BlocBuilder<CheckoutCubit, CheckoutState>(
@@ -35,11 +37,12 @@ class DeliveryAddressSection extends StatelessWidget {
               if (state.isLoading) {
                 return SizedBox(
                   height: 50.h,
-                  child: const Center(child: CircularProgressIndicator()));
+                  child: const Center(child: CircularProgressIndicator()),
+                );
               }
 
               if (state.addresses.isEmpty) {
-                return  Text(trans.no_addresses_found);
+                return Text(trans.no_addresses_found);
               }
 
               return Column(
@@ -56,7 +59,7 @@ class DeliveryAddressSection extends StatelessWidget {
                   ],
                   GestureDetector(
                     onTap: () {
-                      
+                      context.pushNamed(AppRoutes.addressDetails);
                     },
                     child: Container(
                       height: 36.h,
@@ -75,9 +78,7 @@ class DeliveryAddressSection extends StatelessWidget {
                           SizedBox(width: 8.w),
                           Text(
                             trans.add_new,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
+                            style: Theme.of(context).textTheme.labelLarge!
                                 .copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.pink,
@@ -89,7 +90,6 @@ class DeliveryAddressSection extends StatelessWidget {
                   ),
                   verticalSpace(16.h),
                 ],
-              
               );
             },
           ),

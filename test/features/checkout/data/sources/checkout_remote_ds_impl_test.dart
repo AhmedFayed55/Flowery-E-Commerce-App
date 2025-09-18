@@ -18,28 +18,33 @@ void main() {
   });
 
   group('CheckoutRemoteDsImpl', () {
-    test('should return GetUserAddresesRespone when ApiServices call is successful', () async {
-      // arrange
-      final fakeResponse = GetUserAddresesRespone(
-        addresses: [],
-        message: null,
-      );
+    test(
+      'should return GetUserAddresesRespone when ApiServices call is successful',
+      () async {
+        // arrange
+        final fakeResponse = GetUserAddresesRespone(
+          addresses: [],
+          message: null,
+        );
 
-      when(mockApiServices.getLoggedUserAddresses())
-          .thenAnswer((_) async => fakeResponse);
+        when(
+          mockApiServices.getLoggedUserAddresses(),
+        ).thenAnswer((_) async => fakeResponse);
 
-      // act
-      final result = await checkoutRemoteDs.getLoggedUserAddresses();
+        // act
+        final result = await checkoutRemoteDs.getLoggedUserAddresses();
 
-      // assert
-      expect(result, equals(fakeResponse));
-      verify(mockApiServices.getLoggedUserAddresses()).called(1);
-    });
+        // assert
+        expect(result, equals(fakeResponse));
+        verify(mockApiServices.getLoggedUserAddresses()).called(1);
+      },
+    );
 
     test('should throw exception when ApiServices fails', () async {
       // arrange
-      when(mockApiServices.getLoggedUserAddresses())
-          .thenThrow(Exception('Failed to fetch addresses'));
+      when(
+        mockApiServices.getLoggedUserAddresses(),
+      ).thenThrow(Exception('Failed to fetch addresses'));
 
       // act
       final call = checkoutRemoteDs.getLoggedUserAddresses;

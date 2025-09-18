@@ -51,7 +51,7 @@ class DeliveryAddressCard extends StatelessWidget {
                         value: true,
                         groupValue: isSelected,
                         onChanged: (_) => onSelect(),
-                        activeColor: Colors.pink, 
+                        activeColor: Colors.pink,
                       ),
                       Text(
                         title,

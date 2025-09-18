@@ -4,13 +4,15 @@ import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_produc
 import 'package:flowers_ecommerce_app/features/add_to_cart/data/source/add_to_cart_ds.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as : AddToCartDS)
+@Injectable(as: AddToCartDS)
 class AddToCartDsImpl implements AddToCartDS {
   final ApiServices _apiServices;
   AddToCartDsImpl(this._apiServices);
 
   @override
-  Future<AddProductRespone> addProductToCart(AddProductBody addProductBody) async{
+  Future<AddProductRespone> addProductToCart(
+    AddProductBody addProductBody,
+  ) async {
     return await _apiServices.addToCart(addProductBody);
   }
 }

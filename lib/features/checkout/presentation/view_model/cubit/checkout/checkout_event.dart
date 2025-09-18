@@ -38,4 +38,3 @@ class SelectAddress extends CheckoutEvent {
 }
 
 class GetLoggedUserAddresses extends CheckoutEvent {}
-
