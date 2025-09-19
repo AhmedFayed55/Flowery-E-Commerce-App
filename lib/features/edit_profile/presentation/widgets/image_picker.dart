@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_cubit.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/cubit/edit_profile_state.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +27,9 @@ class _ProfileImagePickerState extends State<ProfileImagePicker> {
           children: [
             CircleAvatar(
               radius: 40.r,
-              backgroundImage: state.pickedImage == null ? null : FileImage(state.pickedImage!),
-              child: state.pickedImage == null ? Icon(Icons.person, size: 30.sp) : null ,
+              backgroundImage: state.pickedImage == null
+                  ? NetworkImage(state.imageUrl!)
+                  : FileImage(File(state.pickedImage!.path)),
             ),
             InkWell(
               onTap: (){

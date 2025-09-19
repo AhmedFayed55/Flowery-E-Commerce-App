@@ -168,6 +168,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                           AppLocalizations.of(
                                             context,
                                           )!.no_products_found,
+                                          style: Theme.of(context).textTheme.labelSmall,
                                         ),
                                       )
                                     : GridView.builder(

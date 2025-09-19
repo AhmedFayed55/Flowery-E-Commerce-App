@@ -61,7 +61,9 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       context.pushNamed(
                         AppRoutes.editProfile,
                         arguments: state.userProfileEntity,
-                      );
+                      ).then((_) {
+                        context.read<ProfileSettingCubit>().doIntent(SumitProflieSettingEvent());
+                      });
                     },
                   ),
                   const Divider(),
@@ -83,6 +85,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                       state.localizationCode == Constants.arKey
                           ? lang.arabic
                           : lang.english,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     onPressed: () {
                       showModalBottomSheet(

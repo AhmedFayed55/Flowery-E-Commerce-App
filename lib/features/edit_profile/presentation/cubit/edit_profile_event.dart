@@ -18,3 +18,6 @@ class UploadPhotoEvent extends EditProfileEvent {
 
 class CameraPickerEvent extends EditProfileEvent {}
 class GalleryPickerEvent extends EditProfileEvent {}
+class GetUserInfo extends EditProfileEvent{
+
+}

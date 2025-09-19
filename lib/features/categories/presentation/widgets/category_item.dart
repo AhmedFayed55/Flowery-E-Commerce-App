@@ -1,5 +1,6 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_state.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var translate = AppLocalizations.of(context)!;
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         var cubit = context.read<CategoryCubit>();
@@ -67,7 +69,7 @@ class ProductItem extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "EGP ${product.priceAfterDiscount ?? ""}  ",
+                      text: "${AppLocalizations.of(context)!.egp} ${product.priceAfterDiscount ?? ""}  ",
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                     TextSpan(
@@ -98,7 +100,7 @@ class ProductItem extends StatelessWidget {
                     final isSuccess = cubit.state.isSucsses;
                     if (isSuccess) {
                       ToastMessage.toastMsg(
-                        "Order Placed Success",
+                        translate.order_placed_success,
                         backgroundColor: AppColors.green,
                       );
                     } else {
@@ -112,7 +114,9 @@ class ProductItem extends StatelessWidget {
                     children: [
                       const Icon(Icons.shopping_cart_outlined),
                       horizontalSpace(8),
-                      const Text("Add to cart"),
+                      Text(translate.add_to_Cart,style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: AppColors.white
+                      ),),
                     ],
                   ),
                 ),

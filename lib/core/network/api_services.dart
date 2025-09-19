@@ -84,7 +84,7 @@ abstract class ApiServices {
   @GET(ApiConstants.getSpecificOccasion)
   Future<OccasionsResponseDto> getOccasions();
 
-  @GET(ApiConstants.products)
+  @GET(ApiConstants.product)
   Future<ProductResponse> getAllProducts(
       @Query("sort") String? sortBy);
 

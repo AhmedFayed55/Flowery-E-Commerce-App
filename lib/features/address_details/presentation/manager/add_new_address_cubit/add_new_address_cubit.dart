@@ -1,4 +1,8 @@
+import 'package:flowers_ecommerce_app/core/constants/constants.dart';
+import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
+import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/request/add_new_address_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/response/addresses_response_entity.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/response/area_response_entity.dart';
@@ -33,6 +37,8 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
   final TextEditingController phone = TextEditingController();
   final TextEditingController area = TextEditingController();
 
+  var lang = getIt.get<SharedPrefHelper>().getData(key: Constants.languageCode);
+
   doIntent(AddressDetailsEvent event) {
     switch (event) {
       case AddNewAddressEvent():
@@ -43,6 +49,7 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
   }
 
   Future<void> _addNewAddress() async {
+    if (isClosed) return;
     emit(state.copyWith(isLoading: true, isSuccess: false, errorMsg: null));
     var response = await addNewAddressUseCase.invoke(
       AddNewAddressRequestEntity(
@@ -56,9 +63,11 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
     );
     switch (response) {
       case ApiSuccessResult<AddressesResponseEntity>():
+        if (isClosed) return;
         emit(state.copyWith(isLoading: false, isSuccess: true));
         break;
       case ApiErrorResult<AddressesResponseEntity>():
+        if (isClosed) return;
         emit(
           state.copyWith(
             isLoading: false,
@@ -80,7 +89,9 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
     switch (response) {
       case ApiSuccessResult<CitiesResponseEntity>():
         List<String> cities = response.data.data!
-            .map((city) => city.governorateNameEn ?? "")
+            .map((area) => lang == Constants.enKey
+            ? (area.governorateNameEn ?? '')
+            : (area.governorateNameAr ?? ''))
             .toList();
         emit(state.copyWith(isLoadingGetPLaces: false, cities: cities));
       case ApiErrorResult<CitiesResponseEntity>():
@@ -99,9 +110,11 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
     switch (response) {
       case ApiSuccessResult<AreaResponseEntity>():
         List<String> areas = response.data.data!
-            .map((area) => area.cityNameEn ?? "")
+            .map((area) => lang == Constants.enKey
+            ? (area.cityNameEn ?? '')
+            : (area.cityNameAr ?? ''))
             .toList();
-        emit(state.copyWith(isLoadingGetPLaces: false, areas: areas));
+        emit(state.copyWith(isLoadingGetPLaces: false, areas: areas ));
       case ApiErrorResult<AreaResponseEntity>():
         emit(
           state.copyWith(
