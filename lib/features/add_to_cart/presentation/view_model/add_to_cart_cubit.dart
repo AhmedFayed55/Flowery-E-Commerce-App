@@ -37,6 +37,5 @@ class AddToCartCubit extends Cubit<AddToCartState> {
         );
         return false;
     }
-
   }
 }
