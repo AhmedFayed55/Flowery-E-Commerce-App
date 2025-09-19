@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../core/di/di.dart';
 import '../manager/user_addresses_state.dart';
 import '../widgets/saved_address_list_view_item.dart';
 

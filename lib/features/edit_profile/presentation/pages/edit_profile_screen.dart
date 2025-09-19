@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';

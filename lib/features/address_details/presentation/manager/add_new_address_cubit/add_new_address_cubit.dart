@@ -2,7 +2,6 @@ import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
 import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
-import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/request/add_new_address_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/response/addresses_response_entity.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/response/area_response_entity.dart';
