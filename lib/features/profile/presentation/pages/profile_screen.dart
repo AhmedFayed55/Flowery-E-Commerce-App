@@ -39,6 +39,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
   @override
   Widget build(BuildContext context) {
     var lang = AppLocalizations.of(context)!;
+    var cubit = context.read<ProfileSettingCubit>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -62,7 +63,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                         AppRoutes.editProfile,
                         arguments: state.userProfileEntity,
                       ).then((_) {
-                        context.read<ProfileSettingCubit>().doIntent(SumitProflieSettingEvent());
+                        cubit.doIntent(SumitProflieSettingEvent());
                       });
                     },
                   ),

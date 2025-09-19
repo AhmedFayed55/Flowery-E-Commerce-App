@@ -217,7 +217,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 UploadPhotoEvent(file: state.pickedImage ?? File("")),
                               ),
                             ]).then((_) {
-                              context.read<ProfileSettingCubit>().doIntent(
+                              profileSettingCubit.doIntent(
                                 SumitProflieSettingEvent(),
                               );
                             });
