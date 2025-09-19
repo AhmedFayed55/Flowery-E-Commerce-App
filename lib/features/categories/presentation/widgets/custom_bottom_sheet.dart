@@ -14,9 +14,7 @@ class CustomBottomSheet extends StatefulWidget {
   State<CustomBottomSheet> createState() => _CustomBottomSheetState();
 }
 
-
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
-
   String? _selected;
 
   @override

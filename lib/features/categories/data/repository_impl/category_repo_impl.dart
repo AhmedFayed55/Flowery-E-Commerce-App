@@ -12,7 +12,8 @@ class GetAllCategoryRepositoryImpl implements GetAllCategoryRepositoryContract {
 
   @override
   Future<ApiResult<List<CategoryModel>>> getAllCategory() async {
-    ApiResult<List<CategoryModel>> result = await getAllCategoryRemoteDatasource.getAllCategory();
-    return result ;
+    ApiResult<List<CategoryModel>> result = await getAllCategoryRemoteDatasource
+        .getAllCategory();
+    return result;
   }
 }

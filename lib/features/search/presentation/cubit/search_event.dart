@@ -11,6 +11,7 @@ class SearchDelayedEvent extends SearchEvent {
 
   SearchDelayedEvent({required this.keyword});
 }
+
 class ClearSearchEvent extends SearchEvent {
   String keyword;
 

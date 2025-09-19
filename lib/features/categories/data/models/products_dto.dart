@@ -1,10 +1,8 @@
-
-
-
 import 'package:flowers_ecommerce_app/features/categories/domain/entity/products_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'products_dto.g.dart';
+
 @JsonSerializable()
 class ProductsDTO {
   @JsonKey(name: "rateAvg")
@@ -44,7 +42,7 @@ class ProductsDTO {
   @JsonKey(name: "sold")
   final int? sold;
 
-  ProductsDTO ({
+  ProductsDTO({
     this.rateAvg,
     this.rateCount,
     this.id,
@@ -93,7 +91,4 @@ class ProductsDTO {
     isSuperAdmin: isSuperAdmin,
     sold: sold,
   );
-
-
 }
-

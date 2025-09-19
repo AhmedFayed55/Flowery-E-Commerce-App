@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helpers/flutter_toast.dart';
+import '../../../add_to_cart/presentation/view_model/add_to_cart_cubit.dart';
+import '../../../add_to_cart/presentation/view_model/add_to_cart_event.dart';
+
 class ProductItem extends StatelessWidget {
   final int index;
 
@@ -85,8 +89,25 @@ class ProductItem extends StatelessWidget {
               SizedBox(
                 height: 30.h,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Add to Cart
+                  onPressed: () async {
+                    final cubit = context.read<AddToCartCubit>();
+
+                    await cubit.doIntent(
+                      AddProductToCart(state.productsDtoEntity[index].id!),
+                    );
+
+                    final isSuccess = cubit.state.isSucsses;
+                    if (isSuccess) {
+                      ToastMessage.toastMsg(
+                        "Order Placed Success",
+                        backgroundColor: AppColors.green,
+                      );
+                    } else {
+                      ToastMessage.toastMsg(
+                        cubit.state.errorMsg,
+                        backgroundColor: AppColors.red,
+                      );
+                    }
                   },
                   child: Row(
                     children: [

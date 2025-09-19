@@ -63,7 +63,9 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   Future<void> _getAllProducts() async {
     emit(state.copyWith(isLoading: true));
-    ApiResult<ProductResponseEntity> result = await getAllProductsUseCase.call();
+
+    ApiResult<ProductResponseEntity> result = await getAllProductsUseCase
+        .call();
     switch (result) {
       case ApiSuccessResult<ProductResponseEntity>():
         final allProducts = result.data.products ?? [];
@@ -128,12 +130,12 @@ class CategoryCubit extends Cubit<CategoryState> {
     // }
   }
 
-
   Future<void> _productsByCategoryId(String categoryId) async {
     final products = state.allProducts;
 
-    final filteredProducts =
-    products.where((product) => product.category == categoryId).toList();
+    final filteredProducts = products
+        .where((product) => product.category == categoryId)
+        .toList();
 
     emit(state.copyWith(filteredProducts: filteredProducts));
   }

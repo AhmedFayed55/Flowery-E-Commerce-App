@@ -19,28 +19,34 @@ class SearchCubit extends Cubit<SearchState> {
   Future<void> doIntent(SearchEvent event) async {
     switch (event) {
       case GoToSearchEvent():
-          await _search(event.keyword);
-          break;
+        await _search(event.keyword);
+        break;
       case SearchDelayedEvent():
-          await _onChangedDelayed(event.keyword);
-          break;
+        await _onChangedDelayed(event.keyword);
+        break;
       case ClearSearchEvent():
-           await _clearSearch(event.keyword);
-           break;
-
+        await _clearSearch(event.keyword);
+        break;
     }
   }
 
   Future<void> _search(String keyword) async {
-    emit(state.copyWith(isLoading: true ,isSuccess: false,
-      isError: false,initial: false,));
+    emit(
+      state.copyWith(
+        isLoading: true,
+        isSuccess: false,
+        isError: false,
+        initial: false,
+      ),
+    );
     ApiResult<SearchResponseEntity> result = await searchUseCase.call(keyword);
     switch (result) {
       case ApiSuccessResult<SearchResponseEntity>():
         emit(
           state.copyWith(
             isLoading: false,
-            isSuccess: true,initial: false,
+            isSuccess: true,
+            initial: false,
             productsDtoEntity: result.data.productsDtoEntity,
           ),
         );
@@ -48,7 +54,8 @@ class SearchCubit extends Cubit<SearchState> {
         emit(
           state.copyWith(
             isLoading: false,
-            isError: true,initial: false,
+            isError: true,
+            initial: false,
             errorMessage: result.failure.errorMessage,
           ),
         );
@@ -56,13 +63,15 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   Future<void> _clearSearch(String keyword) async {
-    emit(state.copyWith(
-      productsDtoEntity: [],
-      isLoading: false,
-      isSuccess: false,
-      isError: false,
-      initial: true,
-    ));
+    emit(
+      state.copyWith(
+        productsDtoEntity: [],
+        isLoading: false,
+        isSuccess: false,
+        isError: false,
+        initial: true,
+      ),
+    );
   }
 
   Future<void> _onChangedDelayed(String keyword) async {

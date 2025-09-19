@@ -11,7 +11,7 @@ class GetAllCategoryUseCase {
 
   Future<ApiResult<List<CategoryModel>>> call() async {
     ApiResult<List<CategoryModel>> result =
-    await getAllCategoryRepositoryContract.getAllCategory();
+        await getAllCategoryRepositoryContract.getAllCategory();
     return result;
   }
 }

@@ -12,6 +12,7 @@ import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww
 import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
 import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
+import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
@@ -119,7 +120,11 @@ class RouteGenerator {
 
       case AppRoutes.savedAddresses:
         return MaterialPageRoute(builder: (_) => const UserAddressesScreen());
-
+      case AppRoutes.productDetails:
+        final args = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsPage(productId: args),
+        );
       case AppRoutes.addressDetails:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(

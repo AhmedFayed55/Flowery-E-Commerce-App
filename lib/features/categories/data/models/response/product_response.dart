@@ -14,11 +14,7 @@ class ProductResponse {
   @JsonKey(name: "products")
   final List<ProductsDTO>? products;
 
-  ProductResponse ({
-    this.message,
-    this.metadata,
-    this.products,
-  });
+  ProductResponse({this.message, this.metadata, this.products});
 
   factory ProductResponse.fromJson(Map<String, dynamic> json) {
     return _$ProductResponseFromJson(json);
@@ -30,9 +26,9 @@ class ProductResponse {
 
   ProductResponseEntity toEntity() {
     return ProductResponseEntity(
-        message: message,
-        metadata: metadata?.toEntity(),
-        products:products?.map((product) => product.toEntity(),).toList()
+      message: message,
+      metadata: metadata?.toEntity(),
+      products: products?.map((product) => product.toEntity()).toList(),
     );
   }
 }

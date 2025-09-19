@@ -24,4 +24,5 @@ abstract class AppConstants {
   static const String productKey = 'productKey';
   static const String bearer = "Bearer";
   static const String id = "id";
+  static const String message = 'message';
 }

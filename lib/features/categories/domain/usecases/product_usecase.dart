@@ -10,7 +10,8 @@ class GetAllProductsUseCase {
   GetAllProductsUseCase({required this.getAllProductsRepositoryContract});
 
   Future<ApiResult<ProductResponseEntity>> call() async {
-    ApiResult<ProductResponseEntity> result = await getAllProductsRepositoryContract.getAllProducts();
+    ApiResult<ProductResponseEntity> result =
+        await getAllProductsRepositoryContract.getAllProducts();
     return result;
   }
 }

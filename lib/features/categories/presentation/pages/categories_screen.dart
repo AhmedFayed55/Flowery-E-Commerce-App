@@ -14,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesScreen extends StatefulWidget {
   final int? selectedIndex;
-  const CategoriesScreen({super.key,this.selectedIndex});
+  const CategoriesScreen({super.key, this.selectedIndex});
 
   @override
   State<CategoriesScreen> createState() => _CategoriesScreenState();
@@ -33,9 +33,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           final index = widget.selectedIndex ?? 0;
           if (cubit.state.listCategoryModel.isNotEmpty) {
             final firstCategoryId = cubit.state.listCategoryModel[index].id;
-            cubit.doIntent(
-              ProductsByCategoryId(categoryId: firstCategoryId),
-            );
+
+            cubit.doIntent(ProductsByCategoryId(categoryId: firstCategoryId));
           }
         });
 
@@ -123,9 +122,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                 length: state.listCategoryModel.length,
                                 child: TabBar(
                                   onTap: (value) {
-                                    final categoryId = state.listCategoryModel[value].id;
+                                    final categoryId =
+                                        state.listCategoryModel[value].id;
                                     categoryCubit.doIntent(
-                                      ProductsByCategoryId(categoryId: categoryId),
+                                      ProductsByCategoryId(
+                                        categoryId: categoryId,
+                                      ),
                                     );
                                   },
                                   dividerColor: Colors.transparent,
@@ -173,7 +175,17 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                         itemBuilder: (context, index) {
                                           final product =
                                               state.filteredProducts[index];
-                                          return ProductItem(product: product);
+                                          return GestureDetector(
+                                            onTap: () => context.pushNamed(
+                                              AppRoutes.productDetails,
+                                              arguments: state
+                                                  .filteredProducts[index]
+                                                  .id,
+                                            ),
+                                            child: ProductItem(
+                                              product: product,
+                                            ),
+                                          );
                                         },
                                       ),
                               ),

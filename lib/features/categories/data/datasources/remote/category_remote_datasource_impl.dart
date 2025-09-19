@@ -8,7 +8,6 @@ import 'package:injectable/injectable.dart';
 
 import 'category_remote_datasource.dart';
 
-
 @Injectable(as: GetAllCategoryRemoteDatasource)
 class GetAllCategoryRemoteDatasourceImpl
     implements GetAllCategoryRemoteDatasource {
@@ -29,7 +28,9 @@ class GetAllCategoryRemoteDatasourceImpl
         failure: Failure(errorMessage: dioError.message ?? ""),
       );
     } catch (error) {
-      return ApiErrorResult<List<CategoryModel>>(failure: Failure(errorMessage: error.toString()));
+      return ApiErrorResult<List<CategoryModel>>(
+        failure: Failure(errorMessage: error.toString()),
+      );
     }
   }
 }

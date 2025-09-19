@@ -31,7 +31,7 @@ class AddToCartRepoImpl implements AddToCartRepo {
       return ApiSuccessResult(data: result);
     } on DioException catch (e) {
       return ApiErrorResult(
-        failure: ServerFailure.fromDioError(dioException: e),
+        failure: Failure(errorMessage: e.response!.data['error'].toString()),
       );
     } catch (e) {
       return ApiErrorResult(failure: Failure(errorMessage: e.toString()));

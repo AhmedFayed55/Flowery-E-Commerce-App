@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/features/occasions/domain/entities/products_entity.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/widgets/product_cart.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,13 @@ class ProductsGridview extends StatelessWidget {
         crossAxisSpacing: 17,
         mainAxisSpacing: 17,
       ),
-      itemBuilder: (context, index) => ProductCart(product: products[index]),
+      itemBuilder: (context, index) => GestureDetector(
+        onTap: () => context.pushNamed(
+          AppRoutes.productDetails,
+          arguments: products[index].id,
+        ),
+        child: ProductCart(product: products[index]),
+      ),
     );
   }
 }

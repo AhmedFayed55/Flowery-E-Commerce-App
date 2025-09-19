@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -74,7 +76,14 @@ class OrderCard extends StatelessWidget {
                     width: double.infinity,
                     height: 30.h,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if (orderItem.state == "completed") {
+                          context.pushNamed(
+                            AppRoutes.productDetails,
+                            arguments: orderItem.orderItems!.first.product!.id,
+                          );
+                        }
+                      },
                       child: Text(
                         orderItem.state == "pending"
                             ? trans.track_order
