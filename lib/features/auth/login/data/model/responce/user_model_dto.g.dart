@@ -7,17 +7,17 @@ part of 'user_model_dto.dart';
 // **************************************************************************
 
 UserModelDto _$UserModelDtoFromJson(Map<String, dynamic> json) => UserModelDto(
-  json['_id'] as String,
-  json['firstName'] as String,
-  json['lastName'] as String,
-  json['email'] as String,
-  json['gender'] as String,
-  json['phone'] as String,
-  json['photo'] as String,
-  json['role'] as String,
-  json['wishlist'] as List<dynamic>,
-  json['addresses'] as List<dynamic>,
-  json['createdAt'] as String,
+  id: json['_id'] as String,
+  firstName: json['firstName'] as String,
+  lastName: json['lastName'] as String,
+  email: json['email'] as String,
+  gender: json['gender'] as String,
+  phone: json['phone'] as String,
+  photo: json['photo'] as String,
+  role: json['role'] as String,
+  wishlist: json['wishlist'] as List<dynamic>,
+  addresses: json['addresses'] as List<dynamic>,
+  createdAt: json['createdAt'] as String,
 );
 
 Map<String, dynamic> _$UserModelDtoToJson(UserModelDto instance) =>

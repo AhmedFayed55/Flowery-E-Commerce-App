@@ -55,19 +55,24 @@ void main() {
       mockProductsDetalisDs = MockProductsDetalisDs();
       productsDetalisRepoImpl = ProductsDetalisRepoImpl(mockProductsDetalisDs);
 
-      getSpecificProductRespone =
-          GetSpecificProductRespone(product: productDto, message: "test");
+      getSpecificProductRespone = GetSpecificProductRespone(
+        product: productDto,
+        message: "test",
+      );
     });
 
     test(
       'when calling getProductDetalis should return ApiSuccessResult<ProductEntity>',
       () async {
         // Arrange
-        when(mockProductsDetalisDs.getSpecificProduct(productId))
-            .thenAnswer((_) async => getSpecificProductRespone);
+        when(
+          mockProductsDetalisDs.getSpecificProduct(productId),
+        ).thenAnswer((_) async => getSpecificProductRespone);
 
         // Act
-        final result = await productsDetalisRepoImpl.getProductsDetalis(productId);
+        final result = await productsDetalisRepoImpl.getProductsDetalis(
+          productId,
+        );
 
         // Assert
         verify(mockProductsDetalisDs.getSpecificProduct(productId)).called(1);
@@ -76,43 +81,51 @@ void main() {
       },
     );
 
-    test(
-      'when DioException thrown should return ApiErrorResult',
-      () async {
-        // Arrange
-        when(mockProductsDetalisDs.getSpecificProduct(productId))
-            .thenThrow(DioException(
+    test('when DioException thrown should return ApiErrorResult', () async {
+      // Arrange
+      when(mockProductsDetalisDs.getSpecificProduct(productId)).thenThrow(
+        DioException(
           requestOptions: RequestOptions(path: ""),
           response: Response(
             requestOptions: RequestOptions(path: ""),
             data: {"message": "Dio error"},
             statusCode: 400,
           ),
-        ));
+        ),
+      );
 
-        // Act
-        final result = await productsDetalisRepoImpl.getProductsDetalis(productId);
+      // Act
+      final result = await productsDetalisRepoImpl.getProductsDetalis(
+        productId,
+      );
 
-        // Assert
-        expect(result, isA<ApiErrorResult>());
-        expect((result as ApiErrorResult).failure.errorMessage, equals("Dio error"));
-      },
-    );
+      // Assert
+      expect(result, isA<ApiErrorResult>());
+      expect(
+        (result as ApiErrorResult).failure.errorMessage,
+        equals("Dio error"),
+      );
+    });
 
     test(
       'when generic Exception thrown should return ApiErrorResult',
       () async {
         // Arrange
-        when(mockProductsDetalisDs.getSpecificProduct(productId))
-            .thenThrow(Exception("Something went wrong"));
+        when(
+          mockProductsDetalisDs.getSpecificProduct(productId),
+        ).thenThrow(Exception("Something went wrong"));
 
         // Act
-        final result = await productsDetalisRepoImpl.getProductsDetalis(productId);
+        final result = await productsDetalisRepoImpl.getProductsDetalis(
+          productId,
+        );
 
         // Assert
         expect(result, isA<ApiErrorResult>());
-        expect((result as ApiErrorResult).failure.errorMessage,
-            contains("Something went wrong"));
+        expect(
+          (result as ApiErrorResult).failure.errorMessage,
+          contains("Something went wrong"),
+        );
       },
     );
   });

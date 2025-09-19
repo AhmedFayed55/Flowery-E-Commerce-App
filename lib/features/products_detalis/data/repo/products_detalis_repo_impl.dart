@@ -31,7 +31,7 @@ class ProductsDetalisRepoImpl implements ProductsDetalisRepo {
       return ApiErrorResult(
         failure: Failure(errorMessage: e.response!.data[AppConstants.message]),
       );
-    }catch (e) {
+    } catch (e) {
       return ApiErrorResult(failure: Failure(errorMessage: e.toString()));
     }
   }

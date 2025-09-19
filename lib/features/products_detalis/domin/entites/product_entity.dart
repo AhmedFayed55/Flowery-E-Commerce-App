@@ -1,7 +1,4 @@
-
-
 class ProductEntity {
-
   String? id;
   String? title;
   String? description;

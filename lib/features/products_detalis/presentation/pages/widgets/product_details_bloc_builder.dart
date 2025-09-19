@@ -22,8 +22,8 @@ class ProductDetailsBlocBuilder extends StatelessWidget {
             } else {
               return Center(
                 child: Shimmer(
-                  child:  Text(
-                    trans.loading ,
+                  child: Text(
+                    trans.loading,
                     style: const TextStyle(fontSize: 40, color: Colors.grey),
                   ),
                 ),

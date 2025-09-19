@@ -36,22 +36,26 @@ class _ImageAndDotsIndecatorBuilderState
                   verticalSpace(78),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       child: Container(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         decoration: BoxDecoration(
-                          
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(16),
-                          
                         ),
                         child: Image.network(
                           loadingBuilder: (context, child, loadingProgress) =>
-                              loadingProgress == null ? child : const Center(child: CircularProgressIndicator()),
+                              loadingProgress == null
+                              ? child
+                              : const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
                           widget.images[index],
                           fit: BoxFit.cover,
                           width: double.infinity,
-                        
                         ),
                       ),
                     ),

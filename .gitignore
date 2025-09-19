@@ -18,6 +18,13 @@ migrate_working_dir/
 *.iws
 .idea/
 
+# VSCode related (لو عايز تحتفظ بالـ config شيل الكومنت)
+# Generated files
+*.g.dart
+*.mocks.dart
+*.config.dart
+
+
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
@@ -31,7 +38,8 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+build/
+
 
 # Symbolication related
 app.*.symbols
@@ -43,11 +51,24 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-lib/core/network/api_services.g.dart
-lib/core/di/di.config.dart
-lib/core/di/di.config.dart
-test/features/auth/register/data/repo/auth_repo_impl_test.mocks.dart
-test/features/auth/register/data/source/auth_remote_data_sourse_imlp_test.mocks.dart
-test/features/auth/register/data/source/auth_remote_data_sourse_imlp_test.mocks.dart
-test/features/auth/register/domin/usecase/register_usecase_test.mocks.dart
-test/features/auth/register/presentation/view_model/register_cubit_test.mocks.dart
+/lib/core/l10n/translations/
+# Android build outputs
+android/app/debug
+android/app/profile
+android/app/release
+
+# Generated files (build_runner, json_serializable, injectable, freezed, ...)
+**/*.g.dart
+**/*.freezed.dart
+**/*.config.dart
+*.lock
+
+
+
+# Localization generated files
+lib/core/l10n/translations/**
+
+# Ignore only mocks (لكن test عادي هيتتبع)
+**/mock_*.dart
+**/*.mocks.dart
+test/feature/forget_password/data/reset_pass_remote_datasource_impl_test.mocks.dart

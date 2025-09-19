@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'product_dto.dart';
+
 @JsonSerializable()
 class GetSpecificProductRespone {
   String? message;
