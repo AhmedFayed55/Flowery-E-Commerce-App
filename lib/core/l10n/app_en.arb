@@ -82,8 +82,7 @@
   "gallery": "Gallery",
   "camera": "Camera",
   "first_name_is_required": "First Name is required",
-  "last_name_is_required": "Last Name is required"
-  "passwords_do_not_match": "Passwords Don't Match",
+  "last_name_is_required": "Last Name is required",
   "city": "City",
   "address": "Address",
   "enter_your_city": "Enter your city",
