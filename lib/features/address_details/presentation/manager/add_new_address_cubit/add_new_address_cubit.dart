@@ -36,7 +36,7 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
   final TextEditingController phone = TextEditingController();
   final TextEditingController area = TextEditingController();
 
-  var lang = getIt.get<SharedPrefHelper>().getData(key: Constants.languageCode);
+  // var lang = getIt.get<SharedPrefHelper>().getData(key: Constants.languageCode);
 
   doIntent(AddressDetailsEvent event) {
     switch (event) {
@@ -87,10 +87,13 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
     var response = await getCitiesUseCase.invoke();
     switch (response) {
       case ApiSuccessResult<CitiesResponseEntity>():
+        // List<String> cities = response.data.data!
+        //     .map((area) => lang == Constants.enKey
+        //     ? (area.governorateNameEn ?? '')
+        //     : (area.governorateNameAr ?? ''))
+        //     .toList();
         List<String> cities = response.data.data!
-            .map((area) => lang == Constants.enKey
-            ? (area.governorateNameEn ?? '')
-            : (area.governorateNameAr ?? ''))
+            .map((city) => city.governorateNameEn ?? "")
             .toList();
         emit(state.copyWith(isLoadingGetPLaces: false, cities: cities));
       case ApiErrorResult<CitiesResponseEntity>():
@@ -108,10 +111,13 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
     var response = await getAreasUseCase.invoke();
     switch (response) {
       case ApiSuccessResult<AreaResponseEntity>():
+        // List<String> areas = response.data.data!
+        //     .map((area) => lang == Constants.enKey
+        //     ? (area.cityNameEn ?? '')
+        //     : (area.cityNameAr ?? ''))
+        //     .toList();
         List<String> areas = response.data.data!
-            .map((area) => lang == Constants.enKey
-            ? (area.cityNameEn ?? '')
-            : (area.cityNameAr ?? ''))
+            .map((area) => area.cityNameEn ?? "")
             .toList();
         emit(state.copyWith(isLoadingGetPLaces: false, areas: areas ));
       case ApiErrorResult<AreaResponseEntity>():
