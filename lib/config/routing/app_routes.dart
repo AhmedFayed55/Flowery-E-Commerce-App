@@ -13,6 +13,7 @@ abstract class AppRoutes {
   static const String occasions = "/occasions";
   static const String home = '/home';
   static const String changePassword = "/changePassword";
+  static const String editProfile = "/editProfile";
   static const String productDetails = "/productDetails";
   static const String successPayment = "/successPayment";
   static const String webView = "/webView";

@@ -1,6 +1,7 @@
 abstract class AppConstants {
   static const String token = 'token';
   static const String isTokenSaved = 'isTokenSaved';
+  static const String authorization = 'Authorization';
 
   //register
   static const String firstName = 'firstName';
@@ -11,7 +12,6 @@ abstract class AppConstants {
   static const String phone = 'phone';
   static const String gender = 'gender';
   static const String noInternet = 'No Internet Connection';
-  static const String authorization = 'Authorization';
   static const String error = 'error';
 
   static const String index = 'index';

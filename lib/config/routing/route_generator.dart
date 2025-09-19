@@ -7,24 +7,25 @@ import 'package:flowers_ecommerce_app/features/auth/forget_password/presentation
 import 'package:flowers_ecommerce_app/features/auth/login/presentation/pages/login_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/logout/presentation/pages/logout_screen.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/presentation/pages/register_screen.dart';
-import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_screen.dart';
-import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
-import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
-import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
-import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
-import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
-import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/presentation/pages/edit_profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
+import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
+import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_screen.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
+import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_entity.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
-import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
+import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,6 +38,7 @@ import '../../features/auth/change_password/presentation/presentation/pages/rese
 import '../../features/cart/domin/entities/user_cart.dart';
 import '../../features/home_screen/domain/entities/best_saller_entity.dart';
 import '../../features/main_layout/main_layout.dart';
+import '../../features/profile/domain/entities/user_entity.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
@@ -47,6 +49,7 @@ class RouteGenerator {
 
       case AppRoutes.register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
+
       case AppRoutes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
@@ -117,6 +120,12 @@ class RouteGenerator {
 
       case AppRoutes.logout:
         return MaterialPageRoute(builder: (context) => const LogoutScreen());
+
+      case AppRoutes.editProfile:
+        final args = settings.arguments as UserProfileEntity;
+        return MaterialPageRoute(
+          builder: (context) => EditProfileScreen(userData: args),
+        );
 
       case AppRoutes.savedAddresses:
         return MaterialPageRoute(builder: (_) => const UserAddressesScreen());
