@@ -11,9 +11,9 @@ class GetAllProductsRepositoryImpl implements GetAllProductsRepositoryContract {
   GetAllProductsRepositoryImpl({required this.getAllProductsRemoteDatasource});
 
   @override
-  Future<ApiResult<ProductResponseEntity>> getAllProducts() async {
+  Future<ApiResult<ProductResponseEntity>> getAllProducts(String? sortBy) async {
     ApiResult<ProductResponseEntity> result =
-        await getAllProductsRemoteDatasource.getAllProducts();
+        await getAllProductsRemoteDatasource.getAllProducts(sortBy);
     return result;
   }
 }

@@ -20,6 +20,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
+        var cubit = context.read<CategoryCubit>();
         return Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
@@ -77,7 +78,7 @@ class ProductItem extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          "  ${getDiscountPercentage(product.price, product.priceAfterDiscount)}",
+                          "  ${cubit.getDiscountPercentage(product.price,product.priceAfterDiscount)}",
                       style: Theme.of(
                         context,
                       ).textTheme.labelSmall?.copyWith(color: AppColors.green),
@@ -121,14 +122,5 @@ class ProductItem extends StatelessWidget {
         );
       },
     );
-  }
-
-  String getDiscountPercentage(num? price, num? priceAfterDiscount) {
-    if (price == null || priceAfterDiscount == null) return "";
-    if (price <= 0 || priceAfterDiscount >= price) {
-      return "";
-    }
-    final discount = ((price - priceAfterDiscount) / price) * 100;
-    return "${discount.round()}%";
   }
 }

@@ -61,6 +61,7 @@ class _MainLayoutState extends State<MainLayout> {
           onTap: (index) {
             setState(() {
               _currentIndex = index;
+              _selectedCategoryIndex = 0;
             });
           },
           items: [
