@@ -90,7 +90,6 @@ class HomeScreen extends StatelessWidget {
                       ),
 
                       CustomCardBestSaller(
-                        onTap: () {},
                         itemBestSeller:
                             state.homeEntity?.bestSallerEntity ?? [],
                       ),

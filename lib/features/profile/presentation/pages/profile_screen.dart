@@ -57,6 +57,12 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                     email: state.userProfileEntity?.email ?? '',
                     imageUrl: state.userProfileEntity?.photo ?? '',
                     userName: state.userProfileEntity?.firstName ?? '',
+                    editTap: () {
+                      context.pushNamed(
+                        AppRoutes.editProfile,
+                        arguments: state.userProfileEntity,
+                      );
+                    },
                   ),
                   const Divider(),
                   CustomNotificationSwitch(

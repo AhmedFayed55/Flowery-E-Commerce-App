@@ -6,8 +6,12 @@ abstract class ApiConstants {
   static const String forgetPasswordEndpoint = "auth/forgotPassword";
   static const String verifyResetCode = "auth/verifyResetCode";
   static const String resetPassword = "auth/resetPassword";
+  static const String editProfile = "auth/editProfile";
+  static const String uploadPhoto = "auth/upload-photo";
   static const String userData = 'auth/profile-data';
   static const String homeEndpoint = 'home';
+  static const String products = "products/{productId}";
+  static const String product = "products";
   static const String changePassword = "auth/change-password";
   static const String paymendCard = "orders/checkout?url=http://localhost:3000";
   static const String paymentCash = "orders";
@@ -19,7 +23,6 @@ abstract class ApiConstants {
   static const String getSpecificOccasion = "products";
   static const String cart = "cart";
   static const String cartUD = "cart/{id}";
-  static const String products = "products";
   static const String categories = "categories";
   static const String search = "products";
   static const String addresses = "addresses";

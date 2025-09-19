@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flowers_ecommerce_app/core/network/api_constants.dart';
 import 'package:flowers_ecommerce_app/features/add_to_cart/data/model/add_product_body.dart';
@@ -11,6 +13,9 @@ import 'package:flowers_ecommerce_app/features/auth/login/data/model/request/log
 import 'package:flowers_ecommerce_app/features/auth/login/data/model/responce/login_responce_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_body_dto.dart';
 import 'package:flowers_ecommerce_app/features/auth/register/data/model/register_respone/register_respone_dto.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/edit_profile_response.dart';
+import 'package:flowers_ecommerce_app/features/edit_profile/data/models/response/upload_photo_response.dart';
+import 'package:flowers_ecommerce_app/features/products_detalis/data/model/get_specific_product_respone/get_specific_product_respone.dart';
 import 'package:flowers_ecommerce_app/features/payment/data/model/request/payment_request_model_dto.dart';
 import 'package:flowers_ecommerce_app/features/payment/data/model/responce/card_pay_responce/card_pay_responce_model_dto.dart';
 import 'package:flowers_ecommerce_app/features/payment/data/model/responce/cash_pay_responce/cash_pay_responce_model_dto.dart';
@@ -91,6 +96,13 @@ abstract class ApiServices {
     @Body() ChangePasswordRequestDto requestDto,
     @Header(ApiConstants.authorization) String token,
   );
+
+  @PUT(ApiConstants.editProfile)
+  Future<EditProfileResponse> editProfile(@Body() Map<String, dynamic> body);
+
+  @MultiPart()
+  @PUT(ApiConstants.uploadPhoto)
+  Future<UploadPhotoResponse> uploadPhoto(@Part(name: "photo") File file);
   @POST(ApiConstants.paymendCard)
   Future<CardPayResponceModelDto> paymentCard(
     @Body() PaymentRequestModelDto paymentRequestModelDto,
@@ -132,5 +144,10 @@ abstract class ApiServices {
   @GET(ApiConstants.logout)
   Future<LogoutResponseDto> logout(
     @Header(ApiConstants.authorization) String token,
+  );
+
+  @GET(ApiConstants.products)
+  Future<GetSpecificProductRespone> getSpecificProduct(
+    @Path('productId') String productId,
   );
 }

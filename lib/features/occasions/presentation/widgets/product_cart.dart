@@ -2,8 +2,12 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helpers/flutter_toast.dart';
+import '../../../add_to_cart/presentation/view_model/add_to_cart_cubit.dart';
+import '../../../add_to_cart/presentation/view_model/add_to_cart_event.dart';
 import '../../domain/entities/products_entity.dart';
 
 class ProductCart extends StatelessWidget {
@@ -93,7 +97,24 @@ class ProductCart extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              final cubit = context.read<AddToCartCubit>();
+
+              await cubit.doIntent(AddProductToCart(product.id!));
+
+              final isSuccess = cubit.state.isSucsses;
+              if (isSuccess) {
+                ToastMessage.toastMsg(
+                  "Order Placed Success",
+                  backgroundColor: AppColors.green,
+                );
+              } else {
+                ToastMessage.toastMsg(
+                  cubit.state.errorMsg,
+                  backgroundColor: AppColors.red,
+                );
+              }
+            },
             style: ElevatedButton.styleFrom(minimumSize: Size(150.w, 30.h)),
             child: Row(
               spacing: 5.w,

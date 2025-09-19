@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -9,6 +11,8 @@ import 'package:flowers_ecommerce_app/features/search/presentation/widgets/produ
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../add_to_cart/presentation/view_model/add_to_cart_cubit.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -25,15 +29,20 @@ class _SearchScreenState extends State<SearchScreen> {
     super.initState();
     searchCubit.searchController.addListener(() {
       if (searchCubit.searchController.text.trim().isEmpty) {
-        searchCubit.doIntent(ClearSearchEvent(keyword: searchCubit.searchController.text.trim()));
+        searchCubit.doIntent(
+          ClearSearchEvent(keyword: searchCubit.searchController.text.trim()),
+        );
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => searchCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => searchCubit),
+        BlocProvider(create: (context) => getIt<AddToCartCubit>()),
+      ],
       child: Scaffold(
         body: Container(
           padding: const EdgeInsets.all(16),
@@ -124,7 +133,13 @@ class _SearchScreenState extends State<SearchScreen> {
                         itemBuilder: (context, index) {
                           return BlocProvider.value(
                             value: searchCubit,
-                            child: ProductItem(index: index),
+                            child: GestureDetector(
+                              onTap: () => context.pushNamed(
+                                AppRoutes.productDetails,
+                                arguments: state.productsDtoEntity[index].id,
+                              ),
+                              child: ProductItem(index: index),
+                            ),
                           );
                         },
                       );

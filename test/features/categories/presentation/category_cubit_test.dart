@@ -11,8 +11,7 @@ import 'package:mockito/mockito.dart';
 
 import 'category_cubit_test.mocks.dart';
 
-
-@GenerateMocks([GetAllCategoryUseCase,GetAllProductsUseCase])
+@GenerateMocks([GetAllCategoryUseCase, GetAllProductsUseCase])
 void main() {
   late MockGetAllCategoryUseCase mockGetAllCategoryUseCase;
   late MockGetAllProductsUseCase mockGetAllProductsUseCase;
@@ -22,14 +21,15 @@ void main() {
     errorMessage = "Error";
     mockGetAllCategoryUseCase = MockGetAllCategoryUseCase();
     mockGetAllProductsUseCase = MockGetAllProductsUseCase();
-    categoryCubit = CategoryCubit(getAllCategoryUseCase: mockGetAllCategoryUseCase, getAllProductsUseCase: mockGetAllProductsUseCase);
+    categoryCubit = CategoryCubit(
+      getAllCategoryUseCase: mockGetAllCategoryUseCase,
+      getAllProductsUseCase: mockGetAllProductsUseCase,
+    );
   });
 
   group("Test getAllCategoryUseCase in Presentation Layer", () {
-
     /// Success
     test("Success Case for getAllCategories with ApiSuccessResult", () async {
-
       ///Arrange
       final categoryModelList = [
         CategoryModel(
@@ -55,9 +55,7 @@ void main() {
       ).thenAnswer((_) async => mockSuccessResult);
 
       ///Act
-      await categoryCubit.doIntent(
-        GetAllCategoryEvent(),
-      );
+      await categoryCubit.doIntent(GetAllCategoryEvent());
 
       ///Assert
       expect(categoryCubit.state.isLoading, false);
@@ -69,7 +67,7 @@ void main() {
     /// ErrorException
     test(
       "ErrorException case for getAllCategory with ApiErrorResult",
-          () async {
+      () async {
         Failure mockFailure = Failure(errorMessage: errorMessage);
 
         var mockErrorResult = ApiErrorResult<List<CategoryModel>>(
@@ -83,14 +81,13 @@ void main() {
         ).thenAnswer((_) async => mockErrorResult);
 
         /// Act
-       await categoryCubit.doIntent(GetAllCategoryEvent());
+        await categoryCubit.doIntent(GetAllCategoryEvent());
 
         /// Assert
         expect(categoryCubit.state.isLoading, false);
         expect(categoryCubit.state.isError, true);
 
         verify(mockGetAllCategoryUseCase.call()).called(1);
-
       },
     );
   });

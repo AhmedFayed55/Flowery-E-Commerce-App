@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../add_to_cart/presentation/view_model/add_to_cart_cubit.dart';
 import '../../../home_screen/domain/entities/occasion_entity.dart';
 
 class OccasionsScreen extends StatefulWidget {
@@ -49,12 +50,17 @@ class _OccasionsScreenState extends State<OccasionsScreen>
     List<String> tabs = widget.occasionsList.map((e) => e.name).toList();
     List<String> ids = widget.occasionsList.map((e) => e.id).toList();
     final viewModel = getIt<OccasionsCubit>();
-    return BlocProvider(
-      create: (context) => viewModel
-        ..doIntent(
-          LoadOccasionsEvent(),
-          widget.occasionsList[widget.startedIndex].id,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => viewModel
+            ..doIntent(
+              LoadOccasionsEvent(),
+              widget.occasionsList[widget.startedIndex].id,
+            ),
         ),
+        BlocProvider(create: (context) => getIt<AddToCartCubit>()),
+      ],
       child: Scaffold(
         body: SafeArea(
           child: Padding(

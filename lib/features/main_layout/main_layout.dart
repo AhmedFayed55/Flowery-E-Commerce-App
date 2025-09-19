@@ -6,7 +6,10 @@ import 'package:flowers_ecommerce_app/features/cart/presentation/pages/cart_page
 import 'package:flowers_ecommerce_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../core/di/di.dart';
+import '../add_to_cart/presentation/view_model/add_to_cart_cubit.dart';
 import '../profile/presentation/pages/profile_screen.dart';
 
 class MainLayout extends StatefulWidget {
@@ -15,8 +18,6 @@ class MainLayout extends StatefulWidget {
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }
-
-
 
 class _MainLayoutState extends State<MainLayout> {
   int _currentIndex = 0;
@@ -39,41 +40,47 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final List<Widget> pages = [
-      HomeScreen(onViewAllPressed: () {
-        setState(() {
-          _selectedCategoryIndex = 0;
-          _currentIndex = 1;
-        });
-      },onCategorySelected: onCategorySelected,),
+      HomeScreen(
+        onViewAllPressed: () {
+          setState(() {
+            _selectedCategoryIndex = 0;
+            _currentIndex = 1;
+          });
+        },
+        onCategorySelected: onCategorySelected,
+      ),
       CategoriesScreen(selectedIndex: _selectedCategoryIndex),
       const CartPage(),
       const ProfileSettingScreen(),
     ];
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-            _selectedCategoryIndex = 0;
-          });
-        },
-        items: [
-          _buildBottomNavigationBarItem(AppImages.homeIcon, locale.home, 0),
-          _buildBottomNavigationBarItem(
-            AppImages.categoriesIcon,
-            locale.categories,
-            1,
-          ),
-          _buildBottomNavigationBarItem(AppImages.cartIcon, locale.cart, 2),
-          _buildBottomNavigationBarItem(
-            AppImages.profileIcon,
-            locale.profile,
-            3,
-          ),
-        ],
+    return BlocProvider(
+      create: (context) => getIt<AddToCartCubit>(),
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+              _selectedCategoryIndex = 0;
+            });
+          },
+          items: [
+            _buildBottomNavigationBarItem(AppImages.homeIcon, locale.home, 0),
+            _buildBottomNavigationBarItem(
+              AppImages.categoriesIcon,
+              locale.categories,
+              1,
+            ),
+            _buildBottomNavigationBarItem(AppImages.cartIcon, locale.cart, 2),
+            _buildBottomNavigationBarItem(
+              AppImages.profileIcon,
+              locale.profile,
+              3,
+            ),
+          ],
+        ),
+        body: pages[_currentIndex],
       ),
-      body: pages[_currentIndex],
     );
   }
 

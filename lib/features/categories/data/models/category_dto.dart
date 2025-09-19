@@ -22,7 +22,7 @@ class CategoriesDTO {
   @JsonKey(name: "productsCount")
   final int? productsCount;
 
-  CategoriesDTO ({
+  CategoriesDTO({
     this.id,
     this.name,
     this.slug,

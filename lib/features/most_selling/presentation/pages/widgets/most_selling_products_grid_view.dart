@@ -1,6 +1,8 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/widgets/product_cart.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../../../config/routing/app_routes.dart';
 import '../../../../home_screen/domain/entities/best_saller_entity.dart';
 
 class MostSellingProductsGridView extends StatelessWidget {
@@ -23,8 +25,10 @@ class MostSellingProductsGridView extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              // Navigator.pushNamed(context, AppRoutes.productDetails,
-              //     arguments: products[index].id);
+              context.pushNamed(
+                AppRoutes.productDetails,
+                arguments: products[index].id,
+              );
             },
             child: ProductCart(product: products[index]),
           );

@@ -1,16 +1,13 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/domain/entities/best_saller_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCardBestSaller extends StatelessWidget {
-  const CustomCardBestSaller({
-    super.key,
-    required this.itemBestSeller,
-    required this.onTap,
-  });
+  const CustomCardBestSaller({super.key, required this.itemBestSeller});
   final List<BestSallerEntity> itemBestSeller;
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,12 @@ class CustomCardBestSaller extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: onTap,
+                onTap: () {
+                  context.pushNamed(
+                    AppRoutes.productDetails,
+                    arguments: itemBestSeller[index].id,
+                  );
+                },
                 child: Image.network(
                   itemBestSeller[index].imgCover,
                   fit: BoxFit.fill,

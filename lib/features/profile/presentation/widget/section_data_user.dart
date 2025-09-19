@@ -18,11 +18,13 @@ class SectionDataUser extends StatelessWidget {
     required this.email,
     required this.imageUrl,
     required this.userName,
+    required this.editTap,
   });
 
   final String? imageUrl;
   final String? userName;
   final String? email;
+  final void Function() editTap;
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +49,7 @@ class SectionDataUser extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
             IconButton(
-              onPressed: enable == false
-                  ? null
-                  : () {
-                      context.pushNamed(AppRoutes.login);
-                    },
+              onPressed: enable == false ? null : editTap,
               icon: const Icon(Icons.edit_outlined),
             ),
           ],

@@ -9,7 +9,6 @@ import 'package:mockito/mockito.dart';
 
 import 'get_all_category_usecase_test.mocks.dart';
 
-
 @GenerateMocks([GetAllCategoryRepositoryContract])
 void main() {
   late MockGetAllCategoryRepositoryContract
@@ -26,10 +25,8 @@ void main() {
   });
 
   group("Test getAllCategoryUseCase in Domain Layer", () {
-
     /// Success
     test("Success Case for getAllCategories with ApiSuccessResult", () async {
-
       ///Arrange
       final categoryModelList = [
         CategoryModel(
