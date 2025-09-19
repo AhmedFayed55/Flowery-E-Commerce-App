@@ -1,0 +1,97 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/core/helpers/flutter_toast.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart';
+import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_event.dart';
+import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'payment_method_card.dart';
+
+class PaymentMethodSection extends StatelessWidget {
+  const PaymentMethodSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final cubit = context.read<CheckoutCubit>();
+    final trans = AppLocalizations.of(context)!;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            trans.payment_method,
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              fontWeight: FontWeight.w500,
+              color: AppColors.black,
+            ),
+          ),
+          SizedBox(height: 16.h),
+          BlocConsumer<CheckoutCubit, CheckoutState>(
+            listener: (context, state) async {
+              if (state.paymentCardEntity != null) {
+                final url = state.paymentCardEntity!.checkoutUrl;
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => WebviewScreen(url: url)),
+                );
+                if (!context.mounted) return;
+                if (result == true) {
+                  context.pushReplacementNamed(AppRoutes.successPayment);
+                } else {
+                  ToastMessage.toastMsg(
+                    AppLocalizations.of(context)!.payment_cancled,
+                    backgroundColor: AppColors.red,
+                    textColor: AppColors.white,
+                  );
+                }
+              }
+
+              if (state.errorMessage.isNotEmpty) {
+                ToastMessage.toastMsg(
+                  state.errorMessage.toString(),
+                  backgroundColor: AppColors.red,
+                  textColor: AppColors.white,
+                );
+              }
+
+              //payment cash
+              if (state.isOrderPlacedSuccess == true) {
+                context.pushReplacementNamed(AppRoutes.successPayment);
+              }
+            },
+            builder: (context, state) {
+              return Column(
+                children: [
+                  PaymentMethodCard(
+                    title: trans.cash_on_delivery,
+                    isSelected:
+                        state.selectedPaymentMethod ==
+                        PaymentMethod.cashOnDelivery,
+                    onSelect: () => cubit.doIntent(
+                      const SelectPaymentMethod(PaymentMethod.cashOnDelivery),
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  PaymentMethodCard(
+                    title: trans.credit_card,
+                    isSelected:
+                        state.selectedPaymentMethod == PaymentMethod.creditCard,
+                    onSelect: () => cubit.doIntent(
+                      const SelectPaymentMethod(PaymentMethod.creditCard),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}

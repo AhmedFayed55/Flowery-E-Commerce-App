@@ -5,9 +5,9 @@ import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/login_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/entities/user_entitiy.dart';
 import 'package:flowers_ecommerce_app/features/auth/login/domain/use_case/login_use_case.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_bloc.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_event.dart';
-import 'package:flowers_ecommerce_app/features/auth/login/domain/view_model/login_state.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_bloc.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_event.dart';
+import 'package:flowers_ecommerce_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -31,14 +31,14 @@ void main() {
     getIt.registerLazySingleton<SharedPrefHelper>(() => mockSharedPrefHelper);
 
     userEntity = const UserEntity(
-      'yahya',
-      'mohamed',
-      'ym',
-      'male',
-      '',
-      '',
-      [],
-      [],
+      firstName: 'yahya',
+      lastName: 'mohamed',
+      email: 'ym',
+      gender: 'male',
+      phone: '',
+      photo: '',
+      wishlist: [],
+      addresses: [],
     );
 
     loginRequestEntity = const LoginRequestEntity(

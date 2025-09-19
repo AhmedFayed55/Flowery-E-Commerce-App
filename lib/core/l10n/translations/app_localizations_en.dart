@@ -108,13 +108,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register_successfully => 'Register Successfully';
 
   @override
+  String get egp => 'EGP';
+
+  @override
+  String get view_all => 'View All';
+
+  @override
+  String get product_details => 'Product Details';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get loding => 'Loding...';
+
+  @override
+  String get all_products_include_tax => 'All prices include tax';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get out_of_stock => 'out of stock';
+
+  @override
+  String get in_stock => 'in stock';
+
+  @override
+  String get description => 'Description';
+
+  @override
   String get home => 'Home';
 
   @override
   String get categories => 'Categories';
 
   @override
-  String get cart => 'Cart';
+  String get best_seller => 'Best seller';
+
+  @override
+  String get occasion => 'Occasion';
+
+  @override
+  String get flower => 'Flower';
 
   @override
   String get profile => 'Profile';
@@ -130,6 +169,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get password_empty => 'Password is required';
+
+  @override
+  String get notification => 'Notification';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get about_us => 'About us';
+
+  @override
+  String get change_language => 'Change Language';
+
+  @override
+  String get my_order => 'My orders';
+
+  @override
+  String get saved_address => 'Saved address';
 
   @override
   String get reset_password => 'Reset Password';
@@ -179,17 +242,206 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 6 characters';
 
   @override
-  String get passwords_do_not_match => 'Passwords do not match';
+  String get passwords_do_not_match => 'Passwords Don\'t Match';
 
   @override
-  String get update => 'Update';
+  String get city => 'City';
 
   @override
-  String get edit_profile => 'Edit Profile';
+  String get address => 'Address';
 
   @override
-  String get change => 'Change';
+  String get enter_your_city => 'Enter your city';
 
   @override
-  String get profile_updated_successfully => 'Profile updated successfully';
+  String get phone => 'Phone';
+
+  @override
+  String get enter_your_phone => 'Enter your phone';
+
+  @override
+  String get street => 'Street';
+
+  @override
+  String get enter_your_street => 'Enter your street';
+
+  @override
+  String get add_new => 'Add New';
+
+  @override
+  String get its_a_gift => 'It\'s a gift';
+
+  @override
+  String get delivery_address => 'Delivery Address';
+
+  @override
+  String get no_addresses_found => 'No addresses found';
+
+  @override
+  String get place_order => 'Place order';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get delivery_fee => 'Delivery fee';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get credit_card => 'Credit card';
+
+  @override
+  String get cash_on_delivery => 'Cash on delivery';
+
+  @override
+  String get payment_method => 'Payment method';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get delevery_time => 'Delivery time';
+
+  @override
+  String get my_orders => 'My orders';
+
+  @override
+  String get track_order => 'Track Order';
+
+  @override
+  String get reorder => 'Reorder';
+
+  @override
+  String get order_number => 'Order Number';
+
+  @override
+  String get delivered_on => 'Delivered on';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get no_product_found => 'No Product Found';
+
+  @override
+  String get add_to_Cart => 'Add To Cart';
+
+  @override
+  String get search_for_any_product_you_want =>
+      'Search For Any Product You Want';
+
+  @override
+  String get enter_the_address => 'Enter the address';
+
+  @override
+  String get enter_the_phone_number => 'Enter the phone number';
+
+  @override
+  String get recipient_name => 'Recipient name';
+
+  @override
+  String get enter_the_recipient_name => 'Enter the recipient name';
+
+  @override
+  String get area => 'Area';
+
+  @override
+  String get save_address => 'Save Address';
+
+  @override
+  String get this_field_is_required => 'This field is required';
+
+  @override
+  String get saved_address_successfully => 'Saved Address Successfully';
+
+  @override
+  String get saved_addresses => 'Saved Addresses';
+
+  @override
+  String get no_addresses_yet =>
+      'No Addresses Yet , Press on Add Address to Add New One';
+
+  @override
+  String get add_new_address => 'Add New Address';
+
+  @override
+  String get confirm_logout => 'Confirm Logout!!';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logout_successfully => 'Logout Successfully';
+
+  @override
+  String get bloom_with_our_exquisite_best_sellers =>
+      'Bloom with our exquisite best sellers';
+
+  @override
+  String get no_products => 'No Products founded';
+
+  @override
+  String get bloom_with => 'Bloom with our exquisite best sellers';
+
+  @override
+  String get you_should_login => 'You should login first';
+
+  @override
+  String get some_thing_went_wrong => 'Something went wrong';
+
+  @override
+  String get your_cart_is_empty => 'Your cart is empty';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get remove_from_cart => 'Remove from cart';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get items => 'Items';
+
+  @override
+  String get order_summary => 'Order Summary';
+
+  @override
+  String get order_placed_successfully => 'Order placed successfully';
+
+  @override
+  String get order_placed => 'Order Placed';
+
+  @override
+  String get logout => 'logout';
+
+  @override
+  String get payment_cancled => 'Payment Canceled';
+
+  @override
+  String get your_oredr_placed => 'Your Oredr Placed';
+
+  @override
+  String get successfully => 'Successfully';
+
+  @override
+  String get no_products_found => 'No Products Found';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get sort_by => 'Sort by';
 }

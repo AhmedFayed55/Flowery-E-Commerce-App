@@ -16,6 +16,5 @@ class LoginRequestDto extends Equatable {
   Map<String, dynamic> toJson() => _$LoginRequestDtoToJson(this);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [email, password];
 }
