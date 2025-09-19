@@ -13,7 +13,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesScreen extends StatefulWidget {
-  final int? selectedIndex;
+   final int? selectedIndex;
+
+
   const CategoriesScreen({super.key,this.selectedIndex});
 
   @override
@@ -22,15 +24,17 @@ class CategoriesScreen extends StatefulWidget {
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
   final CategoryCubit categoryCubit = getIt.get<CategoryCubit>();
+  late int? selectedIndexCurrent;
 
   @override
   Widget build(BuildContext context) {
+    selectedIndexCurrent = widget.selectedIndex;
     return BlocProvider(
       create: (context) {
         final cubit = categoryCubit;
         cubit.doIntent(GetAllCategoryEvent()).then((_) async {
           await cubit.doIntent(GetAllProductsEvent());
-          final index = widget.selectedIndex ?? 0;
+          final index = selectedIndexCurrent ?? 0;
           if (cubit.state.listCategoryModel.isNotEmpty) {
             final firstCategoryId = cubit.state.listCategoryModel[index].id;
             cubit.doIntent(
@@ -58,7 +62,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       final cubit = context.read<CategoryCubit>();
                       return BlocProvider.value(
                         value: cubit,
-                        child: const CustomBottomSheet(),
+                        child:  CustomBottomSheet(
+                          onFilterPressed: (selectedFilter) {
+                            selectedIndexCurrent =0;
+                          if (selectedFilter != null) {
+                            cubit.doIntent(GetAllProductsEvent(sortBy: selectedFilter));
+                          }
+                        },),
                       );
                     },
                   );
@@ -119,7 +129,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                           child: Column(
                             children: [
                               DefaultTabController(
-                                initialIndex: widget.selectedIndex ?? 0,
+                                initialIndex: selectedIndexCurrent ?? 0,
                                 length: state.listCategoryModel.length,
                                 child: TabBar(
                                   onTap: (value) {
@@ -190,5 +200,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    categoryCubit.lastSelectedFilter = null;
+    super.dispose();
   }
 }

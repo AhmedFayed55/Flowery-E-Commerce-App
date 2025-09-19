@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -9,20 +10,50 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomBottomSheet extends StatefulWidget {
-  const CustomBottomSheet({super.key});
+  final Function(String?)? onFilterPressed;
+  final String? selectedFilter;
+
+  const CustomBottomSheet({
+    super.key,
+    this.onFilterPressed,
+    this.selectedFilter,
+  });
+
   @override
   State<CustomBottomSheet> createState() => _CustomBottomSheetState();
 }
 
-
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
+  Map<String, String> filterMap = {
+    'Lowest Price': 'priceAfterDiscount', // price (from low ==> high)
+    'Highest Price': '-priceAfterDiscount', // -price (from high ==> low)
+    'Biggest Discount': '-price', // -priceAfterDiscount (from high ==> low)
+    'Smallest Discount': 'price', // priceAfterDiscount (from low ==> high)
+    'Newest First': '-createdAt', // -priceAfterDiscount (from new ==> old)
+    'Oldest First': 'createdAt', // priceAfterDiscount (from old ==> new)
+  };
 
-  String? _selected;
+  late List<String> filterList;
+
+  @override
+  void initState() {
+    filterList = filterMap.keys.toList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
+        final cubit = context.read<CategoryCubit>();
+        String? selected = cubit.lastSelectedFilter != null
+            ? filterMap.entries
+                  .firstWhere(
+                    (e) => e.value == cubit.lastSelectedFilter,
+                    orElse: () => const MapEntry('', ''),
+                  )
+                  .key
+            : null;
         return Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
@@ -54,13 +85,17 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                   separatorBuilder: (context, index) {
                     return verticalSpace(16);
                   },
-                  itemCount: state.listCategoryModel.length,
+                  itemCount: filterList.length,
                   itemBuilder: (context, index) {
                     return RadioGroup(
-                      groupValue: _selected,
+                      groupValue: selected,
                       onChanged: (value) {
                         setState(() {
-                          _selected = value;
+                          cubit.setLastSelectedFilter(filterMap[value]);
+                          if (widget.onFilterPressed != null) {
+                            widget.onFilterPressed!(filterMap[value]);
+                          }
+                          context.pop();
                         });
                       },
                       child: Column(
@@ -76,15 +111,14 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                             width: double.infinity,
                             child: RadioListTile(
                               controlAffinity: ListTileControlAffinity.trailing,
-                              value: state.listCategoryModel[index].name,
+                              value: filterList[index],
                               title: Text(
-                                state.listCategoryModel[index].name,
+                                filterList[index],
                                 style: Theme.of(context).textTheme.displayMedium
                                     ?.copyWith(color: AppColors.black),
                               ),
                             ),
                           ),
-                          // RadioListTile(value: "Female", title: Text("Male $index"),),
                         ],
                       ),
                     );

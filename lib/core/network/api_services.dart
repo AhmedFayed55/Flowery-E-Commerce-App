@@ -80,7 +80,8 @@ abstract class ApiServices {
   Future<OccasionsResponseDto> getOccasions();
 
   @GET(ApiConstants.products)
-  Future<ProductResponse> getAllProducts();
+  Future<ProductResponse> getAllProducts(
+      @Query("sort") String? sortBy);
 
   @GET(ApiConstants.categories)
   Future<CategoryResponse> getAllCategory();

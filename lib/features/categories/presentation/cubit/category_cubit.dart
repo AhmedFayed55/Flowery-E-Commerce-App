@@ -13,6 +13,7 @@ import 'category_state.dart';
 
 @injectable
 class CategoryCubit extends Cubit<CategoryState> {
+  String? lastSelectedFilter;
   GetAllCategoryUseCase getAllCategoryUseCase;
   GetAllProductsUseCase getAllProductsUseCase;
 
@@ -27,13 +28,19 @@ class CategoryCubit extends Cubit<CategoryState> {
         await _getAllCategories();
         break;
       case GetAllProductsEvent():
-        await _getAllProducts();
+        await _getAllProducts(event.sortBy);
         break;
       case ProductsByCategoryId():
         await _productsByCategoryId(event.categoryId);
         break;
     }
   }
+
+  void setLastSelectedFilter(String? filter) {
+    lastSelectedFilter = filter;
+    emit(state.copyWith());
+  }
+
 
   Future<void> _getAllCategories() async {
     emit(state.copyWith(isLoading: true));
@@ -61,9 +68,11 @@ class CategoryCubit extends Cubit<CategoryState> {
     }
   }
 
-  Future<void> _getAllProducts() async {
+  Future<void> _getAllProducts(String? sortBy) async {
     emit(state.copyWith(isLoading: true));
-    ApiResult<ProductResponseEntity> result = await getAllProductsUseCase.call();
+    ApiResult<ProductResponseEntity> result = await getAllProductsUseCase.call(
+      sortBy,
+    );
     switch (result) {
       case ApiSuccessResult<ProductResponseEntity>():
         final allProducts = result.data.products ?? [];
@@ -96,45 +105,24 @@ class CategoryCubit extends Cubit<CategoryState> {
           ),
         );
     }
-
-    // emit(state.copyWith(isLoading: true));
-    // ApiResult<ProductResponseEntity> result = await getAllProductsUseCase.call();
-    // switch (result) {
-    //   case ApiSuccessResult<ProductResponseEntity>():
-    //     final allProducts = result.data.products ?? [];
-    //
-    //     emit(
-    //       state.copyWith(
-    //         isSuccess: true,
-    //         isLoading: false,
-    //         dataLoading: true,
-    //         allProducts: allProducts,
-    //         filteredProducts: [],
-    //       ),
-    //     );
-    //     break;
-    //
-    //   case ApiErrorResult<ProductResponseEntity>():
-    //     emit(
-    //       state.copyWith(
-    //         isError: true,
-    //         isLoading: false,
-    //         errorMessage: Failure(
-    //           errorMessage: result.failure.errorMessage,
-    //           code: result.failure.code,
-    //         ),
-    //       ),
-    //     );
-    // }
   }
-
 
   Future<void> _productsByCategoryId(String categoryId) async {
     final products = state.allProducts;
 
-    final filteredProducts =
-    products.where((product) => product.category == categoryId).toList();
+    final filteredProducts = products
+        .where((product) => product.category == categoryId)
+        .toList();
 
     emit(state.copyWith(filteredProducts: filteredProducts));
+  }
+
+  String getDiscountPercentage(int? price, int? priceAfterDiscount) {
+    if (price == null || priceAfterDiscount == null) return "";
+    if (price <= 0 || priceAfterDiscount >= price) {
+      return "";
+    }
+    final discount = ((price - priceAfterDiscount) / price) * 100;
+    return "${discount.round()}%";
   }
 }
