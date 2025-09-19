@@ -59,12 +59,14 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
                     imageUrl: state.userProfileEntity?.photo ?? '',
                     userName: state.userProfileEntity?.firstName ?? '',
                     editTap: () {
-                      context.pushNamed(
-                        AppRoutes.editProfile,
-                        arguments: state.userProfileEntity,
-                      ).then((_) {
-                        cubit.doIntent(SumitProflieSettingEvent());
-                      });
+                      context
+                          .pushNamed(
+                            AppRoutes.editProfile,
+                            arguments: state.userProfileEntity,
+                          )
+                          .then((_) {
+                            cubit.doIntent(SumitProflieSettingEvent());
+                          });
                     },
                   ),
                   const Divider(),

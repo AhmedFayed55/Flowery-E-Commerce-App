@@ -103,7 +103,7 @@ void main() {
         ).thenAnswer((_) async => successCitiesResponse);
 
         when(mockGetAreasUseCase.invoke()).thenAnswer(
-              (_) async =>
+          (_) async =>
               ApiSuccessResult(data: AreaResponseEntity(data: const [])),
         );
         return cubit;
@@ -129,7 +129,7 @@ void main() {
         ).thenAnswer((_) async => errorCitiesResponse);
 
         when(mockGetAreasUseCase.invoke()).thenAnswer(
-              (_) async =>
+          (_) async =>
               ApiSuccessResult(data: AreaResponseEntity(data: const [])),
         );
 
@@ -158,7 +158,7 @@ void main() {
       "emits areas when getAreas succeeds",
       build: () {
         when(mockGetCitiesUseCase.invoke()).thenAnswer(
-              (_) async =>
+          (_) async =>
               ApiSuccessResult(data: CitiesResponseEntity(data: const [])),
         );
 
@@ -191,7 +191,7 @@ void main() {
         ).thenAnswer((_) async => errorAreasResponse);
 
         when(mockGetCitiesUseCase.invoke()).thenAnswer(
-              (_) async =>
+          (_) async =>
               ApiSuccessResult(data: CitiesResponseEntity(data: const [])),
         );
 

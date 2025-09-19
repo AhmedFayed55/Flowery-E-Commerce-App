@@ -1,7 +1,4 @@
-import 'package:flowers_ecommerce_app/core/constants/constants.dart';
-import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/errors/api_results.dart';
-import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/request/add_new_address_request_entity.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/response/addresses_response_entity.dart';
 import 'package:flowers_ecommerce_app/features/address_details/domain/entities/response/area_response_entity.dart';
@@ -13,7 +10,6 @@ import 'package:flowers_ecommerce_app/features/address_details/presentation/mana
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../../domain/use_cases/get_cities_use_case.dart';
 
 @Singleton()
@@ -119,7 +115,7 @@ class AddressDetailsCubit extends Cubit<AddressDetailsState> {
         List<String> areas = response.data.data!
             .map((area) => area.cityNameEn ?? "")
             .toList();
-        emit(state.copyWith(isLoadingGetPLaces: false, areas: areas ));
+        emit(state.copyWith(isLoadingGetPLaces: false, areas: areas));
       case ApiErrorResult<AreaResponseEntity>():
         emit(
           state.copyWith(

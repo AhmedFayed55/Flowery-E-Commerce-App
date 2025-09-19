@@ -69,7 +69,8 @@ class ProductItem extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "${AppLocalizations.of(context)!.egp} ${product.priceAfterDiscount ?? ""}  ",
+                      text:
+                          "${AppLocalizations.of(context)!.egp} ${product.priceAfterDiscount ?? ""}  ",
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                     TextSpan(
@@ -80,7 +81,7 @@ class ProductItem extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          "  ${cubit.getDiscountPercentage(product.price,product.priceAfterDiscount)}",
+                          "  ${cubit.getDiscountPercentage(product.price, product.priceAfterDiscount)}",
                       style: Theme.of(
                         context,
                       ).textTheme.labelSmall?.copyWith(color: AppColors.green),
@@ -114,9 +115,12 @@ class ProductItem extends StatelessWidget {
                     children: [
                       const Icon(Icons.shopping_cart_outlined),
                       horizontalSpace(8),
-                      Text(translate.add_to_Cart,style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: AppColors.white
-                      ),),
+                      Text(
+                        translate.add_to_Cart,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: AppColors.white,
+                        ),
+                      ),
                     ],
                   ),
                 ),

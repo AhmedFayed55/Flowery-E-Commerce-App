@@ -16,13 +16,12 @@ class ProfileImagePicker extends StatefulWidget {
 }
 
 class _ProfileImagePickerState extends State<ProfileImagePicker> {
-
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EditProfileCubit,EditProfileState>(
+    return BlocBuilder<EditProfileCubit, EditProfileState>(
       builder: (context, state) {
         var cubit = context.read<EditProfileCubit>();
-       return Stack(
+        return Stack(
           alignment: Alignment.bottomRight,
           children: [
             CircleAvatar(
@@ -32,15 +31,16 @@ class _ProfileImagePickerState extends State<ProfileImagePicker> {
                   : FileImage(File(state.pickedImage!.path)),
             ),
             InkWell(
-              onTap: (){
-               showDialog(
-                 context: context,
-                 builder: (_) => Dialog(
-                     shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadiusGeometry.circular(15.r)
-                     ),
-                     child: DialogImage(cubit: cubit,)),
-               );
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (_) => Dialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(15.r),
+                    ),
+                    child: DialogImage(cubit: cubit),
+                  ),
+                );
               },
               child: Container(
                 padding: const EdgeInsets.all(3),

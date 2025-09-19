@@ -7,11 +7,11 @@ class EditProfileState {
   bool isSuccess;
   bool isError;
   File? pickedImage;
-  String ? imageUrl;
+  String? imageUrl;
   UserProfileEntity? userProfileEntity;
 
   EditProfileState({
-    required  this.userProfileEntity,
+    required this.userProfileEntity,
     required this.imageUrl,
     required this.isLoading,
     required this.isError,
@@ -21,7 +21,7 @@ class EditProfileState {
 
   factory EditProfileState.initial() {
     return EditProfileState(
-      userProfileEntity:null,
+      userProfileEntity: null,
       imageUrl: '',
       isLoading: false,
       isError: false,
@@ -38,7 +38,9 @@ class EditProfileState {
     bool? isError,
     File? pickedImage,
   }) {
-    return EditProfileState(imageUrl: imageUrl??this.imageUrl,userProfileEntity: userProfileEntity??this.userProfileEntity,
+    return EditProfileState(
+      imageUrl: imageUrl ?? this.imageUrl,
+      userProfileEntity: userProfileEntity ?? this.userProfileEntity,
       isLoading: isLoading ?? this.isLoading,
       isSuccess: isSuccess ?? this.isSuccess,
       isError: isError ?? this.isError,

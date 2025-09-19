@@ -125,13 +125,16 @@ class RouteGenerator {
       case AppRoutes.editProfile:
         final args = settings.arguments as UserProfileEntity;
         return MaterialPageRoute(
-          builder: (context) => EditProfileScreen(userEntity: args,),
+          builder: (context) => EditProfileScreen(userEntity: args),
         );
 
       case AppRoutes.savedAddresses:
-        return MaterialPageRoute(builder: (_) =>  BlocProvider(
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
             create: (context) => getIt<UserAddressesCubit>(),
-            child: const UserAddressesScreen()));
+            child: const UserAddressesScreen(),
+          ),
+        );
 
       case AppRoutes.productDetails:
         final args = settings.arguments as String;
@@ -153,7 +156,6 @@ class RouteGenerator {
                   ..doIntent(RequestLocationPermissionEvent())
                   ..doIntent(CheckLocationServiceEvent()),
               ),
-
             ],
             child: const AddressDetailsScreen(),
           ),

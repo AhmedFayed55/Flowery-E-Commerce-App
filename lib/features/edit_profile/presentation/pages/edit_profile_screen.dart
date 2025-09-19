@@ -40,24 +40,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-   @override
-    void initState() {
-      firstNameController.text =widget.userEntity.firstName ;
-      lastNameController.text = widget.userEntity.lastName;
-      emailController.text = widget.userEntity.email;
-      phoneController.text = widget.userEntity.phone.substring(2);
-      passwordController.text = '1111111111';
-      editProfileCubit.state.imageUrl = widget.userEntity.photo;
-      _selectedGender=widget.userEntity.gender;
-      super.initState();
-   }
+  @override
+  void initState() {
+    firstNameController.text = widget.userEntity.firstName;
+    lastNameController.text = widget.userEntity.lastName;
+    emailController.text = widget.userEntity.email;
+    phoneController.text = widget.userEntity.phone.substring(2);
+    passwordController.text = '1111111111';
+    editProfileCubit.state.imageUrl = widget.userEntity.photo;
+    _selectedGender = widget.userEntity.gender;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => editProfileCubit,),
-        BlocProvider(create: (context) => profileSettingCubit,),
+        BlocProvider(create: (context) => editProfileCubit),
+        BlocProvider(create: (context) => profileSettingCubit),
       ],
       child: BlocConsumer<EditProfileCubit, EditProfileState>(
         listener: (context, state) {
@@ -82,9 +82,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              leading: IconButton(onPressed: (){
-                context.pop();
-              }, icon: const Icon(Icons.arrow_back)),
+              leading: IconButton(
+                onPressed: () {
+                  context.pop();
+                },
+                icon: const Icon(Icons.arrow_back),
+              ),
               scrolledUnderElevation: 0,
               elevation: 0,
               title: Row(
@@ -214,7 +217,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 ),
                               ),
                               editProfileCubit.doIntent(
-                                UploadPhotoEvent(file: state.pickedImage ?? File("")),
+                                UploadPhotoEvent(
+                                  file: state.pickedImage ?? File(""),
+                                ),
                               ),
                             ]).then((_) {
                               profileSettingCubit.doIntent(
@@ -225,10 +230,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         },
                         child: state.isLoading
                             ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.white,
-                          ),
-                        )
+                                child: CircularProgressIndicator(
+                                  color: AppColors.white,
+                                ),
+                              )
                             : Text(AppLocalizations.of(context)!.update),
                       ),
                     ],

@@ -20,13 +20,10 @@ class UserAddressesScreen extends StatefulWidget {
 }
 
 class _UserAddressesScreenState extends State<UserAddressesScreen> {
-
   @override
   void initState() {
     context.read<UserAddressesCubit>().doIntent(GetUserAddressesEvent());
     super.initState();
-
-
   }
 
   @override
@@ -93,7 +90,7 @@ class _UserAddressesScreenState extends State<UserAddressesScreen> {
             ElevatedButton(
               onPressed: () {
                 context.pushNamed(AppRoutes.addressDetails);
-              } ,
+              },
               child: Text(AppLocalizations.of(context)!.add_new_address),
             ),
           ],

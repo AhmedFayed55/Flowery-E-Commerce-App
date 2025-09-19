@@ -66,8 +66,8 @@ class AddressDetailsScreen extends StatelessWidget {
                       message: localizations.saved_address_successfully,
                       posActionName: localizations.ok,
                       posAction: () => context.pop(),
-
-                    );}
+                    );
+                  }
                 },
                 child: ElevatedButton(
                   onPressed: () {
