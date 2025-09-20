@@ -59,13 +59,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       final cubit = context.read<CategoryCubit>();
                       return BlocProvider.value(
                         value: cubit,
-                        child:  CustomBottomSheet(
+                        child: CustomBottomSheet(
                           onFilterPressed: (selectedFilter) {
-                            selectedIndexCurrent =0;
-                          if (selectedFilter != null) {
-                            cubit.doIntent(GetAllProductsEvent(sortBy: selectedFilter));
-                          }
-                        },),
+                            selectedIndexCurrent = 0;
+                            if (selectedFilter != null) {
+                              cubit.doIntent(
+                                GetAllProductsEvent(sortBy: selectedFilter),
+                              );
+                            }
+                          },
+                        ),
                       );
                     },
                   );
@@ -168,6 +171,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                           AppLocalizations.of(
                                             context,
                                           )!.no_products_found,
+                                          style: Theme.of(
+                                            context,
+                                          ).textTheme.labelSmall,
                                         ),
                                       )
                                     : GridView.builder(

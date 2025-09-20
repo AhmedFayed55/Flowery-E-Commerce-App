@@ -24,6 +24,7 @@ import 'package:flowers_ecommerce_app/features/profile/domain/entities/term_enti
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/about_us_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_screen.dart';
+import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/manager/user_addresses_cubit.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -124,16 +125,23 @@ class RouteGenerator {
       case AppRoutes.editProfile:
         final args = settings.arguments as UserProfileEntity;
         return MaterialPageRoute(
-          builder: (context) => EditProfileScreen(userData: args),
+          builder: (context) => EditProfileScreen(userEntity: args),
         );
 
       case AppRoutes.savedAddresses:
-        return MaterialPageRoute(builder: (_) => const UserAddressesScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<UserAddressesCubit>(),
+            child: const UserAddressesScreen(),
+          ),
+        );
+
       case AppRoutes.productDetails:
         final args = settings.arguments as String;
         return MaterialPageRoute(
           builder: (_) => ProductDetailsPage(productId: args),
         );
+
       case AppRoutes.addressDetails:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -152,6 +160,7 @@ class RouteGenerator {
             child: const AddressDetailsScreen(),
           ),
         );
+
       case AppRoutes.notification:
         return MaterialPageRoute(
           builder: (context) => const NotificationScreen(),
