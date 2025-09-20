@@ -55,7 +55,7 @@ void main() {
       ],
     );
 
-    blocTest<CheckoutCubit, CheckoutState>(
+     blocTest<CheckoutCubit, CheckoutState>(
       'emits [loading, error] when getLoggedUserAddresses fails',
       build: () {
         when(mockUsecase.invok()).thenAnswer(
@@ -72,11 +72,7 @@ void main() {
 
     blocTest<CheckoutCubit, CheckoutState>(
       'updates gift fields step by step',
-      build: () => CheckoutCubit(
-        mockUsecase,
-        mockPaymentCardUseCase,
-        mockPaymentCashUseCase,
-      ),
+      build: () => CheckoutCubit(mockUsecase,mockPaymentCardUseCase,mockPaymentCashUseCase),
       act: (cubit) {
         cubit.toggleGift(true);
         cubit.updateGiftStreet("Street X");
@@ -86,36 +82,34 @@ void main() {
       expect: () => [
         cubit.state.copyWith(
           isGift: true,
-          selectedPaymentMethod: null,
-          giftStreet: null,
-          giftPhone: null,
-          giftCity: null,
+          selectedPaymentMethod: PaymentMethod.creditCard,
+          giftStreet: '',
+          giftPhone: '',
+          giftCity: '',
         ),
-
         cubit.state.copyWith(
           isGift: true,
           giftStreet: "Street X",
-          giftPhone: null,
-          giftCity: null,
-          selectedPaymentMethod: null,
+          giftPhone: '',
+          giftCity: '',
+          selectedPaymentMethod: PaymentMethod.creditCard,
         ),
-
         cubit.state.copyWith(
           isGift: true,
           giftStreet: "Street X",
           giftPhone: "0100000000",
-          giftCity: null,
-          selectedPaymentMethod: null,
+          giftCity: '',
+          selectedPaymentMethod: PaymentMethod.creditCard,
         ),
-
         cubit.state.copyWith(
           isGift: true,
           giftStreet: "Street X",
           giftPhone: "0100000000",
           giftCity: "Giza",
-          selectedPaymentMethod: null,
+          selectedPaymentMethod: PaymentMethod.creditCard,
         ),
       ],
     );
+  
   });
 }

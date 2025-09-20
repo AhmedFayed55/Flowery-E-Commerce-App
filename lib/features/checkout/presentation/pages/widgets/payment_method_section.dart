@@ -68,7 +68,7 @@ class PaymentMethodSection extends StatelessWidget {
             builder: (context, state) {
               return Column(
                 children: [
-                  PaymentMethodCard(
+                ?state.isGift ? null :  PaymentMethodCard(
                     title: trans.cash_on_delivery,
                     isSelected:
                         state.selectedPaymentMethod ==
