@@ -16,7 +16,6 @@ import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/m
 import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
 import 'package:flowers_ecommerce_app/features/orders/presentation/pages/orders_page.dart';
-import 'package:flowers_ecommerce_app/features/payment/presentaion/page/success_screen.dart';
 import 'package:flowers_ecommerce_app/features/payment/presentaion/page/webvieww_screen.dart';
 import 'package:flowers_ecommerce_app/features/products_detalis/presentation/pages/product_details_page.dart';
 import 'package:flowers_ecommerce_app/features/profile/domain/entities/about_us_entity.dart';
@@ -27,9 +26,10 @@ import 'package:flowers_ecommerce_app/features/profile/presentation/pages/terms_
 import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/manager/user_addresses_cubit.dart';
 import 'package:flowers_ecommerce_app/features/saved_addresses/presentation/pages/user_addresses.dart';
 import 'package:flowers_ecommerce_app/features/search/presentation/pages/search_screen.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/page/success_screen.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/widgets/track_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../core/di/di.dart';
 import '../../core/utils/app_constants.dart';
 import '../../features/address_details/presentation/manager/add_new_address_cubit/add_new_address_event.dart';
@@ -121,6 +121,11 @@ class RouteGenerator {
 
       case AppRoutes.logout:
         return MaterialPageRoute(builder: (context) => const LogoutScreen());
+
+      case AppRoutes.trackOrder:
+        return MaterialPageRoute(
+          builder: (context) => const TrackOrderScreen(),
+        );
 
       case AppRoutes.editProfile:
         final args = settings.arguments as UserProfileEntity;
