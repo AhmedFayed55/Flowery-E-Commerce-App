@@ -23,11 +23,11 @@ void main() {
     mockTrackingViewModel = MockTrackingViewModel();
 
     when(mockTrackingViewModel.state).thenReturn(
-      TrackingState(
+      const TrackingState(
         isLoading: false,
         errorMsg: '',
         trackingEntity: null,
-        driverLocation: const LatLng(30, 30),
+        driverLocation: LatLng(30, 30),
         isLoaddingPhone: false,
         errorPhone: '',
 

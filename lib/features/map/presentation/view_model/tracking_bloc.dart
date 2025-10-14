@@ -26,7 +26,7 @@ class TrackingViewModel extends Cubit<TrackingState> {
     this._getDriverLocationStreamUseCase,
     this._callDriverUseCase,
     this._watsappUseCase,
-  ) : super(TrackingState());
+  ) : super(const TrackingState());
 
   void doIntent(TrackingEvent event) {
     switch (event) {

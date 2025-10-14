@@ -107,8 +107,8 @@ void main() {
       },
       act: (cubit) => cubit.doIntent(GetDataEvent('order123')),
       expect: () => [
-        TrackingState(isLoading: true),
-        TrackingState(isLoading: false, errorMsg: 'Failed to load data'),
+        const TrackingState(isLoading: true),
+        const TrackingState(isLoading: false, errorMsg: 'Failed to load data'),
       ],
     );
   });
@@ -124,8 +124,8 @@ void main() {
       },
       act: (cubit) => cubit.doIntent(CallDriverEvent('01012345678')),
       expect: () => [
-        TrackingState(isLoaddingPhone: true),
-        TrackingState(isLoaddingPhone: false),
+        const TrackingState(isLoaddingPhone: true),
+        const TrackingState(isLoaddingPhone: false),
       ],
     );
 
@@ -141,8 +141,8 @@ void main() {
       },
       act: (cubit) => cubit.doIntent(CallDriverEvent('01012345678')),
       expect: () => [
-        TrackingState(isLoaddingPhone: true),
-        TrackingState(errorPhone: 'Call failed', isLoaddingPhone: false),
+        const TrackingState(isLoaddingPhone: true),
+        const TrackingState(errorPhone: 'Call failed', isLoaddingPhone: false),
       ],
     );
   });

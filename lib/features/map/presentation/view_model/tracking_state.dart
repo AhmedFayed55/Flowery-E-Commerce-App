@@ -6,7 +6,7 @@ class TrackingState extends Equatable {
   final bool isLoading;
   final String errorMsg;
   final TrackingEntity? trackingEntity;
- final LatLng? driverLocation;
+  final LatLng? driverLocation;
   final bool isLoaddingPhone;
   final String errorPhone;
   final String etaText;
