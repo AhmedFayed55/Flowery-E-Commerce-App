@@ -155,5 +155,12 @@
   "newest_first" : "Newest First",
   "oldest_first" : "Oldest First",
   "order_placed_success" : "Order Placed Success",
-  "something_went_wrong" : "Something Went Wrong"
+  "something_went_wrong" : "Something Went Wrong",
+  "order_details":"Order details",
+  "is_your_delivery_hero_for_today":"Is your delivery hero for today",
+  "estimated_arrival":"Estimated arrival",
+  "flowery":"Flowery",
+  "apartment":"Apartment"
+
+
 }
