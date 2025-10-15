@@ -10,4 +10,5 @@ abstract class Constants {
   static const String emailGest = 'no-email@example.com';
   static const String termsKey = 'terms_and_conditions';
   static const String aboutUsKey = 'about_app';
+  static const String aboutUsDateFormat = 'dd MMM yyyy';
 }

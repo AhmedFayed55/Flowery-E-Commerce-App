@@ -4,6 +4,7 @@ import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/orders/domin/entites/order.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/page/success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -81,6 +82,15 @@ class OrderCard extends StatelessWidget {
                           context.pushNamed(
                             AppRoutes.productDetails,
                             arguments: orderItem.orderItems!.first.product!.id,
+                          );
+                        } else if (orderItem.state == "pending") {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PaymentSuccessScreen(
+                                orderId: orderItem.id ?? "",
+                              ),
+                            ),
                           );
                         }
                       },
