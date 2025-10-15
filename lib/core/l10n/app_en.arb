@@ -173,5 +173,6 @@
   "callDriver": "Call driver",
   "chatOnWhatsApp": "Chat on WhatsApp",
   "wait_until_shipping": "Wait until shipping",
-  "orderMarkedAsDelivered": "Order marked as delivered"
+  "orderMarkedAsDelivered": "Order marked as delivered",
+  "updating": "updating..."
 }

@@ -155,107 +155,115 @@ class TrackOrderView extends StatelessWidget {
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-
-                child: riderStatus.statusStep >= 4
-                    ? BlocListener<TrackOrderViewModel, TrackOrderState>(
-                        listener: (context, state) {
-                          if (state.updateSuccess) {
-                            ToastMessage.toastMsg(
-                              tr.orderMarkedAsDelivered,
-                              backgroundColor: AppColors.pink,
-                            );
-                            Navigator.pushReplacementNamed(
-                              context,
-                              AppRoutes.mainLayout,
-                            );
-                          }
-                          if (state.updateFailure != null) {
-                            DialogueUtils.showAlertDialog(
-                              context,
-                              state.updateFailure!.errorMessage,
-                            );
-                          }
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  DialogueUtils.showMessage(
-                                    context: context,
-                                    title: tr.confirmDelivery,
-                                    message: tr.confirmDeliveryMessage,
-                                    posActionName: tr.ok,
-                                    posAction: () {
-                                      context
-                                          .read<TrackOrderViewModel>()
-                                          .doIntent(
-                                            UpdateOrderStatusEvent(
-                                              orderId:
-                                                  state.orderEntity?.id ?? "",
-
-                                              status:
-                                                  RiderOrderStatus.delivered,
-                                            ),
-                                          );
-                                    },
-                                    ngeActionName: tr.cancel,
-                                  );
-                                },
-                                child: Text(
-                                  tr.confirmDelivery,
-                                  softWrap: false,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: theme.textTheme.titleMedium?.copyWith(
-                                    color: AppColors.white,
-                                    fontSize: 14.sp,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 12.w),
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // todo: show map
-                                },
-                                child: Text(
-                                  tr.showMap,
-                                  softWrap: false,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: theme.textTheme.titleMedium?.copyWith(
-                                    color: AppColors.white,
-                                    fontSize: 14.sp,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : ElevatedButton(
-                        onPressed: () {
-                          // todo: show map
-                        },
-                        child: Text(
-                          'Show Map',
-                          softWrap: false,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: AppColors.white,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                      ),
+                child: _buildActionButtons(
+                  context: context,
+                  state: state,
+                  tr: tr,
+                  theme: theme,
+                  riderStatus: riderStatus,
+                ),
               ),
             ],
           );
         },
       ),
     );
+  }
+
+  Widget _buildActionButtons({
+    required BuildContext context,
+    required TrackOrderState state,
+    required AppLocalizations tr,
+    required ThemeData theme,
+    required RiderOrderStatus riderStatus,
+  }) {
+    final isDeliveredStep = riderStatus.statusStep >= 4;
+
+    final buttons = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        if (isDeliveredStep)
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () {
+                DialogueUtils.showMessage(
+                  context: context,
+                  title: tr.confirmDelivery,
+                  message: tr.confirmDeliveryMessage,
+                  posActionName: tr.ok,
+                  posAction: () {
+                    context.read<TrackOrderViewModel>().doIntent(
+                      UpdateOrderStatusEvent(
+                        orderId: state.orderEntity?.id ?? "",
+                        status: RiderOrderStatus.delivered,
+                      ),
+                    );
+                  },
+                  ngeActionName: tr.cancel,
+                );
+              },
+              child: Text(
+                tr.confirmDelivery,
+                softWrap: false,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  color: AppColors.white,
+                  fontSize: 14.sp,
+                ),
+              ),
+            ),
+          ),
+        if (isDeliveredStep) SizedBox(width: 12.w),
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {
+              // todo: show map
+            },
+            child: Text(
+              tr.showMap,
+              softWrap: false,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: AppColors.white,
+                fontSize: 14.sp,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    return isDeliveredStep
+        ? BlocListener<TrackOrderViewModel, TrackOrderState>(
+            listener: (context, state) {
+              if (state.updateSuccess) {
+                DialogueUtils.hideLoading(context);
+                ToastMessage.toastMsg(
+                  tr.orderMarkedAsDelivered,
+                  backgroundColor: AppColors.pink,
+                );
+                Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
+              }
+
+              if (state.isUpdating) {
+                DialogueUtils.showLoading(
+                  context: context,
+                  message: tr.updating,
+                );
+              }
+
+              if (state.updateFailure != null) {
+                DialogueUtils.hideLoading(context);
+                DialogueUtils.showAlertDialog(
+                  context,
+                  state.updateFailure!.errorMessage,
+                );
+              }
+            },
+            child: buttons,
+          )
+        : buttons;
   }
 }
