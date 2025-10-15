@@ -66,7 +66,7 @@ class FlowersEcommerce extends StatelessWidget {
             );
           },
         );
-     },
-);
-}
+      },
+    );
+  }
 }

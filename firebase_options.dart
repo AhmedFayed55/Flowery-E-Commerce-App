@@ -49,7 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDD2afZ8jaTeqBiWWbumUYFB9dJXKJErvQ',
     appId: '1:653026383061:android:7a5aa025637492c3f9be5c',
@@ -57,7 +56,6 @@ class DefaultFirebaseOptions {
     projectId: 'tracking-app-61dee',
     storageBucket: 'tracking-app-61dee.firebasestorage.app',
   );
-
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDD2afZ8jaTeqBiWWbumUYFB9dJXKJErvQ',
