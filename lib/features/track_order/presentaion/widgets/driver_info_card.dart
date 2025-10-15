@@ -1,4 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
+import 'package:flowers_ecommerce_app/core/helpers/url_helper.dart';
+import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,25 +10,35 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class DriverInfoCard extends StatelessWidget {
   final String driverName;
+  final String driverPhone;
+  final String driverPhoto;
 
-  const DriverInfoCard({super.key, required this.driverName});
+  const DriverInfoCard({
+    super.key,
+    required this.driverName,
+    required this.driverPhone,
+    required this.driverPhoto,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final tr = AppLocalizations.of(context)!;
 
     return Row(
       children: [
-        // Driver Avatar
         Container(
           width: 50.w,
           height: 50.w,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
-          child: Icon(Icons.person, color: AppColors.pink, size: 30.sp),
+          child: CachedNetworkImage(
+            imageUrl: driverPhoto,
+            errorWidget: (context, url, error) =>
+                const Icon(Icons.person, color: AppColors.red),
+          ),
         ),
-        SizedBox(width: 12.w),
+        horizontalSpace(12.w),
 
-        // Driver Name + Info
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,41 +47,46 @@ class DriverInfoCard extends StatelessWidget {
                 driverName,
                 style: theme.textTheme.displayMedium?.copyWith(
                   color: AppColors.black,
-                ), // fontSize: 16.sp, fontWeight: medium
+                ),
               ),
               SizedBox(height: 2.h),
               Text(
-                'Is your delivery hero for today',
+                tr.deliveryHeroForToday,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: AppColors.white[80],
-                ), // fontSize: 12.sp, fontWeight: regular
+                ),
               ),
             ],
           ),
         ),
 
-        // Call + Chat buttons
         Row(
           children: [
             GestureDetector(
               onTap: () {
-                // TODO: open Call
+                callNumber(driverPhone);
               },
-              child: SvgPicture.asset(
-                AppImages.phoneIcon,
-                width: 24.sp,
-                height: 24.sp,
+              child: Tooltip(
+                message: tr.callDriver,
+                child: SvgPicture.asset(
+                  AppImages.phoneIcon,
+                  width: 24.sp,
+                  height: 24.sp,
+                ),
               ),
             ),
             SizedBox(width: 10.w),
             GestureDetector(
               onTap: () {
-                // TODO: open Whatsapp
+                openWhatsApp(driverPhone);
               },
-              child: SvgPicture.asset(
-                AppImages.whatsappIcon,
-                width: 24.sp,
-                height: 24.sp,
+              child: Tooltip(
+                message: tr.chatOnWhatsApp,
+                child: SvgPicture.asset(
+                  AppImages.whatsappIcon,
+                  width: 24.sp,
+                  height: 24.sp,
+                ),
               ),
             ),
           ],

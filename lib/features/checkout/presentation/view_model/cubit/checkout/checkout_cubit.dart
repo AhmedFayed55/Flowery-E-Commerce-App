@@ -125,8 +125,8 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         isGift: value,
         selectedPaymentMethod: value ? PaymentMethod.creditCard : null,
 
-        giftStreet:  '',
-        giftPhone:  '',
+        giftStreet: '',
+        giftPhone: '',
         giftCity: '',
       ),
     );

@@ -1,47 +1,39 @@
-import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
-import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
-import 'package:flowers_ecommerce_app/config/theme/colors.dart';
-import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
-import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
-import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
+import 'package:flowers_ecommerce_app/core/di/di.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/view_model/track_order_cubit.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/view_model/track_order_event.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/widgets/success_screen_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flowers_ecommerce_app/features/track_order/presentaion/view_model/track_order_state.dart';
 
+// ignore: must_be_immutable
 class PaymentSuccessScreen extends StatelessWidget {
-  const PaymentSuccessScreen({super.key});
+  String? orderId;
+  PaymentSuccessScreen({super.key, this.orderId});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Lottie.asset(
-              AppImages.successlotti,
-              repeat: true,
-              reverse: false,
-              animate: true,
-            ),
-            Text(
-              AppLocalizations.of(context)!.your_oredr_placed,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Text(
-              AppLocalizations.of(context)!.successfully,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            verticalSpace(30.h),
-            ElevatedButton(
-              onPressed: () {
-                context.pushReplacementNamed(AppRoutes.mainLayout);
-              },
-              child: Text(AppLocalizations.of(context)!.track_order),
-            ),
-          ],
-        ),
+    return BlocProvider(
+      create: (context) {
+        final cubit = getIt.get<TrackOrderViewModel>();
+        if (orderId != null && orderId!.isNotEmpty) {
+          cubit.doIntent(GetOrderByIdEvent(orderId: orderId!));
+        }
+        return cubit;
+      },
+      child: BlocListener<TrackOrderViewModel, TrackOrderState>(
+        listenWhen: (previous, current) =>
+            previous.orderEntity != current.orderEntity &&
+            current.orderEntity != null,
+        listener: (context, state) {
+          if (state.orderEntity != null) {
+            final vehicleTypeId = state.orderEntity!.driverData.vehicleType;
+            context.read<TrackOrderViewModel>().doIntent(
+              GetVehicleByIdEvent(vehicleId: vehicleTypeId),
+            );
+          }
+        },
+        child: const SuccessScreenView(),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -21,10 +22,10 @@ class TrackingTimeline extends StatelessWidget {
 
         return TimelineTile(
           alignment: TimelineAlign.start,
+
           isFirst: isFirst,
           isLast: isLast,
 
-          // الخط قبل وبعد الدايرة
           beforeLineStyle: LineStyle(
             color: index == 0
                 ? Colors.transparent
@@ -40,10 +41,10 @@ class TrackingTimeline extends StatelessWidget {
             thickness: 2.w,
           ),
 
-          // شكل الدايرة (المؤشر)
           indicatorStyle: IndicatorStyle(
-            width: 20.w,
-            height: 20.w,
+            width: 22.w,
+            height: 22.w,
+            indicatorXY: 0.3,
             indicator: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -59,25 +60,19 @@ class TrackingTimeline extends StatelessWidget {
               ),
             ),
           ),
-
-          // محتوى كل خطوة
           endChild: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 8.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  step.title,
-                  style: theme
-                      .textTheme
-                      .titleSmall, // fontSize: 14.sp, fontWeight: medium, color: black
-                ),
-                SizedBox(height: 4.h),
+                Text(step.title, style: theme.textTheme.titleSmall),
+                verticalSpace(26.h),
                 Text(
                   step.timestamp,
                   style: theme.textTheme.displaySmall?.copyWith(
                     color: AppColors.white[90],
-                  ), // fontSize: 13.sp, fontWeight: regular
+                  ),
                 ),
               ],
             ),
