@@ -4,18 +4,32 @@ import 'package:injectable/injectable.dart';
 @injectable
 class FirebaseService {
   final FirebaseFirestore _firestore;
+
   FirebaseService({required FirebaseFirestore firestore})
     : _firestore = firestore;
+
   Future<void> addData(
     String collectionPath,
     String docId,
     Map<String, dynamic> data,
   ) async {
-    await _firestore.collection(collectionPath).doc(docId).set(data);
+    try {
+      await _firestore.collection(collectionPath).doc(docId).set(data);
+    } on FirebaseException catch (e) {
+      throw Exception('Failed to add data: ${e.message}');
+    } catch (e) {
+      throw Exception('An unexpected error occurred: $e');
+    }
   }
 
   Future<DocumentSnapshot> getData(String collectionPath, String docId) async {
-    return await _firestore.collection(collectionPath).doc(docId).get();
+    try {
+      return await _firestore.collection(collectionPath).doc(docId).get();
+    } on FirebaseException catch (e) {
+      throw Exception('Failed to get data: ${e.message}');
+    } catch (e) {
+      throw Exception('An unexpected error occurred: $e');
+    }
   }
 
   Future<void> updateData(
@@ -23,11 +37,23 @@ class FirebaseService {
     String docId,
     Map<String, dynamic> data,
   ) async {
-    await _firestore.collection(collectionPath).doc(docId).update(data);
+    try {
+      await _firestore.collection(collectionPath).doc(docId).update(data);
+    } on FirebaseException catch (e) {
+      throw Exception('Failed to update data: ${e.message}');
+    } catch (e) {
+      throw Exception('An unexpected error occurred: $e');
+    }
   }
 
   Future<void> deleteData(String collectionPath, String docId) async {
-    await _firestore.collection(collectionPath).doc(docId).delete();
+    try {
+      await _firestore.collection(collectionPath).doc(docId).delete();
+    } on FirebaseException catch (e) {
+      throw Exception('Failed to delete data: ${e.message}');
+    } catch (e) {
+      throw Exception('An unexpected error occurred: $e');
+    }
   }
 
   Stream<DocumentSnapshot> streamData(String collectionPath, String docId) {
