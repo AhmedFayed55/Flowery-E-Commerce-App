@@ -24,4 +24,6 @@ abstract class AppImages {
       'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   static const String userAgentPackageName = 'com.example.tracking_app';
   static const String whatsappIcon = 'assets/svgs/whatsapp.png';
+  static const String phoneIcon = 'assets/svgs/phone_icon.svg';
+  static const String car = 'assets/svgs/Car.svg';
 }

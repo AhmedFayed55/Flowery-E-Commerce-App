@@ -38,9 +38,9 @@ android {
 
     flavorDimensions += "default"
 
-    productFlavors {
-        create("production") {
-            dimension = "default"
+   productFlavors {
+       create("production") {
+          dimension = "default"
         }
     }
 }

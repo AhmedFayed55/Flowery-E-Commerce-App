@@ -155,5 +155,26 @@
   "newest_first": "الأحدث أولاً",
   "oldest_first": "الأقدم أولاً",
   "order_placed_success": "تم تقديم الطلب بنجاح",
-  "something_went_wrong": "حدث خطأ ما"
+  "something_went_wrong": "حدث خطأ ما",
+  "trackOrderTitle": "تتبع الطلب",
+  "loading": "جاري التحميل...",
+  "noOrderDataFound": "لم يتم العثور على بيانات الطلب",
+  "orderReceived": "تم استلام الطلب",
+  "preparingOrder": "يتم تجهيز الطلب",
+  "outForDelivery": "خرج للتوصيل",
+  "delivered": "تم التوصيل",
+  "estimatedArrival": "موعد الوصول المتوقع",
+  "confirmDelivery": "تأكيد التسليم",
+  "confirmDeliveryMessage": "هل أنت متأكد أنك سلمت هذا الطلب؟",
+  "ok": "موافق",
+  "cancel": "إلغاء",
+  "showMap": "عرض الخريطة",
+  "deliveryHeroForToday": "هو بطل التوصيل الخاص بك اليوم",
+  "callDriver": "اتصل بالسائق",
+  "chatOnWhatsApp": "تحدث عبر واتساب",
+  "wait_until_shipping": "انتظر حتى يتم الشحن",
+  "orderMarkedAsDelivered": "تم وضع علامة على الطلب كمُسلم",
+  "updating": "جارٍ التحديث..."
 }
+
+

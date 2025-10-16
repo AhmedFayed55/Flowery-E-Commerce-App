@@ -47,11 +47,13 @@ dependencies:
   lottie: ^3.3.1
   shimmer_animation: ^2.2.2
   image_picker: ^1.2.0
+  timeline_tile: ^2.0.0
   cloud_firestore: ^6.0.2
   flutter_map: ^7.0.0
   latlong2: ^0.9.0
-  url_launcher: ^6.1.10
-  
+  rxdart: ^0.28.0
+  url_launcher: ^6.3.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
