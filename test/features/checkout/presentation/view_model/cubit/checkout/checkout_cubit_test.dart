@@ -55,7 +55,7 @@ void main() {
       ],
     );
 
-     blocTest<CheckoutCubit, CheckoutState>(
+    blocTest<CheckoutCubit, CheckoutState>(
       'emits [loading, error] when getLoggedUserAddresses fails',
       build: () {
         when(mockUsecase.invok()).thenAnswer(
@@ -72,7 +72,11 @@ void main() {
 
     blocTest<CheckoutCubit, CheckoutState>(
       'updates gift fields step by step',
-      build: () => CheckoutCubit(mockUsecase,mockPaymentCardUseCase,mockPaymentCashUseCase),
+      build: () => CheckoutCubit(
+        mockUsecase,
+        mockPaymentCardUseCase,
+        mockPaymentCashUseCase,
+      ),
       act: (cubit) {
         cubit.toggleGift(true);
         cubit.updateGiftStreet("Street X");
@@ -110,6 +114,5 @@ void main() {
         ),
       ],
     );
-  
   });
 }

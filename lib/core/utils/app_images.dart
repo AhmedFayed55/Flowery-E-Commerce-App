@@ -18,4 +18,8 @@ abstract class AppImages {
   static const String arrowDown = 'assets/svgs/arrow-down.svg';
 
   static const String imagePhoto = 'lib/core/utils/images/flowerImage.png';
+  static const String whatsappIcon = 'assets/svgs/whatsapp.svg';
+
+  static const String phoneIcon = 'assets/svgs/phone_icon.svg';
+  static const String car = 'assets/svgs/Car.svg';
 }

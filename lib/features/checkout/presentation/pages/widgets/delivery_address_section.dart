@@ -42,14 +42,21 @@ class DeliveryAddressSection extends StatelessWidget {
               }
 
               if (state.addresses.isEmpty) {
-                return Center(child: Column(
-                  children: [
-                    Text(trans.no_addresses_found , style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.darkGrey)),
-                    verticalSpace(16.h),
-                    AddAddressWidget(trans: trans),
-                    verticalSpace(8.h),
-                  ],
-                ));
+                return Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        trans.no_addresses_found,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: AppColors.darkGrey,
+                        ),
+                      ),
+                      verticalSpace(16.h),
+                      AddAddressWidget(trans: trans),
+                      verticalSpace(8.h),
+                    ],
+                  ),
+                );
               }
 
               return Column(
@@ -77,10 +84,7 @@ class DeliveryAddressSection extends StatelessWidget {
 }
 
 class AddAddressWidget extends StatelessWidget {
-  const AddAddressWidget({
-    super.key,
-    required this.trans,
-  });
+  const AddAddressWidget({super.key, required this.trans});
 
   final AppLocalizations trans;
 
@@ -95,9 +99,7 @@ class AddAddressWidget extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
-          border: Border.all(
-            color: AppColors.darkGrey.withValues(alpha: 0.5),
-          ),
+          border: Border.all(color: AppColors.darkGrey.withValues(alpha: 0.5)),
           color: AppColors.white,
         ),
         child: Row(
@@ -107,11 +109,10 @@ class AddAddressWidget extends StatelessWidget {
             SizedBox(width: 8.w),
             Text(
               trans.add_new,
-              style: Theme.of(context).textTheme.labelLarge!
-                  .copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.pink,
-                  ),
+              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                fontWeight: FontWeight.w500,
+                color: AppColors.pink,
+              ),
             ),
           ],
         ),
