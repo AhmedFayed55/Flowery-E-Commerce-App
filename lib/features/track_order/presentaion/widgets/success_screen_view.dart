@@ -56,13 +56,13 @@ class SuccessScreenView extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (_) => BlocProvider.value(
                             value: currentCubit,
-                            child: const TrackOrderScreen(),
+                            child: TrackOrderScreen(),
                           ),
                         ),
                       );
                     } else {
                       context.pushNamedAndRemoveUntil(
-                        AppRoutes.mainLayout,
+                        AppRoutes.orders,
                         predicate: (_) => false,
                       );
                     }

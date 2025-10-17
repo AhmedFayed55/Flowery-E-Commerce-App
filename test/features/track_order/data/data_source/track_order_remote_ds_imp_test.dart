@@ -28,10 +28,10 @@ void main() {
     );
   });
 
-  group(' TrackOrderRemoteDataSourceImp', () {
-    group(' getVehicleById', () {
+  group('TrackOrderRemoteDataSourceImp', () {
+    group('getVehicleById', () {
       test(
-        ' should call ApiServices.getVehicleById and return VehicleResponseDto',
+        'should call ApiServices.getVehicleById and return VehicleResponseDto',
         () async {
           const vehicleId = 'vehicle-123';
           final mockResponse = VehicleResponseDto(
@@ -52,7 +52,7 @@ void main() {
       );
 
       test(
-        ' should propagate exception when ApiServices.getVehicleById fails',
+        'should propagate exception when ApiServices.getVehicleById fails',
         () async {
           const vehicleId = 'vehicle-error';
           when(
@@ -68,8 +68,8 @@ void main() {
       );
     });
 
-    group(' getOrderStream', () {
-      test(' should return OrderDto when document exists', () async {
+    group('getOrderStream', () {
+      test('should return OrderDto when document exists', () async {
         const orderId = 'order-123';
         final mockSnapshot = MockDocumentSnapshot();
         final orderData = {
@@ -97,8 +97,7 @@ void main() {
         ).called(1);
       });
 
-      test(' should throw exception when document does not exist', () async {
-        // Arrange
+      test('should throw exception when document does not exist', () async {
         const orderId = 'missing-order';
         final mockSnapshot = MockDocumentSnapshot();
 
@@ -115,7 +114,7 @@ void main() {
         ).called(1);
       });
 
-      test(' should propagate stream errors', () async {
+      test('should propagate stream errors', () async {
         const orderId = 'error-order';
         when(
           mockFirebaseService.streamData(ApiConstants.orderCollection, orderId),
@@ -130,18 +129,18 @@ void main() {
       });
     });
 
-    group(' updateOrderStatusFirebase', () {
+    group('updateOrderStatusFirebase', () {
       test(
-        ' should call FirebaseService.updateData with correct parameters',
+        'should call FirebaseService.updateData with correct parameters (pending)',
         () async {
           const orderId = 'order-123';
-          const status = RiderOrderStatus.startDelivery;
+          const status = OrderStatus.pending;
 
           when(
             mockFirebaseService.updateData(
               ApiConstants.orderCollection,
               orderId,
-              {ApiConstants.userState: status.statusValue},
+              {ApiConstants.userState: status.name},
             ),
           ).thenAnswer((_) async => Future.value());
 
@@ -151,23 +150,23 @@ void main() {
             mockFirebaseService.updateData(
               ApiConstants.orderCollection,
               orderId,
-              {ApiConstants.userState: status.statusValue},
+              {ApiConstants.userState: status.name},
             ),
           ).called(1);
         },
       );
 
       test(
-        ' should propagate exception when FirebaseService.updateData fails',
+        'should propagate exception when FirebaseService.updateData fails',
         () async {
           const orderId = 'order-error';
-          const status = RiderOrderStatus.startDelivery;
+          const status = OrderStatus.completed;
 
           when(
             mockFirebaseService.updateData(
               ApiConstants.orderCollection,
               orderId,
-              {ApiConstants.userState: status.statusValue},
+              {ApiConstants.userState: status.name},
             ),
           ).thenThrow(Exception('Firebase update failed'));
 
@@ -179,21 +178,21 @@ void main() {
             mockFirebaseService.updateData(
               ApiConstants.orderCollection,
               orderId,
-              {ApiConstants.userState: status.statusValue},
+              {ApiConstants.userState: status.name},
             ),
           ).called(1);
         },
       );
 
-      test(' should use correct status value for delivered', () async {
+      test('should use correct status.name for completed', () async {
         const orderId = 'order-123';
-        const status = RiderOrderStatus.delivered;
+        const status = OrderStatus.completed;
 
         when(
           mockFirebaseService.updateData(
             ApiConstants.orderCollection,
             orderId,
-            {ApiConstants.userState: status.statusValue},
+            {ApiConstants.userState: status.name},
           ),
         ).thenAnswer((_) async => Future.value());
 
@@ -203,7 +202,7 @@ void main() {
           mockFirebaseService.updateData(
             ApiConstants.orderCollection,
             orderId,
-            {ApiConstants.userState: 'delivered'},
+            {ApiConstants.userState: 'completed'},
           ),
         ).called(1);
       });

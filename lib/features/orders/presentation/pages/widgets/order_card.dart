@@ -18,7 +18,7 @@ class OrderCard extends StatelessWidget {
     var trans = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
-      height: 130.h,
+      // REMOVE height: 130.h,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300, width: 1.h),
         borderRadius: BorderRadius.circular(10.r),
@@ -26,6 +26,7 @@ class OrderCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start, // add this
           children: [
             Container(
               height: 109.h,
@@ -44,6 +45,7 @@ class OrderCard extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min, // add this to shrink vertically
                 children: [
                   verticalSpace(4.h),
                   Text(
@@ -62,7 +64,6 @@ class OrderCard extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-
                   Text(
                     orderItem.state == "completed"
                         ? '${trans.delivered_on} ${orderItem.updatedAt!.day}/${orderItem.updatedAt!.month}/${orderItem.updatedAt!.year}'
@@ -71,8 +72,7 @@ class OrderCard extends StatelessWidget {
                       color: Colors.grey.shade600,
                     ),
                   ),
-
-                  verticalSpace(14.h),
+                  verticalSpace(10.h),
                   SizedBox(
                     width: double.infinity,
                     height: 30.h,
@@ -101,7 +101,6 @@ class OrderCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  verticalSpace(2.h),
                 ],
               ),
             ),

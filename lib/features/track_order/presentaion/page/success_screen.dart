@@ -9,7 +9,7 @@ import 'package:flowers_ecommerce_app/features/track_order/presentaion/view_mode
 // ignore: must_be_immutable
 class PaymentSuccessScreen extends StatelessWidget {
   String? orderId;
-  PaymentSuccessScreen({super.key, this.orderId});
+  PaymentSuccessScreen({super.key, required this.orderId});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class PaymentSuccessScreen extends StatelessWidget {
             );
           }
         },
-        child: const SuccessScreenView(),
+        child: SuccessScreenView(),
       ),
     );
   }

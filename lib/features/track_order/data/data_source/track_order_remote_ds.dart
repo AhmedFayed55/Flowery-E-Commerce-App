@@ -5,8 +5,5 @@ import 'package:flowers_ecommerce_app/features/track_order/data/model/response/v
 abstract class TrackOrderRemoteDataSource {
   Future<VehicleResponseDto> getVehicleById(String vehicleId);
   Stream<OrderDto> getOrderStream(String orderId);
-  Future<void> updateOrderStatusFirebase(
-    String orderId,
-    RiderOrderStatus status,
-  );
+  Future<void> updateOrderStatusFirebase(String orderId, OrderStatus status);
 }

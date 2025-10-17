@@ -1,13 +1,14 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/core/utils/product_card.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_cubit.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_event.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/cubit/category_state.dart';
 import 'package:flowers_ecommerce_app/features/categories/presentation/widgets/custom_bottom_sheet.dart';
-import 'package:flowers_ecommerce_app/features/categories/presentation/widgets/category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -118,15 +119,15 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       ],
                     ),
                     verticalSpace(16),
-                    BlocBuilder<CategoryCubit, CategoryState>(
-                      builder: (context, state) {
-                        if (state.isLoading) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                        return Expanded(
-                          child: Column(
+                    Expanded(
+                      child: BlocBuilder<CategoryCubit, CategoryState>(
+                        builder: (context, state) {
+                          if (state.isLoading) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          return Column(
                             children: [
                               DefaultTabController(
                                 initialIndex: selectedIndexCurrent ?? 0,
@@ -166,14 +167,13 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                       )
                                     : state.filteredProducts.isEmpty &&
                                           state.dataLoading
-                                    ? Center(
-                                        child: Text(
-                                          AppLocalizations.of(
-                                            context,
-                                          )!.no_products_found,
-                                          style: Theme.of(
-                                            context,
-                                          ).textTheme.labelSmall,
+                                    ? Expanded(
+                                        child: Center(
+                                          child: Icon(
+                                            Icons.shopping_bag_outlined,
+                                            size: 80.sp,
+                                            color: AppColors.pink,
+                                          ),
                                         ),
                                       )
                                     : GridView.builder(
@@ -181,32 +181,33 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                                             state.filteredProducts.length,
                                         gridDelegate:
                                             SliverGridDelegateWithFixedCrossAxisCount(
-                                              childAspectRatio: 163.w / 229.h,
-                                              mainAxisSpacing: 17,
-                                              crossAxisSpacing: 17,
                                               crossAxisCount: 2,
+                                              childAspectRatio: 1.94 / 3,
+                                              crossAxisSpacing: 17,
+                                              mainAxisSpacing: 17,
                                             ),
                                         itemBuilder: (context, index) {
                                           final product =
                                               state.filteredProducts[index];
-                                          return GestureDetector(
+                                          return ProductCard(
+                                            id: product.id ?? '',
+                                            title: product.title ?? '',
+                                            imageUrl: product.imgCover ?? '',
+                                            price: product.price ?? 0,
+                                            priceAfterDiscount:
+                                                product.priceAfterDiscount ?? 0,
                                             onTap: () => context.pushNamed(
                                               AppRoutes.productDetails,
-                                              arguments: state
-                                                  .filteredProducts[index]
-                                                  .id,
-                                            ),
-                                            child: ProductItem(
-                                              product: product,
+                                              arguments: product.id,
                                             ),
                                           );
                                         },
                                       ),
                               ),
                             ],
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

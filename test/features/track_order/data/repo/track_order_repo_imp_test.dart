@@ -61,7 +61,6 @@ void main() {
         final stream = repo.getOrderStream(orderId);
 
         await expectLater(stream, emits(isA<ApiErrorResult<OrderEntity>>()));
-
         verify(mockRemoteDataSource.getOrderStream(orderId)).called(1);
       },
     );
@@ -70,7 +69,7 @@ void main() {
       'updateOrderStatusFirebase should return FirebaseSuccessResult',
       () async {
         const orderId = 'order_update';
-        final status = RiderOrderStatus.values.first;
+        final status = OrderStatus.values.first;
 
         when(mockConnectionChecker.hasConnection).thenAnswer((_) async => true);
         when(
@@ -90,7 +89,7 @@ void main() {
       'updateOrderStatusFirebase should return FirebaseErrorResult when no internet',
       () async {
         const orderId = 'order_no_internet';
-        final status = RiderOrderStatus.values.first;
+        final status = OrderStatus.values.first;
 
         when(
           mockConnectionChecker.hasConnection,
@@ -111,7 +110,7 @@ void main() {
       'updateOrderStatusFirebase should return FirebaseErrorResult when update fails',
       () async {
         const orderId = 'order_fail';
-        final status = RiderOrderStatus.values.first;
+        final status = OrderStatus.values.first;
 
         when(mockConnectionChecker.hasConnection).thenAnswer((_) async => true);
         when(

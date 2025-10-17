@@ -45,7 +45,7 @@ class TrackOrderRepoImp implements TrackOrderRepo {
   @override
   Future<FirebaseResult> updateOrderStatusFirebase(
     String orderId,
-    RiderOrderStatus status,
+    OrderStatus status,
   ) async {
     final bool isConnected = await _internetConnectionChecker.hasConnection;
 

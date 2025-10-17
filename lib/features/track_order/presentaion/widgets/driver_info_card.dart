@@ -30,9 +30,11 @@ class DriverInfoCard extends StatelessWidget {
         Container(
           width: 50.w,
           height: 50.w,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
+          decoration: const BoxDecoration(shape: BoxShape.circle),
+          clipBehavior: Clip.antiAlias,
           child: CachedNetworkImage(
             imageUrl: driverPhoto,
+            fit: BoxFit.cover,
             errorWidget: (context, url, error) =>
                 const Icon(Icons.person, color: AppColors.red),
           ),

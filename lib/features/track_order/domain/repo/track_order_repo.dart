@@ -9,6 +9,6 @@ abstract class TrackOrderRepo {
   Stream<ApiResult<OrderEntity>> getOrderStream(String orderId);
   Future<FirebaseResult> updateOrderStatusFirebase(
     String orderId,
-    RiderOrderStatus status,
+    OrderStatus status,
   );
 }

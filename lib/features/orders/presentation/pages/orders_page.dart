@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/orders/presentation/pages/widgets/orders_body.dart';
@@ -21,7 +23,10 @@ class OrdersPage extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
             onPressed: () {
-              Navigator.pop(context);
+              context.pushNamedAndRemoveUntil(
+                AppRoutes.profile,
+                predicate: (_) => false,
+              );
             },
           ),
         ),

@@ -123,10 +123,7 @@ void main() {
       ).thenAnswer((_) async => FirebaseSuccessResult(data: null));
 
       await vm.doIntent(
-        UpdateOrderStatusEvent(
-          orderId: 'o1',
-          status: RiderOrderStatus.startDelivery,
-        ),
+        UpdateOrderStatusEvent(orderId: 'o1', status: OrderStatus.completed),
       );
 
       expect(vm.state.isUpdating, false);
@@ -140,10 +137,7 @@ void main() {
       ).thenAnswer((_) async => FirebaseErrorResult(failure: failure));
 
       await vm.doIntent(
-        UpdateOrderStatusEvent(
-          orderId: 'o1',
-          status: RiderOrderStatus.arrivedAtPickup,
-        ),
+        UpdateOrderStatusEvent(orderId: 'o1', status: OrderStatus.completed),
       );
 
       expect(vm.state.isUpdating, false);

@@ -14,7 +14,6 @@ class TrackOrderRemoteDataSourceImp implements TrackOrderRemoteDataSource {
   final FirebaseService _firebaseService;
   static const String _orderCollection = ApiConstants.orderCollection;
   TrackOrderRemoteDataSourceImp(this._apiServices, this._firebaseService);
-
   @override
   Future<VehicleResponseDto> getVehicleById(String vehicleId) async {
     return await _apiServices.getVehicleById(vehicleId);
@@ -34,12 +33,9 @@ class TrackOrderRemoteDataSourceImp implements TrackOrderRemoteDataSource {
   }
 
   @override
-  Future<void> updateOrderStatusFirebase(
-    String orderId,
-    RiderOrderStatus status,
-  ) {
+  Future<void> updateOrderStatusFirebase(String orderId, OrderStatus status) {
     return _firebaseService.updateData(ApiConstants.orderCollection, orderId, {
-      ApiConstants.userState: status.statusValue,
+      ApiConstants.userState: status.name,
     });
   }
 }

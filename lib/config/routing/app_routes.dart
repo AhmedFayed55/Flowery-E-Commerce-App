@@ -26,4 +26,5 @@ abstract class AppRoutes {
   static const String notification = "/notification";
   static const String checkout = "/checkout";
   static const String trackOrder = "/TrackOrderScreen";
+  static const String trackOrderMap = "/TrackOrderMapScreen";
 }

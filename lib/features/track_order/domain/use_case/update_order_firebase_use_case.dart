@@ -8,7 +8,7 @@ class UpdateOrderFirebaseUseCase {
   // ignore: prefer_final_fields
   TrackOrderRepo _repo;
   UpdateOrderFirebaseUseCase(this._repo);
-  Future<FirebaseResult> invoke(String orderId, RiderOrderStatus status) {
+  Future<FirebaseResult> invoke(String orderId, OrderStatus status) {
     return _repo.updateOrderStatusFirebase(orderId, status);
   }
 }

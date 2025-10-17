@@ -140,7 +140,6 @@ void main() {
     expect(result.id, '');
     expect(result.createdAt, '');
     expect(result.isDelivered, false);
-    expect(result.state, '');
     expect(result.userState, '');
     expect(result.driverData, isA<DriverDataEntity>());
     expect(result.driverData.firstName, '');

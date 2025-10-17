@@ -14,5 +14,4 @@ abstract class Constants {
   static const String collectionKey = 'orders';
   static const String driverLocationKey = 'driverLocation';
   static const String aboutUsDateFormat = 'dd MMM yyyy';
-
 }
