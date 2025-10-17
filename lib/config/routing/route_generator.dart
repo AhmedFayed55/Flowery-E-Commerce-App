@@ -12,6 +12,7 @@ import 'package:flowers_ecommerce_app/features/categories/presentation/pages/cat
 import 'package:flowers_ecommerce_app/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:flowers_ecommerce_app/features/edit_profile/presentation/pages/edit_profile_screen.dart';
 import 'package:flowers_ecommerce_app/features/home_screen/presentaion/pages/home_screen.dart';
+import 'package:flowers_ecommerce_app/features/map/presentation/pages/maps_screen.dart';
 import 'package:flowers_ecommerce_app/features/most_selling/presentation/pages/most_selling_page.dart';
 import 'package:flowers_ecommerce_app/features/notification/presentation/page/notification_screen.dart';
 import 'package:flowers_ecommerce_app/features/occasions/presentation/pages/occasions_screen.dart';
@@ -107,7 +108,9 @@ class RouteGenerator {
       case AppRoutes.changePassword:
         return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
       case AppRoutes.successPayment:
-        return MaterialPageRoute(builder: (_) => PaymentSuccessScreen());
+        return MaterialPageRoute(
+          builder: (_) => PaymentSuccessScreen(orderId: ''),
+        );
       case AppRoutes.webView:
         final url = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => WebviewScreen(url: url));
@@ -146,6 +149,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => ProductDetailsPage(productId: args),
         );
+
+      case AppRoutes.trackOrderMap:
+        return MaterialPageRoute(builder: (_) => DriverMapPage(orderId: ''));
 
       case AppRoutes.addressDetails:
         return MaterialPageRoute(

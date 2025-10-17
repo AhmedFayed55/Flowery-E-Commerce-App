@@ -91,10 +91,7 @@ class TrackOrderViewModel extends Cubit<TrackOrderState> {
     });
   }
 
-  Future<void> _updateOrderStatus(
-    String orderId,
-    RiderOrderStatus status,
-  ) async {
+  Future<void> _updateOrderStatus(String orderId, OrderStatus status) async {
     emit(
       state.copyWith(
         isUpdating: true,

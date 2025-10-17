@@ -10,7 +10,7 @@ extension OrderMapper on OrderDto {
       id: orderId,
       createdAt: createdAt ?? "",
       isDelivered: isDelivered ?? false,
-      state: state ?? "",
+      state: state ?? orders?['state'] ?? "",
       userState: userState ?? "",
       driverData: driverData?.toEntity() ?? DriverDataEntity.empty(),
     );

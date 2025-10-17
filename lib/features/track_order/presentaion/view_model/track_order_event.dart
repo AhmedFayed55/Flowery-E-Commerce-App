@@ -14,7 +14,7 @@ class GetOrderByIdEvent extends TrackOrderEvent {
 
 class UpdateOrderStatusEvent extends TrackOrderEvent {
   final String orderId;
-  final RiderOrderStatus status;
+  final OrderStatus status;
 
   UpdateOrderStatusEvent({required this.orderId, required this.status});
 }

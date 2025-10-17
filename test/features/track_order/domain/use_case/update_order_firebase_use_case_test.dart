@@ -16,7 +16,7 @@ void main() {
     late UpdateOrderFirebaseUseCase usecase;
 
     const orderId = 'order_123';
-    const status = RiderOrderStatus.delivered;
+    const status = OrderStatus.completed; // ✅ Updated type
 
     setUp(() {
       mockRepo = MockTrackOrderRepo();
@@ -25,42 +25,42 @@ void main() {
 
     provideDummy<FirebaseResult>(FirebaseSuccessResult(data: null));
 
-    test(
-      'when calling invoke with valid data should return FirebaseSuccessResult',
-      () async {
-        final expected = FirebaseSuccessResult(data: null);
-        when(
-          mockRepo.updateOrderStatusFirebase(orderId, status),
-        ).thenAnswer((_) async => expected);
+    test('should return FirebaseSuccessResult when repo succeeds', () async {
+      // Arrange
+      final expected = FirebaseSuccessResult(data: null);
+      when(
+        mockRepo.updateOrderStatusFirebase(orderId, status),
+      ).thenAnswer((_) async => expected);
 
-        final result = await usecase.invoke(orderId, status);
+      // Act
+      final result = await usecase.invoke(orderId, status);
 
-        verify(mockRepo.updateOrderStatusFirebase(orderId, status)).called(1);
-        expect(result, isA<FirebaseSuccessResult>());
-      },
-    );
+      // Assert
+      verify(mockRepo.updateOrderStatusFirebase(orderId, status)).called(1);
+      expect(result, isA<FirebaseSuccessResult>());
+    });
 
-    test(
-      'when calling invoke and repo returns FirebaseErrorResult should return FirebaseErrorResult',
-      () async {
-        final expected = FirebaseErrorResult(
-          failure: Failure(errorMessage: 'Update failed'),
-        );
+    test('should return FirebaseErrorResult when repo fails', () async {
+      // Arrange
+      final expected = FirebaseErrorResult(
+        failure: Failure(errorMessage: 'Update failed'),
+      );
 
-        provideDummy<FirebaseErrorResult>(expected);
-        when(
-          mockRepo.updateOrderStatusFirebase(orderId, status),
-        ).thenAnswer((_) async => expected);
+      provideDummy<FirebaseErrorResult>(expected);
+      when(
+        mockRepo.updateOrderStatusFirebase(orderId, status),
+      ).thenAnswer((_) async => expected);
 
-        final result = await usecase.invoke(orderId, status);
+      // Act
+      final result = await usecase.invoke(orderId, status);
 
-        verify(mockRepo.updateOrderStatusFirebase(orderId, status)).called(1);
-        expect(result, isA<FirebaseErrorResult>());
-        expect(
-          (result as FirebaseErrorResult).failure.errorMessage,
-          equals('Update failed'),
-        );
-      },
-    );
+      // Assert
+      verify(mockRepo.updateOrderStatusFirebase(orderId, status)).called(1);
+      expect(result, isA<FirebaseErrorResult>());
+      expect(
+        (result as FirebaseErrorResult).failure.errorMessage,
+        equals('Update failed'),
+      );
+    });
   });
 }

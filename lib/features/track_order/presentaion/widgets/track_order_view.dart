@@ -8,6 +8,7 @@ import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/utils/app_images.dart';
 import 'package:flowers_ecommerce_app/core/utils/enums.dart';
+import 'package:flowers_ecommerce_app/features/map/presentation/pages/maps_screen.dart';
 import 'package:flowers_ecommerce_app/features/track_order/presentaion/models/tracking_step.dart';
 import 'package:flowers_ecommerce_app/features/track_order/presentaion/view_model/track_order_cubit.dart';
 import 'package:flowers_ecommerce_app/features/track_order/presentaion/view_model/track_order_event.dart';
@@ -55,7 +56,8 @@ class TrackOrderView extends StatelessWidget {
           final order = state.orderEntity!;
           final driver = order.driverData;
           final vehicle = state.vehicleEntity;
-          final riderStatus = RiderOrderStatus.fromString(order.userState);
+          final riderStatus = RiderOrderStatus.fromString(order.state);
+          print("Order State: ${order.state}");
 
           final List<TrackingStep> steps = [
             TrackingStep(
@@ -177,7 +179,7 @@ class TrackOrderView extends StatelessWidget {
     required ThemeData theme,
     required RiderOrderStatus riderStatus,
   }) {
-    final isDeliveredStep = riderStatus.statusStep >= 4;
+    final isDeliveredStep = riderStatus.statusStep >= 5;
 
     final buttons = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -195,7 +197,7 @@ class TrackOrderView extends StatelessWidget {
                     context.read<TrackOrderViewModel>().doIntent(
                       UpdateOrderStatusEvent(
                         orderId: state.orderEntity?.id ?? "",
-                        status: RiderOrderStatus.delivered,
+                        status: OrderStatus.completed,
                       ),
                     );
                   },
@@ -219,6 +221,13 @@ class TrackOrderView extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               // todo: show map
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      DriverMapPage(orderId: state.orderEntity?.id ?? ""),
+                ),
+              );
             },
             child: Text(
               tr.showMap,
@@ -236,25 +245,25 @@ class TrackOrderView extends StatelessWidget {
     );
 
     return isDeliveredStep
-        ? BlocListener<TrackOrderViewModel, TrackOrderState>(
+        ? BlocConsumer<TrackOrderViewModel, TrackOrderState>(
+            listenWhen: (previous, current) =>
+                previous.updateSuccess != current.updateSuccess ||
+                previous.isUpdating != current.isUpdating ||
+                previous.updateFailure != current.updateFailure,
             listener: (context, state) {
-              if (state.updateSuccess) {
+              if (state.updateSuccess && !state.isUpdating) {
                 DialogueUtils.hideLoading(context);
                 ToastMessage.toastMsg(
                   tr.orderMarkedAsDelivered,
                   backgroundColor: AppColors.pink,
                 );
                 Navigator.pushReplacementNamed(context, AppRoutes.mainLayout);
-              }
-
-              if (state.isUpdating) {
+              } else if (state.isUpdating) {
                 DialogueUtils.showLoading(
                   context: context,
                   message: tr.updating,
                 );
-              }
-
-              if (state.updateFailure != null) {
+              } else if (state.updateFailure != null) {
                 DialogueUtils.hideLoading(context);
                 DialogueUtils.showAlertDialog(
                   context,
@@ -262,7 +271,7 @@ class TrackOrderView extends StatelessWidget {
                 );
               }
             },
-            child: buttons,
+            builder: (context, state) => buttons,
           )
         : buttons;
   }

@@ -1,3 +1,5 @@
+import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/map/presentation/pages/widget/driver_data.dart';
@@ -11,7 +13,7 @@ import 'package:latlong2/latlong.dart';
 
 class DriverMapPage extends StatefulWidget {
   const DriverMapPage({super.key, required this.orderId});
-  final String orderId;
+  final String? orderId;
 
   @override
   State<DriverMapPage> createState() => _DriverMapPageState();
@@ -24,7 +26,8 @@ class _DriverMapPageState extends State<DriverMapPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          getIt<TrackingViewModel>()..doIntent(GetDataEvent(widget.orderId)),
+          getIt<TrackingViewModel>()
+            ..doIntent(GetDataEvent(widget.orderId ?? '')),
       child: Scaffold(
         body: BlocBuilder<TrackingViewModel, TrackingState>(
           builder: (context, state) {
@@ -32,7 +35,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
               _started = true;
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 context.read<TrackingViewModel>().doIntent(
-                  StreamDriverLocationEvent(widget.orderId),
+                  StreamDriverLocationEvent(widget.orderId ?? ''),
                 );
               });
             }
@@ -41,7 +44,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
               children: [
                 MapWidgetTracking(
                   driverPosition:
-                      state.trackingEntity?.driverLocation ??
+                      state.driverLocation ??
                       state.trackingEntity?.storeLocation ??
                       const LatLng(0, 0),
                   storePosition:
@@ -59,8 +62,12 @@ class _DriverMapPageState extends State<DriverMapPage> {
                     buildWhen: (prev, curr) => prev.etaText != curr.etaText,
                     builder: (context, state) {
                       return DriverData(
-                        //navigate to
-                        onTap: () {},
+                        onTap: () {
+                          context.pushNamedAndRemoveUntil(
+                            AppRoutes.orders,
+                            predicate: (route) => false,
+                          );
+                        },
                         date: state.isLoading
                             ? AppLocalizations.of(context)!.loading
                             : state.etaText,
