@@ -1,7 +1,9 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/core/services/token_service.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_cubit.dart';
@@ -27,9 +29,15 @@ class ProfileSettingScreen extends StatefulWidget {
 }
 
 class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
+  late bool isUserLogedIn;
   @override
   void initState() {
-    context.read<ProfileSettingCubit>().doIntent(SumitProflieSettingEvent());
+    isUserLogedIn = getIt<TokenService>().isTokenSaved;
+    isUserLogedIn
+        ? context.read<ProfileSettingCubit>().doIntent(
+            SumitProflieSettingEvent(),
+          )
+        : null;
 
     super.initState();
   }
@@ -40,99 +48,126 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
   Widget build(BuildContext context) {
     var lang = AppLocalizations.of(context)!;
     var cubit = context.read<ProfileSettingCubit>();
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<ProfileSettingCubit, ProfileSettingState>(
-          builder: (context, state) {
-            if (state.errorMessage.isNotEmpty) {
-              return Center(child: Text(state.errorMessage));
-            }
-            return Padding(
-              padding: EdgeInsets.only(top: 20.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const ProfileBar(numberNoti: 0),
-                  SectionDataUser(
-                    email: state.userProfileEntity?.email ?? '',
-                    imageUrl: state.userProfileEntity?.photo ?? '',
-                    userName: state.userProfileEntity?.firstName ?? '',
-                    editTap: () {
-                      context
-                          .pushNamed(
-                            AppRoutes.editProfile,
-                            arguments: state.userProfileEntity,
-                          )
-                          .then((_) {
-                            cubit.doIntent(SumitProflieSettingEvent());
-                          });
-                    },
-                  ),
-                  const Divider(),
-                  CustomNotificationSwitch(
-                    onChanged: (value) {
-                      context.read<ProfileSettingCubit>().doIntent(
-                        ToggleNotificationEvent(value),
-                      );
-                    },
-                    title: lang.notification,
-                    valueNoti: state.enableNotification,
-                    onPressed: () {},
-                  ),
-                  const Divider(),
-                  CustomRow(
-                    firstIcon: const Icon(Icons.translate),
-                    title: lang.language,
-                    lastWidget: Text(
-                      state.localizationCode == Constants.arKey
-                          ? lang.arabic
-                          : lang.english,
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (_) => BlocProvider.value(
-                          value: context.read<ProfileSettingCubit>(),
-                          child: const CustomButtomSheet(),
+    return isUserLogedIn
+        ? Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: BlocBuilder<ProfileSettingCubit, ProfileSettingState>(
+                builder: (context, state) {
+                  if (state.errorMessage.isNotEmpty) {
+                    return Center(child: Text(state.errorMessage));
+                  }
+                  return Padding(
+                    padding: EdgeInsets.only(top: 20.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const ProfileBar(numberNoti: 0),
+                        SectionDataUser(
+                          email: state.userProfileEntity?.email ?? '',
+                          imageUrl: state.userProfileEntity?.photo ?? '',
+                          userName:
+                              "${state.userProfileEntity?.firstName} ${state.userProfileEntity?.lastName}",
+                          editTap: () {
+                            context
+                                .pushNamed(
+                                  AppRoutes.editProfile,
+                                  arguments: state.userProfileEntity,
+                                )
+                                .then((_) {
+                                  cubit.doIntent(SumitProflieSettingEvent());
+                                });
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  CustomRow(
-                    firstIcon: null,
-                    title: lang.about_us,
-                    onPressed: () {
-                      context.pushNamed(
-                        AppRoutes.aboutUs,
-                        arguments: state.aboutUsList,
-                      );
-                    },
-                  ),
-                  CustomRow(
-                    firstIcon: null,
-                    title: lang.terms_conditions,
-                    onPressed: () {
-                      context.pushNamed(
-                        AppRoutes.terms,
-                        arguments: state.terms,
-                      );
-                    },
-                  ),
-                  const Divider(),
-                  ?enabled ? const LogoutScreen() : null,
-                  const Spacer(),
-                  VersionWidget(
-                    buildNumber: state.buildNumber,
-                    version: state.version,
-                  ),
-                ],
+                        const Divider(),
+                        CustomNotificationSwitch(
+                          onChanged: (value) {
+                            context.read<ProfileSettingCubit>().doIntent(
+                              ToggleNotificationEvent(value),
+                            );
+                          },
+                          title: lang.notification,
+                          valueNoti: state.enableNotification,
+                          onPressed: () {},
+                        ),
+                        const Divider(),
+                        CustomRow(
+                          firstIcon: const Icon(Icons.translate),
+                          title: lang.language,
+                          lastWidget: Text(
+                            state.localizationCode == Constants.arKey
+                                ? lang.arabic
+                                : lang.english,
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (_) => BlocProvider.value(
+                                value: context.read<ProfileSettingCubit>(),
+                                child: const CustomButtomSheet(),
+                              ),
+                            );
+                          },
+                        ),
+                        CustomRow(
+                          firstIcon: null,
+                          title: lang.about_us,
+                          onPressed: () {
+                            context.pushNamed(
+                              AppRoutes.aboutUs,
+                              arguments: state.aboutUsList,
+                            );
+                          },
+                        ),
+                        CustomRow(
+                          firstIcon: null,
+                          title: lang.terms_conditions,
+                          onPressed: () {
+                            context.pushNamed(
+                              AppRoutes.terms,
+                              arguments: state.terms,
+                            );
+                          },
+                        ),
+                        const Divider(),
+                        ?enabled ? const LogoutScreen() : null,
+                        const Spacer(),
+                        VersionWidget(
+                          buildNumber: state.buildNumber,
+                          version: state.version,
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
-      ),
-    );
+            ),
+          )
+        : Scaffold(
+            body: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      lang.you_should_login,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium!.copyWith(color: AppColors.black),
+                    ),
+                    verticalSpace(20),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.pushReplacementNamed(AppRoutes.login);
+                      },
+                      child: Text(lang.login),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 }

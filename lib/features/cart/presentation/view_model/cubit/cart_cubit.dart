@@ -7,6 +7,7 @@ import 'package:flowers_ecommerce_app/features/cart/domin/usecase/delete_cart_us
 import 'package:flowers_ecommerce_app/features/cart/domin/usecase/get_user_carts_usecase.dart';
 import 'package:flowers_ecommerce_app/features/cart/domin/usecase/updeate_cart_product_quantity_usecase.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/view_model/cubit/cart_event.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 part 'cart_state.dart';
@@ -16,6 +17,9 @@ class CartCubit extends Cubit<CartState> {
   GetUserCartsUsecase getUserCartsUsecase;
   DeleteCartUsecase deleteCartUsecase;
   UpdeateCartProductQuantityUsecase updeateCartProductQuantityUsecase;
+
+  final GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
 
   CartCubit(
     this.getUserCartsUsecase,

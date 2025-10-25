@@ -24,10 +24,7 @@ class OrdersPage extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_outlined),
             onPressed: () {
-              context.pushNamedAndRemoveUntil(
-                AppRoutes.mainLayout,
-                predicate: (_) => false,
-              );
+              context.pop();
             },
           ),
         ),

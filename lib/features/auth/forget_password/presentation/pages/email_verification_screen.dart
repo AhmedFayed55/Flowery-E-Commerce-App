@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
@@ -33,83 +34,95 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   }
 
   @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final forgetPasswordCubit = context.read<ForgetPasswordCubit>();
     return BlocBuilder<ForgetPasswordCubit, ForgetPasswordState>(
       builder: (context, state) {
-        return SafeArea(
-          child: Scaffold(
-            appBar: AppBar(title: Text(AppLocalizations.of(context)!.password)),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    verticalSpace(40),
-                    Text(
-                      AppLocalizations.of(context)!.email_verification,
-                      style: Theme.of(context).textTheme.labelMedium,
+        return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () => context.pop(),
+              icon: const Icon(Icons.arrow_back_ios_new),
+            ),
+
+            title: Text(AppLocalizations.of(context)!.password),
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  verticalSpace(40),
+                  Text(
+                    AppLocalizations.of(context)!.email_verification,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  verticalSpace(16),
+                  Text(
+                    AppLocalizations.of(
+                      context,
+                    )!.please_enter_your_code_that_send_to_your_email_address,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                  verticalSpace(32),
+                  OtpCodeTextField(
+                    forgetPasswordCubit: forgetPasswordCubit,
+                    email: widget.email,
+                  ),
+                  Text(
+                    "00 : ${_seconds.toString().padLeft(2, '0')}",
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: AppColors.darkGrey,
                     ),
-                    verticalSpace(16),
-                    Text(
-                      AppLocalizations.of(
-                        context,
-                      )!.please_enter_your_code_that_send_to_your_email_address,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    verticalSpace(32),
-                    OtpCodeTextField(
-                      forgetPasswordCubit: forgetPasswordCubit,
-                      email: widget.email,
-                    ),
-                    Text(
-                      "00 : ${_seconds.toString().padLeft(2, '0')}",
-                      style: Theme.of(context).textTheme.displayMedium
-                          ?.copyWith(color: AppColors.darkGrey),
-                    ),
-                    verticalSpace(24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.didnot_receive_code,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.displaySmall?.copyWith(fontSize: 16.sp),
+                  ),
+                  verticalSpace(24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.didnot_receive_code,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.displaySmall?.copyWith(fontSize: 16.sp),
+                      ),
+                      InkWell(
+                        onTap: isResend
+                            ? () {
+                                _startTimer();
+                                forgetPasswordCubit.doIntent(
+                                  GetIsResendOtpEvent(email: widget.email),
+                                );
+                              }
+                            : null,
+                        child: Text(
+                          AppLocalizations.of(context)!.resend,
+                          style: Theme.of(context).textTheme.displayMedium
+                              ?.copyWith(
+                                color: isResend
+                                    ? AppColors.pink
+                                    : AppColors.darkGrey,
+                                decoration: isResend
+                                    ? TextDecoration.underline
+                                    : TextDecoration.none,
+                                decorationStyle: TextDecorationStyle.solid,
+                                decorationColor: isResend
+                                    ? AppColors.pink
+                                    : AppColors.darkGrey,
+                              ),
                         ),
-                        InkWell(
-                          onTap: isResend
-                              ? () {
-                                  _startTimer();
-                                  forgetPasswordCubit.doIntent(
-                                    GetIsResendOtpEvent(email: widget.email),
-                                  );
-                                }
-                              : null,
-                          child: Text(
-                            AppLocalizations.of(context)!.resend,
-                            style: Theme.of(context).textTheme.displayMedium
-                                ?.copyWith(
-                                  color: isResend
-                                      ? AppColors.pink
-                                      : AppColors.darkGrey,
-                                  decoration: isResend
-                                      ? TextDecoration.underline
-                                      : TextDecoration.none,
-                                  decorationStyle: TextDecorationStyle.solid,
-                                  decorationColor: isResend
-                                      ? AppColors.pink
-                                      : AppColors.darkGrey,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

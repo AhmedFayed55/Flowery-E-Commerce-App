@@ -3,6 +3,7 @@ import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
 import 'package:flowers_ecommerce_app/core/constants/constants.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/shared_pref.dart';
+import 'package:flowers_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_cubit.dart';
 import 'package:flowers_ecommerce_app/features/profile/presentation/view_model/profile_setting_event.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ Future<void> main() async {
       Constants.enKey;
 
   final isRemember =
-      sharedPref.getData(key: Constants.isRemeber) as bool? ?? false;
+      sharedPref.getData(key: AppConstants.isTokenSaved) as bool? ?? false;
 
   runApp(
     BlocProvider(

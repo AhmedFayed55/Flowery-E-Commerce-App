@@ -79,7 +79,7 @@ class _MainLayoutState extends State<MainLayout> {
             ),
           ],
         ),
-        body: pages[_currentIndex],
+        body: IndexedStack(index: _currentIndex, children: pages),
       ),
     );
   }

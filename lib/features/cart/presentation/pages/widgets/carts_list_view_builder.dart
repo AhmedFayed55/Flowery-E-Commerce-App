@@ -1,10 +1,12 @@
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
+import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/pages/widgets/cart.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/view_model/cubit/cart_cubit.dart';
 import 'package:flowers_ecommerce_app/features/cart/presentation/view_model/cubit/cart_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartsListViewBuilder extends StatelessWidget {
   const CartsListViewBuilder({super.key});
@@ -20,33 +22,54 @@ class CartsListViewBuilder extends StatelessWidget {
             userCart.numOfCartItems == 0) {
           return Expanded(
             child: Center(
-              child: Text(
-                trans.your_cart_is_empty,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium!.copyWith(color: AppColors.black),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    trans.your_cart_is_empty,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium!.copyWith(color: AppColors.black),
+                  ),
+                  verticalSpace(20),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<CartCubit>().doIntent(
+                        const LoadUserCartEvent(),
+                      );
+                    },
+                    child: Text(trans.refresh),
+                  ),
+                ],
               ),
             ),
           );
         }
         final cartItems = userCart.cart.cartItems!;
 
-        return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.44,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: cartItems.length,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(bottom: 24),
-              child: CartItemCard(
-                userItem: cartItems[index],
-                onDelete: () {
-                  final productId = cartItems[index].product!.id!;
+        return RefreshIndicator(
+          key: context.read<CartCubit>().refreshIndicatorKey,
+          onRefresh: () async {
+            context.read<CartCubit>().doIntent(const LoadUserCartEvent());
+            await Future.delayed(const Duration(milliseconds: 500));
+          },
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.44,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: CartItemCard(
+                  userItem: cartItems[index],
+                  onDelete: () {
+                    final productId = cartItems[index].product!.id!;
 
-                  context.read<CartCubit>().doIntent(
-                    DeleteCartItemEvent(productId),
-                  );
-                },
+                    context.read<CartCubit>().doIntent(
+                      DeleteCartItemEvent(productId),
+                    );
+                  },
+                ),
               ),
             ),
           ),

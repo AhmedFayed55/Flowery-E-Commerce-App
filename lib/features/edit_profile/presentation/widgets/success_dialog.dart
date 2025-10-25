@@ -1,3 +1,4 @@
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class SuccessDialog extends StatelessWidget {
           },
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.green),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => {context.pop(), context.pop()},
             child: Text(
               AppLocalizations.of(context)!.ok,
               style: Theme.of(

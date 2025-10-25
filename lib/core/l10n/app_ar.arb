@@ -174,7 +174,6 @@
   "chatOnWhatsApp": "تحدث عبر واتساب",
   "wait_until_shipping": "انتظر حتى يتم الشحن",
   "orderMarkedAsDelivered": "تم وضع علامة على الطلب كمُسلم",
-  "updating": "جارٍ التحديث..."
+  "updating": "جارٍ التحديث...",
+  "refresh": "تحديث"
 }
-
-

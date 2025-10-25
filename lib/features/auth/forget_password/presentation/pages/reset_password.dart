@@ -1,4 +1,5 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/spacing.dart';
 import 'package:flowers_ecommerce_app/core/helpers/validators.dart';
@@ -35,89 +36,88 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           );
         }
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(title: Text(AppLocalizations.of(context)!.password)),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    verticalSpace(40),
-                    Text(
-                      AppLocalizations.of(context)!.reset_password,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    verticalSpace(16),
-                    Text(
-                      AppLocalizations.of(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(Icons.arrow_back_ios_new),
+          ),
+          title: Text(AppLocalizations.of(context)!.password),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  verticalSpace(40),
+                  Text(
+                    AppLocalizations.of(context)!.reset_password,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  verticalSpace(16),
+                  Text(
+                    AppLocalizations.of(
+                      context,
+                    )!.password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least,
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                  verticalSpace(32),
+                  TextFormField(
+                    controller: newPasswordController,
+                    validator: (newPassword) {
+                      return Validations.confirmPassword(context, newPassword);
+                    },
+                    decoration: InputDecoration(
+                      label: Text(AppLocalizations.of(context)!.new_password),
+                      hintText: AppLocalizations.of(
                         context,
-                      )!.password_must_not_be_empty_and_must_contain_6_characters_with_upper_case_letter_and_one_number_at_least,
-                      maxLines: 3,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.labelSmall,
+                      )!.enter_your_password,
                     ),
-                    verticalSpace(32),
-                    TextFormField(
-                      controller: newPasswordController,
-                      validator: (newPassword) {
-                        return Validations.confirmPassword(
-                          context,
-                          newPassword,
-                        );
-                      },
-                      decoration: InputDecoration(
-                        label: Text(AppLocalizations.of(context)!.new_password),
-                        hintText: AppLocalizations.of(
-                          context,
-                        )!.enter_your_password,
+                  ),
+                  verticalSpace(24),
+                  TextFormField(
+                    controller: confirmPasswordController,
+                    validator: (confirmPassword) {
+                      return Validations.confirmPassword(
+                        context,
+                        confirmPassword,
+                        newPasswordController.text,
+                      );
+                    },
+                    decoration: InputDecoration(
+                      label: Text(
+                        AppLocalizations.of(context)!.confirm_password,
                       ),
+                      hintText: AppLocalizations.of(context)!.confirm_password,
                     ),
-                    verticalSpace(24),
-                    TextFormField(
-                      controller: confirmPasswordController,
-                      validator: (confirmPassword) {
-                        return Validations.confirmPassword(
-                          context,
-                          confirmPassword,
-                          newPasswordController.text,
-                        );
-                      },
-                      decoration: InputDecoration(
-                        label: Text(
-                          AppLocalizations.of(context)!.confirm_password,
-                        ),
-                        hintText: AppLocalizations.of(
-                          context,
-                        )!.confirm_password,
-                      ),
-                    ),
-                    verticalSpace(48),
-                    BlocBuilder<ForgetPasswordCubit, ForgetPasswordState>(
-                      builder: (context, state) {
-                        return ElevatedButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              forgetPasswordCubit.doIntent(
-                                GetResetPasswordEvent(
-                                  email: widget.email,
-                                  newPassword: newPasswordController.text,
-                                ),
-                              );
-                            }
-                          },
-                          child: state.isLoadingState == true
-                              ? const CircularProgressIndicator(
-                                  color: AppColors.white,
-                                )
-                              : Text(AppLocalizations.of(context)!.confirm),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                  ),
+                  verticalSpace(48),
+                  BlocBuilder<ForgetPasswordCubit, ForgetPasswordState>(
+                    builder: (context, state) {
+                      return ElevatedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            forgetPasswordCubit.doIntent(
+                              GetResetPasswordEvent(
+                                email: widget.email,
+                                newPassword: newPasswordController.text,
+                              ),
+                            );
+                          }
+                        },
+                        child: state.isLoadingState == true
+                            ? const CircularProgressIndicator(
+                                color: AppColors.white,
+                              )
+                            : Text(AppLocalizations.of(context)!.confirm),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ),

@@ -10,16 +10,14 @@ class OrdersListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 22.w),
-          child: OrderCard(orderItem: orders[index]),
-        ),
-        itemCount: orders.length,
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+       shrinkWrap: true,
+      itemBuilder: (context, index) => Padding(
+        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 22.w),
+        child: OrderCard(orderItem: orders[index]),
       ),
+      itemCount: orders.length,
     );
   }
 }

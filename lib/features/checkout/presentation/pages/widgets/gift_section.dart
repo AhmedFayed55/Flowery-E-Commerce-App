@@ -1,5 +1,7 @@
+import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/helpers/validators.dart';
 import 'package:flowers_ecommerce_app/core/l10n/translations/app_localizations.dart';
+import 'package:flowers_ecommerce_app/core/utils/font_weight.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_cubit.dart';
 import 'package:flowers_ecommerce_app/features/checkout/presentation/view_model/cubit/checkout/checkout_event.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,13 @@ class _GiftSectionState extends State<GiftSection> {
                       value: state.isGift,
                       onChanged: (val) => cubit.doIntent(ToggleGift(val)),
                     ),
-                    Text(trans.its_a_gift),
+                    Text(
+                      trans.its_a_gift,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        fontWeight: AppFontWeight.bold,
+                        color: AppColors.black,
+                      ),
+                    ),
                   ],
                 ),
 

@@ -179,6 +179,7 @@
   "chatOnWhatsApp": "Chat on WhatsApp",
   "wait_until_shipping": "Wait until shipping",
   "orderMarkedAsDelivered": "Order marked as delivered",
-  "updating": "updating..."
+  "updating": "updating...",
+  "refresh" : "Refresh"
 
 }

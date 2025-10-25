@@ -70,6 +70,7 @@ class LogoutAlertDialogue extends StatelessWidget {
                   if (state.isSuccess) {
                     context.pop();
                     context.pushReplacementNamed(AppRoutes.login);
+                    
                     ToastMessage.toastMsg(localizations.logout_successfully);
                   }
                 },

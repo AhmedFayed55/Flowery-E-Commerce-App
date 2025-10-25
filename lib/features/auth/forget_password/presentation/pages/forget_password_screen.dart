@@ -1,4 +1,5 @@
 import 'package:flowers_ecommerce_app/config/routing/app_routes.dart';
+import 'package:flowers_ecommerce_app/config/routing/routing_extensions.dart';
 import 'package:flowers_ecommerce_app/config/theme/colors.dart';
 import 'package:flowers_ecommerce_app/core/di/di.dart';
 import 'package:flowers_ecommerce_app/core/helpers/dialogue_utils.dart';
@@ -45,67 +46,70 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             DialogueUtils.showAlertDialog(context, state.errorMessage);
           }
         },
-        child: SafeArea(
-          child: Scaffold(
-            appBar: AppBar(title: Text(AppLocalizations.of(context)!.password)),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      verticalSpace(40),
-                      Text(
-                        AppLocalizations.of(context)!.forget_password,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      verticalSpace(16),
-                      Text(
-                        AppLocalizations.of(
+        child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () => context.pop(),
+              icon: const Icon(Icons.arrow_back_ios_new),
+            ),
+            title: Text(AppLocalizations.of(context)!.password)),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    verticalSpace(40),
+                    Text(
+                      AppLocalizations.of(context)!.forget_password,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    verticalSpace(16),
+                    Text(
+                      AppLocalizations.of(
+                        context,
+                      )!.please_enter_your_email_associated_to_your_account,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    verticalSpace(32),
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (email) {
+                        return Validations.validateEmail(email);
+                      },
+                      decoration: InputDecoration(
+                        label: Text(AppLocalizations.of(context)!.email),
+                        hintText: AppLocalizations.of(
                           context,
-                        )!.please_enter_your_email_associated_to_your_account,
-                        textAlign: TextAlign.center,
-                        maxLines: 2,
-                        style: Theme.of(context).textTheme.labelSmall,
+                        )!.enter_your_email,
                       ),
-                      verticalSpace(32),
-                      TextFormField(
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (email) {
-                          return Validations.validateEmail(email);
-                        },
-                        decoration: InputDecoration(
-                          label: Text(AppLocalizations.of(context)!.email),
-                          hintText: AppLocalizations.of(
-                            context,
-                          )!.enter_your_email,
-                        ),
-                      ),
-                      verticalSpace(48),
-                      BlocBuilder<ForgetPasswordCubit, ForgetPasswordState>(
-                        builder: (context, state) {
-                          return ElevatedButton(
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                forgetPasswordCubit.doIntent(
-                                  GetForgetPasswordEvent(
-                                    email: emailController.text,
-                                  ),
-                                );
-                              }
-                            },
-                            child: state.isLoadingState == true
-                                ? const CircularProgressIndicator(
-                                    color: AppColors.white,
-                                  )
-                                : Text(AppLocalizations.of(context)!.confirm),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                    ),
+                    verticalSpace(48),
+                    BlocBuilder<ForgetPasswordCubit, ForgetPasswordState>(
+                      builder: (context, state) {
+                        return ElevatedButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              forgetPasswordCubit.doIntent(
+                                GetForgetPasswordEvent(
+                                  email: emailController.text,
+                                ),
+                              );
+                            }
+                          },
+                          child: state.isLoadingState == true
+                              ? const CircularProgressIndicator(
+                                  color: AppColors.white,
+                                )
+                              : Text(AppLocalizations.of(context)!.confirm),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
