@@ -1,4 +1,4 @@
-<img width="1419" height="2796" alt="occasions_2" src="https://github.com/user-attachments/assets/6f3b21fd-c612-47a5-8dd9-19e0c1a805fd" /># 🌸 Flowery E-Commerce App
+## 🌸 Flowery E-Commerce App
 
 **Flowery — a Flutter-based mobile e-commerce application for selling flowers and related products.**
 
