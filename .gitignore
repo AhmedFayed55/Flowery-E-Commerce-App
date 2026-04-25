@@ -23,7 +23,9 @@ migrate_working_dir/
 *.g.dart
 *.mocks.dart
 *.config.dart
-
+*.freezed.dart
+*.lock
+android/firebase-service-account.json
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -57,19 +59,3 @@ android/app/debug
 android/app/profile
 android/app/release
 
-# Generated files (build_runner, json_serializable, injectable, freezed, ...)
-**/*.g.dart
-**/*.freezed.dart
-**/*.config.dart
-*.lock
-
-
-
-# Localization generated files
-lib/core/l10n/translations/**
-
-# Ignore only mocks (لكن test عادي هيتتبع)
-**/mock_*.dart
-**/*.mocks.dart
-test/feature/forget_password/data/reset_pass_remote_datasource_impl_test.mocks.dart
-android/firebase-service-account.json
